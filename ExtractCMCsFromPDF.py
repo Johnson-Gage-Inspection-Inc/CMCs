@@ -4,6 +4,52 @@ import tkinter as tk
 from tkinter import filedialog
 
 
+def expand_rows(df):
+    expanded_data = []
+
+    for _, row in df.iterrows():
+        range_split = row["Range"].split("\n") if pd.notna(row["Range"]) else []
+        cmc_split = row["CMC (±)"].split("\n") if pd.notna(row["CMC (±)"]) else []
+        comments_split = (
+            row["Comments"].split("\n") if pd.notna(row["Comments"]) else []
+        )
+        parameter_split = (
+            row["Parameter"].split("\n") if pd.notna(row["Parameter"]) else []
+        )
+
+        if len(range_split) == len(cmc_split) and len(range_split) > 1:
+            num_rows = len(range_split)
+            comments_expanded = (
+                comments_split
+                if len(comments_split) == num_rows
+                else [row["Comments"]] * num_rows
+            )
+            parameter_expanded = (
+                parameter_split
+                if len(parameter_split) == num_rows
+                else (
+                    [row["Parameter"]] * num_rows
+                    if row["Parameter"]
+                    else [None] * num_rows
+                )
+            )
+
+            for i in range(num_rows):
+                expanded_data.append(
+                    {
+                        "Equipment": row["Equipment"],
+                        "Parameter": parameter_expanded[i],
+                        "Range": range_split[i],
+                        "CMC (±)": cmc_split[i],
+                        "Comments": comments_expanded[i],
+                    }
+                )
+        else:
+            expanded_data.append(row.to_dict())
+
+    return pd.DataFrame(expanded_data)
+
+
 def extract_pdf_tables(pdf_path):
     tables = []
     with pdfplumber.open(pdf_path) as pdf:
@@ -36,6 +82,9 @@ def extract_pdf_tables(pdf_path):
     # Reorder columns to desired order
     desired_order = ["Equipment", "Parameter", "Range", "CMC (±)", "Comments"]
     df = df[[col for col in desired_order if col in df.columns]]
+
+    # Expand rows where necessary
+    df = expand_rows(df)
 
     return df
 
