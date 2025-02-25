@@ -1,0 +1,43 @@
+name: Build Executable
+
+on:
+  push:
+    tags:
+      - 'v*'  # Run this workflow on versioned tags (e.g., v1.0, v2.1)
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # You can also use windows-latest for .exe builds
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'  # Change to required Python version
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyinstaller
+          # If your script has other dependencies, install them here
+          # pip install -r requirements.txt
+
+      - name: Build executable
+        run: |
+          pyinstaller --onefile ExtractCMCsFromPDF.py
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ExtractCMCsFromPDF
+          path: dist/ExtractCMCsFromPDF  # Change to `.exe` for Windows builds
+
+      - name: Create Release and Upload Executable
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/ExtractCMCsFromPDF  # Change to `.exe` for Windows builds
