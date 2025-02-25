@@ -33,6 +33,10 @@ def extract_pdf_tables(pdf_path):
             df.rename(columns={col: new_col_name}, inplace=True)
             break  # Assuming only one CMC column needs renaming
 
+    # Reorder columns to desired order
+    desired_order = ["Equipment", "Parameter", "Range", "CMC (±)", "Comments"]
+    df = df[[col for col in desired_order if col in df.columns]]
+
     return df
 
 
