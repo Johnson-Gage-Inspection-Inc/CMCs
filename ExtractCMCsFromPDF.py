@@ -1,5 +1,3 @@
-# This script should help get the CMCs from the PDFs into a usable format
-
 import pdfplumber
 import pandas as pd
 import tkinter as tk
@@ -12,10 +10,13 @@ def extract_pdf_tables(pdf_path):
         for page in pdf.pages:
             extracted_table = page.extract_table()
             if extracted_table:
-                tables.extend(extracted_table)
+                # Remove duplicate headers
+                headers = extracted_table[0]
+                filtered_table = [row for row in extracted_table[1:] if row != headers]
+                tables.extend(filtered_table)
 
     # Convert extracted tables into a structured DataFrame
-    df = pd.DataFrame(tables)
+    df = pd.DataFrame(tables, columns=headers)
     return df
 
 
