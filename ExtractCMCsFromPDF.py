@@ -26,6 +26,13 @@ def extract_pdf_tables(pdf_path):
         )
         df.drop(columns=["Parameter/Equipment"], inplace=True)
 
+    # Rename the CMC column by removing numbers and commas
+    for col in df.columns:
+        if "CMC" in col:
+            new_col_name = "CMC (±)"
+            df.rename(columns={col: new_col_name}, inplace=True)
+            break  # Assuming only one CMC column needs renaming
+
     return df
 
 
