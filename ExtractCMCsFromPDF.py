@@ -17,6 +17,15 @@ def extract_pdf_tables(pdf_path):
 
     # Convert extracted tables into a structured DataFrame
     df = pd.DataFrame(tables, columns=headers)
+
+    # Splitting 'Parameter/Equipment' column into 'Equipment' and 'Parameter'
+    if "Parameter/Equipment" in df.columns:
+        df[["Equipment", "Parameter"]] = df["Parameter/Equipment"].str.split(
+            """–
+""", n=1, expand=True
+        )
+        df.drop(columns=["Parameter/Equipment"], inplace=True)
+
     return df
 
 
