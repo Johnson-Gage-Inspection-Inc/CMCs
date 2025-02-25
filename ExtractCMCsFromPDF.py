@@ -21,9 +21,9 @@ def extract_pdf_tables(pdf_path):
     # Splitting 'Parameter/Equipment' column into 'Equipment' and 'Parameter'
     if "Parameter/Equipment" in df.columns:
         df[["Equipment", "Parameter"]] = df["Parameter/Equipment"].str.split(
-            """–
-""", n=1, expand=True
+            "–", n=1, expand=True
         )
+        df["Parameter"] = df["Parameter"].str.lstrip("\n")  # Remove leading linebreak
         df.drop(columns=["Parameter/Equipment"], inplace=True)
 
     # Rename the CMC column by removing numbers and commas
