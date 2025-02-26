@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
-import pdfplumber
+import re
 import pandas as pd
+from collections import defaultdict
+import pdfplumber
 from tkinter import filedialog, Tk
 
 
@@ -104,94 +106,94 @@ def dynamic_expand_row(row):
         return new_rows
 
 
+def param_lines_are_thermocouples(lines):
+    """
+    Returns True if EVERY non-blank line in 'lines' matches something like 'Type E', 'Type K', etc.
+    Regex is flexible: 'Type' followed by any letter(s) or digits.
+    """
+    pattern = re.compile(r"^Type\s+[A-Za-z0-9]", re.IGNORECASE)
+    for line in lines:
+        txt = line.strip()
+        if txt and not pattern.match(txt):
+            return False
+    return True
+
+
 def distribute_multi_line_parameter(expanded_rows):
     """
-    Second-pass: If a single PDF row expanded into multiple lines
-    but there's also a multi-line Parameter, we may want to
-    split those lines in a chunked manner.
-
-    Example:
-    - Parameter has 2 lines (e.g. 'Pt 385, 100 Ω' / 'Pt 385, 1000 Ω').
-    - We have 10 expanded rows for Range/CMC.
-      => We'll give the first 5 expansions to the first Parameter line,
-         and the next 5 expansions to the second Parameter line,
-         etc.
-
-    If the # of expansions is not evenly divisible by the number of
-    Parameter lines, we just do a fallback: replicate param_text
-    on each row (which might have already happened).
+    Second pass:
+      - If multiple Parameter lines are all 'Type ...': replicate each row for each type line.
+      - Else if multiple Parameter lines (like 'Pt 385, 100 Ω' / 'Pt 385, 1000 Ω'), try chunking them
+        evenly among the expanded rows.
+      - Otherwise, leave them as-is.
     """
-    # Group expansions by the original (Equipment, Parameter, Range, CMC, Comments) "batch"
-    # We'll rely on 'Parameter' for grouping. In practice, you might need
-    # to store an ID from the original row or something similar.
-
-    # We'll do a naive approach: for any row that has multiple lines *in the Parameter column itself*,
-    # we try to slice up the expansions evenly.
-    # A more robust approach might be to detect a single row's expansions with a row-id, etc.
 
     output = []
-    # We can group by (Equipment, Comments, plus everything except Parameter/Range/CMC).
-    # But simpler: We'll just look for repeated Parameter text with newlines => chunk if possible.
-    from collections import defaultdict
 
-    # Key: everything but Parameter, Range, and CMC
+    # Group expansions by some stable key so we know which set of expansions came from the same original row.
+    # For simplicity, we'll use (Equipment, Comments) or you might add other stable columns.
     def row_key(r):
-        return (r["Equipment"], r["Comments"])
+        return (r["Equipment"], r.get("Comments", ""))
 
     grouped = defaultdict(list)
     for row in expanded_rows:
         grouped[row_key(row)].append(row)
 
     for grp_key, rows_in_grp in grouped.items():
-        # Check if all these expansions share the EXACT same param_text (with newlines).
-        # If not, or if there's only 1 row, no chunking needed.
+        # If there's only one row, or the Parameter texts differ, just keep them as-is.
         if len(rows_in_grp) == 1:
             output.extend(rows_in_grp)
             continue
-
-        # See how many distinct Parameter values exist among these expansions
         distinct_params = {r["Parameter"] for r in rows_in_grp}
         if len(distinct_params) > 1:
-            # Already splitted, just pass them along
+            # They’ve already been split somehow, or differ for some reason—leave them.
             output.extend(rows_in_grp)
             continue
 
-        # There's a single repeated parameter text => see if it's multi-line
-        param_text = next(iter(distinct_params))  # the one param text
-        param_lines = [line for line in param_text.splitlines() if line.strip()]
+        # So we have multiple expanded rows that all share the exact same param_text.
+        # Let's see if it's multi-line text:
+        param_text = next(iter(distinct_params))  # the single shared text
+        param_lines = [list for list in param_text.splitlines() if list.strip()]
 
         if len(param_lines) <= 1:
-            # Nothing to chunk
+            # Nothing to distribute
             output.extend(rows_in_grp)
             continue
 
-        # If we do have multiple param lines, see if # expansions is divisible
-        # We'll also confirm that the expansions differ only by Range/CMC
-        # i.e. Equipment, Comments is the same. Possibly also any other columns you want stable.
-        expansions_count = len(rows_in_grp)
-        param_count = len(param_lines)
-
-        if expansions_count % param_count == 0:
-            # Let's chunk expansions_count into param_count slices
-            slice_size = expansions_count // param_count
-            # Sort rows_in_grp by Range or something stable, so chunking is consistent
-            # We'll just keep the order we have them in.
-            sorted_grp = rows_in_grp  # or sorted(rows_in_grp, key=lambda r: r["Range"])
-
-            chunked = [
-                sorted_grp[i: i + slice_size]
-                for i in range(0, expansions_count, slice_size)
-            ]
-            # For each chunk, assign the corresponding param line
-            for i, chunk in enumerate(chunked):
-                p_line = param_lines[i]
-                for row_item in chunk:
-                    new_row = dict(row_item)
-                    new_row["Parameter"] = p_line
-                    output.append(new_row)
+        # Distinguish Thermocouples vs. RTD-like chunking
+        if param_lines_are_thermocouples(param_lines):
+            # ### THERMOCOUPLE-STYLE REPLICATION ###
+            # For each expanded row, replicate it once per param_line,
+            # changing the 'Parameter' to each line.
+            new_rows = []
+            for orig in rows_in_grp:
+                for pline in param_lines:
+                    nr = dict(orig)
+                    nr["Parameter"] = pline
+                    new_rows.append(nr)
+            output.extend(new_rows)
         else:
-            # Not evenly divisible => fallback
-            output.extend(rows_in_grp)
+            # ### CHUNK-STYLE (e.g. Pt 385) ###
+            expansions_count = len(rows_in_grp)
+            param_count = len(param_lines)
+
+            # If expansions_count is evenly divisible by param_count, chunk them
+            if expansions_count % param_count == 0:
+                sorted_grp = rows_in_grp  # or sort by e.g. Range if needed
+                slice_size = expansions_count // param_count
+                chunks = [
+                    sorted_grp[i: i + slice_size]
+                    for i in range(0, expansions_count, slice_size)
+                ]
+                for i, chunk in enumerate(chunks):
+                    line_val = param_lines[i]
+                    for row_item in chunk:
+                        nr = dict(row_item)
+                        nr["Parameter"] = line_val
+                        output.append(nr)
+            else:
+                # fallback: can't chunk evenly => do nothing special
+                output.extend(rows_in_grp)
 
     return output
 
