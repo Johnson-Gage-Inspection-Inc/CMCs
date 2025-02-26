@@ -10,6 +10,16 @@ from collections import defaultdict
 ###############################################################################
 
 
+def remove_superscripts(text):
+    """Removes superscript numbers, special characters, and footnote markers."""
+    if not text:
+        return text
+    # Remove common superscripts and footnote numbers
+    return re.sub(
+        r"[\u00B2\u00B3\u00B9\u2070-\u209F\d]$", "", text
+    )  # Removes trailing numbers
+
+
 def split_parameter_equipment(cell_value):
     """
     If the table has a 'Parameter/Equipment' column, split it on a dash
@@ -326,42 +336,36 @@ def parse_page_table(extracted_table):
 
 def extract_pdf_tables(pdf_path):
     """
-    Master function:
-      - Opens the PDF
-      - For each page's extracted table, parse headers and unify columns
-      - Concatenate
-      - Expand rows
-      - Return final DataFrame
+    Opens the PDF, extracts tables, and processes text while ensuring superscripts
+    are removed *after* multi-line expansion.
     """
     big_tables = []
     with pdfplumber.open(pdf_path) as pdf:
         for page in pdf.pages:
             extracted_table = page.extract_table()
             if extracted_table:
-                df_page = parse_page_table(extracted_table)
+                df_page = parse_page_table(
+                    extracted_table
+                )  # ⬅️ Extract raw data *first*
                 big_tables.append(df_page)
 
     if not big_tables:
         return pd.DataFrame(
-            columns=[
-                "Equipment",
-                "Parameter",
-                "Range",
-                "Frequency",
-                "CMC (±)",
-                "Comments",
-            ]
+            columns=["Equipment", "Parameter", "Range", "CMC (±)", "Comments"]
         )
 
-    # Combine all pages
     df_all = pd.concat(big_tables, ignore_index=True)
 
-    df_all["Parameter"] = cleanColumn(df_all["Parameter"])
-    df_all["Equipment"] = cleanColumn(df_all["Equipment"])
+    # Ensure row expansions happen BEFORE cleaning text
+    df_expanded = expand_rows(df_all)  # ⬅️ Fix multi-line splits first
 
-    # Now do the multi-line expansions
-    df_expanded = expand_rows(df_all)
-    return df_expanded
+    # Apply superscript removal as a final step to prevent breaking line breaks
+    for col in df_expanded.columns:
+        df_expanded[col] = df_expanded[col].apply(
+            lambda x: remove_superscripts(str(x)) if pd.notna(x) else x
+        )
+
+    return df_expanded  # ⬅️ Now return the cleaned, expanded data
 
 
 def cleanColumn(col):
