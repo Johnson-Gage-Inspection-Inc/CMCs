@@ -474,6 +474,10 @@ def extract_pdf_tables(pdf_path):
     # ✅ Ensure new columns are part of the final dataset
     # df_all.drop(columns=["Range"], inplace=True, errors="ignore")  # Commented out to keep the Range column
 
+    # Remove "(cont)" from Equipment and Parameter
+    df_all["Equipment"] = cleanColumn(df_all["Equipment"])
+    df_all["Parameter"] = cleanColumn(df_all["Parameter"])
+
     # Expand rows as needed
     df_expanded = expand_rows(df_all)
 
