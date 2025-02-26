@@ -6,6 +6,9 @@ on:
       - 'v*'  # Run on versioned tags (e.g., v1.0, v2.1)
   workflow_dispatch:  # Allow manual triggering
 
+permissions:
+  packages: write
+
 jobs:
   build:
     runs-on: windows-latest  # ✅ Change to Windows environment
