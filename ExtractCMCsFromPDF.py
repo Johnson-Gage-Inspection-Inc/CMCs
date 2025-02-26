@@ -10,6 +10,98 @@ from collections import defaultdict
 ###############################################################################
 
 
+def parse_range(range_text):
+    """
+    Extract RangeMin, RangeMax, and RangeUnit from a range string.
+    Handles typical forms:
+      1) "(min to max) unit"
+      2) "Up to max unit"
+      3) "single_value unit"
+      4) "min to max unit" (no parentheses)
+
+    Returns (RangeMin, RangeMax, RangeUnit).
+    """
+    if not range_text or not isinstance(range_text, str):
+        return None, None, None
+
+    # 1) Normalize any weird whitespace (non-breaking spaces, etc.)
+    #    Remove non-ASCII control chars & unify multiple spaces.
+    text = re.sub(r'[^\x20-\x7E]+', ' ', range_text)
+    text = re.sub(r'\s+', ' ', text).strip()
+
+    # 2) Regex patterns in a logical order. Each pattern tries to capture
+    #    the entire string ^...$ and breaks it into groups.
+
+    # (min to max) unit  e.g. "(10 to 50) mm"
+    #   group(1)=10, group(2)=50, group(3)=mm...
+    pat1 = re.compile(r'^\(\s*([+-]?\d*\.?\d+)\s+to\s+([+-]?\d*\.?\d+)\s*\)\s+(.+)$', re.IGNORECASE)
+    m = pat1.match(text)
+    if m:
+        return m.group(1), m.group(2), m.group(3).strip()
+
+    # "Up to max unit"  e.g. "Up to 9 in"
+    pat2 = re.compile(r'^Up\s+to\s+([\-.\d]+)\s+(.+)$', re.IGNORECASE)
+    m = pat2.match(text)
+    if m:
+        return None, m.group(1), m.group(2).strip()
+
+    # "min to max unit"  e.g. "3.5 to 27 in"
+    pat3 = re.compile(r'^([\-.\d]+)\s+to\s+([\-.\d]+)\s+(.+)$', re.IGNORECASE)
+    m = pat3.match(text)
+    if m:
+        return m.group(1), m.group(2), m.group(3).strip()
+
+    # Single value unit  e.g. "3.5 in"
+    pat4 = re.compile(r'^([\-.\d]+)\s+(.+)$', re.IGNORECASE)
+    m = pat4.match(text)
+    if m:
+        return None, m.group(1), m.group(2).strip()
+
+    # If still no match, return the original text in RangeUnit as a fallback
+    return None, None, text
+
+
+def expand_frequency_and_cmc(df):
+    """
+    Expands rows where:
+      - Frequency and CMC (±) have the same number of lines.
+      - Range & Parameter only have one line (after previous processing).
+
+    If conditions match, this function:
+      - Creates a row for each line in Frequency/CMC.
+      - Repeats Parameter, Range, and Comments in each row.
+    """
+    expanded_data = []
+
+    for _, row in df.iterrows():
+        freq_split = row["Frequency"].split("\n") if pd.notna(row["Frequency"]) else []
+        cmc_split = row["CMC (±)"].split("\n") if pd.notna(row["CMC (±)"]) else []
+        range_split = row["Range"].split("\n") if pd.notna(row["Range"]) else []
+        param_split = row["Parameter"].split("\n") if pd.notna(row["Parameter"]) else []
+
+        # ✅ Only expand when Frequency & CMC have the same number of lines
+        #    AND Range & Parameter have just one line (already processed)
+        if (
+            len(freq_split) == len(cmc_split) and len(range_split) == 1 and len(param_split) == 1
+        ):
+            for i in range(len(freq_split)):
+                expanded_data.append(
+                    {
+                        "Equipment": row["Equipment"],
+                        "Parameter": row["Parameter"],
+                        "Range": row["Range"],
+                        "Frequency": freq_split[i],
+                        "CMC (±)": cmc_split[i],
+                        "Comments": row["Comments"],
+                    }
+                )
+        else:
+            # Keep the row as-is if it doesn't meet the criteria
+            expanded_data.append(row.to_dict())
+
+    return pd.DataFrame(expanded_data)
+
+
 def remove_superscripts(text):
     """Removes superscript numbers, special characters, and footnote markers."""
     if not text:
@@ -167,7 +259,6 @@ def param_lines_are_thermocouples(lines):
     """
     Check if all lines match something like "Type E", "Type K" etc.
     """
-    print("DEBUG param_lines:", repr(lines))
     pattern = re.compile(r"^Type\s+[A-Za-z0-9]", re.IGNORECASE)
     for ln in lines:
         ln = ln.strip()
@@ -249,11 +340,13 @@ def distribute_multi_line_parameter(expanded_rows):
 
 def expand_rows(df):
     """
-    Calls dynamic_expand_row on each row, then second-pass distribute_multi_line_parameter.
+    Calls dynamic_expand_row on each row, then second-pass distribute_multi_line_parameter,
+    and then handles cases where Frequency and CMC should be expanded into separate rows.
     """
     first_pass = []
     for _, row in df.iterrows():
         rng = row.get("Range", "") or ""
+
         if len(rng.splitlines()) > 1:
             new_rows = dynamic_expand_row(row)
             first_pass.extend(new_rows)
@@ -261,7 +354,15 @@ def expand_rows(df):
             first_pass.append(row.to_dict())
 
     second_pass = distribute_multi_line_parameter(first_pass)
-    return pd.DataFrame(second_pass)
+
+    # Convert to DataFrame before handling Frequency expansion
+    df_expanded = pd.DataFrame(second_pass)
+
+    # ✅ Handle Frequency & CMC expansion when conditions match
+    if "Frequency" in df_expanded.columns and "CMC (±)" in df_expanded.columns:
+        df_expanded = expand_frequency_and_cmc(df_expanded)
+
+    return df_expanded
 
 
 ###############################################################################
@@ -336,36 +437,66 @@ def parse_page_table(extracted_table):
 
 def extract_pdf_tables(pdf_path):
     """
-    Opens the PDF, extracts tables, and processes text while ensuring superscripts
-    are removed *after* multi-line expansion.
+    Extracts tables from the PDF, processes them, and expands necessary columns.
     """
     big_tables = []
     with pdfplumber.open(pdf_path) as pdf:
         for page in pdf.pages:
             extracted_table = page.extract_table()
             if extracted_table:
-                df_page = parse_page_table(
-                    extracted_table
-                )  # ⬅️ Extract raw data *first*
+                df_page = parse_page_table(extracted_table)
                 big_tables.append(df_page)
 
     if not big_tables:
         return pd.DataFrame(
-            columns=["Equipment", "Parameter", "Range", "CMC (±)", "Comments"]
+            columns=[
+                "Equipment",
+                "Parameter",
+                "RangeMin",
+                "RangeMax",
+                "RangeUnit",
+                "CMC (±)",
+                "Comments",
+            ]
         )
 
     df_all = pd.concat(big_tables, ignore_index=True)
 
-    # Ensure row expansions happen BEFORE cleaning text
-    df_expanded = expand_rows(df_all)  # ⬅️ Fix multi-line splits first
-
-    # Apply superscript removal as a final step to prevent breaking line breaks
-    for col in df_expanded.columns:
-        df_expanded[col] = df_expanded[col].apply(
+    # ✅ Apply superscript removal **before** range parsing
+    for col in df_all.columns:
+        df_all[col] = df_all[col].apply(
             lambda x: remove_superscripts(str(x)) if pd.notna(x) else x
         )
 
-    return df_expanded  # ⬅️ Now return the cleaned, expanded data
+    # Debug check: Are new columns appearing?
+    print("DEBUG: After Range Parsing:\n", df_all.head())
+
+    # ✅ Ensure new columns are part of the final dataset
+    # df_all.drop(columns=["Range"], inplace=True, errors="ignore")  # Commented out to keep the Range column
+
+    # Expand rows as needed
+    df_expanded = expand_rows(df_all)
+
+    # ✅ Apply range parsing
+    df_expanded[["RangeMin", "RangeMax", "RangeUnit"]] = df_expanded["Range"].apply(
+        lambda x: pd.Series(parse_range(x))
+    )
+
+    # Ensure final DataFrame includes new columns
+    final_columns = [
+        "Equipment",
+        "Parameter",
+        "Range",
+        "RangeMin",
+        "RangeMax",
+        "RangeUnit",
+        "CMC (±)",
+        "Comments",
+        "Frequency",
+    ]
+    df_expanded = df_expanded.reindex(columns=final_columns, fill_value="")
+
+    return df_expanded
 
 
 def cleanColumn(col):
