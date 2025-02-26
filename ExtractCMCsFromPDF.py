@@ -1,4 +1,4 @@
-import pdfplumber
+from pdfplumber import open as pdfplumber_open
 import pandas as pd
 import tkinter as tk
 from tkinter import filedialog
@@ -52,7 +52,7 @@ def expand_rows(df):
 
 def extract_pdf_tables(pdf_path):
     tables = []
-    with pdfplumber.open(pdf_path) as pdf:
+    with pdfplumber_open(pdf_path) as pdf:
         for page in pdf.pages:
             extracted_table = page.extract_table()
             if extracted_table:
