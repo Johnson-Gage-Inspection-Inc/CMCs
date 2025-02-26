@@ -27,6 +27,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install pyinstaller
           pip install pdfplumber
+          pip install pandas
 
       - name: Build Windows Executable
         run: |
