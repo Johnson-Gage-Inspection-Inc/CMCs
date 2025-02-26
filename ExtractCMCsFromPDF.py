@@ -157,6 +157,7 @@ def param_lines_are_thermocouples(lines):
     """
     Check if all lines match something like "Type E", "Type K" etc.
     """
+    print("DEBUG param_lines:", repr(lines))
     pattern = re.compile(r"^Type\s+[A-Za-z0-9]", re.IGNORECASE)
     for ln in lines:
         ln = ln.strip()
@@ -167,57 +168,61 @@ def param_lines_are_thermocouples(lines):
 
 def distribute_multi_line_parameter(expanded_rows):
     """
-    Second pass: we group the expansions from each original row
-    and handle multi-line Parameter text by either:
-      - thermocouple replicate approach if lines all look like "Type ..."
-      - chunk them evenly if not (e.g. Pt 385 lines)
+    Second pass: group expansions that share the same (Equipment, Comments).
+    If the Parameter text has multiple lines, decide how to replicate:
+      - If all lines match 'Type ...', replicate for each line (thermocouple approach).
+      - Otherwise do the chunk approach (like for Pt 385 lines).
+      - If chunk is not perfectly divisible, fallback to no distribution.
     """
     out = []
 
-    # group by (Equipment, Comments, maybe others if you prefer)
     def row_key(r):
+        # Group by these columns so expansions from a single PDF line
+        # get processed together
         return (r.get("Equipment", ""), r.get("Comments", ""))
 
     grouped = defaultdict(list)
-    for r in expanded_rows:
-        grouped[row_key(r)].append(r)
+    for row in expanded_rows:
+        grouped[row_key(row)].append(row)
 
     for _, group_rows in grouped.items():
+        # If there's only one row in the group, no distribution needed
         if len(group_rows) == 1:
             out.extend(group_rows)
             continue
-        # do they all share exactly the same param_text?
+
+        # Check if they all share the same exact Parameter text
         distinct_params = {r["Parameter"] for r in group_rows}
         if len(distinct_params) > 1:
-            # already splitted
+            # Already differ => skip
             out.extend(group_rows)
             continue
 
-        param_text = next(iter(distinct_params))  # the single repeated text
-        plines = [list for list in param_text.splitlines() if list.strip()]
-
+        # There's a single repeated param_text
+        param_text = next(iter(distinct_params))
+        plines = [ln.strip() for ln in param_text.splitlines() if ln.strip()]
         if len(plines) <= 1:
-            # nothing special
+            # Only one non-blank line => nothing special
             out.extend(group_rows)
             continue
 
-        # we have multiple lines => thermocouples or chunk approach?
+        # If they all look like "Type X" => replicate each row for each line
         if param_lines_are_thermocouples(plines):
-            # replicate each row for each type line
             for row_item in group_rows:
                 for tline in plines:
                     nr = dict(row_item)
                     nr["Parameter"] = tline
                     out.append(nr)
         else:
-            # chunk approach
+            # Otherwise do the chunk approach
             expansions_count = len(group_rows)
             param_count = len(plines)
             if expansions_count % param_count == 0:
                 chunk_size = expansions_count // param_count
-                sorted_grp = group_rows  # or sort by Range if needed
+                # We'll keep them in the same order
+                # Or you can do sorted(..., key=lambda r: r["Range"]) if you prefer
                 chunks = [
-                    sorted_grp[i: i + chunk_size]
+                    group_rows[i: i + chunk_size]
                     for i in range(0, expansions_count, chunk_size)
                 ]
                 for i, chunk in enumerate(chunks):
@@ -227,7 +232,7 @@ def distribute_multi_line_parameter(expanded_rows):
                         nr["Parameter"] = line_val
                         out.append(nr)
             else:
-                # fallback
+                # fallback => keep them stacked
                 out.extend(group_rows)
     return out
 
