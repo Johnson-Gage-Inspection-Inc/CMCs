@@ -1,20 +1,19 @@
 from pdfplumber import open as pdfplumber_open
-import pandas as pd
-import tkinter as tk
-from tkinter import filedialog
+from pandas import DataFrame, notna
+from tkinter import filedialog, Tk
 
 
 def expand_rows(df):
     expanded_data = []
 
     for _, row in df.iterrows():
-        range_split = row["Range"].split("\n") if pd.notna(row["Range"]) else []
-        cmc_split = row["CMC (±)"].split("\n") if pd.notna(row["CMC (±)"]) else []
+        range_split = row["Range"].split("\n") if notna(row["Range"]) else []
+        cmc_split = row["CMC (±)"].split("\n") if notna(row["CMC (±)"]) else []
         comments_split = (
-            row["Comments"].split("\n") if pd.notna(row["Comments"]) else []
+            row["Comments"].split("\n") if notna(row["Comments"]) else []
         )
         parameter_split = (
-            row["Parameter"].split("\n") if pd.notna(row["Parameter"]) else []
+            row["Parameter"].split("\n") if notna(row["Parameter"]) else []
         )
 
         if len(range_split) == len(cmc_split) and len(range_split) > 1:
@@ -47,7 +46,7 @@ def expand_rows(df):
         else:
             expanded_data.append(row.to_dict())
 
-    return pd.DataFrame(expanded_data)
+    return DataFrame(expanded_data)
 
 
 def extract_pdf_tables(pdf_path):
@@ -62,7 +61,7 @@ def extract_pdf_tables(pdf_path):
                 tables.extend(filtered_table)
 
     # Convert extracted tables into a structured DataFrame
-    df = pd.DataFrame(tables, columns=headers)
+    df = DataFrame(tables, columns=headers)
 
     # Splitting 'Parameter/Equipment' column into 'Equipment' and 'Parameter'
     if "Parameter/Equipment" in df.columns:
@@ -90,7 +89,7 @@ def extract_pdf_tables(pdf_path):
 
 
 def browse_file():
-    root = tk.Tk()
+    root = Tk()
     root.withdraw()  # Hide the main window
     file_path = filedialog.askopenfilename(
         title="Select a PDF File", filetypes=[("PDF Files", "*.pdf")]
