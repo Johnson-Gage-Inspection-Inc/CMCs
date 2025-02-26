@@ -1,8 +1,8 @@
 # PDF Table Extraction Script
 
-![Latest Release](https://img.shields.io/github/v/release/Johnson-Gage-Inspection-Inc/CMCs)
-![Last Commit](https://img.shields.io/github/last-commit/Johnson-Gage-Inspection-Inc/CMCs)
-![Issues](https://img.shields.io/github/issues/Johnson-Gage-Inspection-Inc/CMCs)
+[![Latest Release](https://img.shields.io/github/v/release/Johnson-Gage-Inspection-Inc/CMCs)](https://github.com/Johnson-Gage-Inspection-Inc/CMCs/releases/latest)
+[![Last Commit](https://img.shields.io/github/last-commit/Johnson-Gage-Inspection-Inc/CMCs)](https://github.com/Johnson-Gage-Inspection-Inc/CMCs/commits/main/)
+[![Issues](https://img.shields.io/github/issues/Johnson-Gage-Inspection-Inc/CMCs)](https://github.com/Johnson-Gage-Inspection-Inc/CMCs/issues)
 
 ## Overview
 This script extracts tabular data from a calibration scope PDF and formats it into a structured CSV file. It processes the scope document provided by A2LA and JGI Quality to create a tidy dataset for further analysis.
