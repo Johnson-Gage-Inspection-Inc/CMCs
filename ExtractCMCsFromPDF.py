@@ -356,9 +356,16 @@ def extract_pdf_tables(pdf_path):
     # Combine all pages
     df_all = pd.concat(big_tables, ignore_index=True)
 
+    df_all["Parameter"] = cleanColumn(df_all["Parameter"])
+    df_all["Equipment"] = cleanColumn(df_all["Equipment"])
+
     # Now do the multi-line expansions
     df_expanded = expand_rows(df_all)
     return df_expanded
+
+
+def cleanColumn(col):
+    return col.str.replace(r"\(cont\)", "", regex=True).str.strip()
 
 
 def browse_file():
