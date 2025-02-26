@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import re
 import pdfplumber
 import pandas as pd
 from tkinter import filedialog, Tk
@@ -22,13 +23,55 @@ def segment_by_blank_lines(lines):
     return segments
 
 
+def replicate_row_for_multiple_types(row):
+    """
+    If the Parameter field has multiple 'Type ...' lines but only
+    a single Range line and single CMC line, replicate this row
+    once per 'Type ...' line. Otherwise, return it unchanged.
+    """
+    equipment = row.get("Equipment", "")
+    param_text = row.get("Parameter", "") or ""
+    range_text = row.get("Range", "")
+    cmc_text = row.get("CMC (±)", "")
+    comments = row.get("Comments", "")
+
+    # Split the parameter field by lines
+    lines = [l.strip() for l in param_text.splitlines() if l.strip()]
+
+    # Collect only lines that match something like "Type S", "Type K", etc.
+    # Adapt the regex if you have more variety, e.g. "Type B (some note)"
+    type_regex = re.compile(r"^Type\s+[A-Z]", re.IGNORECASE)
+    type_lines = [l for l in lines if type_regex.match(l)]
+
+    # If we have more than one "Type" line AND exactly 1 Range and 1 CMC line,
+    # replicate the row. Otherwise, leave it unchanged.
+    if len(type_lines) > 1:
+        # Check how many lines in Range & CMC
+        range_count = len([r for r in range_text.splitlines() if r.strip()])
+        cmc_count = len([c for c in cmc_text.splitlines() if c.strip()])
+
+        if range_count == 1 and cmc_count == 1:
+            # Replicate the row for each Type line
+            new_rows = []
+            for t_line in type_lines:
+                new_rows.append(
+                    {
+                        "Equipment": equipment,
+                        "Parameter": t_line,
+                        "Range": range_text,
+                        "CMC (±)": cmc_text,
+                        "Comments": comments,
+                    }
+                )
+            return new_rows
+
+    # Otherwise, return the original row as a single list
+    return [row]
+
+
 def dynamic_expand_row(row):
     """
-    Given a row with multi-line strings for Parameter, Range, CMC (±) and Comments,
-    this function applies a dynamic segmentation strategy. It splits the Range and CMC (±)
-    columns into segments based on blank lines (a proxy for double line breaks).
-    Then it attempts to distribute the Parameter lines across the segments.
-    Returns a list of dictionaries, one per final row.
+    Splits Range & CMC by blank lines, then tries to distribute Parameter lines.
     """
     equipment = row.get("Equipment", "")
     comments = row.get("Comments", "")
@@ -36,18 +79,16 @@ def dynamic_expand_row(row):
     range_text = row.get("Range", "")
     cmc_text = row.get("CMC (±)", "")
 
-    # Split each field into lines
     param_lines = param_text.splitlines() if param_text else []
     range_lines = range_text.splitlines() if range_text else []
     cmc_lines = cmc_text.splitlines() if cmc_text else []
 
-    # Segment the range and cmc lists by blank lines.
+    # Segment Range & CMC
     range_segments = segment_by_blank_lines(range_lines)
     cmc_segments = segment_by_blank_lines(cmc_lines)
 
-    # If the number of segments don’t match, fallback to a simple expansion:
+    # If the number of segments don’t match, do a simpler expansion
     if len(range_segments) != len(cmc_segments):
-        # If there are simply multiple range lines, zip them up (or duplicate CMC if needed)
         if len(range_lines) > 1:
             new_rows = []
             num = len(range_lines)
@@ -66,13 +107,10 @@ def dynamic_expand_row(row):
         else:
             return [row]
 
-    # Now, try to distribute parameter lines.
-    # If the total number of range lines across all segments equals the number of parameter lines,
-    # assign one-to-one; otherwise, use the whole Parameter text for each segment.
+    # Attempt to distribute param lines across segments
     total_range_lines = sum(len(seg) for seg in range_segments)
     new_rows = []
     if param_lines and len(param_lines) == total_range_lines:
-        # Distribute parameter lines in order:
         index = 0
         for r_seg, c_seg in zip(range_segments, cmc_segments):
             for r, c in zip(r_seg, c_seg):
@@ -87,7 +125,7 @@ def dynamic_expand_row(row):
                 )
                 index += 1
     else:
-        # Fallback: for each line in each segment, repeat the full Parameter text.
+        # Fallback: replicate entire param text for each line in each segment
         for r_seg, c_seg in zip(range_segments, cmc_segments):
             for r, c in zip(r_seg, c_seg):
                 new_rows.append(
@@ -104,10 +142,12 @@ def dynamic_expand_row(row):
 
 def expand_rows(df):
     """
-    For each row in the DataFrame, if the Range column has multiple lines,
-    apply a dynamic segmentation and expansion.
+    Apply dynamic_expand_row to handle Range/CMC segmentation,
+    then apply replicate_row_for_multiple_types to handle multiple
+    'Type ...' lines in Parameter.
     """
     expanded_data = []
+    # First pass: expand each row with dynamic_expand_row
     for _, row in df.iterrows():
         range_val = row.get("Range", "")
         if range_val and len(range_val.splitlines()) > 1:
@@ -115,7 +155,15 @@ def expand_rows(df):
             expanded_data.extend(new_rows)
         else:
             expanded_data.append(row.to_dict())
-    return pd.DataFrame(expanded_data)
+
+    # Second pass: replicate the new set of rows for multiple 'Type ...' lines
+    final_data = []
+    for row in expanded_data:
+        # replicate_row_for_multiple_types always returns a list
+        multi = replicate_row_for_multiple_types(row)
+        final_data.extend(multi)
+
+    return pd.DataFrame(final_data)
 
 
 def extract_pdf_tables(pdf_path):
@@ -129,7 +177,7 @@ def extract_pdf_tables(pdf_path):
                 tables.extend(filtered_table)
     df = pd.DataFrame(tables, columns=headers)
 
-    # Split "Parameter/Equipment" into separate columns using a regex that splits on any dash
+    # Split "Parameter/Equipment" if it exists
     if "Parameter/Equipment" in df.columns:
         split_cols = df["Parameter/Equipment"].str.split(
             r"\s*[-–]\s*", n=1, expand=True
@@ -138,14 +186,17 @@ def extract_pdf_tables(pdf_path):
         df["Parameter"] = split_cols[1].str.lstrip() if split_cols.shape[1] > 1 else ""
         df.drop(columns=["Parameter/Equipment"], inplace=True)
 
-    # Rename the CMC column (if not already named) by looking for any column containing "CMC"
+    # Rename the CMC column if needed
     for col in df.columns:
         if "CMC" in col and col != "CMC (±)":
             df.rename(columns={col: "CMC (±)"}, inplace=True)
             break
 
+    # Reorder columns
     desired_order = ["Equipment", "Parameter", "Range", "CMC (±)", "Comments"]
-    df = df[[col for col in desired_order if col in df.columns]]
+    df = df[[c for c in desired_order if c in df.columns]]
+
+    # Expand rows
     df = expand_rows(df)
     return df
 
