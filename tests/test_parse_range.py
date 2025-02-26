@@ -7,16 +7,19 @@ from src.ExtractCMCsFromPDF import parse_range
     ("(10 to 50) mm", "10", "50", "mm"),
     ("Up to 600 in", None, "600", "in"),
     ("3.5 to 27 in", "3.5", "27", "in"),
-    ("-0.0015 to +0.0015 in", "-0.0015", "+0.0015", "in"),
+    ("-0.0015 to +0.0015 in", "-0.0015", "0.0015", "in"),
     ("120 µin", None, "120", "µin"),
+    ("> 62 % IACS", "62", None, "% IACS"),  # Greater than parsing
+    ("Up to 16 % IACS", None, "16", "% IACS"),
 
     # Edge Cases
     ("Up to 9 in", None, "9", "in"),
     ("(200 to 10 000) psi", "200", "10000", "psi"),  # Handles extra spaces in numbers
     ("Up to 1 in", None, "1", "in"),
-    ("> 600 HV", None, "600", "HV"),  # Greater than parsing
-    ("< 250 HK", "250", None, "HK"),  # Less than parsing
+    ("> 600 HV", "600", None, "HV"),  # Greater than parsing
+    ("< 250 HK", None, "250", "HK"),  # Less than parsing
     ("---", None, None, "---"),  # Placeholder value
+    ("±180º", "-180", "180", "º"),  # Plus/minus parsing
 
     # Unexpected Cases
     ("Knoop:", None, None, "Knoop:"),  # Likely a label, not a range
