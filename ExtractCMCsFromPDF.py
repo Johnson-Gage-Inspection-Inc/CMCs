@@ -7,17 +7,21 @@ def expand_rows(df):
     expanded_data = []
 
     for _, row in df.iterrows():
-        range_split = row["Range"].split("\n") if notna(row["Range"]) else []
-        cmc_split = row["CMC (±)"].split("\n") if notna(row["CMC (±)"]) else []
-        comments_split = (
-            row["Comments"].split("\n") if notna(row["Comments"]) else []
-        )
+        # Use splitlines() to handle various newline conventions
+        range_split = row["Range"].splitlines() if notna(row["Range"]) else []
+        cmc_split = row["CMC (±)"].splitlines() if notna(row["CMC (±)"]) else []
+        comments_split = row["Comments"].splitlines() if notna(row["Comments"]) else []
         parameter_split = (
-            row["Parameter"].split("\n") if notna(row["Parameter"]) else []
+            row["Parameter"].splitlines() if notna(row["Parameter"]) else []
         )
 
-        if len(range_split) == len(cmc_split) and len(range_split) > 1:
+        # If there are multiple range entries, expand the row.
+        if len(range_split) > 1:
             num_rows = len(range_split)
+            # If the split count for CMC (or others) doesn't match, duplicate the value
+            cmc_expanded = (
+                cmc_split if len(cmc_split) == num_rows else [row["CMC (±)"]] * num_rows
+            )
             comments_expanded = (
                 comments_split
                 if len(comments_split) == num_rows
@@ -39,7 +43,7 @@ def expand_rows(df):
                         "Equipment": row["Equipment"],
                         "Parameter": parameter_expanded[i],
                         "Range": range_split[i],
-                        "CMC (±)": cmc_split[i],
+                        "CMC (±)": cmc_expanded[i],
                         "Comments": comments_expanded[i],
                     }
                 )
@@ -55,34 +59,33 @@ def extract_pdf_tables(pdf_path):
         for page in pdf.pages:
             extracted_table = page.extract_table()
             if extracted_table:
-                # Remove duplicate headers
                 headers = extracted_table[0]
                 filtered_table = [row for row in extracted_table[1:] if row != headers]
                 tables.extend(filtered_table)
 
-    # Convert extracted tables into a structured DataFrame
     df = DataFrame(tables, columns=headers)
 
-    # Splitting 'Parameter/Equipment' column into 'Equipment' and 'Parameter'
+    # Use a regex split to separate "Parameter/Equipment"
     if "Parameter/Equipment" in df.columns:
-        df[["Equipment", "Parameter"]] = df["Parameter/Equipment"].str.split(
-            "–", n=1, expand=True
+        # Splits on any dash (hyphen or en dash) possibly surrounded by whitespace
+        split_cols = df["Parameter/Equipment"].str.split(
+            r"\s*[-–]\s*", n=1, expand=True
         )
-        df["Parameter"] = df["Parameter"].str.lstrip("\n")  # Remove leading linebreak
+        df["Equipment"] = split_cols[0]
+        df["Parameter"] = split_cols[
+            1
+        ].str.lstrip()  # remove any leading whitespace/newlines
         df.drop(columns=["Parameter/Equipment"], inplace=True)
 
-    # Rename the CMC column by removing numbers and commas
+    # Rename the CMC column by looking for a column containing "CMC"
     for col in df.columns:
         if "CMC" in col:
-            new_col_name = "CMC (±)"
-            df.rename(columns={col: new_col_name}, inplace=True)
-            break  # Assuming only one CMC column needs renaming
+            df.rename(columns={col: "CMC (±)"}, inplace=True)
+            break
 
-    # Reorder columns to desired order
     desired_order = ["Equipment", "Parameter", "Range", "CMC (±)", "Comments"]
     df = df[[col for col in desired_order if col in df.columns]]
 
-    # Expand rows where necessary
     df = expand_rows(df)
 
     return df
@@ -90,7 +93,7 @@ def extract_pdf_tables(pdf_path):
 
 def browse_file():
     root = Tk()
-    root.withdraw()  # Hide the main window
+    root.withdraw()
     file_path = filedialog.askopenfilename(
         title="Select a PDF File", filetypes=[("PDF Files", "*.pdf")]
     )
