@@ -1,14 +1,54 @@
 #!/usr/bin/env python3
 import re
-import pandas as pd
-from collections import defaultdict
 import pdfplumber
+import pandas as pd
 from tkinter import filedialog, Tk
+from collections import defaultdict
+
+###############################################################################
+#                         HELPER FUNCTIONS                                    #
+###############################################################################
+
+
+def split_parameter_equipment(cell_value):
+    """
+    If the table has a 'Parameter/Equipment' column, split it on a dash
+    (or en dash) into 'Equipment' and 'Parameter'. This is the older logic.
+    """
+    if not cell_value:
+        return ("", "")
+    # Splits on any dash surrounded by optional whitespace
+    split_cols = re.split(r"\s*[-–]\s*", cell_value, maxsplit=1)
+    if len(split_cols) == 2:
+        equipment, param = split_cols
+        return (equipment.strip(), param.strip())
+    else:
+        # if we can't split, treat the entire cell as parameter
+        return ("", cell_value.strip())
+
+
+def split_parameter_range(cell_value):
+    """
+    If the table has a single 'Parameter/Range' column plus a separate 'Frequency',
+    we can do a basic heuristic:
+      - first (non-blank) line is the Parameter
+      - last (non-blank) line is the Range
+    """
+    if not cell_value:
+        return ("", "")
+    lines = [ln.strip() for ln in cell_value.splitlines() if ln.strip()]
+    if len(lines) == 1:
+        # only one line => treat as Parameter, no Range
+        return (lines[0], "")
+    else:
+        # first line => Parameter, last line => Range
+        return (lines[0], lines[-1])
 
 
 def segment_by_blank_lines(lines):
     """
     Split a list of lines into segments using blank lines as boundaries.
+    Used in the dynamic expansion logic for Range/CMC.
     """
     segments = []
     current_seg = []
@@ -26,240 +66,308 @@ def segment_by_blank_lines(lines):
 
 def dynamic_expand_row(row):
     """
-    First-pass expansion: splits Range & CMC by blank lines,
-    tries to distribute Parameter lines 1-to-1 if they match exactly.
-    Otherwise replicates.
+    First-pass expansion for a single row:
+      - We split Range & CMC by blank lines, flatten them,
+        and either match them 1-to-1 with Parameter lines or replicate.
     """
     eqp = row.get("Equipment", "") or ""
-    comments = row.get("Comments", "") or ""
-    param_text = row.get("Parameter", "") or ""
-    range_text = row.get("Range", "") or ""
-    cmc_text = row.get("CMC (±)", "") or ""
+    param_txt = row.get("Parameter", "") or ""
+    rng_txt = row.get("Range", "") or ""
+    cmc_txt = row.get("CMC (±)", "") or ""
+    comm_txt = row.get("Comments", "") or ""
 
-    param_lines = param_text.splitlines()
-    range_lines = range_text.splitlines()
-    cmc_lines = cmc_text.splitlines()
+    param_lines = param_txt.splitlines()
+    range_lines = rng_txt.splitlines()
+    cmc_lines = cmc_txt.splitlines()
 
-    # Segment Range & CMC on blank lines
+    # Segment Range & CMC
     range_segments = segment_by_blank_lines(range_lines)
     cmc_segments = segment_by_blank_lines(cmc_lines)
 
-    # If mismatch in segment counts, do simpler expansion
+    # If mismatch, fallback
     if len(range_segments) != len(cmc_segments):
         if len(range_lines) > 1:
             new_rows = []
-            # Possibly many Range lines, replicate CMC if needed
-            cmc_expanded = (
-                cmc_lines
-                if len(cmc_lines) == len(range_lines)
-                else [cmc_text] * len(range_lines)
-            )
-            for r, c in zip(range_lines, cmc_expanded):
-                new_rows.append(
-                    {
-                        "Equipment": eqp,
-                        "Parameter": param_text,
-                        "Range": r,
-                        "CMC (±)": c,
-                        "Comments": comments,
-                    }
-                )
+            # replicate if needed
+            if len(range_lines) == len(cmc_lines):
+                for r, c in zip(range_lines, cmc_lines):
+                    new_rows.append(
+                        {
+                            "Equipment": eqp,
+                            "Parameter": param_txt,
+                            "Range": r,
+                            "CMC (±)": c,
+                            "Comments": comm_txt,
+                        }
+                    )
+            else:
+                # replicate entire cmc_txt if mismatch
+                for r in range_lines:
+                    new_rows.append(
+                        {
+                            "Equipment": eqp,
+                            "Parameter": param_txt,
+                            "Range": r,
+                            "CMC (±)": cmc_txt,
+                            "Comments": comm_txt,
+                        }
+                    )
             return new_rows
         else:
-            # Nothing to expand
             return [row]
 
-    # If segments match, flatten them and see if param_lines matches total_range_lines
-    flattened_rows = []
+    # Flatten
+    flattened = []
     for r_seg, c_seg in zip(range_segments, cmc_segments):
         for r, c in zip(r_seg, c_seg):
-            flattened_rows.append((r, c))
+            flattened.append((r, c))
 
-    total_range_lines = len(flattened_rows)
-    # If param_lines is the same length, do a 1-to-1 match
+    total_range_lines = len(flattened)
     if param_lines and len(param_lines) == total_range_lines:
-        new_rows = []
-        for i, (r, c) in enumerate(flattened_rows):
-            new_rows.append(
+        # 1-1 match with Parameter lines
+        out = []
+        for i, (r, c) in enumerate(flattened):
+            out.append(
                 {
                     "Equipment": eqp,
                     "Parameter": param_lines[i],
                     "Range": r,
                     "CMC (±)": c,
-                    "Comments": comments,
+                    "Comments": comm_txt,
                 }
             )
-        return new_rows
+        return out
     else:
-        # Fallback: replicate entire param_text for each flattened line
-        new_rows = []
-        for r, c in flattened_rows:
-            new_rows.append(
+        # replicate entire param_txt for each line
+        out = []
+        for r, c in flattened:
+            out.append(
                 {
                     "Equipment": eqp,
-                    "Parameter": param_text,
+                    "Parameter": param_txt,
                     "Range": r,
                     "CMC (±)": c,
-                    "Comments": comments,
+                    "Comments": comm_txt,
                 }
             )
-        return new_rows
+        return out
 
 
 def param_lines_are_thermocouples(lines):
     """
-    Returns True if EVERY non-blank line in 'lines' matches something like 'Type E', 'Type K', etc.
-    Regex is flexible: 'Type' followed by any letter(s) or digits.
+    Check if all lines match something like "Type E", "Type K" etc.
     """
     pattern = re.compile(r"^Type\s+[A-Za-z0-9]", re.IGNORECASE)
-    for line in lines:
-        txt = line.strip()
-        if txt and not pattern.match(txt):
+    for ln in lines:
+        ln = ln.strip()
+        if ln and not pattern.match(ln):
             return False
     return True
 
 
 def distribute_multi_line_parameter(expanded_rows):
     """
-    Second pass:
-      - If multiple Parameter lines are all 'Type ...': replicate each row for each type line.
-      - Else if multiple Parameter lines (like 'Pt 385, 100 Ω' / 'Pt 385, 1000 Ω'), try chunking them
-        evenly among the expanded rows.
-      - Otherwise, leave them as-is.
+    Second pass: we group the expansions from each original row
+    and handle multi-line Parameter text by either:
+      - thermocouple replicate approach if lines all look like "Type ..."
+      - chunk them evenly if not (e.g. Pt 385 lines)
     """
+    out = []
 
-    output = []
-
-    # Group expansions by some stable key so we know which set of expansions came from the same original row.
-    # For simplicity, we'll use (Equipment, Comments) or you might add other stable columns.
+    # group by (Equipment, Comments, maybe others if you prefer)
     def row_key(r):
-        return (r["Equipment"], r.get("Comments", ""))
+        return (r.get("Equipment", ""), r.get("Comments", ""))
 
     grouped = defaultdict(list)
-    for row in expanded_rows:
-        grouped[row_key(row)].append(row)
+    for r in expanded_rows:
+        grouped[row_key(r)].append(r)
 
-    for grp_key, rows_in_grp in grouped.items():
-        # If there's only one row, or the Parameter texts differ, just keep them as-is.
-        if len(rows_in_grp) == 1:
-            output.extend(rows_in_grp)
+    for _, group_rows in grouped.items():
+        if len(group_rows) == 1:
+            out.extend(group_rows)
             continue
-        distinct_params = {r["Parameter"] for r in rows_in_grp}
+        # do they all share exactly the same param_text?
+        distinct_params = {r["Parameter"] for r in group_rows}
         if len(distinct_params) > 1:
-            # They’ve already been split somehow, or differ for some reason—leave them.
-            output.extend(rows_in_grp)
+            # already splitted
+            out.extend(group_rows)
             continue
 
-        # So we have multiple expanded rows that all share the exact same param_text.
-        # Let's see if it's multi-line text:
-        param_text = next(iter(distinct_params))  # the single shared text
-        param_lines = [list for list in param_text.splitlines() if list.strip()]
+        param_text = next(iter(distinct_params))  # the single repeated text
+        plines = [list for list in param_text.splitlines() if list.strip()]
 
-        if len(param_lines) <= 1:
-            # Nothing to distribute
-            output.extend(rows_in_grp)
+        if len(plines) <= 1:
+            # nothing special
+            out.extend(group_rows)
             continue
 
-        # Distinguish Thermocouples vs. RTD-like chunking
-        if param_lines_are_thermocouples(param_lines):
-            # ### THERMOCOUPLE-STYLE REPLICATION ###
-            # For each expanded row, replicate it once per param_line,
-            # changing the 'Parameter' to each line.
-            new_rows = []
-            for orig in rows_in_grp:
-                for pline in param_lines:
-                    nr = dict(orig)
-                    nr["Parameter"] = pline
-                    new_rows.append(nr)
-            output.extend(new_rows)
+        # we have multiple lines => thermocouples or chunk approach?
+        if param_lines_are_thermocouples(plines):
+            # replicate each row for each type line
+            for row_item in group_rows:
+                for tline in plines:
+                    nr = dict(row_item)
+                    nr["Parameter"] = tline
+                    out.append(nr)
         else:
-            # ### CHUNK-STYLE (e.g. Pt 385) ###
-            expansions_count = len(rows_in_grp)
-            param_count = len(param_lines)
-
-            # If expansions_count is evenly divisible by param_count, chunk them
+            # chunk approach
+            expansions_count = len(group_rows)
+            param_count = len(plines)
             if expansions_count % param_count == 0:
-                sorted_grp = rows_in_grp  # or sort by e.g. Range if needed
-                slice_size = expansions_count // param_count
+                chunk_size = expansions_count // param_count
+                sorted_grp = group_rows  # or sort by Range if needed
                 chunks = [
-                    sorted_grp[i: i + slice_size]
-                    for i in range(0, expansions_count, slice_size)
+                    sorted_grp[i: i + chunk_size]
+                    for i in range(0, expansions_count, chunk_size)
                 ]
                 for i, chunk in enumerate(chunks):
-                    line_val = param_lines[i]
+                    line_val = plines[i]
                     for row_item in chunk:
                         nr = dict(row_item)
                         nr["Parameter"] = line_val
-                        output.append(nr)
+                        out.append(nr)
             else:
-                # fallback: can't chunk evenly => do nothing special
-                output.extend(rows_in_grp)
-
-    return output
+                # fallback
+                out.extend(group_rows)
+    return out
 
 
 def expand_rows(df):
     """
-    1) Expand each row with dynamic_expand_row (Range/CMC splitting).
-    2) Attempt to distribute multi-line Parameter across expansions
-       if the lines are chunkable (like 2 param lines => half expansions each).
+    Calls dynamic_expand_row on each row, then second-pass distribute_multi_line_parameter.
     """
-    first_pass_expanded = []
+    first_pass = []
     for _, row in df.iterrows():
-        # If the Range column has multiple lines, do dynamic expansion
-        r = (row.get("Range", "") or "").splitlines()
-        if len(r) > 1:
+        rng = row.get("Range", "") or ""
+        if len(rng.splitlines()) > 1:
             new_rows = dynamic_expand_row(row)
-            first_pass_expanded.extend(new_rows)
+            first_pass.extend(new_rows)
         else:
-            first_pass_expanded.append(row.to_dict())
+            first_pass.append(row.to_dict())
 
-    # Second pass: chunk expansions among multiple parameter lines
-    second_pass = distribute_multi_line_parameter(first_pass_expanded)
+    second_pass = distribute_multi_line_parameter(first_pass)
     return pd.DataFrame(second_pass)
 
 
+###############################################################################
+#                          MAIN EXTRACTION LOGIC                               #
+###############################################################################
+
+
+def parse_page_table(extracted_table):
+    """
+    Given the raw extracted table (list of lists) from pdfplumber for one page,
+    determine which header layout we have, build a DataFrame, unify columns,
+    and return it.
+    """
+    headers = extracted_table[0]
+    data_rows = extracted_table[1:]
+    # Filter out repeated header rows if any
+    data_rows = [r for r in data_rows if r != headers]
+
+    # Convert to DataFrame
+    df_page = pd.DataFrame(data_rows, columns=headers)
+
+    # We might have:
+    # 1) Parameter, Range, CMC (±), Comments
+    # 2) Parameter/Equipment, Range, CMC (±), Comments
+    # 3) Parameter/Range, Frequency, CMC (±), Comments
+    # (Or other variations.)
+    # We'll unify them into:
+    # Equipment, Parameter, Range, Frequency, CMC (±), Comments
+
+    # Start with placeholders so we always have the columns
+    df_page["Equipment"] = df_page.get("Equipment", "")
+    df_page["Parameter"] = df_page.get("Parameter", "")
+    df_page["Range"] = df_page.get("Range", "")
+    df_page["Frequency"] = df_page.get("Frequency", "")
+    df_page["CMC (±)"] = df_page.get("CMC (±)", "")
+    df_page["Comments"] = df_page.get("Comments", "")
+
+    # 1) If there's a "Parameter/Equipment" col, parse it out
+    if "Parameter/Equipment" in df_page.columns:
+        # parse => Equipment, Parameter
+        eqp_par = df_page["Parameter/Equipment"].apply(split_parameter_equipment)
+        df_page["Equipment"], df_page["Parameter"] = zip(*eqp_par)
+        df_page.drop(columns=["Parameter/Equipment"], inplace=True)
+
+    # 2) If there's a "Parameter/Range" col, parse it out
+    if "Parameter/Range" in df_page.columns:
+        pr_cols = df_page["Parameter/Range"].apply(split_parameter_range)
+        df_page["Parameter"], df_page["Range"] = zip(*pr_cols)
+        df_page.drop(columns=["Parameter/Range"], inplace=True)
+
+    # 3) If we don't have a column named "Frequency" but do see "Frequency" in headers
+    # or if there's an actual column named "Frequency", then keep it
+    # (We already created an empty "Frequency" above if needed.)
+
+    # 4) If there's a column that looks like "CMC" not named "CMC (±)", rename it
+    for col in list(df_page.columns):
+        if "CMC" in col and col != "CMC (±)":
+            df_page.rename(columns={col: "CMC (±)"}, inplace=True)
+
+    # 5) Now remove duplicates if any:
+    df_page = df_page.loc[:, ~df_page.columns.duplicated()]
+
+    # 6) We might have fewer / extra columns from the PDF.
+    # Let's keep the relevant ones in a final set:
+    final_cols = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
+    # We'll reorder them
+    existing_cols = [c for c in final_cols if c in df_page.columns]
+    df_page = df_page[existing_cols]
+
+    return df_page
+
+
 def extract_pdf_tables(pdf_path):
-    tables = []
+    """
+    Master function:
+      - Opens the PDF
+      - For each page's extracted table, parse headers and unify columns
+      - Concatenate
+      - Expand rows
+      - Return final DataFrame
+    """
+    big_tables = []
     with pdfplumber.open(pdf_path) as pdf:
         for page in pdf.pages:
-            tbl = page.extract_table()
-            if tbl:
-                headers = tbl[0]
-                filtered = [row for row in tbl[1:] if row != headers]
-                tables.extend(filtered)
-    df = pd.DataFrame(tables, columns=headers)
+            extracted_table = page.extract_table()
+            if extracted_table:
+                df_page = parse_page_table(extracted_table)
+                big_tables.append(df_page)
 
-    # If there's a "Parameter/Equipment" column
-    if "Parameter/Equipment" in df.columns:
-        split_cols = df["Parameter/Equipment"].str.split(
-            r"\s*[-–]\s*", n=1, expand=True
+    if not big_tables:
+        return pd.DataFrame(
+            columns=[
+                "Equipment",
+                "Parameter",
+                "Range",
+                "Frequency",
+                "CMC (±)",
+                "Comments",
+            ]
         )
-        df["Equipment"] = split_cols[0].fillna("")
-        df["Parameter"] = split_cols[1].str.lstrip().fillna("")
-        df.drop(columns=["Parameter/Equipment"], inplace=True)
 
-    # Rename "CMC" column if needed
-    for col in df.columns:
-        if "CMC" in col and col != "CMC (±)":
-            df.rename(columns={col: "CMC (±)"}, inplace=True)
-            break
+    # Combine all pages
+    df_all = pd.concat(big_tables, ignore_index=True)
 
-    # Reorder columns
-    desired = ["Equipment", "Parameter", "Range", "CMC (±)", "Comments"]
-    df = df[[c for c in desired if c in df.columns]]
-
-    df = expand_rows(df)
-    return df
+    # Now do the multi-line expansions
+    df_expanded = expand_rows(df_all)
+    return df_expanded
 
 
 def browse_file():
     root = Tk()
     root.withdraw()
-    return filedialog.askopenfilename(
+    file_path = filedialog.askopenfilename(
         title="Select a PDF File", filetypes=[("PDF Files", "*.pdf")]
     )
+    return file_path
 
+
+###############################################################################
+#                             ENTRY POINT                                     #
+###############################################################################
 
 if __name__ == "__main__":
     pdf_file = browse_file()
