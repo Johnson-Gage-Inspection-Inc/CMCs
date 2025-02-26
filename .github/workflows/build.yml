@@ -29,17 +29,17 @@ jobs:
 
       - name: Build Windows Executable
         run: |
-          pyinstaller --onefile src/ExtractCMCsFromPDF.py --name ExtractCMCsFromPDF.exe
+          pyinstaller --onefile src/ExtractCMCsFromPDF.py --name CMCs_PdfToCsv.exe
 
       - name: Upload artifact (Windows EXE)
-        uses: actions/upload-artifact@v4  # ✅ Updated for latest version
+        uses: actions/upload-artifact@v4
         with:
-          name: ExtractCMCsFromPDF.exe
-          path: dist/ExtractCMCsFromPDF.exe  # ✅ Windows executable
+          name: CMCs_PdfToCsv.exe
+          path: dist/CMCs_PdfToCsv.exe
 
       - name: Create Release and Upload Executable
         if: startsWith(github.ref, 'refs/tags/')
         uses: softprops/action-gh-release@v2
         with:
-          files: dist/ExtractCMCsFromPDF.exe  # ✅ Windows EXE release
+          files: dist/CMCs_PdfToCsv.exe
           generate_release_notes: true
