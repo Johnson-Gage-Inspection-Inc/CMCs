@@ -1,0 +1,29 @@
+SCOPE OF ACCREDITATION TO ISO/IEC 17025:2017
+& ANSI/NCSL Z540-1-1994
+JOHNSON GAGE AND INSPECTION
+5920 W. 21st Street North
+Wichita, KS 67205
+Scott Porter Phone: 316-943-7532
+CALIBRATION
+Valid To: March 31, 2025 Certificate Number: 2820.01
+In recognition of the successful completion of the A2LA evaluation process, accreditation is granted to this
+laboratory to perform the following calibrations1, 8:
+I. Dimensional
+Parameter/Equipment Range CMC2, 5 (±) Comments
+Bore Gages & ID
+Measuring Tools3 –
+3-Point Up to 9 in (36 + 3.3D) µin Ring gages
+2-Point Up to 12 in (35 + 2.3D) µin Gage blocks
+Countersink & Chamfer Up to 3.5 in (230 + 10D) µin Modified ring gages
+Gages3
+Coordinate Measuring ASME B89.4.10360.2
+Machines (CMM)3 – Section 6.3.3
+Length Measurement Up to 27 in (14 + 5.1L) µin Step gage
+Error (E )
+L
+Up to 127 in (7.8 + 3.8L) µin Gage blocks
+Up to 240 in (6.1 + 1.2L) µin Laser system
+Repeatability (R ) (10 to 50) mm 27 µin ASME B89.4.10360.2
+0
+Section 6.1.1; sphere
+(A2LA Cert. No. 2820.01) Revised 03/04/2024 Page 1 of 25

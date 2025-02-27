@@ -1,0 +1,14 @@
+inches. In the statement of best uncertainty, D is the numerical value of the nominal diameter of the device
+measured in inches; W is numerical value of the nominal applied mass in grams; and, R is the resolution
+of the device under test.
+6 This laboratory meets R205 – Specific Requirements: Calibration Laboratory Accreditation Program for
+the types of dimensional tests listed above and is considered equivalent to that of a calibration.
+7 The stated measured values are determined using the indicated instrument (see Comments). This
+capability is suitable for the calibration of the devices intended to measure or generate the measured value
+in the ranges indicated. CMC are expressed as either a specific value that covers the full range or as a
+fraction or percentage of the reading plus a fixed floor specification.
+8 This scope meets A2LA’s P112 Flexible Scope Policy.
+9 The type of instrument or material being calibrated is defined by the parameter. This indicates the
+laboratory is capable of calibrating instruments that measure or generate the values in the ranges indicated
+for the listed measurement parameter.
+(A2LA Cert. No. 2820.01) Revised 03/04/2024 Page 25 of 25

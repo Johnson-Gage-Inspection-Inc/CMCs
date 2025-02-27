@@ -1,0 +1,28 @@
+Parameter/Equipment Range CMC2, 7 (±) Comments
+DC Current – Measure3 Up to 100 nA 34 µA/A + 0.047 nA HP 3458A
+100 nA to 1 µA 23 µA/A + 0.048 nA
+(1 to 10) µA 23 µA/A + 0.12 nA
+(10 to 100) µA 23 µA/A + 0.11 nA
+(0.1 to 1) mA 23 µA/A + 5.9 nA
+(1 to 10) mA 23 µA/A + 59 nA
+(10 to 100) mA 40 µA/A + 0.63 µA
+100 mA to 1 A 130 µA/A + 12 µA
+(1 to 20) A 4.7 µA/A + 110 µA EL 7520 current
+shunt
+DC Current – Generate3 Up to 100 nA 34 µA/A + 0.047 nA Fluke 5502A
+100 nA to 1 µA 23 µA/A + 0.048 nA monitored by
+(1 to 10) µA 23 µA/A + 0.12 nA HP3458A
+(10 to 100) µA 23 µA/A + 0.11 nA
+(0.1 to 1) mA 23 µA/A + 5.9 nA
+(1 to 10) mA 23 µA/A + 59 nA
+(10 to 100) mA 40 µA/A + 0.63 µA
+100 mA to 1 A 130 µA/A + 12 µA
+(1 to 20) A 4.7 µA/A + 110 µA With EL 7520
+current shunt
+(11 to 30) A 0.2 % rdg + 1.6 mA Fluke 5502A, 10
+(30 to 110) A 0.21 % rdg + 3.9 mA turn coil
+(110 to 205) A 0.23 % rdg + 6.4 mA
+(55 to 150) A 0.2 % rdg + 7.7 mA Fluke 5502A, 50
+(150 to 550) A 0.22 % rdg + 19 mA turn coil
+(525 to 1025) A 0.23 % rdg + 32 mA
+(A2LA Cert. No. 2820.01) Revised 03/04/2024 Page 8 of 25

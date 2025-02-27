@@ -1,0 +1,24 @@
+Parameter/Equipment Range CMC2, 5 (±) Comments
+Spherical CMM (Laser Up to 600 in 600 µin Reference length bar
+Tracker)3
+Laser Interferometer Up to 40 in 0.43 parts in 106 ASME B89.1.8 Sec 4
+Length Dependent Error XD1 reference laser
+Articulated Arm CMM3 –
+Effective Dia Perf Test --- 55 µin Sphere
+Single Point --- 90 µin Trihedral socket
+Articulation Test
+Volumetric Perf Test Up to 144 in radius (83 + 1.7L) µin Gage block ref. length
+CNC, Machine Tools3 –
+Repeatability @ 2 --- 18 µin Laser per ASME B5.54
+Sigma Sec. 7.3
+Linear Displacement Up to 260 ft (83 + 1.7L) µin Laser per ASME B5.54
+Accuracy Sec. 7.3
+Volumetric Performance
+(By Body Diagonals)
+Bi-Directional System Up to 260 ft 85 µin Laser per ASME B5.54
+Deviation Sec. 7.7
+Reversal Deviation Up to 260 ft 90 µin Laser per ASME B5.54
+Sec. 7.7
+Bi-Directional Up to 260 ft 80 µin Laser per ASME B5.54
+Repeatability Sec. 7.3
+(A2LA Cert. No. 2820.01) Revised 03/04/2024 Page 2 of 25

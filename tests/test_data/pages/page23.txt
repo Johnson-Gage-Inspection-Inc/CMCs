@@ -1,0 +1,27 @@
+Parameter/Equipment Range CMC2, 9 (±) Comments
+Thermocouples – (cont)
+Above 752 °F,
+Type S (32 to 752) °F 0.81 °F comparison with NIST
+(752 to 1200) °F 1.0 °F ref. standard
+(1200 to 2000) °F 1.2 °F below 752 °F, PRT,
+(2000 to 2500) °F 3.2 °F Fluke 1502A, Fluke
+8846A
+Temperature Uniformity (-100 to 392) °F 1.4 °F IoTech DaqBook, with
+Survey3, 4 (392 to 752) °F 3.1 °F expendable and non-
+(Per AMS 2750) (752 to 1200) °F 3.1 °F expendable
+(1200 to 1800) °F 3.7 °F thermocouples
+(1800 to 2300) °F 4.1 °F
+Temperature Probe3, 4 (-112 to 392) °F 0.64 °F Fluke 726 or
+("SAT" per AMS 2750) (392 to 752) °F 0.76 °F equivalent, expendable
+(752 to 1200) °F 1.8 °F and non-expendable
+(1200 to 2000) °F 2.4 °F thermocouples
+(1800 to 2372) °F 3.2 °F
+Infrared Thermometers3 (95 to 212) °F 1.2 °F Hart 4181 black body
+(212 to 392) °F 1.6 °F Emissivity- 0.95
+(392 to 662) °F 2.7 °F
+(662 to 932) °F 3.7 °F
+Relative Humidity3 – (10 to 95) % RH 0.85 % RH EdgeTech chilled
+Measuring Equipment mirror hygrometer
+Dewpoint3 – (-20 to 65) °C 0.14 °C EdgeTech chilled
+Measuring Equipment mirror hygrometer
+(A2LA Cert. No. 2820.01) Revised 03/04/2024 Page 23 of 25

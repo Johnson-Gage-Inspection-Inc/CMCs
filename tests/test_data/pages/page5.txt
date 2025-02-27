@@ -1,0 +1,25 @@
+Parameter/Equipment Range CMC2, 5 (±) Comments
+Steel Rules3 –
+Length Up to 72 in (590 + 1.5L) µin Gage blocks
+Graduations ---- (670 + 16L) µin Glass scale
+Surface Plates3 –
+Flatness Up to 300 in diagonal (8.7 + 1.2L) µin LDDM
+Repeat Reading ---- (6.8 + 0.017L) µin Repeat reading gage
+Optical Comparators3 –
+Linearity 12 in travel (12 + 3.4L) µin Glass scale
+Angle ±180º 40 arc seconds
+Magnification Accuracy 5X to 100X 0.013 % of
+magnification
+Measuring Tapes –
+Length Up to 330 ft (0.0073 + Test frame
+0.000 0069L) in
+Graduations ---- 0.0018 in Glass scale
+Wire Crimpers –
+Cylindrical Crimping (0.011 to 0.500) in 650 µin Pin gages
+Chamber
+Shaped Crimping Up to 1 in 280 µin Optical comparator
+Chamber
+Crimp Height Up to 1 in 190 µin Crimp height
+micrometer
+Air Gages3 (-0.0015 to +0.0015) in 14 µin Certified Rings
+(A2LA Cert. No. 2820.01) Revised 03/04/2024 Page 5 of 25

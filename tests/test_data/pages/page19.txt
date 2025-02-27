@@ -1,0 +1,41 @@
+Parameter/Equipment Range CMC2 (±) Comments
+Indirect Verification of HRA
+Rockwell Low 0.31 HRA Indirect verification
+Hardness Testers3 Medium 0.32 HRA per ASTM E18
+High 0.20 HRA
+HRBW
+Low 0.36 HRBW
+Medium 0.26 HRBW
+High 0.39 HRBW
+HRC
+Low 0.39 HRC
+Medium 0.33 HRC
+High 0.32 HRC
+HREW
+Low 0.38 HREW
+Medium 0.49 HREW
+High 0.49 HREW
+HRFW
+Low 0.28 HRFW
+Medium 0.46 HRFW
+High 0.45 HRFW
+HRHW
+Low 0.42 HRHW
+High 0.36 HRHW
+HR15N
+Low 0.42 HR15N
+Medium 0.42 HR15N
+High 0.51 HR15N
+HR30N
+Low 0.30 HR30N
+Medium 0.47 HR30N
+High 0.53 HR30N
+HR45N
+Low 0.50 HR45N
+Medium 0.25 HR45N
+High 0.20 HR45N
+HR15TW
+Low 0.44 HR15TW
+Medium 0.39 HR15TW
+High 0.32 HR15TW
+(A2LA Cert. No. 2820.01) Revised 03/04/2024 Page 19 of 25
