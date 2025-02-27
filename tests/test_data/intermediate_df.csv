@@ -1,0 +1,1314 @@
+Equipment,Parameter,Range,Frequency,CMC (±),Comments
+"Bore Gages & ID
+Measuring Tools","3-Point
+2-Point","Up to 4 in
+Up to 12 in",,"(36 + 2.3D) µin
+(35 + 2.3D) µin","Ring gages
+Gage blocks"
+,"Countersink & Chamfer
+Gages",Up to 3.5 in,,(230 + 10D) µin,Modified ring gages
+"Coordinate Measuring
+Machines (CMM)","Length Measurement
+Error (E )
+L
+Repeatability (R )","Up to 27 in
+Up to 127 in
+Up to 240 in
+(10 to 50) mm",,"(14 + 5.1L) µin
+(7.8 + 3.8L) µin
+(6.1 + 1.2L) µin
+27 µin","ASME B89.4.10360.2
+Section 6.3.3
+Step gage
+Gage blocks
+Laser system
+ASME B89.4.10360.2
+Section 6.1.1; sphere"
+,"Spherical CMM (Laser
+Tracker)",Up to 600 in,,600 µin,Reference length bar
+,"Laser Interferometer
+Length Dependent Error",Up to 40 in,,0.43 parts in 10,"ASME B89.1.8 Sec 4
+XD1 reference laser"
+Articulated Arm CMM,"Effective Dia Perf Test
+Single Point
+Articulation Test
+Volumetric Perf Test","---
+---
+Up to 144 in radius",,"55 µin
+90 µin
+(170 + 0.2L) µin","Sphere
+Trihedral socket
+Gage block ref. length"
+"CNC, Machine Tools","Repeatability @ 2
+Sigma
+Linear Displacement
+Accuracy
+Volumetric Performance
+(By Body Diagonals)
+Bi-Directional System
+Deviation
+Reversal Deviation
+Bi-Directional
+Repeatability","---
+Up to 260 ft
+Up to 260 ft
+Up to 260 ft
+Up to 260 ft",,"18 µin
+(83 + 1.7L) µin
+85 µin
+90 µin
+80 µin","Laser per ASME B5.54
+Sec. 7.3
+Laser per ASME B5.54
+Sec. 7.3
+Laser per ASME B5.54
+Sec. 7.7
+Laser per ASME B5.54
+Sec. 7.7
+Laser per ASME B5.54
+Sec. 7."
+,Gage Blocks,"Up to 0.1 in
+(0.1 to 4) in
+(4 to 20) in",,"4 µin
+(2 + 1.4L) µin
+(4.3 + 1.4L) µin","Master gage blocks &
+amplifier"
+Micrometers,"Linearity
+Parallelism","Up to 42 in
+Up to 42 in",,"(38 + 2.7L) µin
+(31 + 0.25L) µin",Gage blocks
+,"Micrometer Standards &
+Length Artifacts",Up to 41 in,,(12 + 2.4L) µin,Universal LMS
+,"Depth Micrometers &
+Gages",Up to 12 in,,(30 + 2.5L) µin,Gage blocks
+,Thread Micrometers,Up to 6 in,,(92 + 7.4L) µin,Thread plugs
+,Thread Wires,(4.5 to 96) TPI,,15 µin,"SupermicrometerTM,"
+Calipers,"Digital
+Dial & Vernier","Up to 72 in
+Up to 72 in",,"(300 + 1.7L) µin
+(600 + 1.9L) µin","Gage blocks and ring
+gages"
+,"Indicators, Dial & Digital3
+(For Dial, Res. = 0.2
+Least Grad.)","Up to 1 in
+(1 to 4) in",,"6.5 µin + 0.6R
+(3.3 + 3L) µin + 0.6R",Gage blocks
+,Height Gages,Up to 40 in,,(7.1 + 1.1L) µin,Gage blocks
+,"Plug / Pin Gages &
+Outside Cylindrical
+Diameter","Up to 1 in
+(1 to 10) in",,"(6.7 + 1.8L) µin
+(13 + 1.1L) µin","Laser scan micrometer
+P&W
+SupermicrometerTM,
+gage blocks"
+,"Plain Rings & Inside
+Cylindrical Diameter",(0.04 to 11) in,,(4.6 + 0.91D) µin,"Internal
+SupermicrometerTM,
+master gage blocks"
+"Straight Threaded Plug
+Gages","Pitch Diameter
+(TPI 4.5 to 96)
+Major Diameter","Up to 6 in
+Up to 5 in",,"(76 + 6.0D) µin
+(24 + 1D) µin","3-wire method
+P&W
+SupermicrometerTM,
+gage blocks"
+"Tapered Threaded Plug
+Gages","Pitch Diameter
+(8 to 27) TPI
+Major Diameter","Up to 4 in
+Up to 4.5 in",,"92 µin
+22 µin","3-wire method,
+tapered sine block
+P&W
+SupermicrometerTM,
+gage blocks"
+,"Adjustable Threaded
+Ring Gages",(0.05 to 2) in diameter,,(84 + 10D) µin,Setting plugs
+Steel Rules,"Length
+Graduations","Up to 72 in
+----",,"(590 + 1.5L) µin
+(670 + 16L) µin","Gage blocks
+Glass scale"
+Surface Plates,"Flatness
+Repeat Reading","Up to 300 in diagonal
+----",,"(8.7 + 1.2L) µin
+(6.8 + 0.017L) µin","LDDM
+Repeat reading gage"
+Optical Comparators,"Linearity
+Angle
+Magnification Accuracy","12 in travel
+±180º
+5X to 100X",,"(12 + 3.4L) µin
+40 arc seconds
+0.013 % of
+magnification",Glass scale
+Measuring Tapes,"Length
+Graduations","Up to 330 ft
+----",,"(0.0073 +
+0.000 0069L) in
+0.0018 in","Test frame
+Glass scale"
+Wire Crimpers,"Cylindrical Crimping
+Chamber
+Shaped Crimping
+Chamber
+Crimp Height","(0.011 to 0.500) in
+Up to 1 in
+Up to 1 in",,"650 µin
+280 µin
+190 µin","Pin gages
+Optical comparator
+Crimp height
+micrometer"
+,Air Gages,(-0.0015 to +0.0015) in,,25 µin,Magnification test kit
+,"Profilometers, Ra","20 µin
+120 µin",,"1.5 µin
+3.1 µin","Surface roughness
+masters"
+,"Surface Roughness
+Standards, Ra",(16 to 132) µin,,(1.3 + 0.017) µin,"Comparison with
+surface roughness
+masters"
+,Radius Standard,(0.01 to 3) in,,(190 + 62L) µin,Optical comparator
+Bench Micrometer,"Linearity
+Anvil Parallelism
+Force Error
+ID Functionality","Up to 1 in
+---
+(2 to 40) ozf
+---",,"(2.1 + 1.3L) µin
+1.4 µin
+0.13 ozf
+11 µin","Gage blocks
+Ball test
+Load cell
+Setting rings"
+,Coating Thickness Meter,Up to 80 mils,,"0.11 % rdg + 0.023
+mils","Coating thickness
+standards"
+,"Coating Thickness
+Standard",Up to 750 mils,,0.023 mils,Universal LMS
+,"Ultrasonic Thickness
+Meter","Up to 10 in (Ferrous)
+Up to 0.65 in (Alum)",,"80 µin
+100 µin","Steel gage blocks
+Aluminum thickness
+Standards"
+,"Length, 1D","Up to 10 in
+Up to 56 in
+Up to 8.5 in
+Up to 60 ft",,"(27 + 1.2L) µin
+(590 + 2.1L) µin
+(410 + 96L) µin
+(83 + 1.6L) µin","SupermicrometerTM
+CMM
+Optical comparator
+Laser"
+,"Length, 2D",Up to 8′′ X 3′′,,(370 + 120L) µin,Optical comparator
+,"Length, 3D",Up to 47′′ X 32′′ X 24′′,,700 µin,CMM
+DC Voltage,Measure,"Up to 100 mV
+(0.1 to 1) V
+(1 to 10) V
+(10 to 100) V
+(100 to 1000) V",,"4.4 µV/V + 0.62 µV
+4.7 µV/V + 0.5 µV
+4.6 µV/V + 1.1 µV
+6.9 µV/V + 39 µV
+7.2 µV/V + 120 µV",HP 3458A
+DC Voltage,Generate,"Up to 100 mV
+(0.1 to 1) V
+(1 to 10) V
+(10 to 100) V
+(100 to 1000) V",,"4.4 µV/V + 0.62 µV
+4.7 µV/V + 0.5 µV
+4.6 µV/V + 1.1 µV
+6.9 µV/V + 39 µV
+7.2 µV/V + 120 µV","Fluke 5502A
+monitored by
+HP3458A"
+DC Current,Measure,"Up to 100 nA
+100 nA to 1 µA
+(1 to 10) µA
+(10 to 100) µA
+(0.1 to 1) mA
+(1 to 10) mA
+(10 to 100) mA
+100 mA to 1 A
+(1 to 20) A",,"34 µA/A + 0.047 nA
+23 µA/A + 0.048 nA
+23 µA/A + 0.12 nA
+23 µA/A + 0.11 nA
+23 µA/A + 5.9 nA
+23 µA/A + 59 nA
+40 µA/A + 0.63 µA
+130 µA/A + 12 µA
+4.7 µA/A + 110 µA","HP 3458A
+EL 7520 current
+shunt"
+DC Current,Generate,"Up to 100 nA
+100 nA to 1 µA
+(1 to 10) µA
+(10 to 100) µA
+(0.1 to 1) mA
+(1 to 10) mA
+(10 to 100) mA
+100 mA to 1 A
+(1 to 20) A
+(11 to 30) A
+(30 to 110) A
+(110 to 205) A
+(55 to 150) A
+(150 to 550) A
+(525 to 1025) A",,"34 µA/A + 0.047 nA
+23 µA/A + 0.048 nA
+23 µA/A + 0.12 nA
+23 µA/A + 0.11 nA
+23 µA/A + 5.9 nA
+23 µA/A + 59 nA
+40 µA/A + 0.63 µA
+130 µA/A + 12 µA
+4.7 µA/A + 110 µA
+0.2 % rdg + 1.6 mA
+0.21 % rdg + 3.9 mA
+0.23 % rdg + 6.4 mA
+0.2 % rdg + 7.7 mA
+0.22 % rdg + 19 mA
+0.23 % rdg + 32 mA","Fluke 5502A
+monitored by
+HP3458A
+With EL 7520
+current shunt
+Fluke 5502A, 10
+turn coil
+Fluke 5502A, 50
+turn coil"
+Resistance,"Generate &
+Measure","(0 to 1) Ω
+(1 to 10) Ω
+(10 to 100) Ω
+100 Ω to 1 kΩ
+(1 to 10) kΩ
+(10 to 100) kΩ
+100 kΩ to 1 MΩ
+(1 to 10) MΩ
+(10 to 100) MΩ
+100 MΩ to 1 GΩ",,"81 µΩ/Ω + 2.7 µΩ
+17 µΩ/Ω + 62 µΩ
+14 µΩ/Ω + 0.58 mΩ
+12 µΩ/Ω + 0.59 mΩ
+12 µΩ/Ω + 5.9 mΩ
+12 µΩ/Ω + 58 mΩ
+17 µΩ/Ω + 2.8 Ω
+58 µΩ/Ω + 120 Ω
+0.058 % rdg + 1.2 kΩ
+0.58 % rdg + 12 kΩ","HP34420A, HP3458A"
+Capacitance,Generate,"(0.22 to 3.3) nF
+(3.3 to 11) nF
+(11 to 33) nF
+(33 to 110) nF
+(110 to 330) nF
+(0.33 to 1.1) µF
+(1.1 to 3.3) µF
+(3.3 to 11) µF
+(11 to 33) µF
+(33 to 110) µF
+(110 to 330) µF
+(0.33 to 1.1) mF
+(1.1 to 3.3) mF
+(3.3 to 11) mF
+(11 to 33) mF
+(33 to 110) mF",,"0.58 % rdg + 12 pF
+0.29 % rdg + 12 pF
+0.29 % rdg + 120 pF
+0.29 % rdg + 120 pF
+0.29 % rdg + 350 pF
+0.29 % rdg + 1.2 nF
+0.29 % rdg + 3.5 nF
+0.29 % rdg + 12 nF
+0.46 % rdg + 36 nF
+0.52 % rdg + 120 nF
+0.52 % rdg + 350 nF
+0.52 % rdg + 1.2 µF
+0.52 % rdg + 3.5 µF
+0.52 % rdg + 13 µF
+0.87 % rdg + 35 µF
+1.3 % rdg + 120 µF",Fluke 5502A
+"Electrical Calibration of
+Thermocouple Indicators
+& Simulators","Type E
+Type J
+Type K","(-454 to 300) °F
+(300 to 1100) °F
+(1100 to 1832) °F
+(-346 to -120) °F
+(-120 to 500) °F
+(500 to 1350) °F
+(1350 to 2192) °F
+(-454 to -400) °F
+(-400 to -120) °F
+(-120 to 500) °F
+(500 to 1500) °F
+(1500 to 2500) °F",,"0.17 °F
+0.11 °F
+0.11 °F
+0.28 °F
+0.17 °F
+0.13 °F
+0.13 °F
+5.4 °F
+0.79 °F
+0.22 °F
+0.18 °F
+0.20 °F","Fluke 5502A or HP
+3245A, monitored by
+HP 3458A"
+"Electrical Calibration of
+Thermocouple Indicators
+& Simulators","Type N
+Type R
+Type S
+Type T","(-400 to -300) °F
+(-300 to -150) °F
+(-150 to -50) °F
+(-50 to 700) °F
+(700 to 1500) °F
+(1500 to 2372) °F
+(-58 to 32) °F
+(32 to 400) °F
+(400 to 1100) °F
+(1100 to 2200) °F
+(2200 to 3214) °F
+(-58 to 32) °F
+(32 to 400) °F
+(400 to 1100) °F
+(1100 to 2200) °F
+(2200 to 3214) °F
+(-400 to -300) °F
+(-300 to 120) °F
+(-120 to 200) °F
+(200 to 752) °F",,"1.7 °F
+0.54 °F
+0.35 °F
+0.29 °F
+0.21 °F
+0.22 °F
+0.65 °F
+0.38 °F
+0.27 °F
+0.24 °F
+0.24 °F
+0.51 °F
+0.33 °F
+0.27 °F
+0.24 °F
+0.24 °F
+0.69 °F
+0.34 °F
+0.23 °F
+0.16 °F","Fluke 5502A or HP
+3245A, monitored by
+HP 3458A"
+"Electrical Calibration of
+RTD Indicators &
+Simulators","Pt 385, 100 Ω
+Pt 385, 1000 Ω","(-320 to 32) °F
+(32 to 400) °F
+(400 to 800) °F
+(800 to 1200) °F
+(1200 to 1562) °F
+(-320 to 32) °F
+(32 to 400) °F
+(400 to 800) °F
+(800 to 1200) °F
+(1200 to 1562) °F",,"0.013 °F
+0.016 °F
+0.02 °F
+0.027 °F
+0.035 °F
+0.009 °F
+0.016 °F
+0.020 °F
+0.027 °F
+0.033 °F",HP 3458A
+,AC Voltage – Measure,(1 to 10) V,"(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(100 to 300) kHz
+(0.3 to 1) MHz
+(1 to 4) MHz
+(4 to 8) MHz
+(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(100 to 300) kHz
+300 kHz to 1 MHz
+(1 to 2) MHz
+(2 to 4) MHz
+(4 to 8) MHz
+(8 to 10) MHz
+(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(100 to 300) kHz
+300 kHz to 1 MHz
+(1 to 2) MHz
+(2 to 4) MHz
+(4 to 8) MHz
+(8 to 10) MHz
+(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(100 to 300) kHz
+300 kHz to 1 MHz
+(1 to 2) MHz
+(2 to 4) MHz
+(4 to 8) MHz
+(8 to 10) MHz","0.034 % + 3.6 µV
+0.023 % + 1.4 µV
+0.034 % + 1.4 µV
+0.011 % + 1.9 µV
+0.58 % + 1.4 µV
+4.6 % + 4.2 µV
+4.6 % + 7.7 µV
+8.1 % + 8.8 µV
+23 % + 19 µV
+83 µV/V + 4.7 µV
+83 µV/V + 2.4 µV
+0.016 % + 2.7 µV
+0.035 % + 2.4 µV
+0.092 % + 2.8 µV
+0.35 % + 12 µV
+1.2 % + 12 µV
+1.7 % + 45 µV
+4.6 % + 100 µV
+4.6 % + 120 µV
+17 % + 440 µV
+82 µV/V + 47 µV
+82 µV/V + 24 µV
+0.016 % + 26 µV
+0.035 % + 24 µV
+0.092 % + 28 µV
+0.35 % + 120 µV
+1.2 % + 120 µV
+1.7 % + 450 µV
+4.6 % + 1.1 mV
+4.6 % + 1.2 mV
+17 % + 4.4 mV
+83 µV/V + 0.47 mV
+82 µV/V + 0.24 mV
+0.016 % + 0.26 mV
+0.035 % + 0.24 mV
+0.092 % + 0.28 mV
+0.35 % + 1.2 mV
+1.2 % + 1.2 mV
+1.7 % + 4.6 mV
+4.6 % + 11 mV
+4.6 % + 12 mV
+17 % + 44 mV",HP 3458A
+,AC Voltage – Measure,(100 to 1000) V,"(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(100 to 300) kHz
+300 kHz to 1 MHz
+(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz","0.023 % + 4.8 mV
+0.023 % + 2.5 mV
+0.023 % + 2.5 mV
+0.04 % + 2.8 mV
+0.14 % + 2.4 mV
+0.46 % + 14 mV
+1.7 % + 44 mV
+0.046 % + 49 mV
+0.046 % + 26 mV
+0.07 % + 23 mV
+0.14 % + 23 mV
+0.35 % + 23 mV",HP 3458A
+,AC Voltage – Generate,100 mV to 1 V,"(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(100 to 300) kHz
+300 kHz to 1 MHz
+(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(100 to 300) kHz
+300 kHz to 1 MHz
+(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(100 to 300) kHz
+300 kHz to 1 MHz","0.034 % + 3.6 µV
+0.022 % + 1.5 µV
+0.033 % + 1.5 µV
+0.11 % + 1.9 µV
+0.58 % + 1.5 µV
+4.6 % + 4.2 µV
+4.6 % + 7.7 µV
+83 µV/V + 4.7 µV
+83 µV/V + 2.4 µV
+0.016 % + 2.7 µV
+0.035 % + 2.4 µV
+0.092 % + 2.8 µV
+0.35 % + 12 µV
+1.2 % + 12 µV
+82 µV/V + 47 µV
+82 µV/V + 24 µV
+0.016 % + 26 µV
+0.035 % + 24 µV
+0.092 % + 28 µV
+0.35 % + 120 µV
+1.2 % + 120 µV","Fluke 5502A or HP
+3245A, monitored by
+HP 3458A"
+,AC Voltage – Generate,(330 to 1000) V,"(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(100 to 300) kHz
+300 kHz to 1 MHz
+(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(100 to 300) kHz
+300 kHz to 1 MHz
+(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 10) kHz","83 µV/V + 0.47 mV
+82 µV/V + 0.24 mV
+0.016 % + 0.26 mV
+0.035 % + 0.24 mV
+0.092 % + 0.28 mV
+0.35 % + 1.2 mV
+1.2 % + 1.2 mV
+0.023 % + 4.7 mV
+0.023 % + 2.4 mV
+0.023 % + 2.4 mV
+0.004 % + 2.5 mV
+0.14 % + 2.4 mV
+0.46 % + 12 mV
+1.7 % + 19 mV
+0.023 % + 4.8 mV
+0.023 % + 2.5 mV
+0.021 % + 4.9 mV
+0.036 % + 6.8 mV
+0.12 % + 21 mV
+0.046 % + 47 mV
+0.046 % + 24 mV
+0.07 % + 23 mV
+0.14 % + 23 mV
+0.35 % + 23 mV
+0 046 % + 49 mV
+0.046 % + 26 mV
+0.07 % + 23 mV","Fluke 5502A or HP
+3245A, monitored by
+HP 3458A"
+,AC Current – Generate &,(10 to 20) A,"(10 to 20) Hz
+(20 to 45) Hz
+45 Hz to 5 kHz
+(10 to 20) Hz
+(20 to 45) Hz
+(45 to 100) Hz
+100 Hz to 5 kHz
+(5 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(10 Hz to 20) Hz
+(20 Hz to 45) Hz
+(45 Hz to 100) Hz
+100 Hz to 5 kHz
+(5 kHz to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(10 to 20) Hz
+(20 to 45) Hz
+(45 to 100) Hz
+100 Hz to 5 kHz
+(5 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(10 to 20) Hz
+(20 to 45) Hz
+(45 to 100) Hz
+100 Hz to 5 kHz
+(5 to 20) kHz
+(20 to 50) kHz
+(1 to 50) Hz
+50 Hz to 1 kHz
+(1 to 5) kHz
+(1 to 50) Hz
+50 Hz to 1 kHz
+(1 to 5) kHz","0.42 % + 0.077 µA
+0.17 % + 0.038 µA
+0.069 % + 0.036 µA
+0.46 % + 0.25 µA
+0.17 % + 0.27 µA
+0.069 % + 0.24 µA
+0.035 % + 0.24 µA
+0.07 % + 0.24 µA
+0.47 % + 0.47 µA
+0.64 % + 1.8 µA
+0.46 % + 2.5 µA
+0.17 % + 2.7 µA
+0.069 % + 2.4 µA
+0.035 % + 2.4 µA
+0.07 % + 2.4 µA
+0.47 % + 4.7 µA
+0.64 % + 18 µA
+0.46 % + 25 µA
+0.17 % + 27 µA
+0.069 % + 24 µA
+0.035 % + 24 µA
+0.07 % + 24 µA
+0.47 % + 47 µA
+0.64 % + 0.18 mA
+0.46 % + 0.25 mA
+0.18 % + 0.28 mA
+0.092 % + 0.24 mA
+0.12 % + 0.24 mA
+0.35 % + 0.24 mA
+1.2 % + 0.47 mA
+0.0093 % + 0.46 mA
+0.012 % + 0.45 mA
+0.067 % + 1.2 mA
+0.0083 % + 0.47 mA
+0.012 % + 2.2 mA
+0.066 % + 1.1 mA","HP 3458A with
+Fluke 5502A
+HP 3458A with Fluke
+5502A and current
+shunt"
+,AC Current – Generate,(3 to 11) A,"(10 to 20) Hz
+(20 to 45) Hz
+45 Hz to 1 kHz
+(1 to 5) kHz
+(5 to 10) kHz
+(10 to 30) kHz
+(10 to 20) Hz
+(20 to 45) Hz
+45 Hz to 1 kHz
+(1 to 5) kHz
+(5 to 10) kHz
+(10 to 30) kHz
+(10 to 20) Hz
+(20 to 45) Hz
+45 Hz to 1 kHz
+(1 to 5) kHz
+(5 to 10) kHz
+(10 to 30) kHz
+(10 to 20) Hz
+(20 to 45) Hz
+45 Hz to 1 kHz
+(1 to 5) kHz
+(5 to 10) kHz
+(10 to 30) kHz
+(10 to 45) Hz
+45 Hz to 1 kHz
+(1 to 5) kHz
+(5 to 10) kHz
+(10 to 45) Hz
+45 Hz to 1 kHz
+(1 to 5) kHz
+(5 to 10) kHz
+(45 to 100) Hz
+100 Hz to 1 kHz
+(1 to 5) kHz","0.23 % + 0.13 µA
+0.17 % + 0.13 µA
+0.14 % + 0.14 µA
+0.35 % + 0.18 µA
+0.92 % + 0.25 µA
+1.8 % + 0.62 µA
+0.23 % + 0.23 µA
+0.14 % + 0.32 µA
+0.12 % + 0.18 µA
+0.23 % + 0.27 µA
+0.58 % + 0.35 µA
+1.2 % + 0.7 µA
+0.21 % + 2.4 µA
+0.1 % + 3.8 µA
+0.047 % + 2.4 µA
+0.093 % + 2.4 µA
+0.23 % + 3.8 µA
+0.46 % + 5.3 µA
+0.21 % + 23 µA
+0.1 % + 38 µA
+0.047 % + 24 µA
+0.12 % + 58 µA
+0.23 % + 0.12 mA
+0.46 % + 0.24 mA
+0.21 % + 0.12 mA
+0.058 % + 0.12 mA
+0.69 % + 1.2 mA
+2.9 % + 5.8 mA
+0.21 % + 0.12 mA
+0.069 % + 0.13 mA
+0.69 % + 1.3 mA
+2.9 % + 5.8 mA
+0.069 % + 2.4 mA
+0.12 % + 2.4 mA
+3.5 % + 2.4 mA",Fluke 5502A
+,AC Current – Generate,(550 to 1025) A,"(45 to 100) Hz
+100 Hz to 1 kHz
+(1 to 5) kHz
+(10 to 45) Hz
+45 Hz to 1 kHz
+(1 to 5) kHz
+(5 to 10) kHz
+(45 to 100) Hz
+100 Hz to 1 kHz
+(1 to 5) kHz
+(45 to 100) Hz
+100 Hz to 1 kHz
+(1 to 5) kHz
+45 to 100) Hz
+100 Hz to 1 kHz
+(1 to 5) kHz
+(45 to 100) Hz
+100 Hz to 1 kHz
+(1 to 5) kHz
+(45 to 100) Hz
+100 Hz to 1 kHz
+(1 to 5) kHz
+(45 to 100) Hz
+100 Hz to 1 kHz
+(1 to 5) kHz","0.14 % + 5.8 mA
+0.17 % + 6.5 mA
+3.5 % + 5.8 mA
+0.29 % + 0.87 mA
+0.21 % + 0.9 mA
+0.72 % + 12 mA
+2.9 % + 58 mA
+0.21 % + 12 mA
+0.23 % + 15 mA
+3.5 % + 24 mA
+0.24 % + 42 mA
+0.26 % + 49 mA
+3.5 % + 58 mA
+0.21 % + 24 mA
+0.23 % + 30 mA
+3.5 % + 47 mA
+0.24 % + 84 mA
+0.26 % + 98 mA
+3.5 % + 0.12 A
+0.21 % + 59 mA
+0.23 % + 74 mA
+3.5 % + 0.12 A
+0.24 % + 0.21 A
+0.26 % + 0.25 A
+3.5 % + 0.29 A","Fluke 5502A
+Fluke 5502A with 10
+turn coil
+Fluke 5502A with 20
+turn coil
+Fluke 5502A with 50
+turn coil"
+DC Power,Generate,"Up to 109 µW
+(0.109 to 1.09) mW
+(1.09 to 10.9) mW
+(10.9 to 109) mW
+(0.109 to 1.09) W
+(1.09 to 10.9) W
+(10.9 to 109) W
+(109 to 330) W
+(0.33 to 3) kW
+(3 to 11) kW
+(11 to 20.5) kW
+(3.3 to 30) kW
+(30 to 110) kW
+(110 to 205) kW
+(60 to 220) kW
+(220 to 410) kW
+(150 to 550) kW
+(550 to 1025) kW",,"0.36 % rdg
+0.035 % rdg
+0.024 % rdg
+0.019 % rdg
+0.023 % rdg
+0.023 % rdg
+0.023 % rdg
+0.015 % rdg
+0.06 % rdg
+0.092 % rdg
+0.14 % rdg
+0.21 % rdg
+0.22 % rdg
+0.24 % rdg
+0.22 % rdg
+0.24 % rdg
+0.22 % rdg
+0.24 % rdg","Fluke 5502A
+Fluke 5502A with 10
+turn coil
+Fluke 5502A with 20
+turn coil
+Fluke 5502A with
+50turn coil"
+AC Power,"Generate
+(45 to 65 Hz, PF=1)","Up to 10.9 µW
+(10.9 to 109) µW
+(0.109 to 1.09) mW
+(1.09 to 10.9) mW
+(10.9 to 109) mW
+(0.109 to 1.09) W
+(1.09 to 10.9) W
+(10.9 to 109) W
+(109 to 363) W
+(363 to 990) W
+(0.99 to 3.63) kW
+(3.63 to 11.2) kW
+(11.2 to 20.9) kW
+(9.9 to 36.3) kW
+(30 to 110) kW
+(110 to 205) kW
+(60 to 220.) kW
+(220 to 410) kW
+(150 to 550) kW
+(550 to 1025) kW",,"2.5 % rdg
+0.26 % rdg
+0.17 % rdg
+0.13 % rdg
+0.078 % rdg
+0.078 % rdg
+0.13 % rdg
+0.088 % rdg
+0.12 % rdg
+0.10 % rdg
+0.21 % rdg
+0.16 % rdg
+0.21% rdg
+0.26% rdg
+0.26% rdg
+0.29% rdg
+0.26% rdg
+0.29% rdg
+0.25% rdg
+0.29% rdg","Fluke 5502A
+Fluke 5502A with 10
+turn coil
+Fluke 5502A with 20
+turn coil
+Fluke 5502A with
+50turn coil"
+"Electrical Calibration of
+Phase Indicators",Source Only,"(10 to 65) Hz
+(65 to 500) Hz
+500 Hz to 1 kHz
+(1 to 5) kHz
+(5 to 10) kHz
+(10 to 30) kHz",,"0.19° phase
+1.1° phase
+2.4° phase
+7.0° phase
+12° phase
+18° phase",Fluke 5502A
+Electrical Conductivity,Secondary Standards,"Up to 13 % IACS
+(13 to 62) % IACS
+> 62 % IACS",,"0.07 % IACS
+0.35 % rdg + 0.05 % IACS
+0.3 % rdg + 0.05 % IACS","ASTM E1004
+electrical conductivity
+by eddy current"
+Electrical Conductivity,Working Standards,"Up to 13 % IACS
+(13 to 62) % IACS
+> 62 % IACS",,"0.12 % IACS
+0.4 % rdg + 0.07 % IACS
+0.35 % rdg + 0.11 % IACS","ASTM E1004
+electrical conductivity
+by eddy current"
+Electrical Conductivity,Measuring Equipment,"Up to 16 % IACS
+(16 to 62) % IACS
+> 62 % IACS",,"0.13 % IACS
+0.4 % rdg + 0.07 % IACS
+0.42 % rdg + 0.05 % IACS","ASTM E1004
+electrical conductivity
+by eddy current"
+,Torque Wrenches,"(0.5 to 15) ozf∙in
+15 ozf∙in to 2000 lbf∙ft",,"0.082 % setting + 0.017
+ozf∙in
+0.66 % setting","Torque arm and
+deadweights
+Torque transducers"
+,Torque Transducers,"(1.25 to 40) ozf∙in
+(2.5 to 100) lbf∙in
+(8.3 to 50) lbf∙ft
+(50 to150) lbf∙ft
+(150 to 1200) lbf∙ft",,"0.17 % rdg + 0.0003 ozf∙in
+0.12 % rdg
+0.11 % rdg
+0.10 % rdg
+0.11 % rdg","Torque wheel/arms
+and weights"
+,Scales and Balances,"(0.5 to 380) g
+(380 to 1800) g
+(0 to 200) g
+(200 to 1000) g
+(1 to 16.2) kg
+(0.1 to 700) lb,
+((0.045 to 318) kg)",,"(0.037 + 0.000 23W) mg
+(0.12 + 0.0001W) mg
+(0.69 + 0.0094W) mg
+(0.51 + 0.012W) mg
+(26 + 0.0048W) mg
+(260 + 3.5W) mg","Ultra Class weights,
+Class 1 weights
+Class F and 6 weights
+(This instance, “W” =
+weight in lbs)"
+,"Indirect Verification of
+Rockwell
+Hardness Testers","HRA
+Low
+Medium
+High
+HRBW
+Low
+Medium
+High
+HRC
+Low
+Medium
+High
+HREW
+Low
+Medium
+High
+HRFW
+Low
+Medium
+High
+HRHW
+Low
+High
+HR15N
+Low
+Medium
+High
+HR30N
+Low
+Medium
+High
+HR45N
+Low
+Medium
+High
+HR15TW
+Low
+Medium
+High",,"0.31 HRA
+0.32 HRA
+0.20 HRA
+0.36 HRBW
+0.26 HRBW
+0.39 HRBW
+0.39 HRC
+0.33 HRC
+0.32 HRC
+0.38 HREW
+0.49 HREW
+0.49 HREW
+0.28 HRFW
+0.46 HRFW
+0.45 HRFW
+0.42 HRHW
+0.36 HRHW
+0.42 HR15N
+0.42 HR15N
+0.51 HR15N
+0.30 HR30N
+0.47 HR30N
+0.53 HR30N
+0.50 HR45N
+0.25 HR45N
+0.20 HR45N
+0.44 HR15TW
+0.39 HR15TW
+0.32 HR15TW","Indirect verification
+per ASTM E1"
+,"Indirect Verification of
+Rockwell Hardness
+Testers3","HR30TW
+Low
+Medium
+High
+HR45TW
+Low
+Medium
+High",,"0.58 HR30TW
+0.64 HR30TW
+0.22 HR30TW
+0.70 HR45TW
+0.40 HR45TW
+0.39 HR45TW","Indirect verification
+per ASTM E1"
+"Direct Verification of
+Rockwell Hardness
+Testers","Verification of Test
+Force
+Verification of
+Depth-Measuring
+Device
+Verification of
+Hysteresis","(3 to 15) kgf
+(30 to 150) kgf
+(0 to 260) µm
+---",,"0.005 kgf + 0.03 % rdg
+0.049 kgf + 0.02 % rdg
+0.31 µm
+0.25 Rockwell Points","ASTM E18
+Verification of test
+force by load cell
+Per direct verification
+method of ASTM E18
+Per direct verification
+method of ASTM E1"
+"Indirect Verification of
+Brinell Hardness Testers
+at Test Condition(s)","10/3000/15
+10/500/1","Repeatability:
+≤ 225 HBW
+(> 225 to 650) HBW
+Error:
+Repeatability:
+(40 to 126) HBW
+Error:",,"0.024D
+0.013D
+1.5 %
+0.024D
+1.9 %","ATSM E10
+D is the mean of the n
+mean test diameters in
+millimeters
+Error uncertainty is
+stated as a percentage
+of the standardized
+test block value"
+,"Indirect Verification of
+Microindentation
+Hardness Testers3
+(Knoop and Vickers)","Vickers:
+< 240 HV
+(240 to 600) HV
+> 600 HV
+Knoop:
+< 250 HK
+(250 to 650) HK
+> 650 HK",,"4.3 HV
+10 HV
+13 HV
+5.2 HK
+12 HK
+15 HK",ASTM E384 and E9
+Pressure,"Absolute &
+Barometric Pressure
+Differential & Gage
+Pressure","(0 to 35) in·Hg
+(0 to 30) in·H O
+2
+(0 to 5) psi
+(5 to 15) psi
+(10 to 500) psi
+(200 to 10 000) psi",,"0.0034 in·Hg
+0.0029 in·H O
+2
+0.000 47 psi
+0.0015 psi
+0.002 psi + 0.018 % rdg
+0.034 psi + 0.018 % rdg","Mensor CPG system
+Deadweight tester"
+Vacuum,"Measure
+and Measuring
+Equipment",(0 to 28.5) in·Hg,,0.0033 in·Hg,Mensor CPG system
+,Thermometers,"(-112 °F to 32) °F
+(32 °F to 212) °F
+(212 °F to 392) °F
+(392 to 752) °F",,"0.048 °F
+0.041 °F
+0.047 °F
+0.098 °F","PRT, Fluke 1502A"
+Thermocouples,"Type E
+Type J
+Type K
+Type N
+Type R
+Type S
+Type T
+Type R
+Type S","(-112 to -22) °F
+(-22 to 752) °F
+(752 to 1200) °F
+(1200 to 1832) °F
+(-112 to -22) °F
+(-22 to 752) °F
+(752 to 1200) °F
+(1200 to 2000) °F
+(2000 to 2192) °F
+(-112 to -22) °F
+(-22 to 752) °F
+(752 to 1200) °F
+(1200 to 2000) °F
+(2000 to 2500) °F
+(-112 to -22) °F
+(-22 to 752) °F
+(752 to 1200) °F
+(1200 to 2000) °F
+(2000 to 2372) °F
+(32 to 752) °F
+(752 to 1200) °F
+(1200 to 2000) °F
+(2000 to 2500) °F
+(32 to 752) °F
+(752 to 1200) °F
+(1200 to 2000) °F
+(2000 to 2500) °F
+(-112 to -22) °F
+(-22 to 752) °F
+(32 to 752) °F
+(752 to 1200) °F
+(1200 to 2000) °F
+(2000 to 2500) °F
+(32 to 752) °F
+(752 to 1200) °F
+(1200 to 2000) °F
+(2000 to 2500) °F",,"0.19 °F
+0.18 °F
+2.0 °F
+2.2 °F
+0.20 °F
+0.21 °F
+1.5 °F
+2.0 °F
+2.7 °F
+0.22 °F
+0.24 °F
+1.5 °F
+2.0 °F
+3.2 °F
+0.28 °F
+0.26 °F
+1.6 °F
+2.1 °F
+2.9 °F
+0.81 °F
+1.6 °F
+2.0 °F
+3.3 °F
+0.81 °F
+1.6 °F
+2.0 °F
+3.2 °F
+0.23 °F
+0.20 °F
+0.81 °F
+1.0 °F
+1.2 °F
+3.2 °F
+0.81 °F
+1.0 °F
+1.2 °F
+3.2 °F","Type ""S"" platinum
+standard T/C above
+752 °F, PRT below
+752 °F, Fluke 1502A,
+Fluke 8846A
+Above 752 °F,
+comparison with NIST
+ref. standard
+below 752 °F, PRT,
+Fluke 1502A, Fluke
+8846A"
+,"Temperature Uniformity
+Survey3, 4
+(Per AMS 2750)","(-100 to 392) °F
+(392 to 752) °F
+(752 to 1200) °F
+(1200 to 1800) °F
+(1800 to 2300) °F",,"1.4 °F
+3.1 °F
+3.1 °F
+3.7 °F
+4.1 °F","IoTech DaqBook, with
+expendable and non-
+expendable
+thermocouples"
+,"Temperature Probe3, 4
+(""SAT"" per AMS 2750)","(-112 to 392) °F
+(392 to 752) °F
+(752 to 1200) °F
+(1200 to 2000) °F
+(1800 to 2372) °F",,"0.64 °F
+0.76 °F
+1.8 °F
+2.4 °F
+3.2 °F","Fluke 726 or
+equivalent, expendable
+and non-expendable
+thermocouples"
+,Infrared Thermometers,"(95 to 212) °F
+(212 to 392) °F
+(392 to 662) °F
+(662 to 932) °F",,"1.2 °F
+1.6 °F
+2.7 °F
+3.7 °F","Hart 4181 black body
+Emissivity- 0.9"
+Relative Humidity,Measuring Equipment,(10 to 95) % RH,,0.85 % RH,"EdgeTech chilled
+mirror hygrometer"
+Dewpoint,Measuring Equipment,(-20 to 65) °C,,0.14 °C,"EdgeTech chilled
+mirror hygrometer"
+Frequency,Measure,"(1 to 40) Hz
+40 Hz to 10 MHz",,"0.06 % rdg
+0.012 % rdg",HP3458A
+Frequency,"Measuring
+Equipment","Up to 120 Hz
+(0.12 to 1.2) kHz
+(1.2 to 12) kHz
+(12 to 120) kHz
+(0.12 to 1.2) MHz
+(1.2 to 2) MHz",,"28 µHz/Hz + 0.0016 Hz
+25 µHz/Hz + 0.0077 Hz
+25 µHz/Hz + 0.071 Hz
+29 µHz/Hz + 18 Hz
+29 µHz/Hz + 20 Hz
+0.020 % rdg",Fluke 5502A
+,"Timers, Stopwatches","15 s to 10 min
+10 min to 24 hrs
+(2 to 24) hrs",,"0.038 s + 0.0025 % of
+timed interval
+0.038 s + 0.0041 % of
+timed interval
+0.038 s","Reference stopwatch
+WWV signal"
