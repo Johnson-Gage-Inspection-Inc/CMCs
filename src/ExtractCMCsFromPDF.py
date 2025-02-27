@@ -442,10 +442,12 @@ def extract_pdf_tables(pdf_path):
     big_tables = []
     with pdfplumber.open(pdf_path) as pdf:
         for page in pdf.pages:
-            extracted_table = page.extract_table()
-            if extracted_table:
-                df_page = parse_page_table(extracted_table)
-                big_tables.append(df_page)
+            tables = page.extract_tables()
+            for i, extracted_table in enumerate(tables):
+                if extracted_table:
+                    df_page = parse_page_table(extracted_table)
+                    df_page.to_csv(f"tests/test_data/page{page.page_number}_table{i}.csv", index=False)
+                    big_tables.append(df_page)
 
     if not big_tables:
         return pd.DataFrame(
