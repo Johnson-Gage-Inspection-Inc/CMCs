@@ -45,9 +45,7 @@ def expand_frequency_and_cmc(df):
         param_split = row["Parameter"].split("\n") if pd.notna(row["Parameter"]) else []
 
         if (
-            len(freq_split) == len(cmc_split)
-            and len(range_split) == 1
-            and len(param_split) == 1
+            len(freq_split) == len(cmc_split) and len(range_split) == 1 and len(param_split) == 1
         ):
             for i in range(len(freq_split)):
                 expanded_data.append(
@@ -187,7 +185,7 @@ def distribute_multi_line_parameter(expanded_rows):
             if expansions_count % param_count == 0:
                 chunk_size = expansions_count // param_count
                 chunks = [
-                    group_rows[i : i + chunk_size]
+                    group_rows[i: i + chunk_size]
                     for i in range(0, expansions_count, chunk_size)
                 ]
                 for i, chunk in enumerate(chunks):
