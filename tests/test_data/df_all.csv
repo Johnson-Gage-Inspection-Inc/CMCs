@@ -214,6 +214,26 @@ Optical comparator
 Laser"
 ,"Length, 2D6",Up to 8′′ X 3′′,,(370 + 120L) µin,Optical comparator
 ,"Length, 3D6",Up to 47′′ X 32′′ X 24′′,,700 µin,CMM
+DC Voltage,Measure3,"Up to 100 mV
+(0.1 to 1) V
+(1 to 10) V
+(10 to 100) V
+(100 to 1000) V",,"4.4 µV/V + 0.62 µV
+4.7 µV/V + 0.5 µV
+4.6 µV/V + 1.1 µV
+6.9 µV/V + 39 µV
+7.2 µV/V + 120 µV",HP 3458A
+DC Voltage,Generate3,"Up to 100 mV
+(0.1 to 1) V
+(1 to 10) V
+(10 to 100) V
+(100 to 1000) V",,"4.4 µV/V + 0.62 µV
+4.7 µV/V + 0.5 µV
+4.6 µV/V + 1.1 µV
+6.9 µV/V + 39 µV
+7.2 µV/V + 120 µV","Fluke 5502A
+monitored by
+HP3458A"
 DC Current,Measure3,"Up to 100 nA
 100 nA to 1 µA
 (1 to 10) µA
@@ -951,6 +971,38 @@ Electrical Conductivity,Measuring Equipment,"Up to 16 % IACS
 0.42 % rdg + 0.05 % IACS","ASTM E1004
 electrical conductivity
 by eddy current"
+,Torque Wrenches3,"(0.5 to 15) ozf∙in
+15 ozf∙in to 2000 lbf∙ft",,"0.082 % setting + 0.017
+ozf∙in
+0.66 % setting","Torque arm and
+deadweights
+Torque transducers"
+,Torque Transducers,"(1.25 to 40) ozf∙in
+(2.5 to 100) lbf∙in
+(8.3 to 50) lbf∙ft
+(50 to150) lbf∙ft
+(150 to 1200) lbf∙ft",,"0.17 % rdg + 0.0003 ozf∙in
+0.12 % rdg
+0.11 % rdg
+0.10 % rdg
+0.11 % rdg","Torque wheel/arms
+and weights"
+,Scales and Balances3,"(0.5 to 380) g
+(380 to 1800) g
+(0 to 200) g
+(200 to 1000) g
+(1 to 16.2) kg
+(0.1 to 700) lb,
+((0.045 to 318) kg)",,"(0.037 + 0.000 23W) mg
+(0.12 + 0.0001W) mg
+(0.69 + 0.0094W) mg
+(0.51 + 0.012W) mg
+(26 + 0.0048W) mg
+(260 + 3.5W) mg","Ultra Class weights,
+Class 1 weights
+Class F and 6 weights
+(This instance, “W” =
+weight in lbs)"
 ,"Indirect Verification of
 Rockwell
 Hardness Testers3","HRA
@@ -1115,6 +1167,13 @@ Deadweight tester"
 Vacuum3,"Measure
 and Measuring
 Equipment",(0 to 28.5) in·Hg,,0.0033 in·Hg,Mensor CPG system
+,Thermometers3,"(-112 °F to 32) °F
+(32 °F to 212) °F
+(212 °F to 392) °F
+(392 to 752) °F",,"0.048 °F
+0.041 °F
+0.047 °F
+0.098 °F","PRT, Fluke 1502A"
 Thermocouples,"Type B
 Type E
 Type J

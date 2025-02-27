@@ -1,0 +1,21 @@
+Equipment,Parameter,Range,Frequency,CMC (±),Comments
+DC Voltage,Measure3,"Up to 100 mV
+(0.1 to 1) V
+(1 to 10) V
+(10 to 100) V
+(100 to 1000) V",,"4.4 µV/V + 0.62 µV
+4.7 µV/V + 0.5 µV
+4.6 µV/V + 1.1 µV
+6.9 µV/V + 39 µV
+7.2 µV/V + 120 µV",HP 3458A
+DC Voltage,Generate3,"Up to 100 mV
+(0.1 to 1) V
+(1 to 10) V
+(10 to 100) V
+(100 to 1000) V",,"4.4 µV/V + 0.62 µV
+4.7 µV/V + 0.5 µV
+4.6 µV/V + 1.1 µV
+6.9 µV/V + 39 µV
+7.2 µV/V + 120 µV","Fluke 5502A
+monitored by
+HP3458A"

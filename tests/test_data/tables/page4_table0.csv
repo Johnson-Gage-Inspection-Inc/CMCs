@@ -1,0 +1,34 @@
+Equipment,Parameter,Range,Frequency,CMC (±),Comments
+,"Plug / Pin Gages &
+Outside Cylindrical
+Diameter","Up to 1 in
+(1 to 10) in",,"(6.7 + 1.8L) µin
+(13 + 1.1L) µin","Laser scan micrometer
+P&W
+SupermicrometerTM,
+gage blocks"
+,"Plain Rings & Inside
+Cylindrical Diameter",(0.04 to 11) in,,(4.6 + 0.91D) µin,"Internal
+SupermicrometerTM,
+master gage blocks"
+"Straight Threaded Plug
+Gages","Pitch Diameter
+(TPI 4.5 to 96)
+Major Diameter","Up to 6 in
+Up to 5 in",,"(76 + 6.0D) µin
+(24 + 1D) µin","3-wire method
+P&W
+SupermicrometerTM,
+gage blocks"
+"Tapered Threaded Plug
+Gages","Pitch Diameter
+(8 to 27) TPI
+Major Diameter","Up to 4 in
+Up to 4.5 in",,"92 µin
+22 µin","3-wire method,
+tapered sine block
+P&W
+SupermicrometerTM,
+gage blocks"
+,"Adjustable Threaded
+Ring Gages",(0.05 to 2) in diameter,,(84 + 10D) µin,Setting plugs

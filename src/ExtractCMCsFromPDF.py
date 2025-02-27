@@ -442,11 +442,13 @@ def extract_pdf_tables(pdf_path):
     big_tables = []
     with pdfplumber.open(pdf_path) as pdf:
         for page in pdf.pages:
+            # with open(f"tests/test_data/pages/page{str(page.page_number)}.txt", "w", encoding="utf-8") as f:
+            #     f.write(page.extract_text())
             tables = page.extract_tables()
             for i, extracted_table in enumerate(tables):
                 if extracted_table:
                     df_page = parse_page_table(extracted_table)
-                    df_page.to_csv(f"tests/test_data/page{page.page_number}_table{i}.csv", index=False)
+                    # df_page.to_csv(f"tests/test_data/tables/page{page.page_number}_table{i}.csv", index=False)
                     big_tables.append(df_page)
 
     if not big_tables:
@@ -463,6 +465,10 @@ def extract_pdf_tables(pdf_path):
         )
 
     df_all = pd.concat(big_tables, ignore_index=True)
+
+    # # Save dataframe before further processing
+    # df_all.to_csv("tests/test_data/df_all.csv", index=False)
+    # print("Data saved to df_all.csv")
 
     # ✅ Apply superscript removal **before** range parsing
     for col in df_all.columns:
