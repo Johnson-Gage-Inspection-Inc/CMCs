@@ -1,5 +1,5 @@
 import pytest
-from src.ExtractCMCsFromPDF import parse_range
+from src.expander import parse_range
 
 
 @pytest.mark.parametrize(
