@@ -219,7 +219,10 @@ def dynamic_expand_row(row):
                     new_rows.append(nr)
             return new_rows
         else:
-            return [row.to_dict()]
+            new_row = row.to_dict()
+            new_row["Range"] = range_lines[0] if range_lines else ""
+            new_row["CMC (±)"] = cmc_lines[0] if cmc_lines else ""
+            return [new_row]
 
     # Flatten
     flattened = []
