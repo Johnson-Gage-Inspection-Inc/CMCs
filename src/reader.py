@@ -306,7 +306,14 @@ def distribute_multi_line_parameter(expanded_rows):
                         out.append(nr)
             else:
                 out.extend(group_rows)
-    return out
+
+    df_expanded = pd.DataFrame(out)
+    # Remove any remaining linebreaks from each cell
+    for col in df_expanded.columns:
+        df_expanded[col] = df_expanded[col].apply(
+            lambda x: str(x).replace("\n", " ").strip()
+        )
+    return df_expanded
 
 
 def expand_multi_line_rows(df):
@@ -323,13 +330,8 @@ def expand_multi_line_rows(df):
 
     logging.debug(f"After first pass: {len(first_pass)} rows")
     second_pass = distribute_multi_line_parameter(first_pass)
-    df_expanded = pd.DataFrame(second_pass)
-    # Remove any remaining linebreaks from each cell
-    for col in df_expanded.columns:
-        df_expanded[col] = df_expanded[col].apply(
-            lambda x: str(x).replace("\n", " ").strip()
-        )
-    return df_expanded
+    logging.debug(f"After second pass: {len(second_pass)} rows")
+    return second_pass
 
 
 def extract_tables_by_position(page):
