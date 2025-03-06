@@ -94,9 +94,9 @@ def extract_pdf_tables_to_df(pdf_path):
                     headers = extracted_table[0]
                     data_rows = extracted_table[1:]
                     df_page = pd.DataFrame(data_rows, columns=headers)
-                    df_page.to_csv(f"tests/test_data/tables/pre/page{page.page_number}_table{i}.csv", index=False)
+                    df_page.to_csv(f"tests/test_data/tables/pre/page{page.page_number}_table{i}.csv", index=False, encoding="utf-8-sig")
                     parsed_df_page = parse_page_table(df_page)
-                    parsed_df_page.to_csv(f"tests/test_data/tables/parsed/page{page.page_number}_table{i}.csv", index=False)
+                    parsed_df_page.to_csv(f"tests/test_data/tables/parsed/page{page.page_number}_table{i}.csv", index=False, encoding="utf-8-sig")
                     big_tables.append(parsed_df_page)
 
     if not big_tables:
