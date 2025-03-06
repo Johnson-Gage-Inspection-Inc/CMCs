@@ -57,7 +57,7 @@ def test_parse_page_table_with_detailed_diff(table_file):
 
     # Load the expected output
     expected_path = f"tests/test_data/tables/parsed/{table_file}"
-    expected_df = pd.read_csv(expected_path)
+    expected_df = pd.read_csv(expected_path).fillna("")
     expected_df = expected_df.reset_index(drop=True)
 
     # Compare shape first for easier debugging
