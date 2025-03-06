@@ -45,23 +45,64 @@ def test_extract_pdf_tables_to_df(pdf_file):
         "page9_table0.csv",
     ],
 )
-def test_parse_page_table(table_file):
-    """Test that parse_page_table correctly transforms tables according to expected outputs."""
-
+def test_parse_page_table_with_detailed_diff(table_file):
+    """Test parse_page_table with detailed diff output when comparison fails."""
     # Load the input table
     input_path = f"tests/test_data/tables/pre/{table_file}"
     input_df = pd.read_csv(input_path)
 
     # Process the table
     result_df = parse_page_table(input_df.copy())
+    result_df = result_df.reset_index(drop=True)
 
     # Load the expected output
     expected_path = f"tests/test_data/tables/parsed/{table_file}"
     expected_df = pd.read_csv(expected_path)
+    expected_df = expected_df.reset_index(drop=True)
 
-    # Assert dataframes match (ignoring dtype differences)
-    pd.testing.assert_frame_equal(
-        result_df.reset_index(drop=True),
-        expected_df.reset_index(drop=True),
-        check_dtype=False
-    )
+    # Compare shape first for easier debugging
+    if result_df.shape != expected_df.shape:
+        pytest.fail(
+            f"DataFrame shapes don't match!\n"
+            f"Expected shape: {expected_df.shape}\n"
+            f"Got shape: {result_df.shape}\n"
+        )
+
+    # Compare columns
+    if list(result_df.columns) != list(expected_df.columns):
+        pytest.fail(
+            f"DataFrame columns don't match!\n"
+            f"Expected columns: {list(expected_df.columns)}\n"
+            f"Got columns: {list(result_df.columns)}\n"
+        )
+
+    # Detailed row-by-row comparison with differences highlighted
+    try:
+        pd.testing.assert_frame_equal(result_df, expected_df, check_dtype=False)
+    except AssertionError:
+        # Get the differences in a readable format
+        diffs = []
+        for i in range(min(len(result_df), len(expected_df))):
+            for col in result_df.columns:
+                if col in expected_df.columns:
+                    expected_val = expected_df.loc[i, col]
+                    actual_val = result_df.loc[i, col]
+                    if expected_val != actual_val:
+                        diffs.append(
+                            f"Row {i}, Column '{col}':\n"
+                            f"  Expected (-want): {expected_val}\n"
+                            f"  Got (+got):      {actual_val}\n"
+                        )
+
+        # Add info about any extra or missing rows
+        if len(result_df) > len(expected_df):
+            diffs.append(
+                f"Extra rows in result: {len(result_df) - len(expected_df)}"
+            )
+        elif len(result_df) < len(expected_df):
+            diffs.append(
+                f"Missing rows in result: {len(expected_df) - len(result_df)}"
+            )
+
+        # Fail with detailed information
+        pytest.fail("DataFrames are not equal:\n" + "\n".join(diffs))
