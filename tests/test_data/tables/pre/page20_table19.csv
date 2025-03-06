@@ -1,0 +1,61 @@
+Parameter/Equipment,Range,"CMC2, 5 (±)",Comments
+"Indirect Verification of
+Rockwell Hardness
+Testers3 (cont)","HR30TW
+Low
+Medium
+High
+HR45TW
+Low
+Medium
+High","0.58 HR30TW
+0.64 HR30TW
+0.22 HR30TW
+0.70 HR45TW
+0.40 HR45TW
+0.39 HR45TW","Indirect verification
+per ASTM E18"
+"Direct Verification of
+Rockwell Hardness
+Testers3 –
+Verification of Test
+Force
+Verification of
+Depth-Measuring
+Device
+Verification of
+Hysteresis","(3 to 15) kgf
+(30 to 150) kgf
+(0 to 260) µm
+---","0.005 kgf + 0.03 % rdg
+0.049 kgf + 0.02 % rdg
+0.31 µm
+0.25 Rockwell Points","ASTM E18
+Verification of test
+force by load cell
+Per direct verification
+method of ASTM E18
+Per direct verification
+method of ASTM E18"
+"Indirect Verification of
+Brinell Hardness Testers
+at Test Condition(s)3 –
+10/3000/15
+10/500/15","Repeatability:
+≤ 225 HBW
+(> 225 to 650) HBW
+Error:
+Repeatability:
+(40 to 126) HBW
+Error:","0.024D
+0.013D
+1.5 %
+0.024D
+1.9 %","ATSM E10
+D is the mean of the n
+mean test diameters in
+millimeters
+Error uncertainty is
+stated as a percentage
+of the standardized
+test block value"

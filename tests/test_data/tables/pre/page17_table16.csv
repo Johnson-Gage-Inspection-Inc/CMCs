@@ -1,0 +1,88 @@
+Parameter/Equipment,Range,"CMC2, 7 (±)",Comments
+DC Power – Generate3,"Up to 109 µW
+(0.109 to 1.09) mW
+(1.09 to 10.9) mW
+(10.9 to 109) mW
+(0.109 to 1.09) W
+(1.09 to 10.9) W
+(10.9 to 109) W
+(109 to 330) W
+(0.33 to 3) kW
+(3 to 11) kW
+(11 to 20.5) kW
+(3.3 to 30) kW
+(30 to 110) kW
+(110 to 205) kW
+(60 to 220) kW
+(220 to 410) kW
+(150 to 550) kW
+(550 to 1025) kW","0.36 % rdg
+0.035 % rdg
+0.024 % rdg
+0.019 % rdg
+0.023 % rdg
+0.023 % rdg
+0.023 % rdg
+0.015 % rdg
+0.06 % rdg
+0.092 % rdg
+0.14 % rdg
+0.21 % rdg
+0.22 % rdg
+0.24 % rdg
+0.22 % rdg
+0.24 % rdg
+0.22 % rdg
+0.24 % rdg","Fluke 5502A
+Fluke 5502A with 10
+turn coil
+Fluke 5502A with 20
+turn coil
+Fluke 5502A with
+50turn coil"
+"AC Power – Generate
+(45 to 65 Hz, PF=1) 3","Up to 10.9 µW
+(10.9 to 109) µW
+(0.109 to 1.09) mW
+(1.09 to 10.9) mW
+(10.9 to 109) mW
+(0.109 to 1.09) W
+(1.09 to 10.9) W
+(10.9 to 109) W
+(109 to 363) W
+(363 to 990) W
+(0.99 to 3.63) kW
+(3.63 to 11.2) kW
+(11.2 to 20.9) kW
+(9.9 to 36.3) kW
+(30 to 110) kW
+(110 to 205) kW
+(60 to 220.) kW
+(220 to 410) kW
+(150 to 550) kW
+(550 to 1025) kW","2.5 % rdg
+0.26 % rdg
+0.17 % rdg
+0.13 % rdg
+0.078 % rdg
+0.078 % rdg
+0.13 % rdg
+0.088 % rdg
+0.12 % rdg
+0.10 % rdg
+0.21 % rdg
+0.16 % rdg
+0.21% rdg
+0.26% rdg
+0.26% rdg
+0.29% rdg
+0.26% rdg
+0.29% rdg
+0.25% rdg
+0.29% rdg","Fluke 5502A
+Fluke 5502A with 10
+turn coil
+Fluke 5502A with 20
+turn coil
+Fluke 5502A with
+50turn coil"

@@ -1,0 +1,67 @@
+Equipment,Parameter,Range,Frequency,CMC (±),Comments
+,AC Voltage – Measure3,(100 to 1000) V,"(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(100 to 300) kHz
+300 kHz to 1 MHz
+(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz","0.023 % + 4.8 mV
+0.023 % + 2.5 mV
+0.023 % + 2.5 mV
+0.04 % + 2.8 mV
+0.14 % + 2.4 mV
+0.46 % + 14 mV
+1.7 % + 44 mV
+0.046 % + 49 mV
+0.046 % + 26 mV
+0.07 % + 23 mV
+0.14 % + 23 mV
+0.35 % + 23 mV",HP 3458A
+,AC Voltage – Generate,100 mV to 1 V,"(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(100 to 300) kHz
+300 kHz to 1 MHz
+(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(100 to 300) kHz
+300 kHz to 1 MHz
+(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(100 to 300) kHz
+300 kHz to 1 MHz","0.034 % + 3.6 µV
+0.022 % + 1.5 µV
+0.033 % + 1.5 µV
+0.11 % + 1.9 µV
+0.58 % + 1.5 µV
+4.6 % + 4.2 µV
+4.6 % + 7.7 µV
+83 µV/V + 4.7 µV
+83 µV/V + 2.4 µV
+0.016 % + 2.7 µV
+0.035 % + 2.4 µV
+0.092 % + 2.8 µV
+0.35 % + 12 µV
+1.2 % + 12 µV
+82 µV/V + 47 µV
+82 µV/V + 24 µV
+0.016 % + 26 µV
+0.035 % + 24 µV
+0.092 % + 28 µV
+0.35 % + 120 µV
+1.2 % + 120 µV","Fluke 5502A or HP
+3245A, monitored by
+HP 3458A"

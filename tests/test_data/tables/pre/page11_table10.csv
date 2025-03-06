@@ -1,0 +1,88 @@
+Parameter/Range,Frequency,"CMC2, 7 (±)",Comments
+"AC Voltage – Measure3
+(1 to 10) mV
+(10 to 100) mV
+100 mV to 1 V
+(1 to 10) V","(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(100 to 300) kHz
+(0.3 to 1) MHz
+(1 to 4) MHz
+(4 to 8) MHz
+(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(100 to 300) kHz
+300 kHz to 1 MHz
+(1 to 2) MHz
+(2 to 4) MHz
+(4 to 8) MHz
+(8 to 10) MHz
+(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(100 to 300) kHz
+300 kHz to 1 MHz
+(1 to 2) MHz
+(2 to 4) MHz
+(4 to 8) MHz
+(8 to 10) MHz
+(1 to 40) Hz
+40 Hz to 1 kHz
+(1 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(100 to 300) kHz
+300 kHz to 1 MHz
+(1 to 2) MHz
+(2 to 4) MHz
+(4 to 8) MHz
+(8 to 10) MHz","0.034 % + 3.6 µV
+0.023 % + 1.4 µV
+0.034 % + 1.4 µV
+0.011 % + 1.9 µV
+0.58 % + 1.4 µV
+4.6 % + 4.2 µV
+4.6 % + 7.7 µV
+8.1 % + 8.8 µV
+23 % + 19 µV
+83 µV/V + 4.7 µV
+83 µV/V + 2.4 µV
+0.016 % + 2.7 µV
+0.035 % + 2.4 µV
+0.092 % + 2.8 µV
+0.35 % + 12 µV
+1.2 % + 12 µV
+1.7 % + 45 µV
+4.6 % + 100 µV
+4.6 % + 120 µV
+17 % + 440 µV
+82 µV/V + 47 µV
+82 µV/V + 24 µV
+0.016 % + 26 µV
+0.035 % + 24 µV
+0.092 % + 28 µV
+0.35 % + 120 µV
+1.2 % + 120 µV
+1.7 % + 450 µV
+4.6 % + 1.1 mV
+4.6 % + 1.2 mV
+17 % + 4.4 mV
+83 µV/V + 0.47 mV
+82 µV/V + 0.24 mV
+0.016 % + 0.26 mV
+0.035 % + 0.24 mV
+0.092 % + 0.28 mV
+0.35 % + 1.2 mV
+1.2 % + 1.2 mV
+1.7 % + 4.6 mV
+4.6 % + 11 mV
+4.6 % + 12 mV
+17 % + 44 mV",HP 3458A
