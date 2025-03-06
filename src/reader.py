@@ -26,13 +26,25 @@ def split_parameter_equipment(cell_value):
 
 
 def split_parameter_range(cell_value):
+    """Split a Parameter/Range cell into separate parameter and range values.
+    Preserves all content rather than just first/last lines."""
     if not cell_value:
         return ("", "")
+
+    # Convert to string if needed
+    if not isinstance(cell_value, str):
+        cell_value = str(cell_value)
+
     lines = [ln.strip() for ln in cell_value.splitlines() if ln.strip()]
     if len(lines) == 1:
         return (lines[0], "")
+    elif len(lines) > 1:
+        # Extract parameter (first line) and combine all remaining lines as range
+        param = lines[0]
+        range_val = "\n".join(lines[1:])
+        return (param, range_val)
     else:
-        return (lines[0], lines[-1])
+        return ("", "")
 
 
 def cleanColumn(col):
