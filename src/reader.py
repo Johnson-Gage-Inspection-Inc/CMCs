@@ -39,15 +39,10 @@ def cleanColumn(col):
     return col.str.replace(r"\(cont\)", "", regex=True).str.strip()
 
 
-def parse_page_table(extracted_table):
+def parse_page_table(df_page):
     """
     Convert a single extracted table (list of lists) into a cleaned DataFrame.
     """
-    headers = extracted_table[0]
-    data_rows = extracted_table[1:]
-    data_rows = [r for r in data_rows if r != headers]  # Filter out repeated headers
-
-    df_page = pd.DataFrame(data_rows, columns=headers)
     # Ensure columns exist
     df_page["Equipment"] = df_page.get("Equipment", "")
     df_page["Parameter"] = df_page.get("Parameter", "")
@@ -91,13 +86,18 @@ def extract_pdf_tables_to_df(pdf_path):
     """
     big_tables = []
     with pdfplumber.open(pdf_path) as pdf:
-        for page in pdf.pages:
+        for i, page in enumerate(pdf.pages):
             # Extract multiple tables from each page
             tables = page.extract_tables()
             for extracted_table in tables:
                 if extracted_table:
-                    df_page = parse_page_table(extracted_table)
-                    big_tables.append(df_page)
+                    headers = extracted_table[0]
+                    data_rows = extracted_table[1:]
+                    df_page = pd.DataFrame(data_rows, columns=headers)
+                    df_page.to_csv(f"tests/test_data/tables/pre/page{page.page_number}_table{i}.csv", index=False)
+                    parsed_df_page = parse_page_table(df_page)
+                    parsed_df_page.to_csv(f"tests/test_data/tables/parsed/page{page.page_number}_table{i}.csv", index=False)
+                    big_tables.append(parsed_df_page)
 
     if not big_tables:
         return pd.DataFrame(
