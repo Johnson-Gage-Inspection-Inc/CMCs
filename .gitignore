@@ -3,3 +3,4 @@ tests/__pycache__/
 extracted_data.csv
 build/
 dist/
+export/tables/parsed/*
