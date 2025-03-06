@@ -18,7 +18,7 @@ HARDNESS_SCALES = {
 @pytest.mark.parametrize(
     "pdf_file",
     [
-        "tests/test_data/JGI A2LA Cert 2820.01 Exp 03-2025.pdf",
+        "tests/test_data/tests/test_data/tables/page19_table0.csv",
         "tests/test_data/2820-01.pdf",
     ],
 )
