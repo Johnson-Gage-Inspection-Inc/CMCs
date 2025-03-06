@@ -327,7 +327,7 @@ def extract_tables_by_position(page):
     rows = defaultdict(list)
     for word in words:
         # Use a tolerance value to group words on approximately the same line
-        row_key = round(word['top'] / 10) * 10  # Adjust tolerance as needed
+        row_key = round(word["top"] / 10) * 10  # Adjust tolerance as needed
         rows[row_key].append(word)
 
     # Sort rows by vertical position
