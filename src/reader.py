@@ -3,6 +3,11 @@ import pandas as pd
 import re
 import json
 from collections import defaultdict
+import logging
+
+# Set up logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 # (Optionally import from a "utils.py" if you want smaller functions)
 # from .utils import remove_superscripts, split_parameter_equipment, split_parameter_range
@@ -306,14 +311,17 @@ def distribute_multi_line_parameter(expanded_rows):
 
 def expand_multi_line_rows(df):
     first_pass = []
+    logging.debug(f"Original rows: {len(df)}")
     for _, row in df.iterrows():
         rng = row.get("Range", "")
         if len(rng.splitlines()) > 1:
             new_rows = dynamic_expand_row(row)
+            logging.debug(f"Expanded 1 row into {len(new_rows)} rows")
             first_pass.extend(new_rows)
         else:
             first_pass.append(row.to_dict())
 
+    logging.debug(f"After first pass: {len(first_pass)} rows")
     second_pass = distribute_multi_line_parameter(first_pass)
     df_expanded = pd.DataFrame(second_pass)
     # Remove any remaining linebreaks from each cell
