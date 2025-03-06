@@ -1,7 +1,7 @@
 import pdfplumber
 import pandas as pd
 import re
-
+import json
 
 # (Optionally import from a "utils.py" if you want smaller functions)
 # from .utils import remove_superscripts, split_parameter_equipment, split_parameter_range
@@ -85,8 +85,19 @@ def extract_pdf_tables_to_df(pdf_path):
     and cleans columns minimally (no row expansions yet).
     """
     big_tables = []
+
+    class PDFJSONEncoder(json.JSONEncoder):
+        def default(self, obj):
+            try:
+                return super().default(obj)
+            except TypeError:
+                return str(obj)  # Convert non-serializable objects to strings
+
     with pdfplumber.open(pdf_path) as pdf:
         for page in pdf.pages:
+            page_dict = page.to_dict()
+            with open(f"export/pages/json/page{page.page_number}.json", "w") as f:
+                json.dump(page_dict, f, indent=4, cls=PDFJSONEncoder)
             # Extract multiple tables from each page
             tables = page.extract_tables()
             for i, extracted_table in enumerate(tables):
@@ -94,9 +105,17 @@ def extract_pdf_tables_to_df(pdf_path):
                     headers = extracted_table[0]
                     data_rows = extracted_table[1:]
                     df_page = pd.DataFrame(data_rows, columns=headers)
-                    df_page.to_csv(f"tests/export/tables/pre/page{page.page_number}_table{i}.csv", index=False, encoding="utf-8-sig")
+                    df_page.to_csv(
+                        f"export/tables/pre/page{page.page_number}_table{i}.csv",
+                        index=False,
+                        encoding="utf-8-sig",
+                    )
                     parsed_df_page = parse_page_table(df_page)
-                    parsed_df_page.to_csv(f"tests/export/tables/parsed/page{page.page_number}_table{i}.csv", index=False, encoding="utf-8-sig")
+                    parsed_df_page.to_csv(
+                        f"export/tables/parsed/page{page.page_number}_table{i}.csv",
+                        index=False,
+                        encoding="utf-8-sig",
+                    )
                     big_tables.append(parsed_df_page)
 
     if not big_tables:
