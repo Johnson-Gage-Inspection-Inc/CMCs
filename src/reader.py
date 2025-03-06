@@ -89,6 +89,12 @@ def parse_page_table(df_page):
     existing_cols = [c for c in final_cols if c in df_page.columns]
     df_page = df_page[existing_cols]
 
+    # Remove superscripts
+    for col in df_page.columns:
+        df_page[col] = df_page[col].apply(
+            lambda x: remove_superscripts(str(x)) if pd.notna(x) else x
+        )
+
     return expand_multi_line_rows(df_page)
 
 
@@ -145,12 +151,6 @@ def extract_pdf_tables_to_df(pdf_path):
 
     # Combine all pages
     df_all = pd.concat(big_tables, ignore_index=True)
-
-    # Remove superscripts
-    for col in df_all.columns:
-        df_all[col] = df_all[col].apply(
-            lambda x: remove_superscripts(str(x)) if pd.notna(x) else x
-        )
 
     # Clean columns
     df_all["Equipment"] = cleanColumn(df_all["Equipment"])
