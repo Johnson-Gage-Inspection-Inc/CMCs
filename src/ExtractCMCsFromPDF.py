@@ -13,12 +13,12 @@ def browse_file():
     )
 
 
-def process_pdf(pdf_file, save_intermediate=True):
+def process_pdf(pdf_file, save_intermediate=False):
     # Step 1: Extract DF (no expansions)
     df_all = extract_pdf_tables_to_df(pdf_file)
-    # if save_intermediate:
-    #     df_all.to_csv("tests/test_data/intermediate_df.csv", index=False)
-    #     print("Saved intermediate_df.csv")
+    if save_intermediate:
+        df_all.to_csv("tests/test_data/intermediate_df.csv", index=False)
+        print("Saved intermediate_df.csv")
 
     # Step 2: Expand
     df_expanded = expand_rows(df_all)
