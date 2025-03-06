@@ -1,6 +1,6 @@
 import pytest
 import pandas as pd
-from src.ExtractCMCsFromPDF import process_pdf
+from src.main import process_pdf
 
 
 @pytest.mark.parametrize(

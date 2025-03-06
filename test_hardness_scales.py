@@ -1,5 +1,5 @@
 import pytest
-from src.ExtractCMCsFromPDF import process_pdf
+from src.main import process_pdf
 
 HARDNESS_SCALES = {
     "HRA",

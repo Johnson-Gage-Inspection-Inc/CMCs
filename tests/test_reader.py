@@ -1,7 +1,7 @@
 import pytest
 import os
 import pandas as pd
-from src.ExtractCMCsFromPDF import extract_pdf_tables_to_df
+from src.main import extract_pdf_tables_to_df
 from src.reader import parse_page_table
 from src.reader import distribute_multi_line_parameter
 
