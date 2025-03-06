@@ -86,10 +86,10 @@ def extract_pdf_tables_to_df(pdf_path):
     """
     big_tables = []
     with pdfplumber.open(pdf_path) as pdf:
-        for i, page in enumerate(pdf.pages):
+        for page in pdf.pages:
             # Extract multiple tables from each page
             tables = page.extract_tables()
-            for extracted_table in tables:
+            for i, extracted_table in enumerate(tables):
                 if extracted_table:
                     headers = extracted_table[0]
                     data_rows = extracted_table[1:]
