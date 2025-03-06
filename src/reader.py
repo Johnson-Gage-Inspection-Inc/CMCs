@@ -287,8 +287,8 @@ def extract_tables_by_position(page):
     sorted_rows = []
     for row_key in sorted(rows.keys()):
         # Sort words in row by horizontal position
-        row_words = sorted(rows[row_key], key=lambda w: w['x0'])
-        row_text = [w['text'] for w in row_words]
+        row_words = sorted(rows[row_key], key=lambda w: w["x0"])
+        row_text = [w["text"] for w in row_words]
         sorted_rows.append(row_text)
 
     # Detect column boundaries and organize into cells
