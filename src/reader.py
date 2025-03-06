@@ -118,7 +118,7 @@ def extract_pdf_tables_to_df(pdf_path):
             with open(f"export/pages/json/page{page.page_number}.json", "w") as f:
                 json.dump(page_dict, f, indent=4, cls=PDFJSONEncoder)
             # Extract multiple tables from each page
-            tables = page.extract_tables()
+            tables = extract_tables_by_position(page)
             for i, extracted_table in enumerate(tables):
                 if extracted_table:
                     headers = extracted_table[0]
@@ -189,9 +189,9 @@ def dynamic_expand_row(row):
     cmc_txt = row.get("CMC (±)", "")
 
     # Convert to strings and ensure consistent line breaks
-    param_lines = str(param_txt).replace('\r\n', '\n').splitlines() if param_txt else []
-    range_lines = str(rng_txt).replace('\r\n', '\n').splitlines() if rng_txt else []
-    cmc_lines = str(cmc_txt).replace('\r\n', '\n').splitlines() if cmc_txt else []
+    param_lines = str(param_txt).replace("\r\n", "\n").splitlines() if param_txt else []
+    range_lines = str(rng_txt).replace("\r\n", "\n").splitlines() if rng_txt else []
+    cmc_lines = str(cmc_txt).replace("\r\n", "\n").splitlines() if cmc_txt else []
 
     # Normalize empty lines
     param_lines = [ln.strip() for ln in param_lines if ln.strip()]
@@ -317,3 +317,28 @@ def expand_multi_line_rows(df):
     second_pass = distribute_multi_line_parameter(first_pass)
     df_expanded = pd.DataFrame(second_pass)
     return df_expanded
+
+
+def extract_tables_by_position(page):
+    """Extract table data using positional information of text elements"""
+    words = page.extract_words()
+
+    # Group by vertical position (rows)
+    rows = defaultdict(list)
+    for word in words:
+        # Use a tolerance value to group words on approximately the same line
+        row_key = round(word['top'] / 10) * 10  # Adjust tolerance as needed
+        rows[row_key].append(word)
+
+    # Sort rows by vertical position
+    sorted_rows = []
+    for row_key in sorted(rows.keys()):
+        # Sort words in row by horizontal position
+        row_words = sorted(rows[row_key], key=lambda w: w['x0'])
+        row_text = [w['text'] for w in row_words]
+        sorted_rows.append(row_text)
+
+    # Detect column boundaries and organize into cells
+    # (This would require additional logic based on your specific PDF layout)
+
+    return sorted_rows
