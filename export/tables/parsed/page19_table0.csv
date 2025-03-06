@@ -1,0 +1,71 @@
+﻿Equipment,Parameter,Range,Frequency,CMC (±),Comments
+,"Indirect Verification of
+Rockwell
+Hardness Testers3","HRA
+Low
+Medium
+High
+HRBW
+Low
+Medium
+High
+HRC
+Low
+Medium
+High
+HREW
+Low
+Medium
+High
+HRFW
+Low
+Medium
+High
+HRHW
+Low
+High
+HR15N
+Low
+Medium
+High
+HR30N
+Low
+Medium
+High
+HR45N
+Low
+Medium
+High
+HR15TW
+Low
+Medium
+High",,"0.31 HRA
+0.32 HRA
+0.20 HRA
+0.36 HRBW
+0.26 HRBW
+0.39 HRBW
+0.39 HRC
+0.33 HRC
+0.32 HRC
+0.38 HREW
+0.49 HREW
+0.49 HREW
+0.28 HRFW
+0.46 HRFW
+0.45 HRFW
+0.42 HRHW
+0.36 HRHW
+0.42 HR15N
+0.42 HR15N
+0.51 HR15N
+0.30 HR30N
+0.47 HR30N
+0.53 HR30N
+0.50 HR45N
+0.25 HR45N
+0.20 HR45N
+0.44 HR15TW
+0.39 HR15TW
+0.32 HR15TW","Indirect verification
+per ASTM E18"

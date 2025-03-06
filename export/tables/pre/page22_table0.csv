@@ -1,0 +1,95 @@
+﻿Parameter/Equipment,Range,CMC2 (±),Comments
+"Thermocouples –
+Type B
+Type E
+Type J
+Type K
+Type N
+Type R
+Type S
+Type T
+Type R","(800 to 1100) °F
+(1100 to 1600) °F
+(1600 to 2000) °F
+(2000 to 2200) °F
+(2200 to 2500) °F
+(-112 to -22) °F
+(-22 to 752) °F
+(752 to 1200) °F
+(1200 to 1832) °F
+(-112 to -22) °F
+(-22 to 752) °F
+(752 to 1200) °F
+(1200 to 2000) °F
+(2000 to 2192) °F
+(-112 to -22) °F
+(-22 to 752) °F
+(752 to 1200) °F
+(1200 to 2000) °F
+(2000 to 2500) °F
+(-112 to -22) °F
+(-22 to 752) °F
+(752 to 1200) °F
+(1200 to 2000) °F
+(2000 to 2372) °F
+(32 to 752) °F
+(752 to 1200) °F
+(1200 to 2000) °F
+(2000 to 2500) °F
+(32 to 752) °F
+(752 to 1200) °F
+(1200 to 2000) °F
+(2000 to 2500) °F
+(-112 to -22) °F
+(-22 to 752) °F
+(32 to 752) °F
+(752 to 1200) °F
+(1200 to 2000) °F
+(2000 to 2500) °F","1.2 °F
+1.8 °F
+2.2 °F
+2.3 °F
+3.1 °F
+0.19 °F
+0.18 °F
+2.0 °F
+2.2 °F
+0.20 °F
+0.21 °F
+1.5 °F
+2.0 °F
+2.7 °F
+0.22 °F
+0.24 °F
+1.5 °F
+2.0 °F
+3.2 °F
+0.28 °F
+0.26 °F
+1.6 °F
+2.1 °F
+2.9 °F
+0.81 °F
+1.6 °F
+2.0 °F
+3.3 °F
+0.81 °F
+1.6 °F
+2.0 °F
+3.2 °F
+0.23 °F
+0.20 °F
+0.81 °F
+1.0 °F
+1.2 °F
+3.2 °F","Type ""S"" platinum
+standard T/C above
+752 °F, PRT below
+752 °F, Fluke 1502A,
+Fluke 8846A
+Above 752 °F,
+comparison with NIST
+ref. standard
+below 752 °F, PRT,
+Fluke 1502A, Fluke
+8846A"

@@ -1,0 +1,53 @@
+﻿Equipment,Parameter,Range,Frequency,CMC (±),Comments
+Thermocouples,"(cont)
+Type S","(32 to 752) °F
+(752 to 1200) °F
+(1200 to 2000) °F
+(2000 to 2500) °F",,"0.81 °F
+1.0 °F
+1.2 °F
+3.2 °F","Above 752 °F,
+comparison with NIST
+ref. standard
+below 752 °F, PRT,
+Fluke 1502A, Fluke
+8846A"
+,"Temperature Uniformity
+Survey3, 4
+(Per AMS 2750)","(-100 to 392) °F
+(392 to 752) °F
+(752 to 1200) °F
+(1200 to 1800) °F
+(1800 to 2300) °F",,"1.4 °F
+3.1 °F
+3.1 °F
+3.7 °F
+4.1 °F","IoTech DaqBook, with
+expendable and non-
+expendable
+thermocouples"
+,"Temperature Probe3, 4
+(""SAT"" per AMS 2750)","(-112 to 392) °F
+(392 to 752) °F
+(752 to 1200) °F
+(1200 to 2000) °F
+(1800 to 2372) °F",,"0.64 °F
+0.76 °F
+1.8 °F
+2.4 °F
+3.2 °F","Fluke 726 or
+equivalent, expendable
+and non-expendable
+thermocouples"
+,Infrared Thermometers3,"(95 to 212) °F
+(212 to 392) °F
+(392 to 662) °F
+(662 to 932) °F",,"1.2 °F
+1.6 °F
+2.7 °F
+3.7 °F","Hart 4181 black body
+Emissivity- 0.95"
+Relative Humidity3,Measuring Equipment,(10 to 95) % RH,,0.85 % RH,"EdgeTech chilled
+mirror hygrometer"
+Dewpoint3,Measuring Equipment,(-20 to 65) °C,,0.14 °C,"EdgeTech chilled
+mirror hygrometer"

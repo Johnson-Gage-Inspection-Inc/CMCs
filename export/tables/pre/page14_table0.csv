@@ -1,0 +1,84 @@
+﻿Parameter/Range,Frequency,"CMC2, 7 (±)",Comments
+"AC Current – Generate &
+Measure3
+Up to 100 µA
+100 µA to 1 mA
+(1 to 10) mA
+(10 to 100) mA
+100 mA to 1 A
+(1 to 10) A
+(10 to 20) A","(10 to 20) Hz
+(20 to 45) Hz
+45 Hz to 5 kHz
+(10 to 20) Hz
+(20 to 45) Hz
+(45 to 100) Hz
+100 Hz to 5 kHz
+(5 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(10 Hz to 20) Hz
+(20 Hz to 45) Hz
+(45 Hz to 100) Hz
+100 Hz to 5 kHz
+(5 kHz to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(10 to 20) Hz
+(20 to 45) Hz
+(45 to 100) Hz
+100 Hz to 5 kHz
+(5 to 20) kHz
+(20 to 50) kHz
+(50 to 100) kHz
+(10 to 20) Hz
+(20 to 45) Hz
+(45 to 100) Hz
+100 Hz to 5 kHz
+(5 to 20) kHz
+(20 to 50) kHz
+(1 to 50) Hz
+50 Hz to 1 kHz
+(1 to 5) kHz
+(1 to 50) Hz
+50 Hz to 1 kHz
+(1 to 5) kHz","0.42 % + 0.077 µA
+0.17 % + 0.038 µA
+0.069 % + 0.036 µA
+0.46 % + 0.25 µA
+0.17 % + 0.27 µA
+0.069 % + 0.24 µA
+0.035 % + 0.24 µA
+0.07 % + 0.24 µA
+0.47 % + 0.47 µA
+0.64 % + 1.8 µA
+0.46 % + 2.5 µA
+0.17 % + 2.7 µA
+0.069 % + 2.4 µA
+0.035 % + 2.4 µA
+0.07 % + 2.4 µA
+0.47 % + 4.7 µA
+0.64 % + 18 µA
+0.46 % + 25 µA
+0.17 % + 27 µA
+0.069 % + 24 µA
+0.035 % + 24 µA
+0.07 % + 24 µA
+0.47 % + 47 µA
+0.64 % + 0.18 mA
+0.46 % + 0.25 mA
+0.18 % + 0.28 mA
+0.092 % + 0.24 mA
+0.12 % + 0.24 mA
+0.35 % + 0.24 mA
+1.2 % + 0.47 mA
+0.0093 % + 0.46 mA
+0.012 % + 0.45 mA
+0.067 % + 1.2 mA
+0.0083 % + 0.47 mA
+0.012 % + 2.2 mA
+0.066 % + 1.1 mA","HP 3458A with
+Fluke 5502A
+HP 3458A with Fluke
+5502A and current
+shunt"

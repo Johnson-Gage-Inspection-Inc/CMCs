@@ -1,0 +1,91 @@
+﻿Parameter/Equipment,Range,"CMC2, 7 (±)",Comments
+"Resistance – Generate &
+Measure3","(0 to 1) Ω
+(1 to 10) Ω
+(10 to 100) Ω
+100 Ω to 1 kΩ
+(1 to 10) kΩ
+(10 to 100) kΩ
+100 kΩ to 1 MΩ
+(1 to 10) MΩ
+(10 to 100) MΩ
+100 MΩ to 1 GΩ","81 µΩ/Ω + 2.7 µΩ
+17 µΩ/Ω + 62 µΩ
+14 µΩ/Ω + 0.58 mΩ
+12 µΩ/Ω + 0.59 mΩ
+12 µΩ/Ω + 5.9 mΩ
+12 µΩ/Ω + 58 mΩ
+17 µΩ/Ω + 2.8 Ω
+58 µΩ/Ω + 120 Ω
+0.058 % rdg + 1.2 kΩ
+0.58 % rdg + 12 kΩ","HP34420A, HP3458A"
+Capacitance – Generate,"(0.22 to 3.3) nF
+(3.3 to 11) nF
+(11 to 33) nF
+(33 to 110) nF
+(110 to 330) nF
+(0.33 to 1.1) µF
+(1.1 to 3.3) µF
+(3.3 to 11) µF
+(11 to 33) µF
+(33 to 110) µF
+(110 to 330) µF
+(0.33 to 1.1) mF
+(1.1 to 3.3) mF
+(3.3 to 11) mF
+(11 to 33) mF
+(33 to 110) mF","0.58 % rdg + 12 pF
+0.29 % rdg + 12 pF
+0.29 % rdg + 120 pF
+0.29 % rdg + 120 pF
+0.29 % rdg + 350 pF
+0.29 % rdg + 1.2 nF
+0.29 % rdg + 3.5 nF
+0.29 % rdg + 12 nF
+0.46 % rdg + 36 nF
+0.52 % rdg + 120 nF
+0.52 % rdg + 350 nF
+0.52 % rdg + 1.2 µF
+0.52 % rdg + 3.5 µF
+0.52 % rdg + 13 µF
+0.87 % rdg + 35 µF
+1.3 % rdg + 120 µF",Fluke 5502A
+"Electrical Calibration of
+Thermocouple Indicators
+& Simulators3 –
+Type B
+Type E
+Type J
+Type K","(1000 to 1200) °F
+(1200 to 1600) °F
+(1600 to 2400) °F
+(2400 to 3200) °F
+(-454 to 300) °F
+(300 to 1100) °F
+(1100 to 1832) °F
+(-346 to -120) °F
+(-120 to 500) °F
+(500 to 1350) °F
+(1350 to 2192) °F
+(-454 to -400) °F
+(-400 to -120) °F
+(-120 to 500) °F
+(500 to 1500) °F
+(1500 to 2500) °F","0.37 °F
+0.32 °F
+0.26 °F
+0.21 °F
+0.17 °F
+0.11 °F
+0.11 °F
+0.28 °F
+0.17 °F
+0.13 °F
+0.13 °F
+5.4 °F
+0.79 °F
+0.22 °F
+0.18 °F
+0.20 °F","Fluke 5502A or HP
+3245A, monitored by
+HP 3458A"

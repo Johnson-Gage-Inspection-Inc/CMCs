@@ -1,0 +1,70 @@
+﻿Equipment,Parameter,Range,Frequency,CMC (±),Comments
+"Electrical Calibration of
+Thermocouple Indicators
+& Simulators3","(cont)
+Type N
+Type R
+Type S
+Type T","(-400 to -300) °F
+(-300 to -150) °F
+(-150 to -50) °F
+(-50 to 700) °F
+(700 to 1500) °F
+(1500 to 2372) °F
+(-58 to 32) °F
+(32 to 400) °F
+(400 to 1100) °F
+(1100 to 2200) °F
+(2200 to 3214) °F
+(-58 to 32) °F
+(32 to 400) °F
+(400 to 1100) °F
+(1100 to 2200) °F
+(2200 to 3214) °F
+(-400 to -300) °F
+(-300 to 120) °F
+(-120 to 200) °F
+(200 to 752) °F",,"1.7 °F
+0.54 °F
+0.35 °F
+0.29 °F
+0.21 °F
+0.22 °F
+0.65 °F
+0.38 °F
+0.27 °F
+0.24 °F
+0.24 °F
+0.51 °F
+0.33 °F
+0.27 °F
+0.24 °F
+0.24 °F
+0.69 °F
+0.34 °F
+0.23 °F
+0.16 °F","Fluke 5502A or HP
+3245A, monitored by
+HP 3458A"
+"Electrical Calibration of
+RTD Indicators &
+Simulators3","Pt 385, 100 Ω
+Pt 385, 1000 Ω","(-320 to 32) °F
+(32 to 400) °F
+(400 to 800) °F
+(800 to 1200) °F
+(1200 to 1562) °F
+(-320 to 32) °F
+(32 to 400) °F
+(400 to 800) °F
+(800 to 1200) °F
+(1200 to 1562) °F",,"0.013 °F
+0.016 °F
+0.02 °F
+0.027 °F
+0.035 °F
+0.009 °F
+0.016 °F
+0.020 °F
+0.027 °F
+0.033 °F",HP 3458A
