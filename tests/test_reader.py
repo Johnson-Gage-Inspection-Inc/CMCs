@@ -98,13 +98,9 @@ def test_parse_page_table_with_detailed_diff(table_file):
 
         # Add info about any extra or missing rows
         if len(result_df) > len(expected_df):
-            diffs.append(
-                f"Extra rows in result: {len(result_df) - len(expected_df)}"
-            )
+            diffs.append(f"Extra rows in result: {len(result_df) - len(expected_df)}")
         elif len(result_df) < len(expected_df):
-            diffs.append(
-                f"Missing rows in result: {len(expected_df) - len(result_df)}"
-            )
+            diffs.append(f"Missing rows in result: {len(expected_df) - len(result_df)}")
 
         # Fail with detailed information
         pytest.fail("DataFrames are not equal:\n" + "\n".join(diffs))
@@ -118,7 +114,7 @@ def test_distribute_multi_line_parameter():
     input_df = pd.read_csv(input_path).fillna("")
 
     # Convert DataFrame to list of dictionaries like the function expects
-    first_pass_data = input_df.to_dict('records')
+    first_pass_data = input_df.to_dict("records")
 
     # Process the data
     result_df = distribute_multi_line_parameter(first_pass_data)
@@ -165,13 +161,9 @@ def test_distribute_multi_line_parameter():
 
         # Add info about any extra or missing rows
         if len(result_df) > len(expected_df):
-            diffs.append(
-                f"Extra rows in result: {len(result_df) - len(expected_df)}"
-            )
+            diffs.append(f"Extra rows in result: {len(result_df) - len(expected_df)}")
         elif len(result_df) < len(expected_df):
-            diffs.append(
-                f"Missing rows in result: {len(expected_df) - len(result_df)}"
-            )
+            diffs.append(f"Missing rows in result: {len(expected_df) - len(result_df)}")
 
         # Fail with detailed information
         pytest.fail("DataFrames are not equal:\n" + "\n".join(diffs))
