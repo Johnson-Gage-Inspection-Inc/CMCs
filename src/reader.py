@@ -25,7 +25,8 @@ def split_parameter_equipment(cell_value):
         equipment, param = split_cols
         return (equipment.strip(), param.strip())
     else:
-        return ("", cell_value.strip())
+        # If there is no dash, treat the entire thing as Equipment
+        return (cell_value.strip(), "")
 
 
 def split_parameter_range(cell_value):
