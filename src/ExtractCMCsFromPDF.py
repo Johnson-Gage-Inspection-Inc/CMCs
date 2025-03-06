@@ -2,7 +2,8 @@
 import tkinter as tk
 from tkinter import filedialog
 from src.reader import extract_pdf_tables_to_df
-from src.expander import expand_rows
+from src.expander import expand_frequency_and_cmc, parse_range
+import pandas as pd
 
 
 def browse_file():
@@ -21,7 +22,11 @@ def process_pdf(pdf_file, save_intermediate=False):
         print("Saved intermediate_df.csv")
 
     # Step 2: Expand
-    df_expanded = expand_rows(df_all)
+    df_expanded = expand_frequency_and_cmc(df_all)
+    # Add RangeMin, RangeMax, RangeUnit columns
+    df_expanded[["RangeMin", "RangeMax", "RangeUnit"]] = df_expanded["Range"].apply(
+        lambda x: pd.Series(parse_range(x))
+    )
     df_expanded.to_csv("extracted_data.csv", index=False)
     print("Saved extracted_data.csv")
     return df_expanded
