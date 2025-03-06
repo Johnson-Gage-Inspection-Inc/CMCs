@@ -184,15 +184,19 @@ def segment_by_blank_lines(lines):
 
 
 def dynamic_expand_row(row):
-    # eqp = row.get("Equipment", "")
     param_txt = row.get("Parameter", "")
     rng_txt = row.get("Range", "")
     cmc_txt = row.get("CMC (±)", "")
-    # comm_txt = row.get("Comments", "")
 
-    param_lines = param_txt.splitlines()
-    range_lines = rng_txt.splitlines()
-    cmc_lines = cmc_txt.splitlines()
+    # Convert to strings and ensure consistent line breaks
+    param_lines = str(param_txt).replace('\r\n', '\n').splitlines() if param_txt else []
+    range_lines = str(rng_txt).replace('\r\n', '\n').splitlines() if rng_txt else []
+    cmc_lines = str(cmc_txt).replace('\r\n', '\n').splitlines() if cmc_txt else []
+
+    # Normalize empty lines
+    param_lines = [ln.strip() for ln in param_lines if ln.strip()]
+    range_lines = [ln.strip() for ln in range_lines if ln.strip()]
+    cmc_lines = [ln.strip() for ln in cmc_lines if ln.strip()]
 
     range_segments = segment_by_blank_lines(range_lines)
     cmc_segments = segment_by_blank_lines(cmc_lines)
