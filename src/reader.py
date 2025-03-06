@@ -316,6 +316,11 @@ def expand_multi_line_rows(df):
 
     second_pass = distribute_multi_line_parameter(first_pass)
     df_expanded = pd.DataFrame(second_pass)
+    # Remove any remaining linebreaks from each cell
+    for col in df_expanded.columns:
+        df_expanded[col] = df_expanded[col].apply(
+            lambda x: str(x).replace("\n", " ").strip()
+        )
     return df_expanded
 
 
