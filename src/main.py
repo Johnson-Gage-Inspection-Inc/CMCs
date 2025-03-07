@@ -9,10 +9,26 @@ from src.expander import expand_frequency_and_cmc, parse_range
 
 # --- New helper functions for enhanced parsing ---
 
-# Regex pattern to match Unicode superscripts (footnote markers)
+# Regex pattern to match Unicode superscripts ( footnote markers)
 SUPERSCRIPT_PATTERN = re.compile(r"[\u00B2\u00B3\u00B9\u2070-\u209F]")
 # Pattern to split on a dash (–) that separates equipment from parameter
 DASH_PATTERN = re.compile(r"\s*–\s*")
+
+
+def main(pdf_file, save_intermediate=False):
+    # Step 1: Extract DataFrame from PDF without frequency expansion
+    df_all = extract_pdf_tables_to_df(pdf_file)
+    if save_intermediate:
+        df_all.to_csv("tests/test_data/intermediate_df.csv", index=False)
+        print("Saved intermediate_df.csv")
+    # Step 2: Expand Frequency and CMC using existing logic
+    df_expanded = expand_frequency_and_cmc(df_all)
+    # Add RangeMin, RangeMax, RangeUnit columns
+    df_expanded[["RangeMin", "RangeMax", "RangeUnit"]] = df_expanded["Range"].apply(
+        lambda x: pd.Series(parse_range(x))
+    )
+    df_expanded.to_csv("extracted_data.csv", index=False)
+    print("Saved extracted_data.csv")
 
 
 def remove_superscripts(text: str) -> str:
@@ -220,23 +236,6 @@ def extract_pdf_tables_to_df(pdf_path):
     return df_all
 
 
-def process_pdf(pdf_file, save_intermediate=False):
-    # Step 1: Extract DataFrame from PDF without frequency expansion
-    df_all = extract_pdf_tables_to_df(pdf_file)
-    if save_intermediate:
-        df_all.to_csv("tests/test_data/intermediate_df.csv", index=False)
-        print("Saved intermediate_df.csv")
-    # Step 2: Expand Frequency and CMC using existing logic
-    df_expanded = expand_frequency_and_cmc(df_all)
-    # Add RangeMin, RangeMax, RangeUnit columns
-    df_expanded[["RangeMin", "RangeMax", "RangeUnit"]] = df_expanded["Range"].apply(
-        lambda x: pd.Series(parse_range(x))
-    )
-    df_expanded.to_csv("extracted_data.csv", index=False)
-    print("Saved extracted_data.csv")
-    return df_expanded
-
-
 def browse_file():
     root = tk.Tk()
     root.withdraw()
@@ -248,7 +247,7 @@ def browse_file():
 if __name__ == "__main__":
     pdf_file = browse_file()
     if pdf_file:
-        final_df = process_pdf(pdf_file)
+        main(pdf_file)
         print("Done! See extracted_data.csv.")
     else:
         print("No file selected.")
