@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog
 import pdfplumber
-import pandas as pd
+# import pandas as pd
 # import json
 import re
 
@@ -13,14 +13,14 @@ DASH_PATTERN = re.compile(r"\s*–\s*")
 
 
 def main(pdf_path, save_intermediate=False):
-    big_tables = []
+    # big_tables = []
     with pdfplumber.open(pdf_path) as pdf:
         for page in pdf.pages:
             tables = custom_extract_tables(page)
             for table in tables:
                 headers, *rows = table
                 header_names = [cell[0]["text"] for cell in headers]
-                df = pd.DataFrame(columns=header_names)
+                # df = pd.DataFrame(columns=header_names)
                 for row in rows:
                     for cell, header in zip(row, header_names):
                         for cluster in cell:
@@ -28,7 +28,7 @@ def main(pdf_path, save_intermediate=False):
                             # TODO: Handle multi-line cells
 
 
-def custom_extract_tables(page, table_settings=None, vertical_thresh=12, indent_thresh=9):
+def custom_extract_tables(page, table_settings=None, vertical_thresh=12, indent_thresh=4):
     """
     Custom table extraction from a pdfplumber Page.
 
@@ -45,7 +45,8 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=12, indent_
       page: a pdfplumber.Page instance.
       table_settings: (optional) settings to pass to page.find_tables().
       vertical_thresh: maximum vertical gap (in PDF points) to group lines together.
-      indent_thresh: (not used here for splitting, but can be used later to flag sub-rows)
+      indent_thresh: threshold (in PDF points) such that if a line's indent exceeds the base indent by more than this,
+                     it is not treated as wrapped text.
 
     Returns:
       A list of tables. Each table is structured as:
@@ -78,8 +79,13 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=12, indent_
                     # Cluster lines that are close vertically to handle text wrapping.
                     clusters = []
                     current_cluster = [lines[0]]
+                    base_indent = current_cluster[0]["x0"] - cell[0]
                     for ln in lines[1:]:
-                        if ln["top"] - current_cluster[-1]["top"] < vertical_thresh:
+                        vertical_gap = ln["top"] - current_cluster[-1]["top"]
+                        # Calculate indent relative to the cell's left edge
+                        ln_indent = ln["x0"] - cell[0]
+                        # If the vertical gap is small and the new line's indent is close to the base, merge it.
+                        if vertical_gap < vertical_thresh and ln_indent <= base_indent + indent_thresh:
                             current_cluster.append(ln)
                         else:
                             clusters.append(current_cluster)
@@ -88,14 +94,12 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=12, indent_
 
                     # For each cluster, merge the text and record top and indent.
                     for clust in clusters:
-                        # The indent is computed as the minimum x0 in the cluster, relative to the cell's left edge.
                         min_x0 = min(ln["x0"] for ln in clust)
                         indent = min_x0 - cell[0]
-                        # The top coordinate is the minimum 'top' in the cluster.
                         top_val = min(ln["top"] for ln in clust)
-                        # Concatenate the text from each line in order.
                         text = " ".join(ln["text"] for ln in clust)
-                        if indent > indent_thresh:
+                        # Mark clusters that are indented.
+                        if indent > base_indent + indent_thresh:
                             text = r'\t' + text
                         visual_rows.append({"text": text, "top": top_val, "indent": indent})
                 row_cells.append(visual_rows)
@@ -103,15 +107,6 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=12, indent_
         custom_tables.append(table_rows)
 
     return custom_tables
-
-# Example usage:
-# with pdfplumber.open("2820-01-page1.pdf") as pdf:
-#     page = pdf.pages[0]
-#     tables = custom_extract_tables(page)
-#     for table in tables:
-#         for row in table:
-#             for cell in row:
-#                 print(cell)
 
 
 if __name__ == "__main__":
