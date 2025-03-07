@@ -132,16 +132,37 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_
                     clusters.append(current_cluster)
                     # --- End single-pass clustering ---
 
-                    # Build the final visual row entries from clusters.
+                    # New: Merge clusters that appear to be subscripts.
+                    def convert_to_subscript(s):
+                        # Map regular digits to Unicode subscripts.
+                        subscript_map = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
+                        return s.translate(subscript_map)
+
+                    merged_clusters = []
                     for clust in clusters:
-                        min_x0 = min(ln["x0"] for ln in clust)
-                        indent = min_x0 - cell[0]
-                        top_val = min(ln["top"] for ln in clust)
-                        text = " ".join(ln["text"] for ln in clust)
+                        cluster_text = " ".join(ln["text"] for ln in clust)
+                        # If the current cluster's text is only digits (possibly with extra whitespace)
+                        # and there is a preceding cluster, merge it as a subscript.
+                        if merged_clusters and re.fullmatch(r"\s*\d+\s*", cluster_text):
+                            subscript = convert_to_subscript(cluster_text.strip())
+                            merged_clusters[-1]["text"] = merged_clusters[-1]["text"].rstrip() + subscript
+                        else:
+                            merged_clusters.append({
+                                "lines": clust,
+                                "text": cluster_text,
+                                "min_x0": min(ln["x0"] for ln in clust),
+                                "top": min(ln["top"] for ln in clust)
+                            })
+
+                    # Build the final visual row entries from merged clusters.
+                    for mclust in merged_clusters:
+                        indent = mclust["min_x0"] - cell[0]
                         base_indent = lines[0]["x0"] - cell[0]
+                        text = mclust["text"]
                         if indent > base_indent + indent_thresh:
                             text = f'\t{text}'
-                        visual_rows.append({"text": text, "top": top_val})
+                        visual_rows.append({"text": text, "top": mclust["top"]})
+
                 row_cells.append(visual_rows)
             table_rows.append(row_cells)
         custom_tables.append(table_rows)
