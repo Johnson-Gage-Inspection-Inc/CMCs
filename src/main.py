@@ -28,7 +28,7 @@ def main(pdf_path, save_intermediate=False):
                             # TODO: Handle multi-line cells
 
 
-def custom_extract_tables(page, table_settings=None, vertical_thresh=12, indent_thresh=4):
+def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_thresh=4):
     """
     Custom table extraction from a pdfplumber Page.
 
