@@ -17,6 +17,10 @@ def main(pdf_path, save_intermediate=False):
     with pdfplumber.open(pdf_path) as pdf:
         for page in pdf.pages:
             tables = custom_extract_tables(page)
+            # # Save to JSON for debugging
+            # import json
+            # with open("tables.json", "w") as f:
+            #     json.dump(tables, f, indent=2)
             for table in tables:
                 headers, *rows = table
                 header_names = [cell[0]["text"] for cell in headers]
