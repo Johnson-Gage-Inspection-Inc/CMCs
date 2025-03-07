@@ -45,8 +45,8 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=12, indent_
       page: a pdfplumber.Page instance.
       table_settings: (optional) settings to pass to page.find_tables().
       vertical_thresh: maximum vertical gap (in PDF points) to group lines together.
-      indent_thresh: threshold (in PDF points) such that if a line's indent exceeds the base indent by more than this,
-                     it is not treated as wrapped text.
+      indent_thresh: threshold (in PDF points) such that if a line's indent differs from the current cluster's
+                     base indent by more than this, it is not treated as text-wrapped.
 
     Returns:
       A list of tables. Each table is structured as:
@@ -95,25 +95,32 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=12, indent_
                     # Cluster lines that are close vertically to handle text wrapping.
                     clusters = []
                     current_cluster = [lines[0]]
-                    base_indent = current_cluster[0]["x0"] - cell[0]
+                    # Set the base indent for this cluster.
+                    current_indent = lines[0]["x0"] - cell[0]
                     for ln in lines[1:]:
                         vertical_gap = ln["top"] - current_cluster[-1]["top"]
                         ln_indent = ln["x0"] - cell[0]
-                        # Check basic conditions: small vertical gap and similar indent.
-                        if vertical_gap < vertical_thresh and ln_indent <= base_indent + indent_thresh:
-                            # Compute available space on the previous line.
+                        # If the indent of the candidate line differs from the cluster's base, break the cluster.
+                        if abs(ln_indent - current_indent) > indent_thresh:
+                            clusters.append(current_cluster)
+                            current_cluster = [ln]
+                            current_indent = ln_indent
+                        elif vertical_gap < vertical_thresh:
+                            # Check available space on the previous line.
                             available_space = cell[2] - current_cluster[-1]["x1"]
                             first_word_width = get_first_word_width(ln)
                             # If there's enough room for the first word on the previous line,
-                            # then this line is not a forced wrap and should start a new cluster.
+                            # then the candidate line is not wrapped and should start a new cluster.
                             if available_space >= first_word_width:
                                 clusters.append(current_cluster)
                                 current_cluster = [ln]
+                                current_indent = ln_indent
                             else:
                                 current_cluster.append(ln)
                         else:
                             clusters.append(current_cluster)
                             current_cluster = [ln]
+                            current_indent = ln_indent
                     clusters.append(current_cluster)
 
                     # For each cluster, merge the text and record top and indent.
@@ -122,7 +129,8 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=12, indent_
                         indent = min_x0 - cell[0]
                         top_val = min(ln["top"] for ln in clust)
                         text = " ".join(ln["text"] for ln in clust)
-                        # Mark clusters that are indented.
+                        # Optionally, mark clusters that are indented relative to the first line.
+                        base_indent = lines[0]["x0"] - cell[0]
                         if indent > base_indent + indent_thresh:
                             text = r'\t' + text
                         visual_rows.append({"text": text, "top": top_val, "indent": indent})
