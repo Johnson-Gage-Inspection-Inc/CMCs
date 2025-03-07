@@ -93,6 +93,8 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=3, indent_t
                         top_val = min(ln["top"] for ln in clust)
                         # Concatenate the text from each line in order.
                         text = " ".join(ln["text"] for ln in clust)
+                        if indent > indent_thresh:
+                            text = r'\t' + text
                         visual_rows.append({"text": text, "top": top_val, "indent": indent})
                 row_cells.append(visual_rows)
             table_rows.append(row_cells)
