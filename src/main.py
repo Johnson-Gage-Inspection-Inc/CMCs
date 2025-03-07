@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog
 import pdfplumber
-# import pandas as pd
+import pandas as pd
 # import json
 import re
 
@@ -18,15 +18,17 @@ def main(pdf_path, save_intermediate=False):
         for page in pdf.pages:
             tables = custom_extract_tables(page)
             for table in tables:
-                table1 = fix_rows(table)
+                headers, *rows = table
+                header_names = [cell[0]["text"] for cell in headers]
+                df = pd.DataFrame(columns=header_names)
+                for row in rows:
+                    for cell, header in zip(row, header_names):
+                        for cluster in cell:
+                            print(str(cluster))
+                            # TODO: Handle multi-line cells
 
 
-def fix_rows(table):
-
-    return table
-
-
-def custom_extract_tables(page, table_settings=None, vertical_thresh=3, indent_thresh=3):
+def custom_extract_tables(page, table_settings=None, vertical_thresh=12, indent_thresh=9):
     """
     Custom table extraction from a pdfplumber Page.
 
