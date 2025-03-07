@@ -56,52 +56,6 @@ def cleanColumn(col):
     return col.str.replace(r"\(cont\)", "", regex=True).str.strip()
 
 
-def parse_page_table(df_page):
-    """
-    Convert a single extracted table (list of lists) into a cleaned DataFrame.
-    """
-    # Ensure columns exist
-    df_page["Equipment"] = df_page.get("Equipment", "")
-    df_page["Parameter"] = df_page.get("Parameter", "")
-    df_page["Range"] = df_page.get("Range", "")
-    df_page["Frequency"] = df_page.get("Frequency", "")
-    df_page["CMC (±)"] = df_page.get("CMC (±)", "")
-    df_page["Comments"] = df_page.get("Comments", "")
-
-    # 1) If "Parameter/Equipment" col => split into "Equipment", "Parameter"
-    if "Parameter/Equipment" in df_page.columns:
-        eqp_par = df_page["Parameter/Equipment"].apply(split_parameter_equipment)
-        df_page["Equipment"], df_page["Parameter"] = zip(*eqp_par)
-        df_page.drop(columns=["Parameter/Equipment"], inplace=True)
-
-    # 2) If "Parameter/Range" col => split into "Parameter", "Range"
-    if "Parameter/Range" in df_page.columns:
-        pr_cols = df_page["Parameter/Range"].apply(split_parameter_range)
-        df_page["Parameter"], df_page["Range"] = zip(*pr_cols)
-        df_page.drop(columns=["Parameter/Range"], inplace=True)
-
-    # 3) Rename any columns that contain "CMC" => "CMC (±)"
-    for col in list(df_page.columns):
-        if "CMC" in col and col != "CMC (±)":
-            df_page.rename(columns={col: "CMC (±)"}, inplace=True)
-
-    # 4) Remove duplicate columns if needed
-    df_page = df_page.loc[:, ~df_page.columns.duplicated()]
-
-    # 5) Reorder columns
-    final_cols = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
-    existing_cols = [c for c in final_cols if c in df_page.columns]
-    df_page = df_page[existing_cols]
-
-    # Remove superscripts
-    for col in df_page.columns:
-        df_page[col] = df_page[col].apply(
-            lambda x: remove_superscripts(str(x)) if pd.notna(x) else x
-        )
-
-    return expand_multi_line_rows(df_page)
-
-
 def param_lines_are_thermocouples(lines):
     pattern = re.compile(r"^Type\s+[A-Za-z0-9]", re.IGNORECASE)
     for ln in lines:

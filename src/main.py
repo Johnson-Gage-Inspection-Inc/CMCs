@@ -3,14 +3,13 @@ from tkinter import filedialog
 import pdfplumber
 import pandas as pd
 import json
-import re
-from src.reader import cleanColumn, parse_page_table
+from src.reader import cleanColumn, split_parameter_equipment, split_parameter_range, expand_multi_line_rows
 from src.expander import expand_frequency_and_cmc, parse_range
-
-# --- New helper functions for enhanced parsing ---
+import re
 
 # Regex pattern to match Unicode superscripts ( footnote markers)
 SUPERSCRIPT_PATTERN = re.compile(r"[\u00B2\u00B3\u00B9\u2070-\u209F]")
+
 # Pattern to split on a dash (–) that separates equipment from parameter
 DASH_PATTERN = re.compile(r"\s*–\s*")
 
@@ -43,27 +42,25 @@ def extract_pdf_tables_to_df(pdf_path, save_intermediate=False):
                 page.extract_tables()
             )  # or use your extract_tables_by_position(page) if defined
             for i, extracted_table in enumerate(tables):
-                if extracted_table:
-                    headers = extracted_table[0]
-                    data_rows = extracted_table[1:]
-                    df_page = pd.DataFrame(data_rows, columns=headers)
-                    # Save the pre-parsed table for debugging
-                    df_page.to_csv(
-                        f"export/tables/pre/page{page.page_number}_table{i}.csv",
-                        index=False,
-                        encoding="utf-8-sig",
-                    )
-                    # Process the table with your enhanced logic
-                    parsed_df_page = parse_page_table(df_page)
-                    # Now apply the enhanced parsing for Parameter/Equipment and Comments
-                    parsed_df_page = enhanced_parse_page_table(parsed_df_page)
-                    # Save the parsed table
-                    parsed_df_page.to_csv(
-                        f"export/tables/parsed/page{page.page_number}_table{i}.csv",
-                        index=False,
-                        encoding="utf-8-sig",
-                    )
-                    big_tables.append(parsed_df_page)
+                if not extracted_table:
+                    continue
+                headers, *data_rows = extracted_table  # First row is headers
+                df_page = pd.DataFrame(data_rows, columns=headers)
+                # Save the pre-parsed table for debugging
+                df_page.to_csv(
+                    f"export/tables/pre/page{page.page_number}_table{i}.csv",
+                    index=False,
+                    encoding="utf-8-sig",
+                )
+                # Process the table with your enhanced logic
+                parsed_df_page = parse_page_table(df_page)
+                # Save the parsed table
+                parsed_df_page.to_csv(
+                    f"export/tables/parsed/page{page.page_number}_table{i}.csv",
+                    index=False,
+                    encoding="utf-8-sig",
+                )
+                big_tables.append(parsed_df_page)
 
     if not big_tables:
         return pd.DataFrame(
@@ -93,91 +90,82 @@ def remove_superscripts(text: str) -> str:
     return SUPERSCRIPT_PATTERN.sub("", text)
 
 
-def split_equipment_and_parameter(cell_text: str) -> tuple[str, str]:
-    """
-    If the cell text contains a dash, split it into equipment and parameter.
-    Otherwise, treat the whole string as equipment.
-    """
-    text = remove_superscripts(cell_text).strip()
-    parts = DASH_PATTERN.split(text, maxsplit=1)
-    if len(parts) == 2:
-        equipment, param = parts
-        return equipment.strip(), param.strip()
+def clean_for_json(obj):
+    """Clean non-serializable objects for JSON dumping."""
+    if isinstance(obj, dict):
+        return {k: clean_for_json(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [clean_for_json(i) for i in obj]
     else:
-        return text, ""
+        try:
+            json.dumps(obj)
+            return obj
+        except (TypeError, OverflowError):
+            return str(obj)
 
 
-def process_parameter_equipment(cell_text: str) -> list:
-    """
-    Process the raw text of the Parameter/Equipment cell.
-    The expected format is:
-      - A left-justified main header (equipment) that may contain a dash (–) to separate an initial parameter.
-      - Followed by one or more indented lines (tab or extra spaces) that represent additional parameters.
-    Returns a list of (equipment, parameter) tuples.
-    """
-    # Split the cell text into lines
-    lines = cell_text.splitlines()
-    results = []
-    equipment = ""
-    for line in lines:
-        stripped = line.strip()
-        if not stripped:
-            continue
-        # Use a simple heuristic: if the line starts with a tab or at least 4 leading spaces, treat it as indented
-        indent = len(line) - len(line.lstrip(" "))
-        if indent >= 4:
-            # This is a sub-item: add the current equipment with this parameter text
-            results.append((equipment, stripped))
-        else:
-            # This is a new main heading line.
-            eqp, param = split_equipment_and_parameter(stripped)
-            equipment = eqp  # update current equipment
-            if param:
-                results.append((equipment, param))
-    # If no sub-items were found, use the equipment as the only row.
-    if not results and equipment:
-        results = [(equipment, "")]
-    return results
+def browse_file():
+    root = tk.Tk()
+    root.withdraw()
+    return filedialog.askopenfilename(
+        title="Select a PDF File", filetypes=[("PDF Files", "*.pdf")]
+    )
 
 
-def process_comments(cell_text: str) -> list:
-    """
-    Process the Comments cell text.
-    The Comments cell may have a left-justified main comment header, followed by one or more indented sub-items.
-    This function returns a list where each sub-item is combined with the main header,
-    separated by a semicolon.
-    """
-    lines = cell_text.splitlines()
-    results = []
-    main_heading = ""
-    for line in lines:
-        stripped = line.strip()
-        if not stripped:
-            continue
-        indent = len(line) - len(line.lstrip(" "))
-        if indent >= 4:
-            # Indented sub-item: combine with main heading (if present)
-            if main_heading:
-                results.append(f"{main_heading}; {stripped}")
-            else:
-                results.append(stripped)
-        else:
-            # New main heading line
-            main_heading = remove_superscripts(stripped)
-    # If there were no sub-items, use the main heading
-    if not results and main_heading:
-        results = [main_heading]
-    return results
+if __name__ == "__main__":
+    pdf_file = browse_file()
+    if pdf_file:
+        main(pdf_file)
+        print("Done! See extracted_data.csv.")
+    else:
+        print("No file selected.")
 
 
-def enhanced_parse_page_table(df_page: pd.DataFrame) -> pd.DataFrame:
+def parse_page_table(df_page):
     """
-    Apply enhanced parsing to the extracted table DataFrame.
-    This function processes:
-      - The "Parameter/Equipment" column: splits into Equipment and Parameter based on left-justification and dash.
-      - The "Comments" column: concatenates main header and indented sub-items.
-    It then replicates rows to flatten these multi-line values.
+    Convert a single extracted table (list of lists) into a cleaned DataFrame.
     """
+    # Ensure columns exist
+    df_page["Equipment"] = df_page.get("Equipment", "")
+    df_page["Parameter"] = df_page.get("Parameter", "")
+    df_page["Range"] = df_page.get("Range", "")
+    df_page["Frequency"] = df_page.get("Frequency", "")
+    df_page["CMC (±)"] = df_page.get("CMC (±)", "")
+    df_page["Comments"] = df_page.get("Comments", "")
+
+    # 1) If "Parameter/Equipment" col => split into "Equipment", "Parameter"
+    if "Parameter/Equipment" in df_page.columns:
+        eqp_par = df_page["Parameter/Equipment"].apply(split_parameter_equipment)
+        df_page["Equipment"], df_page["Parameter"] = zip(*eqp_par)
+        df_page.drop(columns=["Parameter/Equipment"], inplace=True)
+
+    # 2) If "Parameter/Range" col => split into "Parameter", "Range"
+    if "Parameter/Range" in df_page.columns:
+        pr_cols = df_page["Parameter/Range"].apply(split_parameter_range)
+        df_page["Parameter"], df_page["Range"] = zip(*pr_cols)
+        df_page.drop(columns=["Parameter/Range"], inplace=True)
+
+    # 3) Rename any columns that contain "CMC" => "CMC (±)"
+    for col in list(df_page.columns):
+        if "CMC" in col and col != "CMC (±)":
+            df_page.rename(columns={col: "CMC (±)"}, inplace=True)
+
+    # 4) Remove duplicate columns if needed
+    df_page = df_page.loc[:, ~df_page.columns.duplicated()]
+
+    # 5) Reorder columns
+    final_cols = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
+    existing_cols = [c for c in final_cols if c in df_page.columns]
+    df_page = df_page[existing_cols]
+
+    # Remove superscripts
+    for col in df_page.columns:
+        df_page[col] = df_page[col].apply(
+            lambda x: remove_superscripts(str(x)) if pd.notna(x) else x
+        )
+
+    df_page = expand_multi_line_rows(df_page)
+
     new_rows = []
     # If the DataFrame has a "Parameter/Equipment" column, use it;
     # otherwise, fall back to using existing Equipment and Parameter columns.
@@ -217,35 +205,78 @@ def enhanced_parse_page_table(df_page: pd.DataFrame) -> pd.DataFrame:
     return df_enhanced
 
 
-# --- End of helper functions ---
+def process_parameter_equipment(cell_text: str) -> list:
+    """
+    Process the raw text of the Parameter/Equipment cell.
+    The expected format is:
+      - A left-justified main header (equipment) that may contain a dash (–) to separate an initial parameter.
+      - Followed by one or more indented lines (tab or extra spaces) that represent additional parameters.
+    Returns a list of (equipment, parameter) tuples.
+    """
+    # Split the cell text into lines
+    lines = cell_text.splitlines()
+    results = []
+    equipment = ""
+    for line in lines:
+        stripped = line.strip()
+        if not stripped:
+            continue
+        # Use a simple heuristic: if the line starts with a tab or at least 4 leading spaces, treat it as indented
+        indent = len(line) - len(line.lstrip(" "))
+        if indent >= 4:
+            # This is a sub-item: add the current equipment with this parameter text
+            results.append((equipment, stripped))
+        else:
+            # This is a new main heading line.
+            eqp, param = split_equipment_and_parameter(stripped)
+            equipment = eqp  # update current equipment
+            if param:
+                results.append((equipment, param))
+    # If no sub-items were found, use the equipment as the only row.
+    if not results and equipment:
+        results = [(equipment, "")]
+    return results
 
 
-def clean_for_json(obj):
-    """Clean non-serializable objects for JSON dumping."""
-    if isinstance(obj, dict):
-        return {k: clean_for_json(v) for k, v in obj.items()}
-    elif isinstance(obj, list):
-        return [clean_for_json(i) for i in obj]
+def split_equipment_and_parameter(cell_text: str) -> tuple[str, str]:
+    """
+    If the cell text contains a dash, split it into equipment and parameter.
+    Otherwise, treat the whole string as equipment.
+    """
+    text = remove_superscripts(cell_text).strip()
+    parts = DASH_PATTERN.split(text, maxsplit=1)
+    if len(parts) == 2:
+        equipment, param = parts
+        return equipment.strip(), param.strip()
     else:
-        try:
-            json.dumps(obj)
-            return obj
-        except (TypeError, OverflowError):
-            return str(obj)
+        return text, ""
 
 
-def browse_file():
-    root = tk.Tk()
-    root.withdraw()
-    return filedialog.askopenfilename(
-        title="Select a PDF File", filetypes=[("PDF Files", "*.pdf")]
-    )
-
-
-if __name__ == "__main__":
-    pdf_file = browse_file()
-    if pdf_file:
-        main(pdf_file)
-        print("Done! See extracted_data.csv.")
-    else:
-        print("No file selected.")
+def process_comments(cell_text: str) -> list:
+    """
+    Process the Comments cell text.
+    The Comments cell may have a left-justified main comment header, followed by one or more indented sub-items.
+    This function returns a list where each sub-item is combined with the main header,
+    separated by a semicolon.
+    """
+    lines = cell_text.splitlines()
+    results = []
+    main_heading = ""
+    for line in lines:
+        stripped = line.strip()
+        if not stripped:
+            continue
+        indent = len(line) - len(line.lstrip(" "))
+        if indent >= 4:
+            # Indented sub-item: combine with main heading (if present)
+            if main_heading:
+                results.append(f"{main_heading}; {stripped}")
+            else:
+                results.append(stripped)
+        else:
+            # New main heading line
+            main_heading = remove_superscripts(stripped)
+    # If there were no sub-items, use the main heading
+    if not results and main_heading:
+        results = [main_heading]
+    return results
