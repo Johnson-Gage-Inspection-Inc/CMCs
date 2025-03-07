@@ -131,37 +131,72 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_
                             current_cluster.append(ln)
                     clusters.append(current_cluster)
                     # --- End single-pass clustering ---
+                    # New merging logic: group clusters on the same visual line by their 'top' value,
+                    # merge them in left-to-right order, and post-process the merged text to fix subscript spacing.
 
-                    # New: Merge clusters that appear to be subscripts.
                     def convert_to_subscript(s):
-                        # Map regular digits to Unicode subscripts.
                         subscript_map = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
                         return s.translate(subscript_map)
 
-                    merged_clusters = []
+                    # Build info for each cluster.
+                    cluster_info = []
                     for clust in clusters:
-                        cluster_text = " ".join(ln["text"] for ln in clust)
-                        # If the current cluster's text is only digits (possibly with extra whitespace)
-                        # and there is a preceding cluster, merge it as a subscript.
-                        if merged_clusters and re.fullmatch(r"\s*\d+\s*", cluster_text):
-                            subscript = convert_to_subscript(cluster_text.strip())
-                            merged_clusters[-1]["text"] = merged_clusters[-1]["text"].rstrip() + subscript
-                        else:
-                            merged_clusters.append({
-                                "lines": clust,
-                                "text": cluster_text,
-                                "min_x0": min(ln["x0"] for ln in clust),
-                                "top": min(ln["top"] for ln in clust)
-                            })
+                        text = " ".join(ln["text"] for ln in clust).strip()
+                        min_x0 = min(ln["x0"] for ln in clust)
+                        max_x1 = max(ln["x1"] for ln in clust)
+                        top_val = min(ln["top"] for ln in clust)
+                        cluster_info.append({
+                            "text": text,
+                            "min_x0": min_x0,
+                            "max_x1": max_x1,
+                            "top": top_val
+                        })
 
-                    # Build the final visual row entries from merged clusters.
-                    for mclust in merged_clusters:
-                        indent = mclust["min_x0"] - cell[0]
+                    # Group clusters that are on the same visual line (top values within 5 points).
+                    grouped_clusters = []
+                    if cluster_info:
+                        current_group = [cluster_info[0]]
+                        for c in cluster_info[1:]:
+                            if abs(c["top"] - current_group[0]["top"]) < 5:
+                                current_group.append(c)
+                            else:
+                                grouped_clusters.append(current_group)
+                                current_group = [c]
+                        grouped_clusters.append(current_group)
+                    else:
+                        grouped_clusters = []
+
+                    # Merge clusters in each group in left-to-right order.
+                    merged_rows = []
+                    for group in grouped_clusters:
+                        group.sort(key=lambda c: c["min_x0"])
+                        merged_text = group[0]["text"]
+                        current_max = group[0]["max_x1"]
+                        for c in group[1:]:
+                            gap = c["min_x0"] - current_max
+                            if gap < 3:
+                                # If the cluster is solely digits, attach as subscript (with no intervening space)
+                                if re.fullmatch(r"\d+", c["text"]):
+                                    merged_text = merged_text.rstrip() + convert_to_subscript(c["text"])
+                                else:
+                                    merged_text = merged_text.rstrip() + c["text"]
+                            else:
+                                merged_text = merged_text + " " + c["text"]
+                            current_max = max(current_max, c["max_x1"])
+                        # Post-process: if a subscripted digit appears at the start of a word,
+                        # remove the space preceding it by swapping the character order.
+                        merged_text = re.sub(
+                            r'([A-Za-z])\s+([A-Za-z])((?:[₀₁₂₃₄₅₆₇₈₉])\b)',
+                            r'\1\3\2',
+                            merged_text
+                        )
                         base_indent = lines[0]["x0"] - cell[0]
-                        text = mclust["text"]
+                        indent = group[0]["min_x0"] - cell[0]
                         if indent > base_indent + indent_thresh:
-                            text = f'\t{text}'
-                        visual_rows.append({"text": text, "top": mclust["top"]})
+                            merged_text = f'\t{merged_text}'
+                        merged_rows.append({"text": merged_text, "top": group[0]["top"]})
+
+                    visual_rows.extend(merged_rows)
 
                 row_cells.append(visual_rows)
             table_rows.append(row_cells)
