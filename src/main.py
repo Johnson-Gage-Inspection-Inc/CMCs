@@ -28,6 +28,66 @@ def main(pdf_file):
     print("Saved extracted_data.csv")
 
 
+def extract_pdf_tables_to_df(pdf_path, save_intermediate=False):
+    """
+    Reads the PDF, extracts tables using positional data,
+    merges them into one DataFrame, and performs minimal cleaning.
+    """
+    big_tables = []
+    with pdfplumber.open(pdf_path) as pdf:
+        for page in pdf.pages:
+            page_dict = page.to_dict()
+            cleaned_dict = clean_for_json(page_dict)
+            with open(f"export/pages/json/page{page.page_number}.json", "w") as f:
+                json.dump(cleaned_dict, f, indent=4)
+            # Extract tables using positional information
+            tables = (
+                page.extract_tables()
+            )  # or use your extract_tables_by_position(page) if defined
+            for i, extracted_table in enumerate(tables):
+                if extracted_table:
+                    headers = extracted_table[0]
+                    data_rows = extracted_table[1:]
+                    df_page = pd.DataFrame(data_rows, columns=headers)
+                    # Save the pre-parsed table for debugging
+                    df_page.to_csv(
+                        f"export/tables/pre/page{page.page_number}_table{i}.csv",
+                        index=False,
+                        encoding="utf-8-sig",
+                    )
+                    # Process the table with your enhanced logic
+                    parsed_df_page = parse_page_table(df_page)
+                    # Now apply the enhanced parsing for Parameter/Equipment and Comments
+                    parsed_df_page = enhanced_parse_page_table(parsed_df_page)
+                    # Save the parsed table
+                    parsed_df_page.to_csv(
+                        f"export/tables/parsed/page{page.page_number}_table{i}.csv",
+                        index=False,
+                        encoding="utf-8-sig",
+                    )
+                    big_tables.append(parsed_df_page)
+
+    if not big_tables:
+        return pd.DataFrame(
+            columns=[
+                "Equipment",
+                "Parameter",
+                "Range",
+                "Frequency",
+                "CMC (±)",
+                "Comments",
+            ]
+        )
+    df_all = pd.concat(big_tables, ignore_index=True)
+    # Clean the Equipment and Parameter columns further
+    df_all["Equipment"] = cleanColumn(df_all["Equipment"])
+    df_all["Parameter"] = cleanColumn(df_all["Parameter"])
+    if save_intermediate:
+        df_all.to_csv("tests/test_data/intermediate_df.csv", index=False)
+        print("Saved intermediate_df.csv")
+    return df_all
+
+
 def remove_superscripts(text: str) -> str:
     """Remove superscript characters (footnote markers) from text."""
     if not text:
@@ -174,66 +234,6 @@ def clean_for_json(obj):
             return obj
         except (TypeError, OverflowError):
             return str(obj)
-
-
-def extract_pdf_tables_to_df(pdf_path, save_intermediate=False):
-    """
-    Reads the PDF, extracts tables using positional data,
-    merges them into one DataFrame, and performs minimal cleaning.
-    """
-    big_tables = []
-    with pdfplumber.open(pdf_path) as pdf:
-        for page in pdf.pages:
-            page_dict = page.to_dict()
-            cleaned_dict = clean_for_json(page_dict)
-            with open(f"export/pages/json/page{page.page_number}.json", "w") as f:
-                json.dump(cleaned_dict, f, indent=4)
-            # Extract tables using positional information
-            tables = (
-                page.extract_tables()
-            )  # or use your extract_tables_by_position(page) if defined
-            for i, extracted_table in enumerate(tables):
-                if extracted_table:
-                    headers = extracted_table[0]
-                    data_rows = extracted_table[1:]
-                    df_page = pd.DataFrame(data_rows, columns=headers)
-                    # Save the pre-parsed table for debugging
-                    df_page.to_csv(
-                        f"export/tables/pre/page{page.page_number}_table{i}.csv",
-                        index=False,
-                        encoding="utf-8-sig",
-                    )
-                    # Process the table with your enhanced logic
-                    parsed_df_page = parse_page_table(df_page)
-                    # Now apply the enhanced parsing for Parameter/Equipment and Comments
-                    parsed_df_page = enhanced_parse_page_table(parsed_df_page)
-                    # Save the parsed table
-                    parsed_df_page.to_csv(
-                        f"export/tables/parsed/page{page.page_number}_table{i}.csv",
-                        index=False,
-                        encoding="utf-8-sig",
-                    )
-                    big_tables.append(parsed_df_page)
-
-    if not big_tables:
-        return pd.DataFrame(
-            columns=[
-                "Equipment",
-                "Parameter",
-                "Range",
-                "Frequency",
-                "CMC (±)",
-                "Comments",
-            ]
-        )
-    df_all = pd.concat(big_tables, ignore_index=True)
-    # Clean the Equipment and Parameter columns further
-    df_all["Equipment"] = cleanColumn(df_all["Equipment"])
-    df_all["Parameter"] = cleanColumn(df_all["Parameter"])
-    if save_intermediate:
-        df_all.to_csv("tests/test_data/intermediate_df.csv", index=False)
-        print("Saved intermediate_df.csv")
-    return df_all
 
 
 def browse_file():
