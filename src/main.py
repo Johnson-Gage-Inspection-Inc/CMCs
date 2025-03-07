@@ -1,10 +1,8 @@
 import tkinter as tk
 from tkinter import filedialog
 import pdfplumber
-import pandas as pd
-import json
-from src.reader import cleanColumn, split_parameter_equipment, split_parameter_range, expand_multi_line_rows
-from src.expander import expand_frequency_and_cmc, parse_range
+# import pandas as pd
+# import json
 import re
 
 # Regex pattern to match Unicode superscripts ( footnote markers)
@@ -14,269 +12,110 @@ SUPERSCRIPT_PATTERN = re.compile(r"[\u00B2\u00B3\u00B9\u2070-\u209F]")
 DASH_PATTERN = re.compile(r"\s*–\s*")
 
 
-def main(pdf_file):
-    # Step 1: Extract DataFrame from PDF without frequency expansion
-    df_all = extract_pdf_tables_to_df(pdf_file)
-    # Step 2: Expand Frequency and CMC using existing logic
-    df_expanded = expand_frequency_and_cmc(df_all)
-    # Add RangeMin, RangeMax, RangeUnit columns
-    df_expanded[["RangeMin", "RangeMax", "RangeUnit"]] = df_expanded["Range"].apply(
-        lambda x: pd.Series(parse_range(x))
-    )
-    df_expanded.to_csv("extracted_data.csv", index=False)
-    print("Saved extracted_data.csv")
-
-
-def extract_pdf_tables_to_df(pdf_path, save_intermediate=False):
-    """
-    Reads the PDF, extracts tables using positional data,
-    merges them into one DataFrame, and performs minimal cleaning.
-    """
+def main(pdf_path, save_intermediate=False):
     big_tables = []
     with pdfplumber.open(pdf_path) as pdf:
         for page in pdf.pages:
-            with open(f"export/pages/json/page{page.page_number}.json", "w") as f:
-                json.dump(clean_for_json(page.to_dict()), f, indent=4)
-            # Extract tables using positional information
-            tables = (
-                page.extract_tables()
-            )  # or use your extract_tables_by_position(page) if defined
-            for i, extracted_table in enumerate(tables):
-                if not extracted_table:
+            tables = custom_extract_tables(page)
+            for table in tables:
+                table1 = fix_rows(table)
+
+
+def fix_rows(table):
+
+    return table
+
+
+def custom_extract_tables(page, table_settings=None, vertical_thresh=3, indent_thresh=3):
+    """
+    Custom table extraction from a pdfplumber Page.
+
+    Instead of returning a simple list of lists of strings,
+    this function returns a list of tables, where each table is a list of rows,
+    each row is a list of cells, and each cell is represented as a list of visual rows.
+
+    Each visual row is a dict with:
+      - 'text': the extracted text for that wrapped line,
+      - 'top': the vertical coordinate (top) of the visual row,
+      - 'indent': the horizontal indent (difference between the line's x0 and cell's x0)
+
+    Parameters:
+      page: a pdfplumber.Page instance.
+      table_settings: (optional) settings to pass to page.find_tables().
+      vertical_thresh: maximum vertical gap (in PDF points) to group lines together.
+      indent_thresh: (not used here for splitting, but can be used later to flag sub-rows)
+
+    Returns:
+      A list of tables. Each table is structured as:
+         table -> row -> cell -> list of visual row dicts.
+    """
+    # Find tables using pdfplumber's built-in finder.
+    tables = page.find_tables(table_settings=table_settings)
+    custom_tables = []
+
+    for table in tables:
+        table_rows = []
+        # table.rows: each row is a list of cell objects (each with a bounding box)
+        for row in table.rows:
+            row_cells = []
+            for cell in row.cells:
+                if not cell:
+                    # If no bbox is available, we simply return an empty cell.
+                    row_cells.append([])
                     continue
-                headers, *data_rows = extracted_table  # First row is headers
-                df_page = pd.DataFrame(data_rows, columns=headers)
-                # Save the pre-parsed table for debugging
-                df_page.to_csv(
-                    f"export/tables/pre/page{page.page_number}_table{i}.csv",
-                    index=False,
-                    encoding="utf-8-sig",
-                )
-                # Process the table with your enhanced logic
-                parsed_df_page = parse_page_table(df_page)
-                # Save the parsed table
-                parsed_df_page.to_csv(
-                    f"export/tables/parsed/page{page.page_number}_table{i}.csv",
-                    index=False,
-                    encoding="utf-8-sig",
-                )
-                big_tables.append(parsed_df_page)
+                # Crop the page to the cell's bounding box.
+                cell_crop = page.crop(cell)
+                # Extract text lines (with character metadata) from the cell.
+                lines = cell_crop.extract_text_lines(layout=True, return_chars=True)
+                visual_rows = []
+                if not lines:
+                    visual_rows.append({"text": "", "top": None, "indent": None})
+                else:
+                    # Sort lines by their vertical position.
+                    lines.sort(key=lambda ln: ln["top"])
+                    # Cluster lines that are close vertically to handle text wrapping.
+                    clusters = []
+                    current_cluster = [lines[0]]
+                    for ln in lines[1:]:
+                        if ln["top"] - current_cluster[-1]["top"] < vertical_thresh:
+                            current_cluster.append(ln)
+                        else:
+                            clusters.append(current_cluster)
+                            current_cluster = [ln]
+                    clusters.append(current_cluster)
 
-    if not big_tables:
-        return pd.DataFrame(
-            columns=[
-                "Equipment",
-                "Parameter",
-                "Range",
-                "Frequency",
-                "CMC (±)",
-                "Comments",
-            ]
-        )
-    df_all = pd.concat(big_tables, ignore_index=True)
-    # Clean the Equipment and Parameter columns further
-    df_all["Equipment"] = cleanColumn(df_all["Equipment"])
-    df_all["Parameter"] = cleanColumn(df_all["Parameter"])
-    if save_intermediate:
-        df_all.to_csv("tests/test_data/intermediate_df.csv", index=False)
-        print("Saved intermediate_df.csv")
-    return df_all
+                    # For each cluster, merge the text and record top and indent.
+                    for clust in clusters:
+                        # The indent is computed as the minimum x0 in the cluster, relative to the cell's left edge.
+                        min_x0 = min(ln["x0"] for ln in clust)
+                        indent = min_x0 - cell[0]
+                        # The top coordinate is the minimum 'top' in the cluster.
+                        top_val = min(ln["top"] for ln in clust)
+                        # Concatenate the text from each line in order.
+                        text = " ".join(ln["text"] for ln in clust)
+                        visual_rows.append({"text": text, "top": top_val, "indent": indent})
+                row_cells.append(visual_rows)
+            table_rows.append(row_cells)
+        custom_tables.append(table_rows)
 
+    return custom_tables
 
-def remove_superscripts(text: str) -> str:
-    """Remove superscript characters (footnote markers) from text."""
-    if not text:
-        return text
-    return SUPERSCRIPT_PATTERN.sub("", text)
-
-
-def clean_for_json(obj):
-    """Clean non-serializable objects for JSON dumping."""
-    if isinstance(obj, dict):
-        return {k: clean_for_json(v) for k, v in obj.items()}
-    elif isinstance(obj, list):
-        return [clean_for_json(i) for i in obj]
-    else:
-        try:
-            json.dumps(obj)
-            return obj
-        except (TypeError, OverflowError):
-            return str(obj)
-
-
-def browse_file():
-    root = tk.Tk()
-    root.withdraw()
-    return filedialog.askopenfilename(
-        title="Select a PDF File", filetypes=[("PDF Files", "*.pdf")]
-    )
+# Example usage:
+# with pdfplumber.open("2820-01-page1.pdf") as pdf:
+#     page = pdf.pages[0]
+#     tables = custom_extract_tables(page)
+#     for table in tables:
+#         for row in table:
+#             for cell in row:
+#                 print(cell)
 
 
 if __name__ == "__main__":
-    pdf_file = browse_file()
-    if pdf_file:
-        main(pdf_file)
-        print("Done! See extracted_data.csv.")
-    else:
-        print("No file selected.")
+    root = tk.Tk()
+    root.withdraw()
+    pdf_path = filedialog.askopenfilename(title="Select PDF file", filetypes=[("PDF files", "*.pdf")])
+    if not pdf_path:
+        print("No PDF selected. Exiting.")
+        exit()
 
-
-def parse_page_table(df_page):
-    """
-    Convert a single extracted table (list of lists) into a cleaned DataFrame.
-    """
-    # Ensure columns exist
-    df_page["Equipment"] = df_page.get("Equipment", "")
-    df_page["Parameter"] = df_page.get("Parameter", "")
-    df_page["Range"] = df_page.get("Range", "")
-    df_page["Frequency"] = df_page.get("Frequency", "")
-    df_page["CMC (±)"] = df_page.get("CMC (±)", "")
-    df_page["Comments"] = df_page.get("Comments", "")
-
-    # 1) If "Parameter/Equipment" col => split into "Equipment", "Parameter"
-    if "Parameter/Equipment" in df_page.columns:
-        eqp_par = df_page["Parameter/Equipment"].apply(split_parameter_equipment)
-        df_page["Equipment"], df_page["Parameter"] = zip(*eqp_par)
-        df_page.drop(columns=["Parameter/Equipment"], inplace=True)
-
-    # 2) If "Parameter/Range" col => split into "Parameter", "Range"
-    if "Parameter/Range" in df_page.columns:
-        pr_cols = df_page["Parameter/Range"].apply(split_parameter_range)
-        df_page["Parameter"], df_page["Range"] = zip(*pr_cols)
-        df_page.drop(columns=["Parameter/Range"], inplace=True)
-
-    # 3) Rename any columns that contain "CMC" => "CMC (±)"
-    for col in list(df_page.columns):
-        if "CMC" in col and col != "CMC (±)":
-            df_page.rename(columns={col: "CMC (±)"}, inplace=True)
-
-    # 4) Remove duplicate columns if needed
-    df_page = df_page.loc[:, ~df_page.columns.duplicated()]
-
-    # 5) Reorder columns
-    final_cols = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
-    existing_cols = [c for c in final_cols if c in df_page.columns]
-    df_page = df_page[existing_cols]
-
-    # Remove superscripts
-    for col in df_page.columns:
-        df_page[col] = df_page[col].apply(
-            lambda x: remove_superscripts(str(x)) if pd.notna(x) else x
-        )
-
-    df_page = expand_multi_line_rows(df_page)
-
-    new_rows = []
-    # If the DataFrame has a "Parameter/Equipment" column, use it;
-    # otherwise, fall back to using existing Equipment and Parameter columns.
-    for _, row in df_page.iterrows():
-        # Process Parameter/Equipment
-        pe_cell = row.get("Parameter/Equipment", "")
-        if pe_cell:
-            eqp_param_list = process_parameter_equipment(pe_cell)
-        else:
-            # Use existing columns (if present)
-            eqp_param_list = [
-                (row.get("Equipment", "").strip(), row.get("Parameter", "").strip())
-            ]
-
-        # Process Comments similarly
-        comments_cell = row.get("Comments", "")
-        if comments_cell:
-            comment_list = process_comments(comments_cell)
-        else:
-            comment_list = [row.get("Comments", "").strip()]
-
-        # Create one output row per combination.
-        # (For simplicity, we take the Cartesian product of equipment/parameter pairs and comment items.)
-        for eqp, param in eqp_param_list:
-            for comment in comment_list:
-                new_row = row.to_dict()
-                new_row["Equipment"] = eqp
-                new_row["Parameter"] = param
-                new_row["Comments"] = comment
-                new_rows.append(new_row)
-    df_enhanced = pd.DataFrame(new_rows)
-    # Optionally, remove any remaining newline characters from all cells.
-    for col in df_enhanced.columns:
-        df_enhanced[col] = (
-            df_enhanced[col].astype(str).replace("\n", " ", regex=True).str.strip()
-        )
-    return df_enhanced
-
-
-def process_parameter_equipment(cell_text: str) -> list:
-    """
-    Process the raw text of the Parameter/Equipment cell.
-    The expected format is:
-      - A left-justified main header (equipment) that may contain a dash (–) to separate an initial parameter.
-      - Followed by one or more indented lines (tab or extra spaces) that represent additional parameters.
-    Returns a list of (equipment, parameter) tuples.
-    """
-    # Split the cell text into lines
-    lines = cell_text.splitlines()
-    results = []
-    equipment = ""
-    for line in lines:
-        stripped = line.strip()
-        if not stripped:
-            continue
-        # Use a simple heuristic: if the line starts with a tab or at least 4 leading spaces, treat it as indented
-        indent = len(line) - len(line.lstrip(" "))
-        if indent >= 4:
-            # This is a sub-item: add the current equipment with this parameter text
-            results.append((equipment, stripped))
-        else:
-            # This is a new main heading line.
-            eqp, param = split_equipment_and_parameter(stripped)
-            equipment = eqp  # update current equipment
-            if param:
-                results.append((equipment, param))
-    # If no sub-items were found, use the equipment as the only row.
-    if not results and equipment:
-        results = [(equipment, "")]
-    return results
-
-
-def split_equipment_and_parameter(cell_text: str) -> tuple[str, str]:
-    """
-    If the cell text contains a dash, split it into equipment and parameter.
-    Otherwise, treat the whole string as equipment.
-    """
-    text = remove_superscripts(cell_text).strip()
-    parts = DASH_PATTERN.split(text, maxsplit=1)
-    if len(parts) == 2:
-        equipment, param = parts
-        return equipment.strip(), param.strip()
-    else:
-        return text, ""
-
-
-def process_comments(cell_text: str) -> list:
-    """
-    Process the Comments cell text.
-    The Comments cell may have a left-justified main comment header, followed by one or more indented sub-items.
-    This function returns a list where each sub-item is combined with the main header,
-    separated by a semicolon.
-    """
-    lines = cell_text.splitlines()
-    results = []
-    main_heading = ""
-    for line in lines:
-        stripped = line.strip()
-        if not stripped:
-            continue
-        indent = len(line) - len(line.lstrip(" "))
-        if indent >= 4:
-            # Indented sub-item: combine with main heading (if present)
-            if main_heading:
-                results.append(f"{main_heading}; {stripped}")
-            else:
-                results.append(stripped)
-        else:
-            # New main heading line
-            main_heading = remove_superscripts(stripped)
-    # If there were no sub-items, use the main heading
-    if not results and main_heading:
-        results = [main_heading]
-    return results
+    main(pdf_path, save_intermediate=True)
