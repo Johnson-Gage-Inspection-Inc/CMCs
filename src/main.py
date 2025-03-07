@@ -136,8 +136,8 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=12, indent_
                         text = " ".join(ln["text"] for ln in clust)
                         base_indent = lines[0]["x0"] - cell[0]
                         if indent > base_indent + indent_thresh:
-                            text = r'\t' + text
-                        visual_rows.append({"text": text, "top": top_val, "indent": indent})
+                            text = f'\t{text}'
+                        visual_rows.append({"text": text, "top": top_val})
                 row_cells.append(visual_rows)
             table_rows.append(row_cells)
         custom_tables.append(table_rows)
