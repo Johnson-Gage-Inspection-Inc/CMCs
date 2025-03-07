@@ -52,6 +52,22 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=12, indent_
       A list of tables. Each table is structured as:
          table -> row -> cell -> list of visual row dicts.
     """
+    def get_first_word_width(ln):
+        """Return the width of the first word in a line using character metadata."""
+        if "chars" not in ln or not ln["chars"]:
+            return 0
+        first_word_chars = []
+        for c in ln["chars"]:
+            if c["text"].isspace():
+                if first_word_chars:
+                    break
+                else:
+                    continue
+            first_word_chars.append(c)
+        if not first_word_chars:
+            return 0
+        return first_word_chars[-1]["x1"] - first_word_chars[0]["x0"]
+
     # Find tables using pdfplumber's built-in finder.
     tables = page.find_tables(table_settings=table_settings)
     custom_tables = []
@@ -82,11 +98,19 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=12, indent_
                     base_indent = current_cluster[0]["x0"] - cell[0]
                     for ln in lines[1:]:
                         vertical_gap = ln["top"] - current_cluster[-1]["top"]
-                        # Calculate indent relative to the cell's left edge
                         ln_indent = ln["x0"] - cell[0]
-                        # If the vertical gap is small and the new line's indent is close to the base, merge it.
+                        # Check basic conditions: small vertical gap and similar indent.
                         if vertical_gap < vertical_thresh and ln_indent <= base_indent + indent_thresh:
-                            current_cluster.append(ln)
+                            # Compute available space on the previous line.
+                            available_space = cell[2] - current_cluster[-1]["x1"]
+                            first_word_width = get_first_word_width(ln)
+                            # If there's enough room for the first word on the previous line,
+                            # then this line is not a forced wrap and should start a new cluster.
+                            if available_space >= first_word_width:
+                                clusters.append(current_cluster)
+                                current_cluster = [ln]
+                            else:
+                                current_cluster.append(ln)
                         else:
                             clusters.append(current_cluster)
                             current_cluster = [ln]
