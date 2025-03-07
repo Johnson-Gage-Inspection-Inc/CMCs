@@ -15,12 +15,9 @@ SUPERSCRIPT_PATTERN = re.compile(r"[\u00B2\u00B3\u00B9\u2070-\u209F]")
 DASH_PATTERN = re.compile(r"\s*–\s*")
 
 
-def main(pdf_file, save_intermediate=False):
+def main(pdf_file):
     # Step 1: Extract DataFrame from PDF without frequency expansion
     df_all = extract_pdf_tables_to_df(pdf_file)
-    if save_intermediate:
-        df_all.to_csv("tests/test_data/intermediate_df.csv", index=False)
-        print("Saved intermediate_df.csv")
     # Step 2: Expand Frequency and CMC using existing logic
     df_expanded = expand_frequency_and_cmc(df_all)
     # Add RangeMin, RangeMax, RangeUnit columns
@@ -179,7 +176,7 @@ def clean_for_json(obj):
             return str(obj)
 
 
-def extract_pdf_tables_to_df(pdf_path):
+def extract_pdf_tables_to_df(pdf_path, save_intermediate=False):
     """
     Reads the PDF, extracts tables using positional data,
     merges them into one DataFrame, and performs minimal cleaning.
@@ -233,6 +230,9 @@ def extract_pdf_tables_to_df(pdf_path):
     # Clean the Equipment and Parameter columns further
     df_all["Equipment"] = cleanColumn(df_all["Equipment"])
     df_all["Parameter"] = cleanColumn(df_all["Parameter"])
+    if save_intermediate:
+        df_all.to_csv("tests/test_data/intermediate_df.csv", index=False)
+        print("Saved intermediate_df.csv")
     return df_all
 
 
