@@ -5,9 +5,6 @@ import pdfplumber
 # import json
 import re
 
-# Regex pattern to match Unicode superscripts ( footnote markers)
-SUPERSCRIPT_PATTERN = re.compile(r"[\u00B2\u00B3\u00B9\u2070-\u209F]")
-
 # Pattern to split on a dash (–) that separates equipment from parameter
 DASH_PATTERN = re.compile(r"\s*–\s*")
 
