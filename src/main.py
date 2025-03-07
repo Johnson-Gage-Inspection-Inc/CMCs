@@ -36,10 +36,8 @@ def extract_pdf_tables_to_df(pdf_path, save_intermediate=False):
     big_tables = []
     with pdfplumber.open(pdf_path) as pdf:
         for page in pdf.pages:
-            page_dict = page.to_dict()
-            cleaned_dict = clean_for_json(page_dict)
             with open(f"export/pages/json/page{page.page_number}.json", "w") as f:
-                json.dump(cleaned_dict, f, indent=4)
+                json.dump(clean_for_json(page.to_dict()), f, indent=4)
             # Extract tables using positional information
             tables = (
                 page.extract_tables()
