@@ -90,7 +90,7 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_
                 lines = cell_crop.extract_text_lines(layout=True, return_chars=True)
                 visual_rows = []
                 if not lines:
-                    visual_rows.append({"text": "", "top": None, "indent": None})
+                    visual_rows.append({"text": "", "top": None})
                 else:
                     # Sort lines by vertical position.
                     lines.sort(key=lambda ln: ln["top"])
