@@ -4,6 +4,12 @@ import pdfplumber
 # import pandas as pd
 # import json
 import re
+import logging
+
+# Logging configuration
+logging.basicConfig(level=logging.INFO)
+logfile = "main.log"
+logging.basicConfig(filename=logfile, level=logging.DEBUG, filemode="w")
 
 # Pattern to split on a dash (–) that separates equipment from parameter
 DASH_PATTERN = re.compile(r"\s*–\s*")
@@ -138,15 +144,22 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_
                     # Build info for each cluster.
                     cluster_info = []
                     for clust in clusters:
+                        if not clust:
+                            continue
+                        remove_small_chars(clust)
                         text = " ".join(ln["text"] for ln in clust).strip()
                         min_x0 = min(ln["x0"] for ln in clust)
                         max_x1 = max(ln["x1"] for ln in clust)
                         top_val = min(ln["top"] for ln in clust)
+                        # Compute average font size from the available character metadata.
+                        sizes = [c.get("size", 0) for ln in clust for c in ln.get("chars", []) if c.get("size")]
+                        avg_font_size = sum(sizes) / len(sizes) if sizes else 0
                         cluster_info.append({
                             "text": text,
                             "min_x0": min_x0,
                             "max_x1": max_x1,
-                            "top": top_val
+                            "top": top_val,
+                            "font_size": avg_font_size
                         })
 
                     # Group clusters that are on the same visual line (top values within 5 points).
@@ -163,16 +176,31 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_
                     else:
                         grouped_clusters = []
 
-                    # Merge clusters in each group in left-to-right order.
+                    # Merge clusters in each group in left-to-right order,
+                    # filtering out clusters that are considered superscript.
                     merged_rows = []
+                    tol_top = 2    # tolerance in points for top difference
+                    tol_font = 1   # tolerance in points for font size difference
                     for group in grouped_clusters:
-                        group.sort(key=lambda c: c["min_x0"])
-                        merged_text = group[0]["text"]
-                        current_max = group[0]["max_x1"]
-                        for c in group[1:]:
+                        # Use the cluster with the longest text as the baseline (assumed main text)
+                        baseline_cluster = max(group, key=lambda c: len(c["text"]))
+                        baseline_top = baseline_cluster["top"]
+                        baseline_font = baseline_cluster.get("font_size", 0)
+                        # Filter out clusters that are raised (superscripts):
+                        # If a cluster's top is more than tol_top points above the baseline
+                        # AND its font size is smaller than baseline by more than tol_font, drop it.
+                        filtered_group = [
+                            c for c in group
+                            if not ((baseline_top - c["top"]) > tol_top and (baseline_font - c["font_size"]) > tol_font)
+                        ]
+                        if not filtered_group:
+                            continue
+                        filtered_group.sort(key=lambda c: c["min_x0"])
+                        merged_text = filtered_group[0]["text"]
+                        current_max = filtered_group[0]["max_x1"]
+                        for c in filtered_group[1:]:
                             gap = c["min_x0"] - current_max
                             if gap < 3:
-                                # If the cluster is solely digits, attach as subscript (with no intervening space)
                                 if re.fullmatch(r"\d+", c["text"]):
                                     merged_text = merged_text.rstrip() + convert_to_subscript(c["text"])
                                 else:
@@ -180,19 +208,17 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_
                             else:
                                 merged_text = merged_text + " " + c["text"]
                             current_max = max(current_max, c["max_x1"])
-                        # Post-process: if a subscripted digit appears at the start of a word,
-                        # remove the space preceding it by swapping the character order.
+                        # Post-process: fix spacing when a subscripted digit starts a word.
                         merged_text = re.sub(
                             r'([A-Za-z])\s+([A-Za-z])((?:[₀₁₂₃₄₅₆₇₈₉])\b)',
                             r'\1\3\2',
                             merged_text
                         )
                         base_indent = lines[0]["x0"] - cell[0]
-                        indent = group[0]["min_x0"] - cell[0]
+                        indent = filtered_group[0]["min_x0"] - cell[0]
                         if indent > base_indent + indent_thresh:
                             merged_text = f'\t{merged_text}'
-                        merged_rows.append({"text": merged_text, "top": group[0]["top"]})
-
+                        merged_rows.append({"text": merged_text, "top": filtered_group[0]["top"]})
                     visual_rows.extend(merged_rows)
 
                 row_cells.append(visual_rows)
@@ -200,6 +226,32 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_
         custom_tables.append(table_rows)
 
     return custom_tables
+
+
+def remove_small_chars(clust):
+    for ln in clust:
+        if all(c["size"] < 7.5 for c in ln["chars"]):
+            logging.debug("Subscript detected: " + ln["text"])
+            return
+        median_y1 = sorted([char["y1"] for char in ln['chars']])[len(ln['chars']) // 2]
+        string = ""
+        i = 0
+        for char in ln["text"]:
+            if char == ' ':
+                string += char
+            elif ln["chars"][i]["size"] > 7.5 and ln["chars"][i]["y1"] < median_y1 + .1:
+                string += ln["chars"][i]["text"]
+                i += 1
+            else:
+                logging.debug("Subscript detected: " + ln["chars"][i]["text"])
+                ln["chars"].pop(i)
+                # Iteratively replace "  " with " " until no more replacements can be made.
+        while "  " in string:
+            string = string.replace("  ", " ")
+        ln["text"] = string.strip()
+        # df = pd.DataFrame(ln['chars'])
+        # # df.to_csv('chars.csv', encoding='utf-8-sig')
+        # logging.info(df)
 
 
 if __name__ == "__main__":
