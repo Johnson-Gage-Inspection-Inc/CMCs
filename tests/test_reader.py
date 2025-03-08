@@ -37,6 +37,7 @@ def test_extract_tables_by_position(pdf_file):
         "page1.json",
         "page7.json",
         "page9.json",
+        "page16.json",
         "page18.json",
         "page19.json",
         "page21.json",
@@ -54,7 +55,6 @@ def test_parse_table(json_file):
     output_table = custom_parse_table(table)
     # Load expected CSV content
     expected_table = pd.read_csv(f"tests/test_data/tables/parsed/{json_file.replace('.json', f'_table{tableNo}.csv')}")
-    expected_table = expected_table.dropna()
+    expected_table = expected_table.fillna('')
     # Compare the output with the expected output
-    diff = DeepDiff(expected_table, output_table, report_repetition=True)
-    assert not diff, f"Table mismatch:\n{diff.pretty()}"
+    pd.testing.assert_frame_equal(expected_table, output_table)
