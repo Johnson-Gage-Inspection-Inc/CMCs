@@ -56,7 +56,8 @@ def test_parse_table(json_file):
     # Load expected CSV content
     expected_table = pd.read_csv(f"tests/test_data/tables/parsed/{json_file.replace('.json', f'_table{tableNo}.csv')}")
     expected_table = expected_table.fillna('')
-    # Compare the output with the expected output
-    diff = DeepDiff(expected_table, output_table, report_repetition=True)
-    assert not diff, f"Table mismatch:\n{diff.pretty()}"
+    # Compare the cells of the output table with the expected table
+    for i, (row, expected_row) in enumerate(zip(output_table.iterrows(), expected_table.iterrows())):
+        for j, (cell, expected_cell) in enumerate(zip(row[1], expected_row[1])):
+            assert cell == expected_cell, f"Cell mismatch at ({i}, {j}): expected '{expected_cell}', got '{cell}'"
     pd.testing.assert_frame_equal(expected_table, output_table)
