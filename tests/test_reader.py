@@ -8,6 +8,7 @@ from deepdiff import DeepDiff  # Add this import
 @pytest.mark.parametrize(
     "pdf_file",
     [
+        "page1.pdf",
         "page21.pdf",
     ],
 )
