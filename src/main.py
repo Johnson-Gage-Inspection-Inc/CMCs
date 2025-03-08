@@ -239,7 +239,7 @@ def remove_small_chars(clust):
         for char in ln["text"]:
             if char == ' ':
                 string += char
-            elif ln["chars"][i]["size"] > 7.5 and ln["chars"][i]["y1"] < median_y1 + .1:
+            elif ln["chars"][i]["size"] > 7.5 and ln["chars"][i]["y1"] < median_y1 + 1:
                 string += ln["chars"][i]["text"]
                 i += 1
             else:
