@@ -46,7 +46,6 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_
     Each visual row is a dict with:
       - 'text': the extracted text for that visual line,
       - 'top': the vertical coordinate (top) of the visual line,
-      - 'indent': the horizontal indent (difference between the line's x0 and the cell's left edge)
 
     Parameters:
       page: a pdfplumber.Page instance.
