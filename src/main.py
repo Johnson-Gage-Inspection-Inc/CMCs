@@ -194,6 +194,15 @@ def remove_small_chars(clust):
         ln["text"] = string.strip()
 
 
+def custom_parse_table(input_data):
+    """
+    Stub for custom_parse_table.
+    Replace with the actual implementation.
+    """
+    # TODO: implement the table parsing logic
+    return ""  # dummy return value
+
+
 if __name__ == "__main__":
     # Initialize file dialog for PDF selection.
     root = tk.Tk()
