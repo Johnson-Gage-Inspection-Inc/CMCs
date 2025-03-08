@@ -3,6 +3,7 @@ from src.main import custom_extract_tables, custom_parse_table
 import pdfplumber
 import json
 from deepdiff import DeepDiff
+import pandas as pd
 
 
 @pytest.mark.parametrize(
@@ -44,9 +45,10 @@ def test_parse_table(json_file):
         input_data = json.load(file)
     # Get the output from the new function
     for table in input_data:
-        output_csv = custom_parse_table(table)
+        output_table = custom_parse_table(table)
         # Load expected CSV content
-        with open("tests/test_data/tables/parsed/page1_table0.csv") as csv_file:
-            expected_csv = csv_file.read()
+        expected_table = pd.read_csv(f"tests/test_data/tables/parsed/{json_file.replace('.json', '_table0.csv')}")
+        expected_table = expected_table.dropna()
         # Compare the output with the expected output
-        assert output_csv == expected_csv, "Parsed CSV output does not match the expected CSV content."
+        diff = DeepDiff(expected_table, output_table, report_repetition=True)
+        assert not diff, f"Table mismatch:\n{diff.pretty()}"
