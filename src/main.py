@@ -21,7 +21,7 @@ def main(pdf_path, save_intermediate=False):
             tables = custom_extract_tables(page)
             # Save intermediate results if requested
             if save_intermediate:
-                with open(f"export/pages/page_{page.page_number}.json", "w") as f:
+                with open(f"export/pages/json/page{page.page_number}.json", "w") as f:
                     f.write(json.dumps(tables, indent=2))
             for table in tables:
                 headers, *rows = table
