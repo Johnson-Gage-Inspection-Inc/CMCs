@@ -215,59 +215,84 @@ def custom_parse_table(input_data):
     """
     dash_pattern = re.compile(r"\s*–\s*")
 
-    # Process header row (first row of input_data)
-    header_row = input_data[0]
-    header0_text = "".join(item.get("text", "").strip() for item in header_row[0])
-
     # Standardize column names
-    if header0_text == "Parameter/Equipment":
-        columns = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
-    else:
-        columns = ["".join(item.get("text", "").strip() for item in cell) for cell in header_row]
-
     columns = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
 
     data_rows = []
     equipment = ""  # Keep track of the last known Equipment name
+    section_comment = ""  # Track section header comments
 
     # Process each data row (skip header row)
     for row in input_data[1:]:
         # Process first column: Equipment/Parameter
         cell0_texts = [item.get("text", "").strip() for item in row[0] if item.get("text")]
+        cell1_texts = [item.get("text", "").strip() for item in row[1] if item.get("text")]
+        cell2_texts = [item.get("text", "").strip() for item in row[2] if item.get("text")]
+        cell3_texts = [item.get("text", "").strip() for item in row[3] if item.get("text")]
+
+        # Check if this is a section header row (Range and CMC empty)
+        is_header_row = not cell1_texts and not cell2_texts
+
+        if is_header_row and cell0_texts:
+            # This is a section header
+            first_line = cell0_texts[0]
+            if first_line.endswith("–"):
+                equipment = first_line.replace("–", "").strip()
+            else:
+                equipment = first_line.strip()
+
+            # Store section comment if present
+            if cell3_texts:
+                section_comment = cell3_texts[0]
+            continue  # Skip adding this row
 
         if cell0_texts:
             first_line = cell0_texts[0]
             parts = dash_pattern.split(first_line)
 
-            if first_line.endswith("–"):
-                # Subheader row: Extract equipment name and discard the row
-                equipment = first_line.replace("–", "").strip()
-                continue  # Skip adding this row
+            if "Countersink & Chamfer" in first_line:
+                # Special case for Countersink & Chamfer Gages
+                equipment = first_line
+                parameters = []
             elif len(parts) > 1:
                 # Case where Equipment and Parameter are in the same line
                 equipment = parts[0].strip()
                 first_param = parts[1].strip()
                 parameters = [first_param] if first_param else []
+                # Add any additional parameters
+                parameters.extend([text.lstrip('\t') for text in cell0_texts[1:]])
             else:
                 # Normal parameter row under the current equipment
-                parameters = cell0_texts
-
+                parameters = [text.lstrip('\t') if text.startswith('\t') else text for text in cell0_texts]
         else:
             parameters = []
 
-        # Process the other columns
-        cell1_texts = [item.get("text", "").strip() for item in row[1] if item.get("text")]
-        cell2_texts = [item.get("text", "").strip() for item in row[2] if item.get("text")]
-        cell3_texts = [item.get("text", "").strip() for item in row[3] if item.get("text")]
+        # Process comments - combine section comment with row comments
+        processed_comments = []
+        if cell3_texts:
+            for comment in cell3_texts:
+                if section_comment and not comment == section_comment:
+                    # Add section comment as prefix if it's not already there
+                    if section_comment not in comment:
+                        processed_comments.append(f"{section_comment}; {comment.lstrip('\t')}")
+                    else:
+                        processed_comments.append(comment)
+                else:
+                    processed_comments.append(comment)
+        elif section_comment and equipment == "Coordinate Measuring Machines (CMM)":
+            # If we have a section comment but no row comment for CMM
+            processed_comments.append(section_comment)
 
         # Determine the number of sub-rows needed
-        num_subrows = max(len(parameters), len(cell1_texts), len(cell2_texts), len(cell3_texts))
+        num_subrows = max(len(parameters), len(cell1_texts), len(cell2_texts), len(processed_comments))
+        if num_subrows == 0:
+            num_subrows = 1  # Ensure at least one row is created
 
         for i in range(num_subrows):
             param = parameters[i] if i < len(parameters) else ""
             range_val = cell1_texts[i] if i < len(cell1_texts) else ""
             cmc_val = cell2_texts[i] if i < len(cell2_texts) else ""
-            comments_val = cell3_texts[i] if i < len(cell3_texts) else ""
+            comments_val = processed_comments[i] if i < len(processed_comments) else ""
 
             # Append row to results
             data_rows.append([equipment, param, range_val, "", cmc_val, comments_val])
