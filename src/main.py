@@ -294,7 +294,7 @@ def custom_parse_table(input_data):
         processed_comments = []
         if cell3_texts:
             for comment in cell3_texts:
-                if section_comment and not comment == section_comment:
+                if section_comment and comment != section_comment:
                     # Add section comment as prefix if it's not already there
                     if section_comment not in comment:
                         processed_comments.append(f"{section_comment}; {comment.lstrip('\t')}")
@@ -303,13 +303,18 @@ def custom_parse_table(input_data):
                 else:
                     processed_comments.append(comment)
         elif section_comment and equipment == "Coordinate Measuring Machines (CMM)":
-            # If we have a section comment but no row comment for CMM
             processed_comments.append(section_comment)
 
-        # Determine the number of sub-rows needed
-        num_subrows = max(len(parameters), len(cell1_texts), len(cell2_texts), len(processed_comments))
+        # If there's exactly one comment and the first cell (Equipment/Parameter) doesn't end with "–",
+        # propagate that comment to all subrows.
+        if cell0_texts and not cell0_texts[0].endswith("–") and len(processed_comments) == 1:
+            # Determine number of subrows from the other cells only.
+            num_subrows = max(len(parameters), len(cell1_texts), len(cell2_texts))
+            processed_comments = [processed_comments[0]] * num_subrows
+        else:
+            num_subrows = max(len(parameters), len(cell1_texts), len(cell2_texts), len(processed_comments))
         if num_subrows == 0:
-            num_subrows = 1  # Ensure at least one row is created
+            num_subrows = 1
 
         for i in range(num_subrows):
             # If there's only one parameter, propagate it to every subrow.
