@@ -101,8 +101,20 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_
                     clusters.append(current_cluster)
 
                     def convert_to_subscript(s):
-                        subscript_map = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
-                        return s.translate(subscript_map)
+                        mapping = {
+                            "0": "₀", "1": "₁", "2": "₂", "3": "₃", "4": "₄",
+                            "5": "₅", "6": "₆", "7": "₇", "8": "₈", "9": "₉",
+                            "a": "ₐ", "A": "ₐ", "b": "ᵦ", "B": "ᵦ", "c": "c", "C": "c",
+                            "d": "d", "D": "d", "e": "ₑ", "E": "ₑ", "f": "f", "F": "f",
+                            "g": "g", "G": "g", "h": "ₕ", "H": "ₕ", "i": "ᵢ", "I": "ᵢ",
+                            "j": "ⱼ", "J": "ⱼ", "k": "ₖ", "K": "ₖ", "l": "ₗ", "L": "ₗ",
+                            "m": "ₘ", "M": "ₘ", "n": "ₙ", "N": "ₙ", "o": "ₒ", "O": "ₒ",
+                            "p": "ₚ", "P": "ₚ", "q": "q", "Q": "q", "r": "ᵣ", "R": "ᵣ",
+                            "s": "ₛ", "S": "ₛ", "t": "ₜ", "T": "ₜ", "u": "ᵤ", "U": "ᵤ",
+                            "v": "ᵥ", "V": "ᵥ", "w": "w", "W": "w", "x": "ₓ", "X": "ₓ",
+                            "y": "y", "Y": "y", "z": "z", "Z": "z"
+                        }
+                        return "".join(mapping.get(char, char) for char in s)
 
                     cluster_info = []
                     for clust in clusters:
@@ -127,11 +139,18 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_
                     if cluster_info:
                         current_group = [cluster_info[0]]
                         for c in cluster_info[1:]:
+                            # If the vertical difference is small, just add to the current group.
                             if abs(c["top"] - current_group[0]["top"]) < 5:
                                 current_group.append(c)
                             else:
-                                grouped_clusters.append(current_group)
-                                current_group = [c]
+                                # Check if this new cluster is a short alphanumeric candidate (subscript)
+                                trimmed = c["text"].strip()
+                                if len(trimmed) <= 2 and re.fullmatch(r"[A-Za-z0-9]+", trimmed):
+                                    # Merge it with the current group even though the vertical gap is larger.
+                                    current_group.append(c)
+                                else:
+                                    grouped_clusters.append(current_group)
+                                    current_group = [c]
                         grouped_clusters.append(current_group)
                     else:
                         grouped_clusters = []
@@ -153,15 +172,24 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_
                         merged_text = filtered_group[0]["text"]
                         current_max = filtered_group[0]["max_x1"]
                         for c in filtered_group[1:]:
-                            gap = c["min_x0"] - current_max
-                            if gap < 3:
-                                if re.fullmatch(r"\d+", c["text"]):
-                                    merged_text = merged_text.rstrip() + convert_to_subscript(c["text"])
+                            trimmed_text = c["text"].strip()
+                            # If the candidate is a short alphanumeric string (one or two characters)
+                            if len(trimmed_text) <= 2 and re.fullmatch(r"[A-Za-z0-9]+", trimmed_text):
+                                candidate = convert_to_subscript(trimmed_text)
+                                # If the merged text ends with a closing parenthesis,
+                                # insert the candidate before that.
+                                if merged_text.endswith(")"):
+                                    merged_text = merged_text[:-1].rstrip() + candidate + ")"
                                 else:
-                                    merged_text = merged_text.rstrip() + c["text"]
+                                    merged_text = merged_text.rstrip() + candidate
                             else:
-                                merged_text = merged_text + " " + c["text"]
+                                gap = c["min_x0"] - current_max
+                                if gap < 3:
+                                    merged_text = merged_text.rstrip() + c["text"]
+                                else:
+                                    merged_text = merged_text + " " + c["text"]
                             current_max = max(current_max, c["max_x1"])
+
                         merged_text = re.sub(
                             r'([A-Za-z])\s+([A-Za-z])((?:[₀₁₂₃₄₅₆₇₈₉])\b)',
                             r'\1\3\2',
