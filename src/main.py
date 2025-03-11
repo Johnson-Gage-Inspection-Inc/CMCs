@@ -206,75 +206,73 @@ def custom_parse_table(input_data):
     Convert the PDF table structure into a pandas DataFrame with the following columns:
       Equipment, Parameter, Range, Frequency, CMC (±), Comments
 
-    Header processing:
-      - If the first cell’s text is "Parameter/Equipment", it is split into two header columns:
-        "Equipment" and "Parameter". A "Frequency" column is inserted between the Range and CMC columns.
-    Data row processing:
-      - For the first cell, if a dash (–) is found in the first visual line, the text before the dash is used
-        as Equipment and any trailing text on that line is ignored.
-      - Any subsequent visual lines in the first cell are treated as Parameter entries.
-      - For the other cells (Range, CMC, Comments), each visual row becomes a sub-row.
-      - The final number of sub-rows is the maximum number of lines found among the cells.
-      - For each sub-row, missing values are filled with an empty string and Frequency is always blank.
+    Processing Logic:
+      - Subheader rows (lines ending in "–") define the Equipment field and should be removed.
+      - If a line contains "–" but does not end with it, split to get both Equipment and Parameter.
+      - Subsequent indented lines (in the same column) are treated as Parameters.
+      - All other columns (Range, CMC, Comments) follow their respective structure.
+      - Ensure Frequency column is present but left empty.
     """
-    import re
-
     dash_pattern = re.compile(r"\s*–\s*")
 
     # Process header row (first row of input_data)
     header_row = input_data[0]
     header0_text = "".join(item.get("text", "").strip() for item in header_row[0])
+
+    # Standardize column names
     if header0_text == "Parameter/Equipment":
-        # Although header texts are available in the JSON,
-        # we enforce the expected column names.
         columns = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
     else:
-        columns = ["".join(item.get("text", "").strip() for item in cell)
-                   for cell in header_row]
+        columns = ["".join(item.get("text", "").strip() for item in cell) for cell in header_row]
 
-    # Override to expected column names.
     columns = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
 
     data_rows = []
+    equipment = ""  # Keep track of the last known Equipment name
+
     # Process each data row (skip header row)
     for row in input_data[1:]:
-        # Process cell0: Equipment/Parameter column
+        # Process first column: Equipment/Parameter
         cell0_texts = [item.get("text", "").strip() for item in row[0] if item.get("text")]
+
         if cell0_texts:
             first_line = cell0_texts[0]
             parts = dash_pattern.split(first_line)
-            if len(parts) > 1:
+
+            if first_line.endswith("–"):
+                # Subheader row: Extract equipment name and discard the row
+                equipment = first_line.replace("–", "").strip()
+                continue  # Skip adding this row
+            elif len(parts) > 1:
+                # Case where Equipment and Parameter are in the same line
                 equipment = parts[0].strip()
-                # Use trailing text only if non-empty; otherwise, ignore it.
                 first_param = parts[1].strip()
                 parameters = [first_param] if first_param else []
-                # Append any subsequent visual rows as additional parameter lines.
-                if len(cell0_texts) > 1:
-                    for text in cell0_texts[1:]:
-                        if text:
-                            parameters.append(text)
             else:
-                equipment = ""
+                # Normal parameter row under the current equipment
                 parameters = cell0_texts
+
         else:
-            equipment = ""
             parameters = []
 
-        # Process the other cells (Range, CMC (±), Comments)
+        # Process the other columns
         cell1_texts = [item.get("text", "").strip() for item in row[1] if item.get("text")]
         cell2_texts = [item.get("text", "").strip() for item in row[2] if item.get("text")]
         cell3_texts = [item.get("text", "").strip() for item in row[3] if item.get("text")]
 
-        # Determine the number of sub-rows to output
+        # Determine the number of sub-rows needed
         num_subrows = max(len(parameters), len(cell1_texts), len(cell2_texts), len(cell3_texts))
+
         for i in range(num_subrows):
             param = parameters[i] if i < len(parameters) else ""
             range_val = cell1_texts[i] if i < len(cell1_texts) else ""
             cmc_val = cell2_texts[i] if i < len(cell2_texts) else ""
             comments_val = cell3_texts[i] if i < len(cell3_texts) else ""
-            # Frequency is not provided; leave it empty.
+
+            # Append row to results
             data_rows.append([equipment, param, range_val, "", cmc_val, comments_val])
 
+    # Convert to DataFrame
     df = pd.DataFrame(data_rows, columns=columns)
     return df
 
