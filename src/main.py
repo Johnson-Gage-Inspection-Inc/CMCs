@@ -278,11 +278,7 @@ def custom_parse_table(input_data):
             first_line = cell0_texts[0]
             parts = dash_pattern.split(first_line)
 
-            if "Countersink & Chamfer" in first_line:
-                # Special case for Countersink & Chamfer Gages
-                equipment = first_line
-                parameters = []
-            elif len(parts) > 1:
+            if len(parts) > 1:
                 # Case where Equipment and Parameter are in the same line
                 equipment = parts[0].strip()
                 first_param = parts[1].strip()
