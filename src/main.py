@@ -313,12 +313,14 @@ def custom_parse_table(input_data):
             num_subrows = 1  # Ensure at least one row is created
 
         for i in range(num_subrows):
-            param = parameters[i] if i < len(parameters) else ""
+            # If there's only one parameter, propagate it to every subrow.
+            if len(parameters) == 1:
+                param = parameters[0]
+            else:
+                param = parameters[i] if i < len(parameters) else ""
             range_val = cell1_texts[i] if i < len(cell1_texts) else ""
             cmc_val = cell2_texts[i] if i < len(cell2_texts) else ""
             comments_val = processed_comments[i] if i < len(processed_comments) else ""
-
-            # Append row to results
             data_rows.append([equipment, param, range_val, "", cmc_val, comments_val])
 
     # Convert to DataFrame
