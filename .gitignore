@@ -4,3 +4,5 @@ extracted_data.csv
 build/
 dist/
 export/tables/parsed/*
+__pycache__/
+*.pyc
