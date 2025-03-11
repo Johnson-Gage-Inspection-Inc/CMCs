@@ -276,17 +276,17 @@ def custom_parse_table(input_data):
         if cell0_texts:
             first_line = cell0_texts[0]
             parts = DASH_PATTERN.split(first_line)
-
             if len(parts) > 1:
-                # Case where Equipment and Parameter are in the same line
+                # There's a dash, so split into Equipment and Parameter
                 equipment = parts[0].strip()
                 first_param = parts[1].strip()
                 parameters = [first_param] if first_param else []
-                # Add any additional parameters
+                # Append any additional parts (if they were indented or on subsequent lines)
                 parameters.extend([text.lstrip('\t') for text in cell0_texts[1:]])
             else:
-                # Normal parameter row under the current equipment
-                parameters = [text.lstrip('\t') if text.startswith('\t') else text for text in cell0_texts]
+                # No dash found: treat the entire value as Equipment, no Parameter.
+                equipment = first_line.strip()
+                parameters = []
         else:
             parameters = []
 
