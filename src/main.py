@@ -241,7 +241,6 @@ def custom_parse_table(input_data):
       - All other columns (Range, CMC, Comments) follow their respective structure.
       - Ensure Frequency column is present but left empty.
     """
-    dash_pattern = re.compile(r"\s*–\s*")
 
     # Standardize column names
     columns = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
@@ -276,7 +275,7 @@ def custom_parse_table(input_data):
 
         if cell0_texts:
             first_line = cell0_texts[0]
-            parts = dash_pattern.split(first_line)
+            parts = DASH_PATTERN.split(first_line)
 
             if len(parts) > 1:
                 # Case where Equipment and Parameter are in the same line
