@@ -24,7 +24,9 @@ def test_extract_tables_by_position(pdf_file):
 
     # Use DeepDiff for better error messages
     if len(tables) != len(json_data):
-        pytest.fail(f"Table count mismatch: expected {len(json_data)}, got {len(tables)}")
+        pytest.fail(
+            f"Table count mismatch: expected {len(json_data)}, got {len(tables)}"
+        )
 
     for i, (table, expected_table) in enumerate(zip(tables, json_data)):
         diff = DeepDiff(expected_table, table, report_repetition=True)
@@ -46,6 +48,7 @@ def test_extract_tables_by_position(pdf_file):
 def test_parse_table(json_file):
     """Test the custom_parse_table function with JSON input and expected CSV output."""
     import json
+
     # Load input JSON
     with open(f"tests/test_data/pages/{json_file}") as file:
         input_data = json.load(file)
@@ -56,10 +59,16 @@ def test_parse_table(json_file):
     columns = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
     output_table = pd.DataFrame(table_rows, columns=columns)
     # Load expected CSV content
-    expected_table = pd.read_csv(f"tests/test_data/tables/parsed/{json_file.replace('.json', f'_table{tableNo}.csv')}")
-    expected_table = expected_table.fillna('')
+    expected_table = pd.read_csv(
+        f"tests/test_data/tables/parsed/{json_file.replace('.json', f'_table{tableNo}.csv')}"
+    )
+    expected_table = expected_table.fillna("")
     # Compare the cells of the output table with the expected table
-    for i, (row, expected_row) in enumerate(zip(output_table.iterrows(), expected_table.iterrows())):
+    for i, (row, expected_row) in enumerate(
+        zip(output_table.iterrows(), expected_table.iterrows())
+    ):
         for j, (cell, expected_cell) in enumerate(zip(row[1], expected_row[1])):
-            assert cell == expected_cell, f"Cell mismatch at ({i}, {j}): expected '{expected_cell}', got '{cell}'"
+            assert (
+                cell == expected_cell
+            ), f"Cell mismatch at ({i}, {j}): expected '{expected_cell}', got '{cell}'"
     pd.testing.assert_frame_equal(expected_table, output_table)

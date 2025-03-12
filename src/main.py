@@ -5,6 +5,7 @@ import re
 import logging
 import json
 import pandas as pd
+from src.expander import parse_range
 
 
 # Logging configuration
@@ -28,16 +29,20 @@ def main(pdf_path, save_intermediate=False):
                 table_rows.extend(custom_parse_table(table))
     columns = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
     df = pd.DataFrame(table_rows, columns=columns)
-    df.to_csv("export/parsed.csv", index=False, encoding="utf-8-sig")
-    logging.info("Exported parsed data to 'export/parsed.csv'")
+    # df.to_csv("export/parsed.csv", index=False, encoding="utf-8-sig")
+    # logging.info("Exported parsed data to 'export/parsed.csv'")
+
+    df[['expected_min', 'expected_max', 'expected_unit']] = df['Range'].apply(lambda x: pd.Series(parse_range(x)))
 
 
-def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_thresh=4):
+def custom_extract_tables(
+    page, table_settings=None, vertical_thresh=14, indent_thresh=4
+):
     """
     Custom table extraction from a pdfplumber Page.
     ...
     """
-    BEGIN_LINE_PATTERN = re.compile(r'^(?:\d|\(\d|\-\d|\(-\d|[<>]\s*\d)')
+    BEGIN_LINE_PATTERN = re.compile(r"^(?:\d|\(\d|\-\d|\(-\d|[<>]\s*\d)")
 
     def get_first_word_width(ln):
         if "chars" not in ln or not ln["chars"]:
@@ -101,17 +106,68 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_
 
                     def convert_to_subscript(s):
                         mapping = {
-                            "0": "₀", "1": "₁", "2": "₂", "3": "₃", "4": "₄",
-                            "5": "₅", "6": "₆", "7": "₇", "8": "₈", "9": "₉",
-                            "a": "ₐ", "A": "ₐ", "b": "ᵦ", "B": "ᵦ", "c": "c", "C": "c",
-                            "d": "d", "D": "d", "e": "ₑ", "E": "ₑ", "f": "f", "F": "f",
-                            "g": "g", "G": "g", "h": "ₕ", "H": "ₕ", "i": "ᵢ", "I": "ᵢ",
-                            "j": "ⱼ", "J": "ⱼ", "k": "ₖ", "K": "ₖ", "l": "ₗ", "L": "ₗ",
-                            "m": "ₘ", "M": "ₘ", "n": "ₙ", "N": "ₙ", "o": "ₒ", "O": "ₒ",
-                            "p": "ₚ", "P": "ₚ", "q": "q", "Q": "q", "r": "ᵣ", "R": "ᵣ",
-                            "s": "ₛ", "S": "ₛ", "t": "ₜ", "T": "ₜ", "u": "ᵤ", "U": "ᵤ",
-                            "v": "ᵥ", "V": "ᵥ", "w": "w", "W": "w", "x": "ₓ", "X": "ₓ",
-                            "y": "y", "Y": "y", "z": "z", "Z": "z"
+                            "0": "₀",
+                            "1": "₁",
+                            "2": "₂",
+                            "3": "₃",
+                            "4": "₄",
+                            "5": "₅",
+                            "6": "₆",
+                            "7": "₇",
+                            "8": "₈",
+                            "9": "₉",
+                            "a": "ₐ",
+                            "A": "ₐ",
+                            "b": "ᵦ",
+                            "B": "ᵦ",
+                            "c": "c",
+                            "C": "c",
+                            "d": "d",
+                            "D": "d",
+                            "e": "ₑ",
+                            "E": "ₑ",
+                            "f": "f",
+                            "F": "f",
+                            "g": "g",
+                            "G": "g",
+                            "h": "ₕ",
+                            "H": "ₕ",
+                            "i": "ᵢ",
+                            "I": "ᵢ",
+                            "j": "ⱼ",
+                            "J": "ⱼ",
+                            "k": "ₖ",
+                            "K": "ₖ",
+                            "l": "ₗ",
+                            "L": "ₗ",
+                            "m": "ₘ",
+                            "M": "ₘ",
+                            "n": "ₙ",
+                            "N": "ₙ",
+                            "o": "ₒ",
+                            "O": "ₒ",
+                            "p": "ₚ",
+                            "P": "ₚ",
+                            "q": "q",
+                            "Q": "q",
+                            "r": "ᵣ",
+                            "R": "ᵣ",
+                            "s": "ₛ",
+                            "S": "ₛ",
+                            "t": "ₜ",
+                            "T": "ₜ",
+                            "u": "ᵤ",
+                            "U": "ᵤ",
+                            "v": "ᵥ",
+                            "V": "ᵥ",
+                            "w": "w",
+                            "W": "w",
+                            "x": "ₓ",
+                            "X": "ₓ",
+                            "y": "y",
+                            "Y": "y",
+                            "z": "z",
+                            "Z": "z",
                         }
                         return "".join(mapping.get(char, char) for char in s)
 
@@ -124,15 +180,22 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_
                         min_x0 = min(ln["x0"] for ln in clust)
                         max_x1 = max(ln["x1"] for ln in clust)
                         top_val = min(ln["top"] for ln in clust)
-                        sizes = [c.get("size", 0) for ln in clust for c in ln.get("chars", []) if c.get("size")]
+                        sizes = [
+                            c.get("size", 0)
+                            for ln in clust
+                            for c in ln.get("chars", [])
+                            if c.get("size")
+                        ]
                         avg_font_size = sum(sizes) / len(sizes) if sizes else 0
-                        cluster_info.append({
-                            "text": text,
-                            "min_x0": min_x0,
-                            "max_x1": max_x1,
-                            "top": top_val,
-                            "font_size": avg_font_size
-                        })
+                        cluster_info.append(
+                            {
+                                "text": text,
+                                "min_x0": min_x0,
+                                "max_x1": max_x1,
+                                "top": top_val,
+                                "font_size": avg_font_size,
+                            }
+                        )
 
                     grouped_clusters = []
                     if cluster_info:
@@ -144,7 +207,9 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_
                             else:
                                 # Check if this new cluster is a short alphanumeric candidate (subscript)
                                 trimmed = c["text"].strip()
-                                if len(trimmed) <= 2 and re.fullmatch(r"[A-Za-z0-9]+", trimmed):
+                                if len(trimmed) <= 2 and re.fullmatch(
+                                    r"[A-Za-z0-9]+", trimmed
+                                ):
                                     # Merge it with the current group even though the vertical gap is larger.
                                     current_group.append(c)
                                 else:
@@ -162,8 +227,12 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_
                         baseline_top = baseline_cluster["top"]
                         baseline_font = baseline_cluster.get("font_size", 0)
                         filtered_group = [
-                            c for c in group
-                            if not ((baseline_top - c["top"]) > tol_top and (baseline_font - c["font_size"]) > tol_font)
+                            c
+                            for c in group
+                            if not (
+                                (baseline_top - c["top"]) > tol_top
+                                and (baseline_font - c["font_size"]) > tol_font
+                            )
                         ]
                         if not filtered_group:
                             continue
@@ -173,12 +242,16 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_
                         for c in filtered_group[1:]:
                             trimmed_text = c["text"].strip()
                             # If the candidate is a short alphanumeric string (one or two characters)
-                            if len(trimmed_text) <= 2 and re.fullmatch(r"[A-Za-z0-9]+", trimmed_text):
+                            if len(trimmed_text) <= 2 and re.fullmatch(
+                                r"[A-Za-z0-9]+", trimmed_text
+                            ):
                                 candidate = convert_to_subscript(trimmed_text)
                                 # If the merged text ends with a closing parenthesis,
                                 # insert the candidate before that.
                                 if merged_text.endswith(")"):
-                                    merged_text = merged_text[:-1].rstrip() + candidate + ")"
+                                    merged_text = (
+                                        merged_text[:-1].rstrip() + candidate + ")"
+                                    )
                                 else:
                                     merged_text = merged_text.rstrip() + candidate
                             else:
@@ -190,15 +263,17 @@ def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_
                             current_max = max(current_max, c["max_x1"])
 
                         merged_text = re.sub(
-                            r'([A-Za-z])\s+([A-Za-z])((?:[₀₁₂₃₄₅₆₇₈₉])\b)',
-                            r'\1\3\2',
-                            merged_text
+                            r"([A-Za-z])\s+([A-Za-z])((?:[₀₁₂₃₄₅₆₇₈₉])\b)",
+                            r"\1\3\2",
+                            merged_text,
                         )
                         base_indent = lines[0]["x0"] - cell[0]
                         indent = filtered_group[0]["min_x0"] - cell[0]
                         if indent > base_indent + indent_thresh:
-                            merged_text = f'\t{merged_text}'
-                        merged_rows.append({"text": merged_text, "top": filtered_group[0]["top"]})
+                            merged_text = f"\t{merged_text}"
+                        merged_rows.append(
+                            {"text": merged_text, "top": filtered_group[0]["top"]}
+                        )
                     visual_rows.extend(merged_rows)
                 row_cells.append(visual_rows)
             table_rows.append(row_cells)
@@ -211,11 +286,11 @@ def remove_small_chars(clust):
         if all(c["size"] < 7.5 for c in ln["chars"]):
             logging.debug("Subscript detected: " + ln["text"])
             return
-        median_y1 = sorted([char["y1"] for char in ln['chars']])[len(ln['chars']) // 2]
+        median_y1 = sorted([char["y1"] for char in ln["chars"]])[len(ln["chars"]) // 2]
         string = ""
         i = 0
         for char in ln["text"]:
-            if char == ' ':
+            if char == " ":
                 string += char
             elif ln["chars"][i]["size"] > 7.5 and ln["chars"][i]["y1"] < median_y1 + 1:
                 string += ln["chars"][i]["text"]
@@ -268,7 +343,7 @@ def flatten_hierarchical_comments(lines, delimiter="; "):
 
 def group_lines(lines, threshold=5):
     # Sort the lines by their "top" value.
-    sorted_lines = sorted(lines, key=lambda x: x['top'])
+    sorted_lines = sorted(lines, key=lambda x: x["top"])
     groups = []
     if not sorted_lines:
         return groups
@@ -276,19 +351,21 @@ def group_lines(lines, threshold=5):
     # Start the first group with the first line.
     current_group = [sorted_lines[0]]
     # Use the first line's top as the reference value.
-    current_avg_top = sorted_lines[0]['top']
+    current_avg_top = sorted_lines[0]["top"]
 
     for line in sorted_lines[1:]:
         # If the difference between the current line's top and the group's average is below the threshold,
         # consider it part of the same group.
-        if abs(line['top'] - current_avg_top) < threshold:
+        if abs(line["top"] - current_avg_top) < threshold:
             current_group.append(line)
             # Update the average "top" value for the current group.
-            current_avg_top = sum(item['top'] for item in current_group) / len(current_group)
+            current_avg_top = sum(item["top"] for item in current_group) / len(
+                current_group
+            )
         else:
             groups.append(current_group)
             current_group = [line]
-            current_avg_top = line['top']
+            current_avg_top = line["top"]
     if current_group:
         groups.append(current_group)
     return groups
@@ -311,11 +388,9 @@ def restructure_input_data(input_data, threshold=5):
         for col_idx, cell in enumerate(row):
             for item in cell:
                 if "text" in item and "top" in item:
-                    cell_entries.append({
-                        "col": col_idx,
-                        "top": item["top"],
-                        "text": item["text"]
-                    })
+                    cell_entries.append(
+                        {"col": col_idx, "top": item["top"], "text": item["text"]}
+                    )
 
     # Sort all cell entries by their vertical position
     cell_entries.sort(key=lambda x: x["top"])
@@ -365,66 +440,66 @@ def custom_parse_table(input_data):
     headers = data[0]
 
     # Initialize variables to store the current values for each column.
-    equipment = ''
-    parameter = ''
-    range_val = ''
-    frequency = ''
-    cmc = ''
-    preComment = ''
-    comment = ''
+    equipment = ""
+    parameter = ""
+    range_val = ""
+    frequency = ""
+    cmc = ""
+    preComment = ""
+    comment = ""
 
     data_rows = []
     for row in data[1:]:
-        row[0] = row[0].replace("(cont)", "").strip(' ')
-        if headers[0] == 'Parameter/Equipment':
-            frequency = ''
+        row[0] = row[0].replace("(cont)", "").strip(" ")
+        if headers[0] == "Parameter/Equipment":
+            frequency = ""
             if row[0].endswith("–"):
-                equipment = row[0].strip('–').strip()
-                parameter = ''
-                range_val = ''
-                cmc = ''
+                equipment = row[0].strip("–").strip()
+                parameter = ""
+                range_val = ""
+                cmc = ""
                 preComment = row[3]
-                comment = ''
+                comment = ""
                 continue
-            elif '–' in row[0]:
-                equipment, parameter = [part.strip() for part in row[0].split('–', 1)]
-            elif row[0].startswith('\t'):
-                parameter = row[0].strip('\t')
+            elif "–" in row[0]:
+                equipment, parameter = [part.strip() for part in row[0].split("–", 1)]
+            elif row[0].startswith("\t"):
+                parameter = row[0].strip("\t")
             elif row[0]:
                 equipment = row[0]
-                parameter = ''
+                parameter = ""
 
-            range_val = row[1].strip('\t')
+            range_val = row[1].strip("\t")
             cmc = row[2]
 
-            if row[3].startswith('\t'):
-                comment = preComment + '; ' + row[3].strip('\t')
+            if row[3].startswith("\t"):
+                comment = preComment + "; " + row[3].strip("\t")
             elif row[3]:
                 comment = row[3]
-                preComment = ''
+                preComment = ""
 
-        elif headers[0] == 'Parameter/Range':
-            if '–' in row[0]:
+        elif headers[0] == "Parameter/Range":
+            if "–" in row[0]:
                 # equipment, parameter = [part.strip() for part in row[0].split('–', 1)]
-                equipment = ''
+                equipment = ""
                 parameter = row[0]
-                range_val = ''
-                frequency = ''
-                cmc = ''
+                range_val = ""
+                frequency = ""
+                cmc = ""
                 preComment = row[3]
-                comment = ''
+                comment = ""
                 continue
-            elif row[0].startswith('\t'):
-                range_val = row[0].strip('\t')
+            elif row[0].startswith("\t"):
+                range_val = row[0].strip("\t")
 
             frequency = row[1]
             cmc = row[2]
 
-            if row[3].startswith('\t'):
-                comment = preComment + '; ' + row[3].strip('\t')
+            if row[3].startswith("\t"):
+                comment = preComment + "; " + row[3].strip("\t")
             elif row[3]:
                 comment = row[3]
-                preComment = ''
+                preComment = ""
 
         if not cmc:
             continue
@@ -436,7 +511,9 @@ if __name__ == "__main__":
     # Initialize file dialog for PDF selection.
     root = tk.Tk()
     root.withdraw()
-    pdf_path = filedialog.askopenfilename(title="Select PDF file", filetypes=[("PDF files", "*.pdf")])
+    pdf_path = filedialog.askopenfilename(
+        title="Select PDF file", filetypes=[("PDF files", "*.pdf")]
+    )
     if not pdf_path:
         print("No PDF selected. Exiting.")
         exit()
