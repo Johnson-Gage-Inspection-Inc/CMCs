@@ -1,7 +1,7 @@
 import re
 
 
-class CMC(dict):
+class budget(dict):
     base: float
     multiplier: float
     mult_unit: str
@@ -14,7 +14,7 @@ class CMC(dict):
         self.uncertainty_unit = uncertainty_unit
 
     def __eq__(self, other):
-        if not isinstance(other, CMC):
+        if not isinstance(other, budget):
             return False
         return (
             self.base == other.base and
@@ -27,8 +27,17 @@ class CMC(dict):
         return (f"CMC({self.base!r}, {self.multiplier!r}, "
                 f"{self.mult_unit!r}, {self.uncertainty_unit!r})")
 
+    # Add method to allow list coercion (i.e. list(budget_instance))
+    def __list__(s):
+        return [s.base, s.multiplier, s.mult_unit, s.uncertainty_unit]
 
-def parse_cmc(input_text: str) -> CMC:
+    # Add method to allow pd.Series coercion (i.e. pd.Series(budget_instance))
+    def __series__(s):
+        import pandas as pd
+        return pd.Series(s.__list__())
+
+
+def parse_budget(input_text: str) -> budget:
     """
     Parse the CMC (±) column's linear equation into four components:
       base, multiplier, multiplier conversion unit, and uncertainty unit.
@@ -46,14 +55,14 @@ def parse_cmc(input_text: str) -> CMC:
     text = input_text.strip()
     # Handle placeholders.
     if text == "---" or not text:
-        return CMC(None, None, None, None)
+        return budget(None, None, None, None)
 
     # Handle case without a plus sign (e.g., "27 µin")
     if '+' not in text:
         parts = text.split(maxsplit=1)
         base = parts[0]
         uncertainty_unit = parts[1] if len(parts) > 1 else ''
-        return CMC(base, 0, None, uncertainty_unit)
+        return budget(base, 0, None, uncertainty_unit)
 
     patterns = [
         # Pattern A: With '±' and uncertainty numeric value.
@@ -67,5 +76,5 @@ def parse_cmc(input_text: str) -> CMC:
             multiplier = match.group(2)
             mult_unit = match.group(3) if match.group(3) else ""
             uncertainty_unit = match.group(4)
-            return CMC(base, multiplier, mult_unit, uncertainty_unit)
-    return CMC(text, None, None, None)
+            return budget(base, multiplier, mult_unit, uncertainty_unit)
+    return budget(text, None, None, None)
