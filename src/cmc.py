@@ -44,15 +44,22 @@ def parse_cmc(input_text: str) -> CMC:
     and None for the other components.
     """
     text = input_text.strip()
+    # Handle placeholders.
     if text == "---" or not text:
-        return (None, None, None, None)
+        return CMC(None, None, None, None)
+
+    # Handle case without a plus sign (e.g., "27 µin")
+    if '+' not in text:
+        parts = text.split(maxsplit=1)
+        base = parts[0]
+        uncertainty_unit = parts[1] if len(parts) > 1 else ''
+        return CMC(base, 0, None, uncertainty_unit)
 
     patterns = [
         # Pattern A: With '±' and uncertainty numeric value.
         r'^\s*\(?\s*([+-]?\d+(?:\.\d+)?)\s*\+\s*([+-]?\d+(?:\.\d+)?)(?:\s*([A-Za-zμµ/%]+))?\s*\)?\s*±\s*[+-]?\d+(?:\.\d+)?\s*([A-Za-zμµ/%]+)\s*$',
         # Pattern B: Without '±' (uncertainty numeric value omitted)
         r'^\s*\(?\s*([+-]?\d+(?:\.\d+)?)\s*\+\s*([+-]?\d+(?:\.\d+)?)(?:\s*([A-Za-zμµ/%]+))?\s*\)?\s*([A-Za-zμµ/%]+)\s*$',
-
         # Pattern C: Without multiplier and mult_unit
         r'^\s*([+-]?\d+(?:\.\d+)?)\s*([A-Za-zμµ/%\s]+)\s*$',
     ]
