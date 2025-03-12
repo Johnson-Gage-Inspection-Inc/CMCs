@@ -52,7 +52,9 @@ def test_parse_table(json_file):
     # Get the output from the new function
     table = input_data[-1]
     tableNo = len(input_data) - 1
-    output_table = custom_parse_table(table)
+    table_rows = custom_parse_table(table)
+    columns = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
+    output_table = pd.DataFrame(table_rows, columns=columns)
     # Load expected CSV content
     expected_table = pd.read_csv(f"tests/test_data/tables/parsed/{json_file.replace('.json', f'_table{tableNo}.csv')}")
     expected_table = expected_table.fillna('')
