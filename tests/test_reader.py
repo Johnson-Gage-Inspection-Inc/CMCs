@@ -4,6 +4,7 @@ import pdfplumber
 import json
 from deepdiff import DeepDiff
 import pandas as pd
+import os
 
 
 @pytest.mark.parametrize(
@@ -42,6 +43,7 @@ def test_extract_tables_by_position(pdf_file):
         "page16.json",
         "page18.json",
         "page19.json",
+        "page20.json",
         "page21.json",
     ],
 )
@@ -59,9 +61,7 @@ def test_parse_table(json_file):
     columns = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
     output_table = pd.DataFrame(table_rows, columns=columns)
     # Load expected CSV content
-    expected_table = pd.read_csv(
-        f"tests/test_data/tables/parsed/{json_file.replace('.json', f'_table{tableNo}.csv')}"
-    )
+    expected_table = pd.read_csv(f"tests/test_data/tables/parsed/{json_file.replace('.json', f'_table{tableNo}.csv')}")
     expected_table = expected_table.fillna("")
     # Compare the cells of the output table with the expected table
     for i, (row, expected_row) in enumerate(
