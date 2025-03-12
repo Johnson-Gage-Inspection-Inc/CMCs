@@ -400,8 +400,25 @@ def custom_parse_table(input_data):
 
             data_rows.append([equipment, parameter, range_val, frequency, cmc, comment])
     elif headers[0] == 'Parameter/Range':
-        equipment
-        # Add logic for this later
+        equipment = ''
+        for row in data[1:]:
+            if '–' in row[0]:
+                equipment, parameter = [part.strip() for part in row[0].split('–', 1)]
+                range_val = ''
+                cmc = ''
+                preComment = row[3]
+                comment = ''
+                continue
+            elif row[0].startswith('\t'):
+                range_val = row[0].strip('\t')
+
+            cmc = row[2]
+
+            if row[3].startswith('\t'):
+                comment = preComment + '; ' + row[3].strip('\t')
+            elif row[3]:
+                comment = row[3]
+                preComment = ''
 
     df = pd.DataFrame(data_rows, columns=columns)
     return df
