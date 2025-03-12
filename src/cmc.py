@@ -13,6 +13,20 @@ class CMC(dict):
         self.mult_unit = mult_unit
         self.uncertainty_unit = uncertainty_unit
 
+    def __eq__(self, other):
+        if not isinstance(other, CMC):
+            return False
+        return (
+            self.base == other.base and
+            self.multiplier == other.multiplier and
+            self.mult_unit == other.mult_unit and
+            self.uncertainty_unit == other.uncertainty_unit
+        )
+
+    def __repr__(self):
+        return (f"CMC({self.base!r}, {self.multiplier!r}, "
+                f"{self.mult_unit!r}, {self.uncertainty_unit!r})")
+
 
 def parse_cmc(input_text: str) -> CMC:
     """
