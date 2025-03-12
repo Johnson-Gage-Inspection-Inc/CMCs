@@ -394,7 +394,7 @@ def custom_parse_table(input_data):
                 equipment = row[0]
                 parameter = ''
 
-            range_val = row[1]
+            range_val = row[1].strip('\t')
             cmc = row[2]
 
             if row[3].startswith('\t'):
@@ -426,6 +426,8 @@ def custom_parse_table(input_data):
                 comment = row[3]
                 preComment = ''
 
+        if not cmc:
+            continue
         data_rows.append([equipment, parameter, range_val, frequency, cmc, comment])
     return data_rows
 
