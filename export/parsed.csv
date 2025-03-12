@@ -435,57 +435,57 @@ Scales and Balances,,(380 to 1800) g,,(0.12 + 0.0001W) mg,"Ultra Class weights, 
 Scales and Balances,,(0 to 200) g,,(0.69 + 0.0094W) mg,Class F and 6 weights
 Scales and Balances,,(200 to 1000) g,,(0.51 + 0.012W) mg,Class F and 6 weights
 Scales and Balances,,(1 to 16.2) kg,,(26 + 0.0048W) mg,Class F and 6 weights
-Scales and Balances,,"(0.1 to 700) lb, ((0.045 to 318) kg)",,(260 + 3.5W) mg,"(This instance, “W” = weight in lbs)"
-Indirect Verification of Rockwell Hardness Testers,,Low,,0.31 HRA,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Medium,,0.32 HRA,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,High,,0.20 HRA,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Low,,0.36 HRBW,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Medium,,0.26 HRBW,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,High,,0.39 HRBW,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Low,,0.39 HRC,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Medium,,0.33 HRC,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,High,,0.32 HRC,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Low,,0.38 HREW,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Medium,,0.49 HREW,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,High,,0.49 HREW,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Low,,0.28 HRFW,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Medium,,0.46 HRFW,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,High,,0.45 HRFW,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Low,,0.42 HRHW,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,High,,0.36 HRHW,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Low,,0.42 HR15N,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Medium,,0.42 HR15N,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,High,,0.51 HR15N,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Low,,0.30 HR30N,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Medium,,0.47 HR30N,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,High,,0.53 HR30N,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Low,,0.50 HR45N,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Medium,,0.25 HR45N,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,High,,0.20 HR45N,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Low,,0.44 HR15TW,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Medium,,0.39 HR15TW,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,High,,0.32 HR15TW,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Low,,0.58 HR30TW,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Medium,,0.64 HR30TW,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,High,,0.22 HR30TW,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Low,,0.70 HR45TW,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,Medium,,0.40 HR45TW,Indirect verification per ASTM E18
-Indirect Verification of Rockwell Hardness Testers,,High,,0.39 HR45TW,Indirect verification per ASTM E18
+Scales and Balances,,"(0.1 to 700) lb,",,(260 + 3.5W) mg,"(This instance, “W” = weight in lbs)"
+Indirect Verification of Rockwell Hardness Testers,HRA,Low,,0.31 HRA,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HRA,Medium,,0.32 HRA,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HRA,High,,0.20 HRA,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HRBW,Low,,0.36 HRBW,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HRBW,Medium,,0.26 HRBW,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HRBW,High,,0.39 HRBW,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HRC,Low,,0.39 HRC,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HRC,Medium,,0.33 HRC,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HRC,High,,0.32 HRC,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HREW,Low,,0.38 HREW,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HREW,Medium,,0.49 HREW,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HREW,High,,0.49 HREW,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HRFW,Low,,0.28 HRFW,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HRFW,Medium,,0.46 HRFW,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HRFW,High,,0.45 HRFW,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HRHW,Low,,0.42 HRHW,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HRHW,High,,0.36 HRHW,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HR15N,Low,,0.42 HR15N,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HR15N,Medium,,0.42 HR15N,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HR15N,High,,0.51 HR15N,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HR30N,Low,,0.30 HR30N,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HR30N,Medium,,0.47 HR30N,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HR30N,High,,0.53 HR30N,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HR45N,Low,,0.50 HR45N,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HR45N,Medium,,0.25 HR45N,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HR45N,High,,0.20 HR45N,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HR15TW,Low,,0.44 HR15TW,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HR15TW,Medium,,0.39 HR15TW,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HR15TW,High,,0.32 HR15TW,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HR30TW,Low,,0.58 HR30TW,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HR30TW,Medium,,0.64 HR30TW,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HR30TW,High,,0.22 HR30TW,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HR45TW,Low,,0.70 HR45TW,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HR45TW,Medium,,0.40 HR45TW,Indirect verification per ASTM E18
+Indirect Verification of Rockwell Hardness Testers,HR45TW,High,,0.39 HR45TW,Indirect verification per ASTM E18
 Direct Verification of Rockwell Hardness Testers,Verification of Test,(3 to 15) kgf,,0.005 kgf + 0.03 % rdg,Verification of test force by load cell
 Direct Verification of Rockwell Hardness Testers,Force,(30 to 150) kgf,,0.049 kgf + 0.02 % rdg,Verification of test force by load cell
 Direct Verification of Rockwell Hardness Testers,Verification of Depth-Measuring,(0 to 260) µm,,0.31 µm,Per direct verification method of ASTM E18
 Direct Verification of Rockwell Hardness Testers,Verification of,---,,0.25 Rockwell Points,Per direct verification method of ASTM E18
-Indirect Verification of Brinell Hardness Testers at Test Condition(s),10/3000/15,,,0.024D,D is the mean of the n mean test diameters in millimeters
-Indirect Verification of Brinell Hardness Testers at Test Condition(s),10/3000/15,,,0.013D,Error uncertainty is stated as a percentage of the standardized test block value
-Indirect Verification of Brinell Hardness Testers at Test Condition(s),10/3000/15,Error:,,1.5 %,Error uncertainty is stated as a percentage of the standardized test block value
-Indirect Verification of Brinell Hardness Testers at Test Condition(s),10/500/15,(40 to 126) HBW,,0.024D,Error uncertainty is stated as a percentage of the standardized test block value
-Indirect Verification of Brinell Hardness Testers at Test Condition(s),10/500/15,Error:,,1.9 %,Error uncertainty is stated as a percentage of the standardized test block value
-Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),,< 240 HV,,4.3 HV,ASTM E384 and E92
-Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),,(240 to 600) HV,,10 HV,ASTM E384 and E92
-Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),,> 600 HV,,13 HV,ASTM E384 and E92
-Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),,< 250 HK,,5.2 HK,ASTM E384 and E92
-Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),,(250 to 650) HK,,12 HK,ASTM E384 and E92
-Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),,> 650 HK,,15 HK,ASTM E384 and E92
+Indirect Verification of Brinell Hardness Testers at Test Condition(s),10/3000/15; Repeatability:,≤ 225 HBW,,0.024D,D is the mean of the n mean test diameters in millimeters
+Indirect Verification of Brinell Hardness Testers at Test Condition(s),10/3000/15; Repeatability:,(> 225 to 650) HBW,,0.013D,Error uncertainty is stated as a percentage of the standardized test block value
+Indirect Verification of Brinell Hardness Testers at Test Condition(s),10/3000/15; Error:,,,1.5 %,Error uncertainty is stated as a percentage of the standardized test block value
+Indirect Verification of Brinell Hardness Testers at Test Condition(s),10/500/15; Repeatability:,(40 to 126) HBW,,0.024D,Error uncertainty is stated as a percentage of the standardized test block value
+Indirect Verification of Brinell Hardness Testers at Test Condition(s),10/500/15; Error:,,,1.9 %,Error uncertainty is stated as a percentage of the standardized test block value
+Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),Vickers:,< 240 HV,,4.3 HV,ASTM E384 and E92
+Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),Vickers:,(240 to 600) HV,,10 HV,ASTM E384 and E92
+Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),Vickers:,> 600 HV,,13 HV,ASTM E384 and E92
+Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),Knoop:,< 250 HK,,5.2 HK,ASTM E384 and E92
+Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),Knoop:,(250 to 650) HK,,12 HK,ASTM E384 and E92
+Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),Knoop:,> 650 HK,,15 HK,ASTM E384 and E92
 Pressure,Absolute & Barometric Pressure,(0 to 35) in·Hg,,0.0034 in·Hg,Mensor CPG system
 Pressure,Differential & Gage Pressure,(0 to 30) in·H₂O,,0.0029 in·H₂O,Mensor CPG system
 Pressure,Differential & Gage Pressure,(0 to 5) psi,,0.000 47 psi,Mensor CPG system
