@@ -1,5 +1,5 @@
 import pytest
-from src.expander import parse_range
+from src.range import parse_range
 
 
 @pytest.mark.parametrize(

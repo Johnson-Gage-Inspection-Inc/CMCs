@@ -5,7 +5,7 @@ import re
 import logging
 import json
 import pandas as pd
-from src.expander import parse_range
+from src.range import parse_range
 from src.extract import custom_extract_tables
 
 

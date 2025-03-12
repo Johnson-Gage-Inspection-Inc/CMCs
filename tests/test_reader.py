@@ -1,5 +1,6 @@
 import pytest
-from src.main import custom_extract_tables, custom_parse_table
+from src.main import custom_parse_table
+from src.extract import custom_extract_tables
 import pdfplumber
 import json
 from deepdiff import DeepDiff
