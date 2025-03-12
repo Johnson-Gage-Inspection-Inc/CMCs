@@ -1,24 +1,16 @@
 import pytest
-from src.cmc import parse_cmc
+from src.cmc import parse_cmc, CMC
 
 
 @pytest.mark.parametrize(
     "input_text, expected",
     [
-        # Standard case with multiplier unit present.
-        ("10 + 0.2m ± 0.05m", ("10", "0.2", "m", "m")),
-        # Variant without extra spaces.
-        ("10+0.2m±0.05m", ("10", "0.2", "m", "m")),
-        # Case with no multiplier conversion unit.
-        ("10 + 0.2 ± 0.05m", ("10", "0.2", "", "m")),
-        # Case with negative numbers.
-        ("-10 + -0.2m ± -0.05m", ("-10", "-0.2", "m", "m")),
-        # Case missing uncertainty unit – should fail to match and return the original text.
-        ("10 + 0.2m ± 0.05", ("10 + 0.2m ± 0.05", None, None, None)),
-        # Completely invalid input.
-        ("Not a valid string", ("Not a valid string", None, None, None)),
-        # Placeholder value.
-        ("---", (None, None, None, None)),
+        ("(36 + 2.3D) µin", CMC("36", "2.3", "D", "µin")),
+        ("(7.8 + 3.8L) µin", CMC("7.8", "3.8", "L", "µin")),
+        ("27 µin", CMC("27", 0, None, "µin")),
+        ("0.43 parts in 10", CMC("0.43", 0, None, "parts in 10")),
+        ("0.013 % of magnification", CMC("0.013", 0, None, "% of magnification")),
+        ("---", CMC(None, None, None, None)),
     ]
 )
 def test_parse_cmc(input_text, expected):

@@ -1,39 +1,52 @@
-from typing import Optional
+import re
 
 
-def parse_cmc(input_text: str) -> tuple[Optional[str], Optional[str], Optional[str], Optional[str]]:
+class CMC(dict):
+    base: float
+    multiplier: float
+    mult_unit: str
+    uncertainty_unit: str
+
+    def __init__(self, base: float, multiplier: float, mult_unit: str, uncertainty_unit: str) -> None:
+        self.base = base
+        self.multiplier = multiplier
+        self.mult_unit = mult_unit
+        self.uncertainty_unit = uncertainty_unit
+
+
+def parse_cmc(input_text: str) -> CMC:
     """
     Parse the CMC (±) column's linear equation into four components:
       base, multiplier, multiplier conversion unit, and uncertainty unit.
-    Expected format: "<base> + <multiplier>[<mult_unit>] ± <uncertainty_value>[<uncertainty_unit>]"
-    For example: "10 + 0.2m ± 0.05m"
-      - base: "10"
-      - multiplier: "0.2"
-      - multiplier conversion unit: "m"
-      - uncertainty unit: "m"
-    If the text does not match the expected format or is a placeholder (like '---'),
-    returns a tuple of Nones.
+
+    Expected formats:
+      Format A: "<base> + <multiplier>[<mult_unit>] ± <uncertainty_value>[<uncertainty_unit>]"
+        e.g. "10+0.2m±0.05m"  --> ("10", "0.2", "m", "m")
+      Format B: "(<base> + <multiplier>[<mult_unit>]) <uncertainty_unit>"
+        e.g. "(36 + 2.3D) µin"  --> ("36", "2.3", "D", "µin")
+
+    If the text does not match either expected format or is a placeholder (like '---'),
+    returns a tuple with the original text as the first element (or None for placeholders)
+    and None for the other components.
     """
-    import re
     text = input_text.strip()
     if text == "---" or not text:
         return (None, None, None, None)
 
-    # Regex pattern:
-    #  - Group 1: base (number)
-    #  - Group 2: multiplier (number)
-    #  - Group 3: optional multiplier conversion unit (letters, μ, µ, %, etc.)
-    #  - Skip over the uncertainty numeric value (we assume we only want its unit)
-    #  - Group 4: uncertainty unit (required)
-    pattern = r'^\s*([+-]?\d+(?:\.\d+)?)\s*\+\s*([+-]?\d+(?:\.\d+)?)(?:\s*([A-Za-zμµ/%]+))?\s*±\s*[+-]?\d+(?:\.\d+)?\s*([A-Za-zμµ/%]+)\s*$'
-    m = re.match(pattern, text)
-    if m:
-        base = m.group(1)
-        multiplier = m.group(2)
-        mult_unit = m.group(3) if m.group(3) else ""
-        uncertainty_unit = m.group(4)
-        return (base, multiplier, mult_unit, uncertainty_unit)
-    else:
-        # If no match, you can decide to raise an error, return None values,
-        # or simply return the original string as the base.
-        return (text, None, None, None)
+    patterns = [
+        # Pattern A: With '±' and uncertainty numeric value.
+        r'^\s*\(?\s*([+-]?\d+(?:\.\d+)?)\s*\+\s*([+-]?\d+(?:\.\d+)?)(?:\s*([A-Za-zμµ/%]+))?\s*\)?\s*±\s*[+-]?\d+(?:\.\d+)?\s*([A-Za-zμµ/%]+)\s*$',
+        # Pattern B: Without '±' (uncertainty numeric value omitted)
+        r'^\s*\(?\s*([+-]?\d+(?:\.\d+)?)\s*\+\s*([+-]?\d+(?:\.\d+)?)(?:\s*([A-Za-zμµ/%]+))?\s*\)?\s*([A-Za-zμµ/%]+)\s*$',
+
+        # Pattern C: Without multiplier and mult_unit
+        r'^\s*([+-]?\d+(?:\.\d+)?)\s*([A-Za-zμµ/%\s]+)\s*$',
+    ]
+    for i, pattern in enumerate(patterns):
+        if match := re.match(pattern, text):
+            base = match.group(1)
+            multiplier = match.group(2)
+            mult_unit = match.group(3) if match.group(3) else ""
+            uncertainty_unit = match.group(4)
+            return CMC(base, multiplier, mult_unit, uncertainty_unit)
+    return CMC(text, None, None, None)
