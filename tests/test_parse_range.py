@@ -25,6 +25,9 @@ from src.expander import parse_range
         ("---", None, None, "---", "---"),  # Placeholder value
         ("±180º", "-180", "º", "180", "º"),  # Plus/minus parsing
         ("(-112 °F to 32) °F", "-112", "°F", "32", "°F"),  # min unit same as max unit, but in parentheses
+        ("(> 225 to 650) HBW", "225", "HBW", "650", "HBW"),  # Greater than parsing
+        ("≤ 225 HBW", None, None, "225", "HBW"),  # Less than or equal to parsing
+        ("5X to 100X", "5", "X", "100", "X"),  # X as a unit (Magnification)
     ],
 )
 def test_parse_range(input_text, expected_min, expected_min_unit, expected_max, expected_max_unit):

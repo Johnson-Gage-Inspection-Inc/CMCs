@@ -2,97 +2,92 @@ import re
 from typing import Optional, Tuple
 
 
-def parse_range(
-    input_text: str,
-) -> Tuple[Optional[str], Optional[str], Optional[str], Optional[str]]:
+def parse_range(input_text: str) -> Tuple[Optional[str], Optional[str], Optional[str], Optional[str]]:
     text = input_text.strip()
 
     def normalize(num_str: str) -> str:
-        # Remove spaces within numbers and strip any leading '+'
-        return num_str.replace(" ", "").lstrip("+")
+        # Remove inner spaces and any leading '+'
+        return num_str.replace(" ", "").lstrip('+')
 
-    # Special placeholder: e.g. "---"
+    def extract_value(s: str) -> Tuple[str, str]:
+        """
+        Extract a numeric value and its unit from the string s.
+        This function also strips any leading comparator symbols (>, <, ≤, ≥).
+        """
+        s = s.strip()
+        # Remove any leading comparator symbols and whitespace.
+        s = re.sub(r'^[><≤≥]+\s*', '', s)
+        # Match a number (with optional decimals, spaces, or commas) followed by any unit.
+        m = re.match(r"([+-]?\d+(?:[\d\s,\.]*\d)?)(.*)", s)
+        if m:
+            num = normalize(m.group(1))
+            unit = m.group(2).strip()
+            return num, unit
+        return s, ""
+
+    # Placeholder value.
     if text == "---":
         return (None, None, "---", "---")
 
-    # Handle ± notation: e.g. "±180º" -> ("-180", "º", "180", "º")
+    # Plus/minus notation.
     if text.startswith("±"):
-        m = re.match(r"±\s*([+-]?\d[\d\s\.,]*)\s*(.*)", text)
+        m = re.match(r"±\s*([+-]?\d+(?:[\d\s,\.]*\d)?)(.*)", text)
         if m:
             num = normalize(m.group(1))
             unit = m.group(2).strip()
             return ("-" + num, unit, num, unit)
 
-    # Handle "Up to" (case insensitive): e.g. "Up to 600 in" -> (None, None, "600", "in")
-    m = re.match(r"(?i)^Up\s+to\s+([+-]?\d[\d\s\.,]*)\s*(.*)", text)
-    if m:
-        number = normalize(m.group(1))
-        unit = m.group(2).strip()
-        return (None, None, number, unit)
+    # "Up to" case.
+    if text.lower().startswith("up to"):
+        remainder = text[5:].strip()  # remove "Up to"
+        num, unit = extract_value(remainder)
+        return (None, None, num, unit)
 
-    # Handle greater than: e.g. "> 62 % IACS" -> ("62", "% IACS", None, None)
-    m = re.match(r"^>\s*([+-]?\d[\d\s\.,]*)\s*(.*)", text)
-    if m:
-        number = normalize(m.group(1))
-        unit = m.group(2).strip()
-        return (number, unit, None, None)
+    # Greater than: e.g. "> 62 % IACS" should yield (num, unit, None, None)
+    if text.startswith(">"):
+        remainder = text[1:].strip()
+        num, unit = extract_value(remainder)
+        return (num, unit, None, None)
 
-    # Handle less than: e.g. "< 250 HK" -> (None, None, "250", "HK")
-    m = re.match(r"^<\s*([+-]?\d[\d\s\.,]*)\s*(.*)", text)
-    if m:
-        number = normalize(m.group(1))
-        unit = m.group(2).strip()
-        return (None, None, number, unit)
+    # Less than (or less than or equal to): e.g. "< 250 HK" or "≤ 225 HBW"
+    if text.startswith("<") or text.startswith("≤"):
+        remainder = re.sub(r'^[<≤]+\s*', '', text)
+        num, unit = extract_value(remainder)
+        return (None, None, num, unit)
 
-    # Handle explicit range in parentheses – now with potential left-side units.
-    m = re.match(r"^\((.*)\)\s*(.*)$", text)
-    if m:
-        inner_text = m.group(1).strip()  # e.g. "-112 °F to 32"
-        outer_unit = m.group(2).strip()  # e.g. "°F"
-        if "to" in inner_text:
-            parts = inner_text.split("to")
-            left_text = parts[0].strip()  # e.g. "-112 °F"
-            right_text = "to".join(parts[1:]).strip()  # e.g. "32"
-            left_match = re.match(r"^([+-]?\d[\d\s\.,]*)(?:\s+(.+))?$", left_text)
-            right_match = re.match(r"^([+-]?\d[\d\s\.,]*)(?:\s+(.+))?$", right_text)
-            if left_match and right_match:
-                num1 = normalize(left_match.group(1))
-                unit1 = left_match.group(2).strip() if left_match.group(2) else ""
-                num2 = normalize(right_match.group(1))
-                unit2 = right_match.group(2).strip() if right_match.group(2) else ""
-                # Use the outer unit if a side doesn't provide one
+    # Parentheses branch – this also covers cases where one side contains a comparator.
+    if text.startswith("(") and ")" in text:
+        m = re.match(r"^\((.*)\)\s*(.*)$", text)
+        if m:
+            inner_text = m.group(1).strip()   # e.g. "> 225 to 650"
+            outer_unit = m.group(2).strip()     # e.g. "HBW"
+            if "to" in inner_text:
+                parts = inner_text.split("to")
+                left_text = parts[0].strip()
+                right_text = "to".join(parts[1:]).strip()
+                num1, unit1 = extract_value(left_text)
+                num2, unit2 = extract_value(right_text)
+                # If a side doesn't provide its own unit, use the outer unit.
                 if not unit1 and outer_unit:
                     unit1 = outer_unit
                 if not unit2 and outer_unit:
                     unit2 = outer_unit
                 return (num1, unit1, num2, unit2)
 
-    # Handle generic range with "to" outside of parentheses.
+    # Generic "to" branch outside parentheses.
     if "to" in text:
         parts = text.split("to")
         if len(parts) >= 2:
             left = parts[0].strip()
             right = "to".join(parts[1:]).strip()
-            m_left = re.match(r"^([+-]?\d[\d\s\.,]*)(?:\s+(.+))?$", left)
-            m_right = re.match(r"^([+-]?\d[\d\s\.,]*)(?:\s+(.+))?$", right)
-            if m_left and m_right:
-                num1 = normalize(m_left.group(1))
-                unit1 = m_left.group(2).strip() if m_left.group(2) else ""
-                num2 = normalize(m_right.group(1))
-                unit2 = m_right.group(2).strip() if m_right.group(2) else ""
-                # If one unit is missing, try to fill it from the other side.
-                if not unit1 and unit2:
-                    unit1 = unit2
-                if not unit2 and unit1:
-                    unit2 = unit1
-                return (num1, unit1, num2, unit2)
+            num1, unit1 = extract_value(left)
+            num2, unit2 = extract_value(right)
+            if not unit1 and unit2:
+                unit1 = unit2
+            if not unit2 and unit1:
+                unit2 = unit1
+            return (num1, unit1, num2, unit2)
 
-    # Otherwise, assume a single value with a unit (applies to both min and max).
-    m = re.match(r"^([+-]?\d[\d\s\.,]*)(?:\s+(.+))?$", text)
-    if m:
-        num = normalize(m.group(1))
-        unit = m.group(2).strip() if m.group(2) else ""
-        return (num, unit, num, unit)
-
-    # Fallback: return the entire string as unit for max (should rarely happen).
-    return (None, None, text, text)
+    # Single value case.
+    num, unit = extract_value(text)
+    return (num, unit, num, unit)
