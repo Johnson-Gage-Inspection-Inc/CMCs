@@ -2,12 +2,14 @@ import re
 from typing import Optional, Tuple
 
 
-def parse_range(input_text: str) -> Tuple[Optional[str], Optional[str], Optional[str], Optional[str]]:
+def parse_range(
+    input_text: str,
+) -> Tuple[Optional[str], Optional[str], Optional[str], Optional[str]]:
     text = input_text.strip()
 
     def normalize(num_str: str) -> str:
         # Remove inner spaces and any leading '+'
-        return num_str.replace(" ", "").lstrip('+')
+        return num_str.replace(" ", "").lstrip("+")
 
     def extract_value(s: str) -> Tuple[str, str]:
         """
@@ -16,7 +18,7 @@ def parse_range(input_text: str) -> Tuple[Optional[str], Optional[str], Optional
         """
         s = s.strip()
         # Remove any leading comparator symbols and whitespace.
-        s = re.sub(r'^[><≤≥]+\s*', '', s)
+        s = re.sub(r"^[><≤≥]+\s*", "", s)
         # Match a number (with optional decimals, spaces, or commas) followed by any unit.
         m = re.match(r"([+-]?\d+(?:[\d\s,\.]*\d)?)(.*)", s)
         if m:
@@ -51,7 +53,7 @@ def parse_range(input_text: str) -> Tuple[Optional[str], Optional[str], Optional
 
     # Less than (or less than or equal to): e.g. "< 250 HK" or "≤ 225 HBW"
     if text.startswith("<") or text.startswith("≤"):
-        remainder = re.sub(r'^[<≤]+\s*', '', text)
+        remainder = re.sub(r"^[<≤]+\s*", "", text)
         num, unit = extract_value(remainder)
         return (None, None, num, unit)
 
@@ -59,8 +61,8 @@ def parse_range(input_text: str) -> Tuple[Optional[str], Optional[str], Optional
     if text.startswith("(") and ")" in text:
         m = re.match(r"^\((.*)\)\s*(.*)$", text)
         if m:
-            inner_text = m.group(1).strip()   # e.g. "> 225 to 650"
-            outer_unit = m.group(2).strip()     # e.g. "HBW"
+            inner_text = m.group(1).strip()  # e.g. "> 225 to 650"
+            outer_unit = m.group(2).strip()  # e.g. "HBW"
             if "to" in inner_text:
                 parts = inner_text.split("to")
                 left_text = parts[0].strip()
