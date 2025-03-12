@@ -7,6 +7,7 @@ import json
 import pandas as pd
 from src.range import parse_range
 from src.extract import custom_extract_tables
+from src.cmc import parse_cmc
 
 
 # Logging configuration
@@ -37,6 +38,11 @@ def main(pdf_path, save_intermediate=False):
         "Range"
     ].apply(lambda x: pd.Series(parse_range(x)))
     df.to_csv("export/range_parsed.csv", index=False, encoding="utf-8-sig")
+    df[["cmc_base", "cmc_multiplier", "cmc_mult_unit", "cmc_uncertainty_unit"]] = df[
+        "CMC (±)"
+    ].apply(lambda x: pd.Series(parse_cmc(x)))
+    df.to_csv("export/cmc_parsed.csv", index=False, encoding="utf-8-sig")
+    logging.info("Exported parsed range data to 'export/range_parsed.csv'")
 
 
 def flatten_hierarchical_comments(lines, delimiter="; "):
