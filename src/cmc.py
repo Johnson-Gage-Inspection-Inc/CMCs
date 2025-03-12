@@ -7,7 +7,9 @@ class budget(dict):
     mult_unit: str
     uncertainty_unit: str
 
-    def __init__(s, base: float, multiplier: float, mult_unit: str, uncertainty_unit: str) -> None:
+    def __init__(
+        s, base: float, multiplier: float, mult_unit: str, uncertainty_unit: str
+    ) -> None:
         s.base = base
         s.multiplier = multiplier
         s.mult_unit = mult_unit
@@ -26,8 +28,10 @@ class budget(dict):
         )
 
     def __repr__(s):
-        return (f"budget({s.base!r}, {s.multiplier!r}, "
-                f"{s.mult_unit!r}, {s.uncertainty_unit!r})")
+        return (
+            f"budget({s.base!r}, {s.multiplier!r}, "
+            f"{s.mult_unit!r}, {s.uncertainty_unit!r})"
+        )
 
     # Add method to allow list coercion (i.e. list(budget_instance))
     def __list__(s):
@@ -36,6 +40,7 @@ class budget(dict):
     # Add method to allow pd.Series coercion (i.e. pd.Series(budget_instance))
     def __series__(s):
         import pandas as pd
+
         return pd.Series(s.__list__())
 
 
@@ -47,7 +52,7 @@ def parse_num_unit(s: str, force_float: bool = False):
     else leave it as a string.
     """
     s = s.strip()
-    match = re.match(r'^([+-]?\d+(?:\.\d+)?)(.*)$', s)
+    match = re.match(r"^([+-]?\d+(?:\.\d+)?)(.*)$", s)
     if not match:
         return s, ""
     num_str, unit_str = match.group(1), match.group(2).strip()
@@ -57,7 +62,7 @@ def parse_num_unit(s: str, force_float: bool = False):
         except ValueError:
             num = num_str
     else:
-        if '.' in num_str:
+        if "." in num_str:
             num = float(num_str)
         else:
             num = num_str
@@ -109,7 +114,9 @@ def parse_budget(input_text: str) -> budget:
             base_val, left_unit = parse_num_unit(left, force_float=True)
             mult_val, right_unit = parse_num_unit(right, force_float=True)
             # In this format, the left part’s unit is taken as the multiplier conversion unit.
-            return budget(base_val, mult_val, left_unit if left_unit else "", right_unit)
+            return budget(
+                base_val, mult_val, left_unit if left_unit else "", right_unit
+            )
     else:
         # No plus sign. Expect format: "<number> <uncertainty_unit>"
         # Split on first whitespace.

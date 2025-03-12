@@ -23,9 +23,10 @@ def test_extracted_pdf_ranges(pdf_file):
         assert col in df_final.columns, f"Missing '{col}' after expansion."
 
     # Check for any rows that completely failed range parsing
-    failed_parses = df_final[
-        df_final["RangeMin"].isna() & df_final["RangeMax"].isna() & (df_final["Range"] != "")
-    ]
-    assert (
-        failed_parses.empty
-    ), f"Failed parse on rows: {failed_parses[['Range']].values}"
+    failed_parses = df_final[df_final.apply(
+        lambda row: all([pd.isna(row["RangeMin"]),
+                        pd.isna(row["RangeMax"]),
+                        row["Range"] != ""]),
+        axis=1
+    )]
+    assert failed_parses.empty, f"Failed parse on rows: {failed_parses[['Range']].values}"

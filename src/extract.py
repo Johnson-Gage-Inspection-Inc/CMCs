@@ -96,7 +96,9 @@ def custom_extract_tables(
                     clusters.append(current_cluster)
 
                     def convert_to_subscript(s):
-                        mapping = json.load(open("src/subscript_mapping.json", encoding="utf-8"))
+                        mapping = json.load(
+                            open("src/subscript_mapping.json", encoding="utf-8")
+                        )
                         return "".join(mapping.get(char, char) for char in s)
 
                     cluster_info = []
@@ -157,8 +159,11 @@ def custom_extract_tables(
                         filtered_group = [
                             c
                             for c in group
-                            if not (
-                                (baseline_top - c["top"]) > tol_top and (baseline_font - c["font_size"]) > tol_font
+                            if any(
+                                [
+                                    (baseline_top - c["top"]) <= tol_top,
+                                    (baseline_font - c["font_size"]) <= tol_font,
+                                ]
                             )
                         ]
                         if not filtered_group:
