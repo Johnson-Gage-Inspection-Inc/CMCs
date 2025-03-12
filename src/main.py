@@ -32,7 +32,9 @@ def main(pdf_path, save_intermediate=False):
     # df.to_csv("export/parsed.csv", index=False, encoding="utf-8-sig")
     # logging.info("Exported parsed data to 'export/parsed.csv'")
 
-    df[['expected_min', 'expected_max', 'expected_unit']] = df['Range'].apply(lambda x: pd.Series(parse_range(x)))
+    df[["expected_min", "expected_max", "expected_unit"]] = df["Range"].apply(
+        lambda x: pd.Series(parse_range(x))
+    )
 
 
 def custom_extract_tables(
@@ -230,8 +232,7 @@ def custom_extract_tables(
                             c
                             for c in group
                             if not (
-                                (baseline_top - c["top"]) > tol_top
-                                and (baseline_font - c["font_size"]) > tol_font
+                                (baseline_top - c["top"]) > tol_top and (baseline_font - c["font_size"]) > tol_font
                             )
                         ]
                         if not filtered_group:
@@ -470,6 +471,11 @@ def custom_parse_table(input_data):
                 parameter = ""
 
             range_val = row[1].strip("\t")
+            # Check if the range value has a number
+            if not any(char.isdigit() for char in range_val):
+                # If not, treat it as a part of the parameter
+                parameter = ";".join([parameter, range_val]) if parameter else range_val
+                range_val = ""
             cmc = row[2]
 
             if row[3].startswith("\t"):
