@@ -17,10 +17,12 @@ class budget(dict):
         if not isinstance(other, budget):
             return False
         return all(
-            s.base == other.base,
-            s.multiplier == other.multiplier,
-            s.mult_unit == other.mult_unit,
-            s.uncertainty_unit == other.uncertainty_unit
+            [
+                s.base == other.base,
+                s.multiplier == other.multiplier,
+                s.mult_unit == other.mult_unit,
+                s.uncertainty_unit == other.uncertainty_unit,
+            ]
         )
 
     def __repr__(s):
