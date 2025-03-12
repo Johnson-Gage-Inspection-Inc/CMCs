@@ -23,9 +23,9 @@ class budget(dict):
             self.uncertainty_unit == other.uncertainty_unit
         )
 
-    def __repr__(self):
-        return (f"CMC({self.base!r}, {self.multiplier!r}, "
-                f"{self.mult_unit!r}, {self.uncertainty_unit!r})")
+    def __repr__(s):
+        return (f"budget({s.base!r}, {s.multiplier!r}, "
+                f"{s.mult_unit!r}, {s.uncertainty_unit!r})")
 
     # Add method to allow list coercion (i.e. list(budget_instance))
     def __list__(s):
