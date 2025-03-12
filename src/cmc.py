@@ -60,8 +60,6 @@ def parse_cmc(input_text: str) -> CMC:
         r'^\s*\(?\s*([+-]?\d+(?:\.\d+)?)\s*\+\s*([+-]?\d+(?:\.\d+)?)(?:\s*([A-Za-zμµ/%]+))?\s*\)?\s*±\s*[+-]?\d+(?:\.\d+)?\s*([A-Za-zμµ/%]+)\s*$',
         # Pattern B: Without '±' (uncertainty numeric value omitted)
         r'^\s*\(?\s*([+-]?\d+(?:\.\d+)?)\s*\+\s*([+-]?\d+(?:\.\d+)?)(?:\s*([A-Za-zμµ/%]+))?\s*\)?\s*([A-Za-zμµ/%]+)\s*$',
-        # Pattern C: Without multiplier and mult_unit
-        r'^\s*([+-]?\d+(?:\.\d+)?)\s*([A-Za-zμµ/%\s]+)\s*$',
     ]
     for i, pattern in enumerate(patterns):
         if match := re.match(pattern, text):
