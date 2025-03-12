@@ -42,9 +42,9 @@ def custom_extract_tables(
 ):
     """
     Custom table extraction from a pdfplumber Page.
-    ...
     """
-    BEGIN_LINE_PATTERN = re.compile(r"^(?:\d|\(\d|\-\d|\(-\d|[<>]\s*\d)")
+    BEGIN_LINE_PATTERN_DEFAULT = re.compile(r"^(?:\d|\(\d|\-\d|\(-\d|[<>]\s*\d)")
+    BEGIN_LINE_PATTERN_SECOND = re.compile(r"^(?:\d|\(\d|\-\d|\(-\d|[<>]\s*\d|[\(≤<>])")
 
     def get_first_word_width(ln):
         if "chars" not in ln or not ln["chars"]:
@@ -69,7 +69,7 @@ def custom_extract_tables(
         table_rows = []
         for row in table.rows:
             row_cells = []
-            for cell in row.cells:
+            for col_idx, cell in enumerate(row.cells):
                 if not cell:
                     row_cells.append([])
                     continue
@@ -80,7 +80,6 @@ def custom_extract_tables(
                     visual_rows.append({"text": "", "top": None})
                 else:
                     lines.sort(key=lambda ln: ln["top"])
-                    # Single-pass clustering
                     clusters = []
                     current_cluster = [lines[0]]
                     for ln in lines[1:]:
@@ -96,7 +95,12 @@ def custom_extract_tables(
                         if abs(indent_prev - indent_candidate) > indent_thresh:
                             clusters.append(current_cluster)
                             current_cluster = [ln]
-                        elif BEGIN_LINE_PATTERN.search(ln["text"].strip()):
+                        # Use the second column pattern only for the 2nd column (col index 1)
+                        elif (
+                            BEGIN_LINE_PATTERN_SECOND
+                            if col_idx == 1
+                            else BEGIN_LINE_PATTERN_DEFAULT
+                        ).search(ln["text"].strip()):
                             clusters.append(current_cluster)
                             current_cluster = [ln]
                         elif available_space >= first_word_width:
@@ -448,6 +452,7 @@ def custom_parse_table(input_data):
     cmc = ""
     preComment = ""
     comment = ""
+    parameter2 = ""
 
     data_rows = []
     for row in data[1:]:
@@ -461,6 +466,7 @@ def custom_parse_table(input_data):
                 cmc = ""
                 preComment = row[3]
                 comment = ""
+                parameter2 = ""
                 continue
             elif "–" in row[0]:
                 equipment, parameter = [part.strip() for part in row[0].split("–", 1)]
@@ -471,10 +477,11 @@ def custom_parse_table(input_data):
                 parameter = ""
 
             range_val = row[1].strip("\t")
-            # Check if the range value has a number
-            if not any(char.isdigit() for char in range_val):
-                # If not, treat it as a part of the parameter
-                parameter = ";".join([parameter, range_val]) if parameter else range_val
+            if row[1].startswith("H"):
+                parameter2 = range_val
+                range_val = ""
+            elif range_val.endswith(":"):
+                parameter2 = range_val if parameter else range_val
                 range_val = ""
             cmc = row[2]
 
@@ -485,6 +492,7 @@ def custom_parse_table(input_data):
                 preComment = ""
 
         elif headers[0] == "Parameter/Range":
+            parameter2 = ""
             if "–" in row[0]:
                 # equipment, parameter = [part.strip() for part in row[0].split('–', 1)]
                 equipment = ""
@@ -509,7 +517,14 @@ def custom_parse_table(input_data):
 
         if not cmc:
             continue
-        data_rows.append([equipment, parameter, range_val, frequency, cmc, comment])
+        param = ''
+        if parameter and parameter2:
+            param = parameter + "; " + parameter2
+        elif parameter:
+            param = parameter
+        elif parameter2:
+            param = parameter2
+        data_rows.append([equipment, param, range_val, frequency, cmc, comment])
     return data_rows
 
 
