@@ -29,12 +29,13 @@ def main(pdf_path, save_intermediate=False):
                 table_rows.extend(custom_parse_table(table))
     columns = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
     df = pd.DataFrame(table_rows, columns=columns)
-    # df.to_csv("export/parsed.csv", index=False, encoding="utf-8-sig")
-    # logging.info("Exported parsed data to 'export/parsed.csv'")
+    df.to_csv("export/parsed.csv", index=False, encoding="utf-8-sig")
+    logging.info("Exported parsed data to 'export/parsed.csv'")
 
-    df[["expected_min", "expected_max", "expected_unit"]] = df["Range"].apply(
+    df[["range_min", "range_min_unit", "range_max", "range_max_unit"]] = df["Range"].apply(
         lambda x: pd.Series(parse_range(x))
     )
+    df.to_csv("export/range_parsed.csv", index=False, encoding="utf-8-sig")
 
 
 def custom_extract_tables(
