@@ -24,13 +24,7 @@ def main(pdf_path, save_intermediate=False):
                 with open(f"export/pages/json/page{page.page_number}.json", "w") as f:
                     f.write(json.dumps(tables, indent=2))
             for table in tables:
-                headers, *rows = table
-                header_names = [cell[0]["text"] for cell in headers]
-                for row in rows:
-                    for cell, header in zip(row, header_names):
-                        for cluster in cell:
-                            print(str(cluster))
-                            # TODO: Handle multi-line cells
+                custom_parse_table(table)
 
 
 def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_thresh=4):
@@ -229,105 +223,186 @@ def remove_small_chars(clust):
         ln["text"] = string.strip()
 
 
+def flatten_hierarchical_comments(lines, delimiter="; "):
+    """
+    Given a list of lines (some may start with a leading tab '\t'),
+    transform them so that:
+      - A non-indented line becomes the current "prefix."
+      - Any subsequent indented lines get combined with that prefix.
+      - If a prefix never sees an indented child line, it appears on its own.
+    Returns a new list of strings, each one either "prefix; child" or a lone prefix.
+    """
+    results = []
+    prefix = None
+    prefix_used = False
+
+    for line in lines:
+        if line.startswith("\t"):
+            # Indented => combine with current prefix (if any)
+            child_text = line.lstrip("\t")
+            if prefix:
+                results.append(prefix + delimiter + child_text)
+                prefix_used = True
+            else:
+                # No prefix => just store child alone
+                results.append(child_text)
+        else:
+            # New (non-indented) prefix
+            if prefix and not prefix_used:
+                # Previous prefix had no children => emit it by itself
+                results.append(prefix)
+            prefix = line
+            prefix_used = False
+
+    # If the final prefix was never used for a child, emit it by itself
+    if prefix and not prefix_used:
+        results.append(prefix)
+
+    return results
+
+
+def group_lines(lines, threshold=5):
+    # Sort the lines by their "top" value.
+    sorted_lines = sorted(lines, key=lambda x: x['top'])
+    groups = []
+    if not sorted_lines:
+        return groups
+
+    # Start the first group with the first line.
+    current_group = [sorted_lines[0]]
+    # Use the first line's top as the reference value.
+    current_avg_top = sorted_lines[0]['top']
+
+    for line in sorted_lines[1:]:
+        # If the difference between the current line's top and the group's average is below the threshold,
+        # consider it part of the same group.
+        if abs(line['top'] - current_avg_top) < threshold:
+            current_group.append(line)
+            # Update the average "top" value for the current group.
+            current_avg_top = sum(item['top'] for item in current_group) / len(current_group)
+        else:
+            groups.append(current_group)
+            current_group = [line]
+            current_avg_top = line['top']
+    if current_group:
+        groups.append(current_group)
+    return groups
+
+
+def restructure_input_data(input_data, threshold=5):
+    """
+    Restructure the nested PDF table data into a list of rows, each row being a list
+    of 4 cell texts, ordered from top to bottom. Each cell text is obtained by grouping
+    text elements that have similar 'top' values (within the threshold).
+
+    The input_data is assumed to be a list of rows (with the header row at index 0).
+    Each row is a list of 4 columns, and each column is a list of dictionaries
+    with at least "text" and "top" keys.
+    """
+    # Flatten the structure: extract a flat list of all cell entries from the data
+    headers = [item[0]["text"] for item in input_data[0]]
+    cell_entries = []
+    for row in input_data[1:]:  # skip header row
+        for col_idx, cell in enumerate(row):
+            for item in cell:
+                if "text" in item and "top" in item:
+                    cell_entries.append({
+                        "col": col_idx,
+                        "top": item["top"],
+                        "text": item["text"]
+                    })
+
+    # Sort all cell entries by their vertical position
+    cell_entries.sort(key=lambda x: x["top"])
+
+    # Group entries into horizontal lines based on the threshold.
+    # Two entries belong to the same line if their "top" values differ by less than the threshold.
+    lines = []
+    if cell_entries:
+        current_group = [cell_entries[0]]
+        for entry in cell_entries[1:]:
+            if abs(entry["top"] - current_group[-1]["top"]) < threshold:
+                current_group.append(entry)
+            else:
+                lines.append(current_group)
+                current_group = [entry]
+        lines.append(current_group)
+
+    # For each grouped line, build a row with exactly 4 columns, using '' for missing values.
+    final_rows = []
+    for group in lines:
+        line_dict = {}
+        for entry in group:
+            col = entry["col"]
+            # If multiple entries fall in the same column, join them with a space.
+            if col in line_dict:
+                line_dict[col] += " " + entry["text"]
+            else:
+                line_dict[col] = entry["text"]
+
+        # Force exactly 4 columns. If a column is missing, use an empty string as placeholder.
+        row_line = [line_dict.get(i, "") for i in range(4)]
+        final_rows.append((group[0]["top"], row_line))
+
+    # Sort the final rows by their vertical position and return just the row data.
+    final_rows.sort(key=lambda x: x[0])
+    # Add the header row back to the final rows.
+    final_rows.insert(0, (0, headers))
+    return [row for _, row in final_rows]
+
+
 def custom_parse_table(input_data):
     """
     Convert the PDF table structure into a pandas DataFrame with the following columns:
       Equipment, Parameter, Range, Frequency, CMC (±), Comments
-
-    Processing Logic:
-      - Subheader rows (lines ending in "–") define the Equipment field and should be removed.
-      - If a line contains "–" but does not end with it, split to get both Equipment and Parameter.
-      - Subsequent indented lines (in the same column) are treated as Parameters.
-      - All other columns (Range, CMC, Comments) follow their respective structure.
-      - Ensure Frequency column is present but left empty.
     """
-
-    # Standardize column names
     columns = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
+    data = restructure_input_data(input_data, threshold=5)
+    headers = data[0]
+
+    # Initialize variables to store the current values for each column.
+    equipment = ''
+    parameter = ''
+    range_val = ''
+    frequency = ''
+    cmc = ''
+    preComment = ''
+    comment = ''
 
     data_rows = []
-    equipment = ""  # Keep track of the last known Equipment name
-    section_comment = ""  # Track section header comments
+    if headers[0] == 'Parameter/Equipment':
+        frequency = ''
+        for row in data[1:]:
+            if row[0].endswith("–"):
+                equipment = row[0].strip('–').strip()
+                parameter = ''
+                range_val = ''
+                cmc = ''
+                preComment = row[3]
+                comment = ''
+                continue
+            elif '–' in row[0]:
+                equipment, parameter = [part.strip() for part in row[0].split('–', 1)]
+            elif row[0].startswith('\t'):
+                parameter = row[0].strip('\t')
+            elif row[0]:
+                equipment = row[0]
+                parameter = ''
 
-    # Process each data row (skip header row)
-    for row in input_data[1:]:
-        # Process first column: Equipment/Parameter
-        cell0_texts = [item.get("text", "").strip() for item in row[0] if item.get("text")]
-        cell1_texts = [item.get("text", "").strip() for item in row[1] if item.get("text")]
-        cell2_texts = [item.get("text", "").strip() for item in row[2] if item.get("text")]
-        cell3_texts = [item.get("text", "").strip() for item in row[3] if item.get("text")]
+            range_val = row[1]
+            cmc = row[2]
 
-        # Check if this is a section header row (Range and CMC empty)
-        is_header_row = not cell1_texts and not cell2_texts
+            if row[3].startswith('\t'):
+                comment = preComment + '; ' + row[3].strip('\t')
+            elif row[3]:
+                comment = row[3]
+                preComment = ''
 
-        if is_header_row and cell0_texts:
-            # This is a section header
-            first_line = cell0_texts[0]
-            if first_line.endswith("–"):
-                equipment = first_line.replace("–", "").strip()
-            else:
-                equipment = first_line.strip()
+            data_rows.append([equipment, parameter, range_val, frequency, cmc, comment])
+    elif headers[0] == 'Parameter/Range':
+        equipment
+        # Add logic for this later
 
-            # Store section comment if present
-            if cell3_texts:
-                section_comment = cell3_texts[0]
-            continue  # Skip adding this row
-
-        if cell0_texts:
-            first_line = cell0_texts[0]
-            parts = DASH_PATTERN.split(first_line)
-            if len(parts) > 1:
-                # There's a dash, so split into Equipment and Parameter
-                equipment = parts[0].strip()
-                first_param = parts[1].strip()
-                parameters = [first_param] if first_param else []
-                # Append any additional parts (if they were indented or on subsequent lines)
-                parameters.extend([text.lstrip('\t') for text in cell0_texts[1:]])
-            else:
-                # No dash found: treat the entire value as Equipment, no Parameter.
-                equipment = first_line.strip()
-                parameters = []
-        else:
-            parameters = []
-
-        # Process comments - combine section comment with row comments
-        processed_comments = []
-        if cell3_texts:
-            for comment in cell3_texts:
-                if section_comment and comment != section_comment:
-                    # Add section comment as prefix if it's not already there
-                    if section_comment not in comment:
-                        processed_comments.append(f"{section_comment}; {comment.lstrip('\t')}")
-                    else:
-                        processed_comments.append(comment)
-                else:
-                    processed_comments.append(comment)
-        elif section_comment and equipment == "Coordinate Measuring Machines (CMM)":
-            processed_comments.append(section_comment)
-
-        # If there's exactly one comment and the first cell (Equipment/Parameter) doesn't end with "–",
-        # propagate that comment to all subrows.
-        if cell0_texts and not cell0_texts[0].endswith("–") and len(processed_comments) == 1:
-            # Determine number of subrows from the other cells only.
-            num_subrows = max(len(parameters), len(cell1_texts), len(cell2_texts))
-            processed_comments = [processed_comments[0]] * num_subrows
-        else:
-            num_subrows = max(len(parameters), len(cell1_texts), len(cell2_texts), len(processed_comments))
-        if num_subrows == 0:
-            num_subrows = 1
-
-        for i in range(num_subrows):
-            # If there's only one parameter, propagate it to every subrow.
-            if len(parameters) == 1:
-                param = parameters[0]
-            else:
-                param = parameters[i] if i < len(parameters) else ""
-            range_val = cell1_texts[i] if i < len(cell1_texts) else ""
-            cmc_val = cell2_texts[i] if i < len(cell2_texts) else ""
-            comments_val = processed_comments[i] if i < len(processed_comments) else ""
-            data_rows.append([equipment, param, range_val, "", cmc_val, comments_val])
-
-    # Convert to DataFrame
     df = pd.DataFrame(data_rows, columns=columns)
     return df
 
