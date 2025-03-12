@@ -7,20 +7,20 @@ class budget(dict):
     mult_unit: str
     uncertainty_unit: str
 
-    def __init__(self, base: float, multiplier: float, mult_unit: str, uncertainty_unit: str) -> None:
-        self.base = base
-        self.multiplier = multiplier
-        self.mult_unit = mult_unit
-        self.uncertainty_unit = uncertainty_unit
+    def __init__(s, base: float, multiplier: float, mult_unit: str, uncertainty_unit: str) -> None:
+        s.base = base
+        s.multiplier = multiplier
+        s.mult_unit = mult_unit
+        s.uncertainty_unit = uncertainty_unit
 
-    def __eq__(self, other):
+    def __eq__(s, other):
         if not isinstance(other, budget):
             return False
-        return (
-            self.base == other.base and
-            self.multiplier == other.multiplier and
-            self.mult_unit == other.mult_unit and
-            self.uncertainty_unit == other.uncertainty_unit
+        return all(
+            s.base == other.base,
+            s.multiplier == other.multiplier,
+            s.mult_unit == other.mult_unit,
+            s.uncertainty_unit == other.uncertainty_unit
         )
 
     def __repr__(s):
