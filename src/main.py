@@ -16,6 +16,7 @@ DASH_PATTERN = re.compile(r"\s*–\s*")
 
 
 def main(pdf_path, save_intermediate=False):
+    table_rows = []
     with pdfplumber.open(pdf_path) as pdf:
         for page in pdf.pages:
             tables = custom_extract_tables(page)
@@ -24,7 +25,11 @@ def main(pdf_path, save_intermediate=False):
                 with open(f"export/pages/json/page{page.page_number}.json", "w") as f:
                     f.write(json.dumps(tables, indent=2))
             for table in tables:
-                custom_parse_table(table)
+                table_rows.extend(custom_parse_table(table))
+    columns = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
+    df = pd.DataFrame(table_rows, columns=columns)
+    df.to_csv("export/parsed.csv", index=False, encoding="utf-8-sig")
+    logging.info("Exported parsed data to 'export/parsed.csv'")
 
 
 def custom_extract_tables(page, table_settings=None, vertical_thresh=14, indent_thresh=4):
@@ -356,7 +361,6 @@ def custom_parse_table(input_data):
     Convert the PDF table structure into a pandas DataFrame with the following columns:
       Equipment, Parameter, Range, Frequency, CMC (±), Comments
     """
-    columns = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
     data = restructure_input_data(input_data, threshold=5)
     headers = data[0]
 
@@ -370,9 +374,10 @@ def custom_parse_table(input_data):
     comment = ''
 
     data_rows = []
-    if headers[0] == 'Parameter/Equipment':
-        frequency = ''
-        for row in data[1:]:
+    for row in data[1:]:
+        row[0] = row[0].replace("(cont)", "").strip(' ')
+        if headers[0] == 'Parameter/Equipment':
+            frequency = ''
             if row[0].endswith("–"):
                 equipment = row[0].strip('–').strip()
                 parameter = ''
@@ -398,13 +403,13 @@ def custom_parse_table(input_data):
                 comment = row[3]
                 preComment = ''
 
-            data_rows.append([equipment, parameter, range_val, frequency, cmc, comment])
-    elif headers[0] == 'Parameter/Range':
-        equipment = ''
-        for row in data[1:]:
+        elif headers[0] == 'Parameter/Range':
             if '–' in row[0]:
-                equipment, parameter = [part.strip() for part in row[0].split('–', 1)]
+                # equipment, parameter = [part.strip() for part in row[0].split('–', 1)]
+                equipment = ''
+                parameter = row[0]
                 range_val = ''
+                frequency = ''
                 cmc = ''
                 preComment = row[3]
                 comment = ''
@@ -412,6 +417,7 @@ def custom_parse_table(input_data):
             elif row[0].startswith('\t'):
                 range_val = row[0].strip('\t')
 
+            frequency = row[1]
             cmc = row[2]
 
             if row[3].startswith('\t'):
@@ -420,8 +426,8 @@ def custom_parse_table(input_data):
                 comment = row[3]
                 preComment = ''
 
-    df = pd.DataFrame(data_rows, columns=columns)
-    return df
+        data_rows.append([equipment, parameter, range_val, frequency, cmc, comment])
+    return data_rows
 
 
 if __name__ == "__main__":
