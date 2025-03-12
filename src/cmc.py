@@ -39,44 +39,84 @@ class budget(dict):
         return pd.Series(s.__list__())
 
 
+def parse_num_unit(s: str, force_float: bool = False):
+    """
+    Extract a numeric portion and the rest of the string.
+    If force_float is True, always return the number as a float.
+    Otherwise, return a float only if the numeric string contains a dot,
+    else leave it as a string.
+    """
+    s = s.strip()
+    match = re.match(r'^([+-]?\d+(?:\.\d+)?)(.*)$', s)
+    if not match:
+        return s, ""
+    num_str, unit_str = match.group(1), match.group(2).strip()
+    if force_float:
+        try:
+            num = float(num_str)
+        except ValueError:
+            num = num_str
+    else:
+        if '.' in num_str:
+            num = float(num_str)
+        else:
+            num = num_str
+    return num, unit_str
+
+
 def parse_budget(input_text: str) -> budget:
     """
-    Parse the CMC (±) column's linear equation into four components:
-      base, multiplier, multiplier conversion unit, and uncertainty unit.
+    Parse the CMC (±) column's linear equation into it's four components.
 
-    Expected formats:
-      Format A: "<base> + <multiplier>[<mult_unit>] ± <uncertainty_value>[<uncertainty_unit>]"
-        e.g. "10+0.2m±0.05m"  --> ("10", "0.2", "m", "m")
-      Format B: "(<base> + <multiplier>[<mult_unit>]) <uncertainty_unit>"
-        e.g. "(36 + 2.3D) µin"  --> ("36", "2.3", "D", "µin")
+    Args:
+        input_text (str): The text to parse.
 
-    If the text does not match either expected format or is a placeholder (like '---'),
-    returns a tuple with the original text as the first element (or None for placeholders)
-    and None for the other components.
+    Returns:
+        budget: (base, multiplier, mult_unit, uncertainty_unit)
     """
     text = input_text.strip()
     # Handle placeholders.
     if text == "---" or not text:
         return budget(None, None, None, None)
 
-    # Handle case without a plus sign (e.g., "27 µin")
-    if '+' not in text:
+    # If there's a plus sign, we assume a two-part expression.
+    if "+" in text:
+        # Case 1: Parenthesized expression like "(36 + 2.3D) µin"
+        if text.startswith("("):
+            # Expect format: (<base> + <multiplier>[unit]) <uncertainty_unit>
+            closing_index = text.find(")")
+            if closing_index == -1:
+                # Malformed; fall through to generic handling
+                return budget(text, None, None, None)
+            inner = text[1:closing_index].strip()
+            outer = text[closing_index + 1:].strip()  # uncertainty unit
+            if "+" not in inner:
+                return budget(text, None, None, None)
+            left_inner, right_inner = inner.split("+", 1)
+            left_inner = left_inner.strip()
+            right_inner = right_inner.strip()
+            base_val, left_unit = parse_num_unit(left_inner, force_float=True)
+            mult_val, right_unit = parse_num_unit(right_inner, force_float=True)
+            # If the base part had an attached unit, use it;
+            # otherwise, fall back to the multiplier part’s attached unit.
+            mult_unit = left_unit if left_unit else right_unit
+            return budget(base_val, mult_val, mult_unit, outer)
+        else:
+            # Case 2: No parentheses; expect format like "0.034 % + 3.6 µV" or "1.3 % rdg + 120 µF"
+            left, right = text.split("+", 1)
+            left = left.strip()
+            right = right.strip()
+            base_val, left_unit = parse_num_unit(left, force_float=True)
+            mult_val, right_unit = parse_num_unit(right, force_float=True)
+            # In this format, the left part’s unit is taken as the multiplier conversion unit.
+            return budget(base_val, mult_val, left_unit if left_unit else "", right_unit)
+    else:
+        # No plus sign. Expect format: "<number> <uncertainty_unit>"
+        # Split on first whitespace.
         parts = text.split(maxsplit=1)
-        base = parts[0]
-        uncertainty_unit = parts[1] if len(parts) > 1 else ''
-        return budget(base, 0, None, uncertainty_unit)
-
-    patterns = [
-        # Pattern A: With '±' and uncertainty numeric value.
-        r'^\s*\(?\s*([+-]?\d+(?:\.\d+)?)\s*\+\s*([+-]?\d+(?:\.\d+)?)(?:\s*([A-Za-zμµ/%]+))?\s*\)?\s*±\s*[+-]?\d+(?:\.\d+)?\s*([A-Za-zμµ/%]+)\s*$',
-        # Pattern B: Without '±' (uncertainty numeric value omitted)
-        r'^\s*\(?\s*([+-]?\d+(?:\.\d+)?)\s*\+\s*([+-]?\d+(?:\.\d+)?)(?:\s*([A-Za-zμµ/%]+))?\s*\)?\s*([A-Za-zμµ/%]+)\s*$',
-    ]
-    for i, pattern in enumerate(patterns):
-        if match := re.match(pattern, text):
-            base = match.group(1)
-            multiplier = match.group(2)
-            mult_unit = match.group(3) if match.group(3) else ""
-            uncertainty_unit = match.group(4)
-            return budget(base, multiplier, mult_unit, uncertainty_unit)
-    return budget(text, None, None, None)
+        if not parts:
+            return budget(text, None, None, None)
+        base_str = parts[0]
+        rest = parts[1] if len(parts) > 1 else ""
+        base_val, _ = parse_num_unit(base_str, force_float=False)
+        return budget(base_val, 0, None, rest.strip())
