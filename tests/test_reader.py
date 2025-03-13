@@ -1,5 +1,5 @@
 import pytest
-from src.main import custom_parse_table
+from src.main import custom_parse_table, pdf_table_processor
 from src.extract import custom_extract_tables
 import pdfplumber
 import json
@@ -77,3 +77,32 @@ def test_parse_table(json_file):
                     f"Cell mismatch at ({i}, {j}): expected '{expected_cell}', got '{cell}'"
                 )
     pd.testing.assert_frame_equal(expected_table, output_table)
+
+@pytest.mark.parametrize(
+    "pdf_file",
+    [
+        "2820-01.pdf",
+        "JGI A2LA Cert 2820.01 Exp 03-2025.pdf",
+    ],
+)
+def test_whole_files(pdf_file):
+    """Test the custom_parse_table function with JSON input and expected CSV output."""
+    # Load input JSON
+    table = pdf_table_processor(f"tests/test_data/{pdf_file}")
+
+    # Make sure the table is not empty
+    assert not table.empty, "Table is empty"
+
+    # Check the columns
+    expected_columns = ['Equipment', 'Parameter', 'Range', 'Frequency', 'CMC (±)', 'Comments', 'range_min', 'range_min_unit', 'range_max', 'range_max_unit', 'cmc_base', 'cmc_multiplier', 'cmc_mult_unit', 'cmc_uncertainty_unit']
+    assert table.columns.tolist() == expected_columns, f"Columns mismatch: expected {expected_columns}, got {table.columns.tolist()}"
+    
+    # Make sure no columns are empty
+    for column in table.columns:
+        assert not table[column].isnull().all(), f"Column {column} is empty"
+
+    # Make sure no rows are empty
+    for index, row in table.iterrows():
+        assert not row.isnull().all(), f"Row {index} is empty"
+
+    pass
