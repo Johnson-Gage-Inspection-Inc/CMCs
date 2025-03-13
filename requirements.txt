@@ -2,3 +2,4 @@ pyinstaller
 pdfplumber
 pandas
 pytest
+deepdiff
