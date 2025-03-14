@@ -94,7 +94,7 @@ def test_whole_files(pdf_file):
     assert not table.empty, "Table is empty"
 
     # Check the columns
-    expected_columns = ['Equipment', 'Parameter', 'Range', 'Frequency', 'CMC (±)', 'Comments', 'range_min', 'range_min_unit', 'range_max', 'range_max_unit', 'cmc_base', 'cmc_multiplier', 'cmc_mult_unit', 'cmc_uncertainty_unit']
+    expected_columns = ['Equipment', 'Parameter', 'Range', 'Frequency', 'CMC (±)', 'Comments', 'range_min', 'range_min_unit', 'range_max', 'range_max_unit', 'frequency_range_min', 'frequency_range_min_unit', 'frequency_range_max', 'frequency_range_max_unit', 'cmc_base', 'cmc_multiplier', 'cmc_mult_unit', 'cmc_uncertainty_unit']
     assert table.columns.tolist() == expected_columns, f"Columns mismatch: expected {expected_columns}, got {table.columns.tolist()}"
     
     # Make sure no columns are empty
