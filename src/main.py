@@ -280,6 +280,9 @@ def custom_parse_table(input_data):
             comment = row[3]
             preComment = ""
 
+        if not equipment:
+            equipment = comment
+
         if not cmc:
             continue
         param = ""
