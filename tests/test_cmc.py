@@ -16,6 +16,7 @@ from src.cmc import parse_budget, budget
         ("0.43 parts in 10", budget(0.43, 0, None, "parts in 10")),
         ("0.013 % of magnification", budget(0.013, 0, None, "% of magnification")),
         ("1.3 % rdg + 120 µF", budget(120, 1.3, "% rdg", "µF")),
+        ("0.019 % rdg", budget(0, 0.019, None, "% rdg")),
         # Null case:
         ("---", budget(None, None, None, None)),
     ],

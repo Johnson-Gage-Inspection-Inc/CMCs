@@ -118,12 +118,19 @@ def parse_budget(input_text: str) -> budget:
                 base_val, mult_val, left_unit if left_unit else "", right_unit
             )
     else:
+        if text.__contains__("%"):
+            pattern = r"([+-]?\d+(?:\.\d+)?)(?=\s*% rdg)"
+            if match := re.search(pattern, text):
+                mult_val = float(match.group(1))
+                return budget(0, mult_val, None, "% rdg")
+            else:
+                base_val, rest = parse_num_unit(text, force_float=True)
+                return budget(base_val, 0, None, rest)
         # No plus sign. Expect format: "<number> <uncertainty_unit>"
         # Split on first whitespace.
-        parts = text.split(maxsplit=1)
-        if not parts:
-            return budget(text, None, None, None)
-        base_str = parts[0]
-        rest = parts[1] if len(parts) > 1 else ""
-        base_val, _ = parse_num_unit(base_str, force_float=False)
-        return budget(base_val, 0, None, rest.strip())
+        if parts := text.split(maxsplit=1):
+            base_str = parts[0]
+            rest = parts[1] if len(parts) > 1 else ""
+            base_val, _ = parse_num_unit(base_str, force_float=False)
+            return budget(base_val, 0, None, rest.strip())
+        return budget(text, None, None, None)
