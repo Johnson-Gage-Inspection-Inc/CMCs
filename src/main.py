@@ -58,6 +58,13 @@ def pdf_table_processor(pdf_path: str, save_intermediate=False) -> pd.DataFrame:
         df.to_csv("export/range_parsed.csv", index=False, encoding="utf-8-sig")
         logging.info("Exported parsed range data to 'export/range_parsed.csv'")
 
+    df[["frequency_range_min", "frequency_range_min_unit", "frequency_range_max", "frequency_range_max_unit"]] = df[
+        "Frequency"
+    ].apply(lambda x: pd.Series(parse_range(x)))
+    if save_intermediate:
+        df.to_csv("export/frequency_parsed.csv", index=False, encoding="utf-8-sig")
+        logging.info("Exported parsed frequency data to 'export/frequency_parsed.csv'")
+
     df[["cmc_base", "cmc_multiplier", "cmc_mult_unit", "cmc_uncertainty_unit"]] = df[
         "CMC (±)"
     ].apply(lambda x: parse_budget(x).__series__())
