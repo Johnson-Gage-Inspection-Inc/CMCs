@@ -6,3 +6,12 @@ dist/
 export/tables/parsed/*
 __pycache__/
 *.pyc
+~$*.xla
+~$*.xlam
+~$*.xls
+~$*.xlsb
+~$*.xlsm
+~$*.xlsx
+~$*.xlt
+~$*.xltm
+~$*.xltx
