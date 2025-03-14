@@ -20,8 +20,16 @@ DASH_PATTERN = re.compile(r"\s*–\s*")
 
 def main(pdf_path):
     df = pdf_table_processor(pdf_path)
-    df.to_csv("export/cmc_parsed.csv", index=False, encoding="utf-8-sig")
-    logging.info("Exported parsed range data to 'export/range_parsed.csv'")
+    
+    if parsed_csv_file_path := filedialog.asksaveasfilename(
+        title="Save CSV file",
+        defaultextension=".csv",
+        filetypes=[("CSV files", "*.csv")],
+    ):
+        df.to_csv(parsed_csv_file_path, index=False, encoding="utf-8-sig")
+        logging.info(f"Exported parsed range data to '{parsed_csv_file_path}'")
+    else:
+        logging.warning("Save operation was cancelled. No file was saved.")
 
 
 def pdf_table_processor(pdf_path: str, save_intermediate=False) -> pd.DataFrame:
