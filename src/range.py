@@ -43,7 +43,7 @@ def parse_range(
     if text.lower().startswith("up to"):
         remainder = text[5:].strip()  # remove "Up to"
         num, unit = extract_value(remainder)
-        return (None, None, num, unit)
+        return (0, unit, num, unit)
 
     # Greater than: e.g. "> 62 % IACS" should yield (num, unit, None, None)
     if text.startswith(">"):

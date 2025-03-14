@@ -8,9 +8,9 @@ from src.range import parse_range
         # Standard Cases
         ("(10 to 50) mm", "10", "mm", "50", "mm"),
         ("(3 to 11) A", "3", "A", "11", "A"),
-        ("Up to 9 in", None, None, "9", "in"),
-        ("Up to 600 in", None, None, "600", "in"),
-        ("Up to 16 % IACS", None, None, "16", "% IACS"),
+        ("Up to 9 in", 0, "in", "9", "in"),
+        ("Up to 600 in", 0, "in", "600", "in"),
+        ("Up to 16 % IACS", 0, "% IACS", "16", "% IACS"),
         ("100 mA to 1 A", "100", "mA", "1", "A"),  # Different units
         ("3.5 to 27 in", "3.5", "in", "27", "in"),
         (
@@ -33,7 +33,7 @@ from src.range import parse_range
             "10000",
             "psi",
         ),  # Handles extra spaces in numbers
-        ("Up to 1 in", None, None, "1", "in"),
+        ("Up to 1 in", 0, "in", "1", "in"),
         ("---", None, None, "---", "---"),  # Placeholder value
         ("±180º", "-180", "º", "180", "º"),  # Plus/minus parsing
         (
