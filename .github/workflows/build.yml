@@ -30,6 +30,7 @@ jobs:
 
       - name: Run Tests
         run: |
+          $env:PYTHONPATH = "$env:GITHUB_WORKSPACE"
           pytest tests/ --maxfail=1 --disable-warnings -q
 
   build:
