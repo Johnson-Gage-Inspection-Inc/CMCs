@@ -172,204 +172,204 @@ Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 1000 Ω",(32 to 
 Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 1000 Ω",(400 to 800) °F,,0.020 °F,HP 3458A
 Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 1000 Ω",(800 to 1200) °F,,0.027 °F,HP 3458A
 Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 1000 Ω",(1200 to 1562) °F,,0.033 °F,HP 3458A
-,AC Voltage – Measure,(1 to 10) mV,(1 to 40) Hz,0.034 % + 3.6 µV,HP 3458A
-,AC Voltage – Measure,(1 to 10) mV,40 Hz to 1 kHz,0.023 % + 1.4 µV,HP 3458A
-,AC Voltage – Measure,(1 to 10) mV,(1 to 20) kHz,0.034 % + 1.4 µV,HP 3458A
-,AC Voltage – Measure,(1 to 10) mV,(20 to 50) kHz,0.011 % + 1.9 µV,HP 3458A
-,AC Voltage – Measure,(1 to 10) mV,(50 to 100) kHz,0.58 % + 1.4 µV,HP 3458A
-,AC Voltage – Measure,(1 to 10) mV,(100 to 300) kHz,4.6 % + 4.2 µV,HP 3458A
-,AC Voltage – Measure,(1 to 10) mV,(0.3 to 1) MHz,4.6 % + 7.7 µV,HP 3458A
-,AC Voltage – Measure,(1 to 10) mV,(1 to 4) MHz,8.1 % + 8.8 µV,HP 3458A
-,AC Voltage – Measure,(1 to 10) mV,(4 to 8) MHz,23 % + 19 µV,HP 3458A
-,AC Voltage – Measure,(10 to 100) mV,(1 to 40) Hz,83 µV/V + 4.7 µV,HP 3458A
-,AC Voltage – Measure,(10 to 100) mV,40 Hz to 1 kHz,83 µV/V + 2.4 µV,HP 3458A
-,AC Voltage – Measure,(10 to 100) mV,(1 to 20) kHz,0.016 % + 2.7 µV,HP 3458A
-,AC Voltage – Measure,(10 to 100) mV,(20 to 50) kHz,0.035 % + 2.4 µV,HP 3458A
-,AC Voltage – Measure,(10 to 100) mV,(50 to 100) kHz,0.092 % + 2.8 µV,HP 3458A
-,AC Voltage – Measure,(10 to 100) mV,(100 to 300) kHz,0.35 % + 12 µV,HP 3458A
-,AC Voltage – Measure,(10 to 100) mV,300 kHz to 1 MHz,1.2 % + 12 µV,HP 3458A
-,AC Voltage – Measure,(10 to 100) mV,(1 to 2) MHz,1.7 % + 45 µV,HP 3458A
-,AC Voltage – Measure,(10 to 100) mV,(2 to 4) MHz,4.6 % + 100 µV,HP 3458A
-,AC Voltage – Measure,(10 to 100) mV,(4 to 8) MHz,4.6 % + 120 µV,HP 3458A
-,AC Voltage – Measure,(10 to 100) mV,(8 to 10) MHz,17 % + 440 µV,HP 3458A
-,AC Voltage – Measure,100 mV to 1 V,(1 to 40) Hz,82 µV/V + 47 µV,HP 3458A
-,AC Voltage – Measure,100 mV to 1 V,40 Hz to 1 kHz,82 µV/V + 24 µV,HP 3458A
-,AC Voltage – Measure,100 mV to 1 V,(1 to 20) kHz,0.016 % + 26 µV,HP 3458A
-,AC Voltage – Measure,100 mV to 1 V,(20 to 50) kHz,0.035 % + 24 µV,HP 3458A
-,AC Voltage – Measure,100 mV to 1 V,(50 to 100) kHz,0.092 % + 28 µV,HP 3458A
-,AC Voltage – Measure,100 mV to 1 V,(100 to 300) kHz,0.35 % + 120 µV,HP 3458A
-,AC Voltage – Measure,100 mV to 1 V,300 kHz to 1 MHz,1.2 % + 120 µV,HP 3458A
-,AC Voltage – Measure,100 mV to 1 V,(1 to 2) MHz,1.7 % + 450 µV,HP 3458A
-,AC Voltage – Measure,100 mV to 1 V,(2 to 4) MHz,4.6 % + 1.1 mV,HP 3458A
-,AC Voltage – Measure,100 mV to 1 V,(4 to 8) MHz,4.6 % + 1.2 mV,HP 3458A
-,AC Voltage – Measure,100 mV to 1 V,(8 to 10) MHz,17 % + 4.4 mV,HP 3458A
-,AC Voltage – Measure,(1 to 10) V,(1 to 40) Hz,83 µV/V + 0.47 mV,HP 3458A
-,AC Voltage – Measure,(1 to 10) V,40 Hz to 1 kHz,82 µV/V + 0.24 mV,HP 3458A
-,AC Voltage – Measure,(1 to 10) V,(1 to 20) kHz,0.016 % + 0.26 mV,HP 3458A
-,AC Voltage – Measure,(1 to 10) V,(20 to 50) kHz,0.035 % + 0.24 mV,HP 3458A
-,AC Voltage – Measure,(1 to 10) V,(50 to 100) kHz,0.092 % + 0.28 mV,HP 3458A
-,AC Voltage – Measure,(1 to 10) V,(100 to 300) kHz,0.35 % + 1.2 mV,HP 3458A
-,AC Voltage – Measure,(1 to 10) V,300 kHz to 1 MHz,1.2 % + 1.2 mV,HP 3458A
-,AC Voltage – Measure,(1 to 10) V,(1 to 2) MHz,1.7 % + 4.6 mV,HP 3458A
-,AC Voltage – Measure,(1 to 10) V,(2 to 4) MHz,4.6 % + 11 mV,HP 3458A
-,AC Voltage – Measure,(1 to 10) V,(4 to 8) MHz,4.6 % + 12 mV,HP 3458A
-,AC Voltage – Measure,(1 to 10) V,(8 to 10) MHz,17 % + 44 mV,HP 3458A
-,AC Voltage – Measure,(10 to 100) V,(1 to 40) Hz,0.023 % + 4.8 mV,HP 3458A
-,AC Voltage – Measure,(10 to 100) V,40 Hz to 1 kHz,0.023 % + 2.5 mV,HP 3458A
-,AC Voltage – Measure,(10 to 100) V,(1 to 20) kHz,0.023 % + 2.5 mV,HP 3458A
-,AC Voltage – Measure,(10 to 100) V,(20 to 50) kHz,0.04 % + 2.8 mV,HP 3458A
-,AC Voltage – Measure,(10 to 100) V,(50 to 100) kHz,0.14 % + 2.4 mV,HP 3458A
-,AC Voltage – Measure,(10 to 100) V,(100 to 300) kHz,0.46 % + 14 mV,HP 3458A
-,AC Voltage – Measure,(10 to 100) V,300 kHz to 1 MHz,1.7 % + 44 mV,HP 3458A
-,AC Voltage – Measure,(100 to 1000) V,(1 to 40) Hz,0.046 % + 49 mV,HP 3458A
-,AC Voltage – Measure,(100 to 1000) V,40 Hz to 1 kHz,0.046 % + 26 mV,HP 3458A
-,AC Voltage – Measure,(100 to 1000) V,(1 to 20) kHz,0.07 % + 23 mV,HP 3458A
-,AC Voltage – Measure,(100 to 1000) V,(20 to 50) kHz,0.14 % + 23 mV,HP 3458A
-,AC Voltage – Measure,(100 to 1000) V,(50 to 100) kHz,0.35 % + 23 mV,HP 3458A
-,AC Voltage – Generate,(1 to 10) mV,(1 to 40) Hz,0.034 % + 3.6 µV,Fluke 5502A or HP
-,AC Voltage – Generate,(1 to 10) mV,40 Hz to 1 kHz,0.022 % + 1.5 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(1 to 10) mV,(1 to 20) kHz,0.033 % + 1.5 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(1 to 10) mV,(20 to 50) kHz,0.11 % + 1.9 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(1 to 10) mV,(50 to 100) kHz,0.58 % + 1.5 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(1 to 10) mV,(100 to 300) kHz,4.6 % + 4.2 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(1 to 10) mV,300 kHz to 1 MHz,4.6 % + 7.7 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(10 to 100) mV,(1 to 40) Hz,83 µV/V + 4.7 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(10 to 100) mV,40 Hz to 1 kHz,83 µV/V + 2.4 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(10 to 100) mV,(1 to 20) kHz,0.016 % + 2.7 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(10 to 100) mV,(20 to 50) kHz,0.035 % + 2.4 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(10 to 100) mV,(50 to 100) kHz,0.092 % + 2.8 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(10 to 100) mV,(100 to 300) kHz,0.35 % + 12 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(10 to 100) mV,300 kHz to 1 MHz,1.2 % + 12 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,100 mV to 1 V,(1 to 40) Hz,82 µV/V + 47 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,100 mV to 1 V,40 Hz to 1 kHz,82 µV/V + 24 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,100 mV to 1 V,(1 to 20) kHz,0.016 % + 26 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,100 mV to 1 V,(20 to 50) kHz,0.035 % + 24 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,100 mV to 1 V,(50 to 100) kHz,0.092 % + 28 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,100 mV to 1 V,(100 to 300) kHz,0.35 % + 120 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,100 mV to 1 V,300 kHz to 1 MHz,1.2 % + 120 µV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(1 to 10) V,(1 to 40) Hz,83 µV/V + 0.47 mV,Fluke 5502A or HP
-,AC Voltage – Generate,(1 to 10) V,40 Hz to 1 kHz,82 µV/V + 0.24 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(1 to 10) V,(1 to 20) kHz,0.016 % + 0.26 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(1 to 10) V,(20 to 50) kHz,0.035 % + 0.24 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(1 to 10) V,(50 to 100) kHz,0.092 % + 0.28 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(1 to 10) V,(100 to 300) kHz,0.35 % + 1.2 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(1 to 10) V,300 kHz to 1 MHz,1.2 % + 1.2 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(10 to 20) V,(1 to 40) Hz,0.023 % + 4.7 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(10 to 20) V,40 Hz to 1 kHz,0.023 % + 2.4 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(10 to 20) V,(1 to 20) kHz,0.023 % + 2.4 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(10 to 20) V,(20 to 50) kHz,0.004 % + 2.5 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(10 to 20) V,(50 to 100) kHz,0.14 % + 2.4 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(10 to 20) V,(100 to 300) kHz,0.46 % + 12 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(10 to 20) V,300 kHz to 1 MHz,1.7 % + 19 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(20 to 100) V,(1 to 40) Hz,0.023 % + 4.8 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(20 to 100) V,40 Hz to 1 kHz,0.023 % + 2.5 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(20 to 100) V,(1 to 20) kHz,0.021 % + 4.9 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(20 to 100) V,(20 to 50) kHz,0.036 % + 6.8 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(20 to 100) V,(50 to 100) kHz,0.12 % + 21 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(100 to 330) V,(1 to 40) Hz,0.046 % + 47 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(100 to 330) V,40 Hz to 1 kHz,0.046 % + 24 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(100 to 330) V,(1 to 20) kHz,0.07 % + 23 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(100 to 330) V,(20 to 50) kHz,0.14 % + 23 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(100 to 330) V,(50 to 100) kHz,0.35 % + 23 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(330 to 1000) V,(1 to 40) Hz,0 046 % + 49 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(330 to 1000) V,40 Hz to 1 kHz,0.046 % + 26 mV,"3245A, monitored by HP 3458A"
-,AC Voltage – Generate,(330 to 1000) V,(1 to 10) kHz,0.07 % + 23 mV,"3245A, monitored by HP 3458A"
-,AC Current – Generate & Measure,Up to 100 µA,(10 to 20) Hz,0.42 % + 0.077 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,Up to 100 µA,(20 to 45) Hz,0.17 % + 0.038 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,Up to 100 µA,45 Hz to 5 kHz,0.069 % + 0.036 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,100 µA to 1 mA,(10 to 20) Hz,0.46 % + 0.25 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,100 µA to 1 mA,(20 to 45) Hz,0.17 % + 0.27 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,100 µA to 1 mA,(45 to 100) Hz,0.069 % + 0.24 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,100 µA to 1 mA,100 Hz to 5 kHz,0.035 % + 0.24 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,100 µA to 1 mA,(5 to 20) kHz,0.07 % + 0.24 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,100 µA to 1 mA,(20 to 50) kHz,0.47 % + 0.47 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,100 µA to 1 mA,(50 to 100) kHz,0.64 % + 1.8 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,(1 to 10) mA,(10 Hz to 20) Hz,0.46 % + 2.5 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,(1 to 10) mA,(20 Hz to 45) Hz,0.17 % + 2.7 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,(1 to 10) mA,(45 Hz to 100) Hz,0.069 % + 2.4 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,(1 to 10) mA,100 Hz to 5 kHz,0.035 % + 2.4 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,(1 to 10) mA,(5 kHz to 20) kHz,0.07 % + 2.4 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,(1 to 10) mA,(20 to 50) kHz,0.47 % + 4.7 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,(1 to 10) mA,(50 to 100) kHz,0.64 % + 18 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,(10 to 100) mA,(10 to 20) Hz,0.46 % + 25 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,(10 to 100) mA,(20 to 45) Hz,0.17 % + 27 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,(10 to 100) mA,(45 to 100) Hz,0.069 % + 24 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,(10 to 100) mA,100 Hz to 5 kHz,0.035 % + 24 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,(10 to 100) mA,(5 to 20) kHz,0.07 % + 24 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,(10 to 100) mA,(20 to 50) kHz,0.47 % + 47 µA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,(10 to 100) mA,(50 to 100) kHz,0.64 % + 0.18 mA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,100 mA to 1 A,(10 to 20) Hz,0.46 % + 0.25 mA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,100 mA to 1 A,(20 to 45) Hz,0.18 % + 0.28 mA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,100 mA to 1 A,(45 to 100) Hz,0.092 % + 0.24 mA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,100 mA to 1 A,100 Hz to 5 kHz,0.12 % + 0.24 mA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,100 mA to 1 A,(5 to 20) kHz,0.35 % + 0.24 mA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,100 mA to 1 A,(20 to 50) kHz,1.2 % + 0.47 mA,HP 3458A with Fluke 5502A
-,AC Current – Generate & Measure,(1 to 10) A,(1 to 50) Hz,0.0093 % + 0.46 mA,HP 3458A with Fluke
-,AC Current – Generate & Measure,(1 to 10) A,50 Hz to 1 kHz,0.012 % + 0.45 mA,5502A and current
-,AC Current – Generate & Measure,(1 to 10) A,(1 to 5) kHz,0.067 % + 1.2 mA,shunt
-,AC Current – Generate & Measure,(10 to 20) A,(1 to 50) Hz,0.0083 % + 0.47 mA,shunt
-,AC Current – Generate & Measure,(10 to 20) A,50 Hz to 1 kHz,0.012 % + 2.2 mA,shunt
-,AC Current – Generate & Measure,(10 to 20) A,(1 to 5) kHz,0.066 % + 1.1 mA,shunt
-,AC Current – Generate,(29 to 330) µA,(10 to 20) Hz,0.23 % + 0.13 µA,Fluke 5502A
-,AC Current – Generate,(29 to 330) µA,(20 to 45) Hz,0.17 % + 0.13 µA,Fluke 5502A
-,AC Current – Generate,(29 to 330) µA,45 Hz to 1 kHz,0.14 % + 0.14 µA,Fluke 5502A
-,AC Current – Generate,(29 to 330) µA,(1 to 5) kHz,0.35 % + 0.18 µA,Fluke 5502A
-,AC Current – Generate,(29 to 330) µA,(5 to 10) kHz,0.92 % + 0.25 µA,Fluke 5502A
-,AC Current – Generate,(29 to 330) µA,(10 to 30) kHz,1.8 % + 0.62 µA,Fluke 5502A
-,AC Current – Generate,330 µA to 3.3 mA,(10 to 20) Hz,0.23 % + 0.23 µA,Fluke 5502A
-,AC Current – Generate,330 µA to 3.3 mA,(20 to 45) Hz,0.14 % + 0.32 µA,Fluke 5502A
-,AC Current – Generate,330 µA to 3.3 mA,45 Hz to 1 kHz,0.12 % + 0.18 µA,Fluke 5502A
-,AC Current – Generate,330 µA to 3.3 mA,(1 to 5) kHz,0.23 % + 0.27 µA,Fluke 5502A
-,AC Current – Generate,330 µA to 3.3 mA,(5 to 10) kHz,0.58 % + 0.35 µA,Fluke 5502A
-,AC Current – Generate,330 µA to 3.3 mA,(10 to 30) kHz,1.2 % + 0.7 µA,Fluke 5502A
-,AC Current – Generate,(3.3 to 33) mA,(10 to 20) Hz,0.21 % + 2.4 µA,Fluke 5502A
-,AC Current – Generate,(3.3 to 33) mA,(20 to 45) Hz,0.1 % + 3.8 µA,Fluke 5502A
-,AC Current – Generate,(3.3 to 33) mA,45 Hz to 1 kHz,0.047 % + 2.4 µA,Fluke 5502A
-,AC Current – Generate,(3.3 to 33) mA,(1 to 5) kHz,0.093 % + 2.4 µA,Fluke 5502A
-,AC Current – Generate,(3.3 to 33) mA,(5 to 10) kHz,0.23 % + 3.8 µA,Fluke 5502A
-,AC Current – Generate,(3.3 to 33) mA,(10 to 30) kHz,0.46 % + 5.3 µA,Fluke 5502A
-,AC Current – Generate,(33 to 330) mA,(10 to 20) Hz,0.21 % + 23 µA,Fluke 5502A
-,AC Current – Generate,(33 to 330) mA,(20 to 45) Hz,0.1 % + 38 µA,Fluke 5502A
-,AC Current – Generate,(33 to 330) mA,45 Hz to 1 kHz,0.047 % + 24 µA,Fluke 5502A
-,AC Current – Generate,(33 to 330) mA,(1 to 5) kHz,0.12 % + 58 µA,Fluke 5502A
-,AC Current – Generate,(33 to 330) mA,(5 to 10) kHz,0.23 % + 0.12 mA,Fluke 5502A
-,AC Current – Generate,(33 to 330) mA,(10 to 30) kHz,0.46 % + 0.24 mA,Fluke 5502A
-,AC Current – Generate,330 mA to 1.1 A,(10 to 45) Hz,0.21 % + 0.12 mA,Fluke 5502A
-,AC Current – Generate,330 mA to 1.1 A,45 Hz to 1 kHz,0.058 % + 0.12 mA,Fluke 5502A
-,AC Current – Generate,330 mA to 1.1 A,(1 to 5) kHz,0.69 % + 1.2 mA,Fluke 5502A
-,AC Current – Generate,330 mA to 1.1 A,(5 to 10) kHz,2.9 % + 5.8 mA,Fluke 5502A
-,AC Current – Generate,(1.1 to 3) A,(10 to 45) Hz,0.21 % + 0.12 mA,Fluke 5502A
-,AC Current – Generate,(1.1 to 3) A,45 Hz to 1 kHz,0.069 % + 0.13 mA,Fluke 5502A
-,AC Current – Generate,(1.1 to 3) A,(1 to 5) kHz,0.69 % + 1.3 mA,Fluke 5502A
-,AC Current – Generate,(1.1 to 3) A,(5 to 10) kHz,2.9 % + 5.8 mA,Fluke 5502A
-,AC Current – Generate,(3 to 11) A,(45 to 100) Hz,0.069 % + 2.4 mA,Fluke 5502A
-,AC Current – Generate,(3 to 11) A,100 Hz to 1 kHz,0.12 % + 2.4 mA,Fluke 5502A
-,AC Current – Generate,(3 to 11) A,(1 to 5) kHz,3.5 % + 2.4 mA,Fluke 5502A
-,AC Current – Generate,(11 to 20.5) A,(45 to 100) Hz,0.14 % + 5.8 mA,Fluke 5502A
-,AC Current – Generate,(11 to 20.5) A,100 Hz to 1 kHz,0.17 % + 6.5 mA,Fluke 5502A
-,AC Current – Generate,(11 to 20.5) A,(1 to 5) kHz,3.5 % + 5.8 mA,Fluke 5502A
-,AC Current – Generate,(11 to 30) A,(10 to 45) Hz,0.29 % + 0.87 mA,Fluke 5502A with 10 turn coil
-,AC Current – Generate,(11 to 30) A,45 Hz to 1 kHz,0.21 % + 0.9 mA,Fluke 5502A with 10 turn coil
-,AC Current – Generate,(11 to 30) A,(1 to 5) kHz,0.72 % + 12 mA,Fluke 5502A with 10 turn coil
-,AC Current – Generate,(11 to 30) A,(5 to 10) kHz,2.9 % + 58 mA,Fluke 5502A with 10 turn coil
-,AC Current – Generate,(30 to 110) A,(45 to 100) Hz,0.21 % + 12 mA,Fluke 5502A with 10 turn coil
-,AC Current – Generate,(30 to 110) A,100 Hz to 1 kHz,0.23 % + 15 mA,Fluke 5502A with 10 turn coil
-,AC Current – Generate,(30 to 110) A,(1 to 5) kHz,3.5 % + 24 mA,Fluke 5502A with 10 turn coil
-,AC Current – Generate,(110 to 205) A,(45 to 100) Hz,0.24 % + 42 mA,Fluke 5502A with 10 turn coil
-,AC Current – Generate,(110 to 205) A,100 Hz to 1 kHz,0.26 % + 49 mA,Fluke 5502A with 10 turn coil
-,AC Current – Generate,(110 to 205) A,(1 to 5) kHz,3.5 % + 58 mA,Fluke 5502A with 10 turn coil
-,AC Current – Generate,(60 to 220) A,45 to 100) Hz,0.21 % + 24 mA,Fluke 5502A with 20 turn coil
-,AC Current – Generate,(60 to 220) A,100 Hz to 1 kHz,0.23 % + 30 mA,Fluke 5502A with 20 turn coil
-,AC Current – Generate,(60 to 220) A,(1 to 5) kHz,3.5 % + 47 mA,Fluke 5502A with 20 turn coil
-,AC Current – Generate,(220 to 410) A,(45 to 100) Hz,0.24 % + 84 mA,Fluke 5502A with 20 turn coil
-,AC Current – Generate,(220 to 410) A,100 Hz to 1 kHz,0.26 % + 98 mA,Fluke 5502A with 20 turn coil
-,AC Current – Generate,(220 to 410) A,(1 to 5) kHz,3.5 % + 0.12 A,Fluke 5502A with 20 turn coil
-,AC Current – Generate,(150 to 550) A,(45 to 100) Hz,0.21 % + 59 mA,Fluke 5502A with 50 turn coil
-,AC Current – Generate,(150 to 550) A,100 Hz to 1 kHz,0.23 % + 74 mA,Fluke 5502A with 50 turn coil
-,AC Current – Generate,(150 to 550) A,(1 to 5) kHz,3.5 % + 0.12 A,Fluke 5502A with 50 turn coil
-,AC Current – Generate,(550 to 1025) A,(45 to 100) Hz,0.24 % + 0.21 A,Fluke 5502A with 50 turn coil
-,AC Current – Generate,(550 to 1025) A,100 Hz to 1 kHz,0.26 % + 0.25 A,Fluke 5502A with 50 turn coil
-,AC Current – Generate,(550 to 1025) A,(1 to 5) kHz,3.5 % + 0.29 A,Fluke 5502A with 50 turn coil
+HP 3458A,AC Voltage – Measure,(1 to 10) mV,(1 to 40) Hz,0.034 % + 3.6 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) mV,40 Hz to 1 kHz,0.023 % + 1.4 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) mV,(1 to 20) kHz,0.034 % + 1.4 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) mV,(20 to 50) kHz,0.011 % + 1.9 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) mV,(50 to 100) kHz,0.58 % + 1.4 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) mV,(100 to 300) kHz,4.6 % + 4.2 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) mV,(0.3 to 1) MHz,4.6 % + 7.7 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) mV,(1 to 4) MHz,8.1 % + 8.8 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) mV,(4 to 8) MHz,23 % + 19 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,(1 to 40) Hz,83 µV/V + 4.7 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,40 Hz to 1 kHz,83 µV/V + 2.4 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,(1 to 20) kHz,0.016 % + 2.7 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,(20 to 50) kHz,0.035 % + 2.4 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,(50 to 100) kHz,0.092 % + 2.8 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,(100 to 300) kHz,0.35 % + 12 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,300 kHz to 1 MHz,1.2 % + 12 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,(1 to 2) MHz,1.7 % + 45 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,(2 to 4) MHz,4.6 % + 100 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,(4 to 8) MHz,4.6 % + 120 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,(8 to 10) MHz,17 % + 440 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,(1 to 40) Hz,82 µV/V + 47 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,40 Hz to 1 kHz,82 µV/V + 24 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,(1 to 20) kHz,0.016 % + 26 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,(20 to 50) kHz,0.035 % + 24 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,(50 to 100) kHz,0.092 % + 28 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,(100 to 300) kHz,0.35 % + 120 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,300 kHz to 1 MHz,1.2 % + 120 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,(1 to 2) MHz,1.7 % + 450 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,(2 to 4) MHz,4.6 % + 1.1 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,(4 to 8) MHz,4.6 % + 1.2 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,(8 to 10) MHz,17 % + 4.4 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,(1 to 40) Hz,83 µV/V + 0.47 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,40 Hz to 1 kHz,82 µV/V + 0.24 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,(1 to 20) kHz,0.016 % + 0.26 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,(20 to 50) kHz,0.035 % + 0.24 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,(50 to 100) kHz,0.092 % + 0.28 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,(100 to 300) kHz,0.35 % + 1.2 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,300 kHz to 1 MHz,1.2 % + 1.2 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,(1 to 2) MHz,1.7 % + 4.6 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,(2 to 4) MHz,4.6 % + 11 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,(4 to 8) MHz,4.6 % + 12 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,(8 to 10) MHz,17 % + 44 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) V,(1 to 40) Hz,0.023 % + 4.8 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) V,40 Hz to 1 kHz,0.023 % + 2.5 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) V,(1 to 20) kHz,0.023 % + 2.5 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) V,(20 to 50) kHz,0.04 % + 2.8 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) V,(50 to 100) kHz,0.14 % + 2.4 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) V,(100 to 300) kHz,0.46 % + 14 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) V,300 kHz to 1 MHz,1.7 % + 44 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(100 to 1000) V,(1 to 40) Hz,0.046 % + 49 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(100 to 1000) V,40 Hz to 1 kHz,0.046 % + 26 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(100 to 1000) V,(1 to 20) kHz,0.07 % + 23 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(100 to 1000) V,(20 to 50) kHz,0.14 % + 23 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(100 to 1000) V,(50 to 100) kHz,0.35 % + 23 mV,HP 3458A
+Fluke 5502A or HP,AC Voltage – Generate,(1 to 10) mV,(1 to 40) Hz,0.034 % + 3.6 µV,Fluke 5502A or HP
+Fluke 5502A or HP,AC Voltage – Generate,(1 to 10) mV,40 Hz to 1 kHz,0.022 % + 1.5 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(1 to 10) mV,(1 to 20) kHz,0.033 % + 1.5 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(1 to 10) mV,(20 to 50) kHz,0.11 % + 1.9 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(1 to 10) mV,(50 to 100) kHz,0.58 % + 1.5 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(1 to 10) mV,(100 to 300) kHz,4.6 % + 4.2 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(1 to 10) mV,300 kHz to 1 MHz,4.6 % + 7.7 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(10 to 100) mV,(1 to 40) Hz,83 µV/V + 4.7 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(10 to 100) mV,40 Hz to 1 kHz,83 µV/V + 2.4 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(10 to 100) mV,(1 to 20) kHz,0.016 % + 2.7 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(10 to 100) mV,(20 to 50) kHz,0.035 % + 2.4 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(10 to 100) mV,(50 to 100) kHz,0.092 % + 2.8 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(10 to 100) mV,(100 to 300) kHz,0.35 % + 12 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(10 to 100) mV,300 kHz to 1 MHz,1.2 % + 12 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,100 mV to 1 V,(1 to 40) Hz,82 µV/V + 47 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,100 mV to 1 V,40 Hz to 1 kHz,82 µV/V + 24 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,100 mV to 1 V,(1 to 20) kHz,0.016 % + 26 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,100 mV to 1 V,(20 to 50) kHz,0.035 % + 24 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,100 mV to 1 V,(50 to 100) kHz,0.092 % + 28 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,100 mV to 1 V,(100 to 300) kHz,0.35 % + 120 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,100 mV to 1 V,300 kHz to 1 MHz,1.2 % + 120 µV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(1 to 10) V,(1 to 40) Hz,83 µV/V + 0.47 mV,Fluke 5502A or HP
+Fluke 5502A or HP,AC Voltage – Generate,(1 to 10) V,40 Hz to 1 kHz,82 µV/V + 0.24 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(1 to 10) V,(1 to 20) kHz,0.016 % + 0.26 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(1 to 10) V,(20 to 50) kHz,0.035 % + 0.24 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(1 to 10) V,(50 to 100) kHz,0.092 % + 0.28 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(1 to 10) V,(100 to 300) kHz,0.35 % + 1.2 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(1 to 10) V,300 kHz to 1 MHz,1.2 % + 1.2 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(10 to 20) V,(1 to 40) Hz,0.023 % + 4.7 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(10 to 20) V,40 Hz to 1 kHz,0.023 % + 2.4 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(10 to 20) V,(1 to 20) kHz,0.023 % + 2.4 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(10 to 20) V,(20 to 50) kHz,0.004 % + 2.5 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(10 to 20) V,(50 to 100) kHz,0.14 % + 2.4 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(10 to 20) V,(100 to 300) kHz,0.46 % + 12 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(10 to 20) V,300 kHz to 1 MHz,1.7 % + 19 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(20 to 100) V,(1 to 40) Hz,0.023 % + 4.8 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(20 to 100) V,40 Hz to 1 kHz,0.023 % + 2.5 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(20 to 100) V,(1 to 20) kHz,0.021 % + 4.9 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(20 to 100) V,(20 to 50) kHz,0.036 % + 6.8 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(20 to 100) V,(50 to 100) kHz,0.12 % + 21 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(100 to 330) V,(1 to 40) Hz,0.046 % + 47 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(100 to 330) V,40 Hz to 1 kHz,0.046 % + 24 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(100 to 330) V,(1 to 20) kHz,0.07 % + 23 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(100 to 330) V,(20 to 50) kHz,0.14 % + 23 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(100 to 330) V,(50 to 100) kHz,0.35 % + 23 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(330 to 1000) V,(1 to 40) Hz,0 046 % + 49 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(330 to 1000) V,40 Hz to 1 kHz,0.046 % + 26 mV,"3245A, monitored by HP 3458A"
+Fluke 5502A or HP,AC Voltage – Generate,(330 to 1000) V,(1 to 10) kHz,0.07 % + 23 mV,"3245A, monitored by HP 3458A"
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,Up to 100 µA,(10 to 20) Hz,0.42 % + 0.077 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,Up to 100 µA,(20 to 45) Hz,0.17 % + 0.038 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,Up to 100 µA,45 Hz to 5 kHz,0.069 % + 0.036 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,100 µA to 1 mA,(10 to 20) Hz,0.46 % + 0.25 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,100 µA to 1 mA,(20 to 45) Hz,0.17 % + 0.27 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,100 µA to 1 mA,(45 to 100) Hz,0.069 % + 0.24 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,100 µA to 1 mA,100 Hz to 5 kHz,0.035 % + 0.24 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,100 µA to 1 mA,(5 to 20) kHz,0.07 % + 0.24 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,100 µA to 1 mA,(20 to 50) kHz,0.47 % + 0.47 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,100 µA to 1 mA,(50 to 100) kHz,0.64 % + 1.8 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(1 to 10) mA,(10 Hz to 20) Hz,0.46 % + 2.5 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(1 to 10) mA,(20 Hz to 45) Hz,0.17 % + 2.7 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(1 to 10) mA,(45 Hz to 100) Hz,0.069 % + 2.4 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(1 to 10) mA,100 Hz to 5 kHz,0.035 % + 2.4 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(1 to 10) mA,(5 kHz to 20) kHz,0.07 % + 2.4 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(1 to 10) mA,(20 to 50) kHz,0.47 % + 4.7 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(1 to 10) mA,(50 to 100) kHz,0.64 % + 18 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(10 to 100) mA,(10 to 20) Hz,0.46 % + 25 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(10 to 100) mA,(20 to 45) Hz,0.17 % + 27 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(10 to 100) mA,(45 to 100) Hz,0.069 % + 24 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(10 to 100) mA,100 Hz to 5 kHz,0.035 % + 24 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(10 to 100) mA,(5 to 20) kHz,0.07 % + 24 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(10 to 100) mA,(20 to 50) kHz,0.47 % + 47 µA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(10 to 100) mA,(50 to 100) kHz,0.64 % + 0.18 mA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,100 mA to 1 A,(10 to 20) Hz,0.46 % + 0.25 mA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,100 mA to 1 A,(20 to 45) Hz,0.18 % + 0.28 mA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,100 mA to 1 A,(45 to 100) Hz,0.092 % + 0.24 mA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,100 mA to 1 A,100 Hz to 5 kHz,0.12 % + 0.24 mA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,100 mA to 1 A,(5 to 20) kHz,0.35 % + 0.24 mA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,100 mA to 1 A,(20 to 50) kHz,1.2 % + 0.47 mA,HP 3458A with Fluke 5502A
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(1 to 10) A,(1 to 50) Hz,0.0093 % + 0.46 mA,HP 3458A with Fluke
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(1 to 10) A,50 Hz to 1 kHz,0.012 % + 0.45 mA,5502A and current
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(1 to 10) A,(1 to 5) kHz,0.067 % + 1.2 mA,shunt
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(10 to 20) A,(1 to 50) Hz,0.0083 % + 0.47 mA,shunt
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(10 to 20) A,50 Hz to 1 kHz,0.012 % + 2.2 mA,shunt
+HP 3458A with Fluke 5502A,AC Current – Generate & Measure,(10 to 20) A,(1 to 5) kHz,0.066 % + 1.1 mA,shunt
+Fluke 5502A,AC Current – Generate,(29 to 330) µA,(10 to 20) Hz,0.23 % + 0.13 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(29 to 330) µA,(20 to 45) Hz,0.17 % + 0.13 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(29 to 330) µA,45 Hz to 1 kHz,0.14 % + 0.14 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(29 to 330) µA,(1 to 5) kHz,0.35 % + 0.18 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(29 to 330) µA,(5 to 10) kHz,0.92 % + 0.25 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(29 to 330) µA,(10 to 30) kHz,1.8 % + 0.62 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 µA to 3.3 mA,(10 to 20) Hz,0.23 % + 0.23 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 µA to 3.3 mA,(20 to 45) Hz,0.14 % + 0.32 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 µA to 3.3 mA,45 Hz to 1 kHz,0.12 % + 0.18 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 µA to 3.3 mA,(1 to 5) kHz,0.23 % + 0.27 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 µA to 3.3 mA,(5 to 10) kHz,0.58 % + 0.35 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 µA to 3.3 mA,(10 to 30) kHz,1.2 % + 0.7 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(3.3 to 33) mA,(10 to 20) Hz,0.21 % + 2.4 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(3.3 to 33) mA,(20 to 45) Hz,0.1 % + 3.8 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(3.3 to 33) mA,45 Hz to 1 kHz,0.047 % + 2.4 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(3.3 to 33) mA,(1 to 5) kHz,0.093 % + 2.4 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(3.3 to 33) mA,(5 to 10) kHz,0.23 % + 3.8 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(3.3 to 33) mA,(10 to 30) kHz,0.46 % + 5.3 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(33 to 330) mA,(10 to 20) Hz,0.21 % + 23 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(33 to 330) mA,(20 to 45) Hz,0.1 % + 38 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(33 to 330) mA,45 Hz to 1 kHz,0.047 % + 24 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(33 to 330) mA,(1 to 5) kHz,0.12 % + 58 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(33 to 330) mA,(5 to 10) kHz,0.23 % + 0.12 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(33 to 330) mA,(10 to 30) kHz,0.46 % + 0.24 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 mA to 1.1 A,(10 to 45) Hz,0.21 % + 0.12 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 mA to 1.1 A,45 Hz to 1 kHz,0.058 % + 0.12 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 mA to 1.1 A,(1 to 5) kHz,0.69 % + 1.2 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 mA to 1.1 A,(5 to 10) kHz,2.9 % + 5.8 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(1.1 to 3) A,(10 to 45) Hz,0.21 % + 0.12 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(1.1 to 3) A,45 Hz to 1 kHz,0.069 % + 0.13 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(1.1 to 3) A,(1 to 5) kHz,0.69 % + 1.3 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(1.1 to 3) A,(5 to 10) kHz,2.9 % + 5.8 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(3 to 11) A,(45 to 100) Hz,0.069 % + 2.4 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(3 to 11) A,100 Hz to 1 kHz,0.12 % + 2.4 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(3 to 11) A,(1 to 5) kHz,3.5 % + 2.4 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(11 to 20.5) A,(45 to 100) Hz,0.14 % + 5.8 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(11 to 20.5) A,100 Hz to 1 kHz,0.17 % + 6.5 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(11 to 20.5) A,(1 to 5) kHz,3.5 % + 5.8 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(11 to 30) A,(10 to 45) Hz,0.29 % + 0.87 mA,Fluke 5502A with 10 turn coil
+Fluke 5502A,AC Current – Generate,(11 to 30) A,45 Hz to 1 kHz,0.21 % + 0.9 mA,Fluke 5502A with 10 turn coil
+Fluke 5502A,AC Current – Generate,(11 to 30) A,(1 to 5) kHz,0.72 % + 12 mA,Fluke 5502A with 10 turn coil
+Fluke 5502A,AC Current – Generate,(11 to 30) A,(5 to 10) kHz,2.9 % + 58 mA,Fluke 5502A with 10 turn coil
+Fluke 5502A,AC Current – Generate,(30 to 110) A,(45 to 100) Hz,0.21 % + 12 mA,Fluke 5502A with 10 turn coil
+Fluke 5502A,AC Current – Generate,(30 to 110) A,100 Hz to 1 kHz,0.23 % + 15 mA,Fluke 5502A with 10 turn coil
+Fluke 5502A,AC Current – Generate,(30 to 110) A,(1 to 5) kHz,3.5 % + 24 mA,Fluke 5502A with 10 turn coil
+Fluke 5502A,AC Current – Generate,(110 to 205) A,(45 to 100) Hz,0.24 % + 42 mA,Fluke 5502A with 10 turn coil
+Fluke 5502A,AC Current – Generate,(110 to 205) A,100 Hz to 1 kHz,0.26 % + 49 mA,Fluke 5502A with 10 turn coil
+Fluke 5502A,AC Current – Generate,(110 to 205) A,(1 to 5) kHz,3.5 % + 58 mA,Fluke 5502A with 10 turn coil
+Fluke 5502A,AC Current – Generate,(60 to 220) A,45 to 100) Hz,0.21 % + 24 mA,Fluke 5502A with 20 turn coil
+Fluke 5502A,AC Current – Generate,(60 to 220) A,100 Hz to 1 kHz,0.23 % + 30 mA,Fluke 5502A with 20 turn coil
+Fluke 5502A,AC Current – Generate,(60 to 220) A,(1 to 5) kHz,3.5 % + 47 mA,Fluke 5502A with 20 turn coil
+Fluke 5502A,AC Current – Generate,(220 to 410) A,(45 to 100) Hz,0.24 % + 84 mA,Fluke 5502A with 20 turn coil
+Fluke 5502A,AC Current – Generate,(220 to 410) A,100 Hz to 1 kHz,0.26 % + 98 mA,Fluke 5502A with 20 turn coil
+Fluke 5502A,AC Current – Generate,(220 to 410) A,(1 to 5) kHz,3.5 % + 0.12 A,Fluke 5502A with 20 turn coil
+Fluke 5502A,AC Current – Generate,(150 to 550) A,(45 to 100) Hz,0.21 % + 59 mA,Fluke 5502A with 50 turn coil
+Fluke 5502A,AC Current – Generate,(150 to 550) A,100 Hz to 1 kHz,0.23 % + 74 mA,Fluke 5502A with 50 turn coil
+Fluke 5502A,AC Current – Generate,(150 to 550) A,(1 to 5) kHz,3.5 % + 0.12 A,Fluke 5502A with 50 turn coil
+Fluke 5502A,AC Current – Generate,(550 to 1025) A,(45 to 100) Hz,0.24 % + 0.21 A,Fluke 5502A with 50 turn coil
+Fluke 5502A,AC Current – Generate,(550 to 1025) A,100 Hz to 1 kHz,0.26 % + 0.25 A,Fluke 5502A with 50 turn coil
+Fluke 5502A,AC Current – Generate,(550 to 1025) A,(1 to 5) kHz,3.5 % + 0.29 A,Fluke 5502A with 50 turn coil
 DC Power,Generate,Up to 109 µW,,0.36 % rdg,Fluke 5502A
 DC Power,Generate,(0.109 to 1.09) mW,,0.035 % rdg,Fluke 5502A
 DC Power,Generate,(1.09 to 10.9) mW,,0.024 % rdg,Fluke 5502A

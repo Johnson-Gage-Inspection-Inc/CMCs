@@ -1,0 +1,13 @@
+﻿0,1,2,3,4,5
+"Profilometers, Ra",,20 µin,,1.5 µin,Surface roughness masters
+"Profilometers, Ra",,120 µin,,3.1 µin,Surface roughness masters
+"Surface Roughness Standards, Ra",,(16 to 132) µin,,(1.3 + 0.017) µin,Comparison with surface roughness masters
+Radius Standard,,(0.01 to 3) in,,(190 + 62L) µin,Optical comparator
+Bench Micrometer,Linearity,Up to 1 in,,(2.1 + 1.3L) µin,Gage blocks
+Bench Micrometer,Anvil Parallelism,---,,1.4 µin,Ball test
+Bench Micrometer,Force Error,(2 to 40) ozf,,0.13 ozf,Load cell
+Bench Micrometer,ID Functionality,---,,11 µin,Setting rings
+Coating Thickness Meter,,Up to 80 mils,,0.11 % rdg + 0.023 mils,Coating thickness standards
+Coating Thickness,,Up to 750 mils,,0.023 mils,Universal LMS
+Ultrasonic Thickness,,Up to 10 in (Ferrous),,80 µin,Steel gage blocks
+Meter,,Up to 0.65 in (Alum),,100 µin,Aluminum thickness Standards

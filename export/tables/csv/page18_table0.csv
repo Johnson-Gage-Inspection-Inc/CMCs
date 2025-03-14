@@ -1,0 +1,16 @@
+﻿0,1,2,3,4,5
+Electrical Calibration of Phase Indicators,Source Only,(10 to 65) Hz,,0.19° phase,Fluke 5502A
+Electrical Calibration of Phase Indicators,Source Only,(65 to 500) Hz,,1.1° phase,Fluke 5502A
+Electrical Calibration of Phase Indicators,Source Only,500 Hz to 1 kHz,,2.4° phase,Fluke 5502A
+Electrical Calibration of Phase Indicators,Source Only,(1 to 5) kHz,,7.0° phase,Fluke 5502A
+Electrical Calibration of Phase Indicators,Source Only,(5 to 10) kHz,,12° phase,Fluke 5502A
+Electrical Calibration of Phase Indicators,Source Only,(10 to 30) kHz,,18° phase,Fluke 5502A
+Electrical Conductivity,Secondary Standards,Up to 13 % IACS,,0.07 % IACS,ASTM E1004 electrical conductivity by eddy current
+Electrical Conductivity,Secondary Standards,(13 to 62) % IACS,,0.35 % rdg + 0.05 % IACS,ASTM E1004 electrical conductivity by eddy current
+Electrical Conductivity,Secondary Standards,> 62 % IACS,,0.3 % rdg + 0.05 % IACS,ASTM E1004 electrical conductivity by eddy current
+Electrical Conductivity,Working Standards,Up to 13 % IACS,,0.12 % IACS,ASTM E1004 electrical conductivity by eddy current
+Electrical Conductivity,Working Standards,(13 to 62) % IACS,,0.4 % rdg + 0.07 % IACS,ASTM E1004 electrical conductivity by eddy current
+Electrical Conductivity,Working Standards,> 62 % IACS,,0.35 % rdg + 0.11 % IACS,ASTM E1004 electrical conductivity by eddy current
+Electrical Conductivity,Measuring Equipment,Up to 16 % IACS,,0.13 % IACS,ASTM E1004 electrical conductivity by eddy current
+Electrical Conductivity,Measuring Equipment,(16 to 62) % IACS,,0.4 % rdg + 0.07 % IACS,ASTM E1004 electrical conductivity by eddy current
+Electrical Conductivity,Measuring Equipment,> 62 % IACS,,0.42 % rdg + 0.05 % IACS,ASTM E1004 electrical conductivity by eddy current

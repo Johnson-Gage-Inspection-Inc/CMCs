@@ -1,0 +1,10 @@
+﻿0,1,2,3,4,5
+Frequency,Measuring Equipment,Up to 120 Hz,,28 µHz/Hz + 0.0016 Hz,Fluke 5502A
+Frequency,Measuring Equipment,(0.12 to 1.2) kHz,,25 µHz/Hz + 0.0077 Hz,Fluke 5502A
+Frequency,Measuring Equipment,(1.2 to 12) kHz,,25 µHz/Hz + 0.071 Hz,Fluke 5502A
+Frequency,Measuring Equipment,(12 to 120) kHz,,29 µHz/Hz + 18 Hz,Fluke 5502A
+Frequency,Measuring Equipment,(0.12 to 1.2) MHz,,29 µHz/Hz + 20 Hz,Fluke 5502A
+Frequency,Measuring Equipment,(1.2 to 2) MHz,,0.020 % rdg,Fluke 5502A
+"Timers, Stopwatches",,15 s to 10 min,,0.038 s + 0.0025 % of timed interval,Reference stopwatch
+"Timers, Stopwatches",,10 min to 24 hrs,,0.038 s + 0.0041 % of timed interval,Reference stopwatch
+"Timers, Stopwatches",,(2 to 24) hrs,,0.038 s,WWV signal

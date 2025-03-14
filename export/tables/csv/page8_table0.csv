@@ -1,0 +1,25 @@
+﻿0,1,2,3,4,5
+DC Current,Measure,Up to 100 nA,,34 µA/A + 0.047 nA,HP 3458A
+DC Current,Measure,100 nA to 1 µA,,23 µA/A + 0.048 nA,HP 3458A
+DC Current,Measure,(1 to 10) µA,,23 µA/A + 0.12 nA,HP 3458A
+DC Current,Measure,(10 to 100) µA,,23 µA/A + 0.11 nA,HP 3458A
+DC Current,Measure,(0.1 to 1) mA,,23 µA/A + 5.9 nA,HP 3458A
+DC Current,Measure,(1 to 10) mA,,23 µA/A + 59 nA,HP 3458A
+DC Current,Measure,(10 to 100) mA,,40 µA/A + 0.63 µA,HP 3458A
+DC Current,Measure,100 mA to 1 A,,130 µA/A + 12 µA,HP 3458A
+DC Current,Measure,(1 to 20) A,,4.7 µA/A + 110 µA,EL 7520 current shunt
+DC Current,Generate,Up to 100 nA,,34 µA/A + 0.047 nA,Fluke 5502A monitored by HP3458A
+DC Current,Generate,100 nA to 1 µA,,23 µA/A + 0.048 nA,Fluke 5502A monitored by HP3458A
+DC Current,Generate,(1 to 10) µA,,23 µA/A + 0.12 nA,Fluke 5502A monitored by HP3458A
+DC Current,Generate,(10 to 100) µA,,23 µA/A + 0.11 nA,Fluke 5502A monitored by HP3458A
+DC Current,Generate,(0.1 to 1) mA,,23 µA/A + 5.9 nA,Fluke 5502A monitored by HP3458A
+DC Current,Generate,(1 to 10) mA,,23 µA/A + 59 nA,Fluke 5502A monitored by HP3458A
+DC Current,Generate,(10 to 100) mA,,40 µA/A + 0.63 µA,Fluke 5502A monitored by HP3458A
+DC Current,Generate,100 mA to 1 A,,130 µA/A + 12 µA,Fluke 5502A monitored by HP3458A
+DC Current,Generate,(1 to 20) A,,4.7 µA/A + 110 µA,With EL 7520 current shunt
+DC Current,Generate,(11 to 30) A,,0.2 % rdg + 1.6 mA,"Fluke 5502A, 10 turn coil"
+DC Current,Generate,(30 to 110) A,,0.21 % rdg + 3.9 mA,"Fluke 5502A, 10 turn coil"
+DC Current,Generate,(110 to 205) A,,0.23 % rdg + 6.4 mA,"Fluke 5502A, 10 turn coil"
+DC Current,Generate,(55 to 150) A,,0.2 % rdg + 7.7 mA,"Fluke 5502A, 50 turn coil"
+DC Current,Generate,(150 to 550) A,,0.22 % rdg + 19 mA,"Fluke 5502A, 50 turn coil"
+DC Current,Generate,(525 to 1025) A,,0.23 % rdg + 32 mA,"Fluke 5502A, 50 turn coil"

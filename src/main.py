@@ -50,8 +50,12 @@ def pdf_table_processor(pdf_path: str, save_intermediate=False) -> pd.DataFrame:
             if save_intermediate:
                 with open(f"export/pages/json/page{page.page_number}.json", "w") as f:
                     f.write(json.dumps(tables, indent=2))
-            for table in tables:
-                table_rows.extend(custom_parse_table(table))
+            for i, table in enumerate(tables):
+                parsed_table_rows = custom_parse_table(table)
+                table_rows.extend(parsed_table_rows)
+                if save_intermediate:
+                    with open(f"export/tables/csv/page{page.page_number}_table{i}.csv", "w", encoding="utf-8-sig") as f:
+                        pd.DataFrame(parsed_table_rows).to_csv(f, index=False)
     columns = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
     df = pd.DataFrame(table_rows, columns=columns)
     
@@ -259,7 +263,6 @@ def custom_parse_table(input_data):
         elif headers[0] == "Parameter/Range":
             parameter2 = ""
             if "–" in row[0]:
-                # equipment, parameter = [part.strip() for part in row[0].split('–', 1)]
                 equipment = ""
                 parameter = row[0]
                 range_val = ""
