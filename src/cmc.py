@@ -111,8 +111,8 @@ def parse_budget(input_text: str) -> budget:
             left, right = text.split("+", 1)
             left = left.strip()
             right = right.strip()
-            base_val, left_unit = parse_num_unit(left, force_float=True)
-            mult_val, right_unit = parse_num_unit(right, force_float=True)
+            mult_val, left_unit = parse_num_unit(left, force_float=True)
+            base_val, right_unit = parse_num_unit(right, force_float=True)
             # In this format, the left part’s unit is taken as the multiplier conversion unit.
             return budget(
                 base_val, mult_val, left_unit if left_unit else "", right_unit
