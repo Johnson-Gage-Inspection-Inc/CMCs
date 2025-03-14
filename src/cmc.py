@@ -90,22 +90,24 @@ def parse_budget(input_text: str) -> budget:
         if text.startswith("("):
             # Expect format: (<base> + <multiplier>[unit]) <uncertainty_unit>
             closing_index = text.find(")")
-            if closing_index == -1:
-                # Malformed; fall through to generic handling
-                return budget(text, None, None, None)
             inner = text[1:closing_index].strip()
             outer = text[closing_index + 1:].strip()  # uncertainty unit
-            if "+" not in inner:
+            if (closing_index == -1) or ("+" not in inner):
+                # Malformed; fall through to generic handling
                 return budget(text, None, None, None)
             left_inner, right_inner = inner.split("+", 1)
             left_inner = left_inner.strip()
             right_inner = right_inner.strip()
-            base_val, left_unit = parse_num_unit(left_inner, force_float=True)
-            mult_val, right_unit = parse_num_unit(right_inner, force_float=True)
+            left_val, left_unit = parse_num_unit(left_inner, force_float=True)
+            right_val, right_unit = parse_num_unit(right_inner, force_float=True)
             # If the base part had an attached unit, use it;
             # otherwise, fall back to the multiplier part’s attached unit.
-            mult_unit = left_unit if left_unit else right_unit
-            return budget(base_val, mult_val, mult_unit, outer)
+            if left_unit:
+                return budget(right_val, left_unit, left_unit, outer)
+            elif right_unit:
+                return budget(left_val, right_val, right_unit, outer)
+            # Malformed; fall through to generic handling
+            return budget(text, None, None, None)
         else:
             # Case 2: No parentheses; expect format like "0.034 % + 3.6 µV" or "1.3 % rdg + 120 µF"
             left, right = text.split("+", 1)
@@ -122,7 +124,7 @@ def parse_budget(input_text: str) -> budget:
             pattern = r"([+-]?\d+(?:\.\d+)?)(?=\s*% rdg)"
             if match := re.search(pattern, text):
                 mult_val = float(match.group(1))
-                return budget(0, mult_val, None, "% rdg")
+                return budget(0, mult_val, "% rdg", None)
             else:
                 base_val, rest = parse_num_unit(text, force_float=True)
                 return budget(base_val, 0, None, rest)
