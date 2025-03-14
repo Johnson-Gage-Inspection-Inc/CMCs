@@ -20,7 +20,8 @@ DASH_PATTERN = re.compile(r"\s*–\s*")
 
 def main(pdf_path):
     df = pdf_table_processor(pdf_path)
-    
+
+    logging.info("Exporting parsed range data to CSV...")
     if parsed_csv_file_path := filedialog.asksaveasfilename(
         title="Save CSV file",
         defaultextension=".csv",
@@ -60,11 +61,12 @@ def pdf_table_processor(pdf_path: str, save_intermediate=False) -> pd.DataFrame:
                         pd.DataFrame(parsed_table_rows).to_csv(f, index=False)
     columns = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
     df = pd.DataFrame(table_rows, columns=columns)
-    
+
     if save_intermediate:
         df.to_csv("export/parsed.csv", index=False, encoding="utf-8-sig")
         logging.info("Exported parsed data to 'export/parsed.csv'")
 
+    logging.info("Parsing ranges...")
     df[["range_min", "range_min_unit", "range_max", "range_max_unit"]] = df[
         "Range"
     ].apply(lambda x: pd.Series(parse_range(x)))
@@ -72,6 +74,7 @@ def pdf_table_processor(pdf_path: str, save_intermediate=False) -> pd.DataFrame:
         df.to_csv("export/range_parsed.csv", index=False, encoding="utf-8-sig")
         logging.info("Exported parsed range data to 'export/range_parsed.csv'")
 
+    logging.info("Parsing frequencies...")
     df[["frequency_range_min", "frequency_range_min_unit", "frequency_range_max", "frequency_range_max_unit"]] = df[
         "Frequency"
     ].apply(lambda x: pd.Series(parse_range(x)))
@@ -79,6 +82,7 @@ def pdf_table_processor(pdf_path: str, save_intermediate=False) -> pd.DataFrame:
         df.to_csv("export/frequency_parsed.csv", index=False, encoding="utf-8-sig")
         logging.info("Exported parsed frequency data to 'export/frequency_parsed.csv'")
 
+    logging.info("Parsing CMC budgets...")
     df[["cmc_base", "cmc_multiplier", "cmc_mult_unit", "cmc_uncertainty_unit"]] = df[
         "CMC (±)"
     ].apply(lambda x: parse_budget(x).__series__())
@@ -89,6 +93,7 @@ def pdf_table_processor(pdf_path: str, save_intermediate=False) -> pd.DataFrame:
                 logging.warning(f"Unexpected cmc_mult_unit '{row['cmc_mult_unit']}' found in the data.")
             row['cmc_mult_unit'] = row['range_min_unit']
         return row
+    logging.info("Cleaning up the data...")
     df = df.apply(update_cmc_mult_unit, axis=1)
     return df
 
