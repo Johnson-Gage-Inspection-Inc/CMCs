@@ -82,6 +82,10 @@ def pdf_table_processor(pdf_path: str, save_intermediate=False) -> pd.DataFrame:
     df[["cmc_base", "cmc_multiplier", "cmc_mult_unit", "cmc_uncertainty_unit"]] = df[
         "CMC (±)"
     ].apply(lambda x: parse_budget(x).__series__())
+    for i, row in df.iterrows():
+        if row['cmc_mult_unit'] in ['D', 'L', 'W']:
+            if row['range_min'] == row['range_max']:
+                row['cmc_mult_unit'] = row['range_min']
     return df
 
 
