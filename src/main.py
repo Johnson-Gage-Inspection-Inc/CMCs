@@ -256,12 +256,6 @@ def custom_parse_table(input_data):
                 range_val = ""
             cmc = row[2]
 
-            if row[3].startswith("\t"):
-                comment = preComment + "; " + row[3].strip("\t")
-            elif row[3]:
-                comment = row[3]
-                preComment = ""
-
         elif headers[0] == "Parameter/Range":
             parameter2 = ""
             if "–" in row[0]:
@@ -280,11 +274,11 @@ def custom_parse_table(input_data):
             frequency = row[1]
             cmc = row[2]
 
-            if row[3].startswith("\t"):
-                comment = preComment + "; " + row[3].strip("\t")
-            elif row[3]:
-                comment = row[3]
-                preComment = ""
+        if row[3].startswith("\t"):
+            comment = preComment + "; " + row[3].strip("\t")
+        elif row[3]:
+            comment = row[3]
+            preComment = ""
 
         if not cmc:
             continue
