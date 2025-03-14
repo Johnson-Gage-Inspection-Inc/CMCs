@@ -82,10 +82,14 @@ def pdf_table_processor(pdf_path: str, save_intermediate=False) -> pd.DataFrame:
     df[["cmc_base", "cmc_multiplier", "cmc_mult_unit", "cmc_uncertainty_unit"]] = df[
         "CMC (±)"
     ].apply(lambda x: parse_budget(x).__series__())
-    for i, row in df.iterrows():
-        if row['cmc_mult_unit'] in ['D', 'L', 'W']:
-            if row['range_min'] == row['range_max']:
-                row['cmc_mult_unit'] = row['range_min']
+
+    def update_cmc_mult_unit(row):
+        if row['cmc_mult_unit'] in {'D', 'L', 'W'}:
+            if row['range_min_unit'] != row['range_max_unit']:
+                logging.warning(f"Unexpected cmc_mult_unit '{row['cmc_mult_unit']}' found in the data.")
+            row['cmc_mult_unit'] = row['range_min_unit']
+        return row
+    df = df.apply(update_cmc_mult_unit, axis=1)
     return df
 
 

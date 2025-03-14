@@ -1,48 +1,48 @@
 ﻿Equipment,Parameter,Range,Frequency,CMC (±),Comments,range_min,range_min_unit,range_max,range_max_unit,frequency_range_min,frequency_range_min_unit,frequency_range_max,frequency_range_max_unit,cmc_base,cmc_multiplier,cmc_mult_unit,cmc_uncertainty_unit
-Bore Gages & ID Measuring Tools,3-Point,Up to 4 in,,(36 + 2.3D) µin,Ring gages,0,in,4,in,,,,,36.0,2.3,D,µin
-Bore Gages & ID Measuring Tools,2-Point,Up to 12 in,,(35 + 2.3D) µin,Gage blocks,0,in,12,in,,,,,35.0,2.3,D,µin
-Countersink & Chamfer Gages,,Up to 3.5 in,,(230 + 10D) µin,Modified ring gages,0,in,3.5,in,,,,,230.0,10.0,D,µin
-Coordinate Measuring Machines (CMM),Length Measurement Error (Eₗ),Up to 27 in,,(14 + 5.1L) µin,ASME B89.4.10360.2 Section 6.3.3; Step gage,0,in,27,in,,,,,14.0,5.1,L,µin
-Coordinate Measuring Machines (CMM),Length Measurement Error (Eₗ),Up to 127 in,,(7.8 + 3.8L) µin,ASME B89.4.10360.2 Section 6.3.3; Gage blocks,0,in,127,in,,,,,7.8,3.8,L,µin
-Coordinate Measuring Machines (CMM),Length Measurement Error (Eₗ),Up to 240 in,,(6.1 + 1.2L) µin,ASME B89.4.10360.2 Section 6.3.3; Laser system,0,in,240,in,,,,,6.1,1.2,L,µin
+Bore Gages & ID Measuring Tools,3-Point,Up to 4 in,,(36 + 2.3D) µin,Ring gages,0,in,4,in,,,,,36.0,2.3,in,µin
+Bore Gages & ID Measuring Tools,2-Point,Up to 12 in,,(35 + 2.3D) µin,Gage blocks,0,in,12,in,,,,,35.0,2.3,in,µin
+Countersink & Chamfer Gages,,Up to 3.5 in,,(230 + 10D) µin,Modified ring gages,0,in,3.5,in,,,,,230.0,10.0,in,µin
+Coordinate Measuring Machines (CMM),Length Measurement Error (Eₗ),Up to 27 in,,(14 + 5.1L) µin,ASME B89.4.10360.2 Section 6.3.3; Step gage,0,in,27,in,,,,,14.0,5.1,in,µin
+Coordinate Measuring Machines (CMM),Length Measurement Error (Eₗ),Up to 127 in,,(7.8 + 3.8L) µin,ASME B89.4.10360.2 Section 6.3.3; Gage blocks,0,in,127,in,,,,,7.8,3.8,in,µin
+Coordinate Measuring Machines (CMM),Length Measurement Error (Eₗ),Up to 240 in,,(6.1 + 1.2L) µin,ASME B89.4.10360.2 Section 6.3.3; Laser system,0,in,240,in,,,,,6.1,1.2,in,µin
 Coordinate Measuring Machines (CMM),Repeatability (R₀),(10 to 50) mm,,27 µin,ASME B89.4.10360.2 Section 6.1.1; sphere,10,mm,50,mm,,,,,27,0.0,,µin
 Spherical CMM (Laser Tracker),,Up to 600 in,,600 µin,Reference length bar,0,in,600,in,,,,,600,0.0,,µin
 Laser Interferometer Length Dependent Error,,Up to 40 in,,0.43 parts in 10,ASME B89.1.8 Sec 4 XD1 reference laser,0,in,40,in,,,,,0.43,0.0,,parts in 10
 Articulated Arm CMM,Effective Dia Perf Test,---,,55 µin,Sphere,,,---,---,,,,,55,0.0,,µin
 Articulated Arm CMM,Single Point Articulation Test,---,,90 µin,Trihedral socket,,,---,---,,,,,90,0.0,,µin
-Articulated Arm CMM,Volumetric Perf Test,Up to 144 in radius,,(170 + 0.2L) µin,Gage block ref. length,0,in radius,144,in radius,,,,,170.0,0.2,L,µin
+Articulated Arm CMM,Volumetric Perf Test,Up to 144 in radius,,(170 + 0.2L) µin,Gage block ref. length,0,in radius,144,in radius,,,,,170.0,0.2,in radius,µin
 "CNC, Machine Tools",Repeatability @ 2,---,,18 µin,Laser per ASME B5.54 Sec. 7.3,,,---,---,,,,,18,0.0,,µin
-"CNC, Machine Tools",Linear Displacement Accuracy,Up to 260 ft,,(83 + 1.7L) µin,Laser per ASME B5.54 Sec. 7.3,0,ft,260,ft,,,,,83.0,1.7,L,µin
+"CNC, Machine Tools",Linear Displacement Accuracy,Up to 260 ft,,(83 + 1.7L) µin,Laser per ASME B5.54 Sec. 7.3,0,ft,260,ft,,,,,83.0,1.7,ft,µin
 "CNC, Machine Tools",Bi-Directional System Deviation,Up to 260 ft,,85 µin,Laser per ASME B5.54 Sec. 7.7,0,ft,260,ft,,,,,85,0.0,,µin
 "CNC, Machine Tools",Reversal Deviation,Up to 260 ft,,90 µin,Laser per ASME B5.54 Sec. 7.7,0,ft,260,ft,,,,,90,0.0,,µin
 "CNC, Machine Tools",Bi-Directional Repeatability,Up to 260 ft,,80 µin,Laser per ASME B5.54 Sec. 7.3,0,ft,260,ft,,,,,80,0.0,,µin
 Gage Blocks,,Up to 0.1 in,,4 µin,Master gage blocks & amplifier,0,in,0.1,in,,,,,4,0.0,,µin
-Gage Blocks,,(0.1 to 4) in,,(2 + 1.4L) µin,Master gage blocks & amplifier,0.1,in,4,in,,,,,2.0,1.4,L,µin
-Gage Blocks,,(4 to 20) in,,(4.3 + 1.4L) µin,Master gage blocks & amplifier,4,in,20,in,,,,,4.3,1.4,L,µin
-Micrometers,Linearity,Up to 42 in,,(38 + 2.7L) µin,Gage blocks,0,in,42,in,,,,,38.0,2.7,L,µin
-Micrometers,Parallelism,Up to 42 in,,(31 + 0.25L) µin,Gage blocks,0,in,42,in,,,,,31.0,0.25,L,µin
-Micrometer Standards & Length Artifacts,,Up to 41 in,,(12 + 2.4L) µin,Universal LMS,0,in,41,in,,,,,12.0,2.4,L,µin
-Depth Micrometers & Gages,,Up to 12 in,,(30 + 2.5L) µin,Gage blocks,0,in,12,in,,,,,30.0,2.5,L,µin
-Thread Micrometers,,Up to 6 in,,(92 + 7.4L) µin,Thread plugs,0,in,6,in,,,,,92.0,7.4,L,µin
+Gage Blocks,,(0.1 to 4) in,,(2 + 1.4L) µin,Master gage blocks & amplifier,0.1,in,4,in,,,,,2.0,1.4,in,µin
+Gage Blocks,,(4 to 20) in,,(4.3 + 1.4L) µin,Master gage blocks & amplifier,4,in,20,in,,,,,4.3,1.4,in,µin
+Micrometers,Linearity,Up to 42 in,,(38 + 2.7L) µin,Gage blocks,0,in,42,in,,,,,38.0,2.7,in,µin
+Micrometers,Parallelism,Up to 42 in,,(31 + 0.25L) µin,Gage blocks,0,in,42,in,,,,,31.0,0.25,in,µin
+Micrometer Standards & Length Artifacts,,Up to 41 in,,(12 + 2.4L) µin,Universal LMS,0,in,41,in,,,,,12.0,2.4,in,µin
+Depth Micrometers & Gages,,Up to 12 in,,(30 + 2.5L) µin,Gage blocks,0,in,12,in,,,,,30.0,2.5,in,µin
+Thread Micrometers,,Up to 6 in,,(92 + 7.4L) µin,Thread plugs,0,in,6,in,,,,,92.0,7.4,in,µin
 Thread Wires,,(4.5 to 96) TPI,,15 µin,"Supermicrometer,",4.5,TPI,96,TPI,,,,,15,0.0,,µin
-Calipers,Digital,Up to 72 in,,(300 + 1.7L) µin,Gage blocks and ring gages,0,in,72,in,,,,,300.0,1.7,L,µin
-Calipers,Dial & Vernier,Up to 72 in,,(600 + 1.9L) µin,Gage blocks and ring gages,0,in,72,in,,,,,600.0,1.9,L,µin
+Calipers,Digital,Up to 72 in,,(300 + 1.7L) µin,Gage blocks and ring gages,0,in,72,in,,,,,300.0,1.7,in,µin
+Calipers,Dial & Vernier,Up to 72 in,,(600 + 1.9L) µin,Gage blocks and ring gages,0,in,72,in,,,,,600.0,1.9,in,µin
 "Indicators, Dial & Digital (For Dial, Res. = 0.2 Least Grad.)",,Up to 1 in,,6.5 µin + 0.6R,Gage blocks,0,in,1,in,,,,,6.5,0.6,µin,R
-"Indicators, Dial & Digital (For Dial, Res. = 0.2 Least Grad.)",,(1 to 4) in,,(3.3 + 3L) µin + 0.6R,Gage blocks,1,in,4,in,,,,,3.3,3.0,L,µin + 0.6R
-Height Gages,,Up to 40 in,,(7.1 + 1.1L) µin,Gage blocks,0,in,40,in,,,,,7.1,1.1,L,µin
-Plug / Pin Gages & Outside Cylindrical Diameter,,Up to 1 in,,(6.7 + 1.8L) µin,Laser scan micrometer,0,in,1,in,,,,,6.7,1.8,L,µin
-Plug / Pin Gages & Outside Cylindrical Diameter,,(1 to 10) in,,(13 + 1.1L) µin,"P&W Supermicrometer, gage blocks",1,in,10,in,,,,,13.0,1.1,L,µin
-Plain Rings & Inside Cylindrical Diameter,,(0.04 to 11) in,,(4.6 + 0.91D) µin,"Internal Supermicrometer, master gage blocks",0.04,in,11,in,,,,,4.6,0.91,D,µin
-Straight Threaded Plug Gages,Pitch Diameter (TPI 4.5 to 96),Up to 6 in,,(76 + 6.0D) µin,3-wire method,0,in,6,in,,,,,76.0,6.0,D,µin
-Straight Threaded Plug Gages,Major Diameter,Up to 5 in,,(24 + 1D) µin,"P&W Supermicrometer, gage blocks",0,in,5,in,,,,,24.0,1.0,D,µin
+"Indicators, Dial & Digital (For Dial, Res. = 0.2 Least Grad.)",,(1 to 4) in,,(3.3 + 3L) µin + 0.6R,Gage blocks,1,in,4,in,,,,,3.3,3.0,in,µin + 0.6R
+Height Gages,,Up to 40 in,,(7.1 + 1.1L) µin,Gage blocks,0,in,40,in,,,,,7.1,1.1,in,µin
+Plug / Pin Gages & Outside Cylindrical Diameter,,Up to 1 in,,(6.7 + 1.8L) µin,Laser scan micrometer,0,in,1,in,,,,,6.7,1.8,in,µin
+Plug / Pin Gages & Outside Cylindrical Diameter,,(1 to 10) in,,(13 + 1.1L) µin,"P&W Supermicrometer, gage blocks",1,in,10,in,,,,,13.0,1.1,in,µin
+Plain Rings & Inside Cylindrical Diameter,,(0.04 to 11) in,,(4.6 + 0.91D) µin,"Internal Supermicrometer, master gage blocks",0.04,in,11,in,,,,,4.6,0.91,in,µin
+Straight Threaded Plug Gages,Pitch Diameter (TPI 4.5 to 96),Up to 6 in,,(76 + 6.0D) µin,3-wire method,0,in,6,in,,,,,76.0,6.0,in,µin
+Straight Threaded Plug Gages,Major Diameter,Up to 5 in,,(24 + 1D) µin,"P&W Supermicrometer, gage blocks",0,in,5,in,,,,,24.0,1.0,in,µin
 Tapered Threaded Plug Gages,Pitch Diameter,Up to 4 in,,92 µin,"3-wire method, tapered sine block",0,in,4,in,,,,,92,0.0,,µin
 Tapered Threaded Plug Gages,Major Diameter,Up to 4.5 in,,22 µin,"P&W Supermicrometer, gage blocks",0,in,4.5,in,,,,,22,0.0,,µin
-Adjustable Threaded Ring Gages,,(0.05 to 2) in diameter,,(84 + 10D) µin,Setting plugs,0.05,in diameter,2,in diameter,,,,,84.0,10.0,D,µin
-Steel Rules,Length,Up to 72 in,,(590 + 1.5L) µin,Gage blocks,0,in,72,in,,,,,590.0,1.5,L,µin
-Steel Rules,Graduations,----,,(670 + 16L) µin,Glass scale,----,,----,,,,,,670.0,16.0,L,µin
-Surface Plates,Flatness,Up to 300 in diagonal,,(8.7 + 1.2L) µin,LDDM,0,in diagonal,300,in diagonal,,,,,8.7,1.2,L,µin
-Surface Plates,Repeat Reading,----,,(6.8 + 0.017L) µin,Repeat reading gage,----,,----,,,,,,6.8,0.017,L,µin
-Optical Comparators,Linearity,12 in travel,,(12 + 3.4L) µin,Glass scale,12,in travel,12,in travel,,,,,12.0,3.4,L,µin
+Adjustable Threaded Ring Gages,,(0.05 to 2) in diameter,,(84 + 10D) µin,Setting plugs,0.05,in diameter,2,in diameter,,,,,84.0,10.0,in diameter,µin
+Steel Rules,Length,Up to 72 in,,(590 + 1.5L) µin,Gage blocks,0,in,72,in,,,,,590.0,1.5,in,µin
+Steel Rules,Graduations,----,,(670 + 16L) µin,Glass scale,----,,----,,,,,,670.0,16.0,,µin
+Surface Plates,Flatness,Up to 300 in diagonal,,(8.7 + 1.2L) µin,LDDM,0,in diagonal,300,in diagonal,,,,,8.7,1.2,in diagonal,µin
+Surface Plates,Repeat Reading,----,,(6.8 + 0.017L) µin,Repeat reading gage,----,,----,,,,,,6.8,0.017,,µin
+Optical Comparators,Linearity,12 in travel,,(12 + 3.4L) µin,Glass scale,12,in travel,12,in travel,,,,,12.0,3.4,in travel,µin
 Optical Comparators,Angle,±180º,,40 arc seconds,Glass scale,-180,º,180,º,,,,,40,0.0,,arc seconds
 Optical Comparators,Magnification Accuracy,5X to 100X,,0.013 % of magnification,Glass scale,5,X,100,X,,,,,0.013,0.0,,% of magnification
 Measuring Tapes,Length,Up to 330 ft,,(0.0073 +,Test frame,0,ft,330,ft,,,,,(0.0073 +,,,
@@ -55,8 +55,8 @@ Air Gages,,(-0.0015 to +0.0015) in,,25 µin,Magnification test kit,-0.0015,in,0.
 "Profilometers, Ra",,20 µin,,1.5 µin,Surface roughness masters,20,µin,20,µin,,,,,1.5,0.0,,µin
 "Profilometers, Ra",,120 µin,,3.1 µin,Surface roughness masters,120,µin,120,µin,,,,,3.1,0.0,,µin
 "Surface Roughness Standards, Ra",,(16 to 132) µin,,(1.3 + 0.017) µin,Comparison with surface roughness masters,16,µin,132,µin,,,,,1.3,0.017,,µin
-Radius Standard,,(0.01 to 3) in,,(190 + 62L) µin,Optical comparator,0.01,in,3,in,,,,,190.0,62.0,L,µin
-Bench Micrometer,Linearity,Up to 1 in,,(2.1 + 1.3L) µin,Gage blocks,0,in,1,in,,,,,2.1,1.3,L,µin
+Radius Standard,,(0.01 to 3) in,,(190 + 62L) µin,Optical comparator,0.01,in,3,in,,,,,190.0,62.0,in,µin
+Bench Micrometer,Linearity,Up to 1 in,,(2.1 + 1.3L) µin,Gage blocks,0,in,1,in,,,,,2.1,1.3,in,µin
 Bench Micrometer,Anvil Parallelism,---,,1.4 µin,Ball test,,,---,---,,,,,1.4,0.0,,µin
 Bench Micrometer,Force Error,(2 to 40) ozf,,0.13 ozf,Load cell,2,ozf,40,ozf,,,,,0.13,0.0,,ozf
 Bench Micrometer,ID Functionality,---,,11 µin,Setting rings,,,---,---,,,,,11,0.0,,µin
@@ -64,11 +64,11 @@ Coating Thickness Meter,,Up to 80 mils,,0.11 % rdg + 0.023 mils,Coating thicknes
 Coating Thickness,,Up to 750 mils,,0.023 mils,Universal LMS,0,mils,750,mils,,,,,0.023,0.0,,mils
 Ultrasonic Thickness,,Up to 10 in (Ferrous),,80 µin,Steel gage blocks,0,in (Ferrous),10,in (Ferrous),,,,,80,0.0,,µin
 Meter,,Up to 0.65 in (Alum),,100 µin,Aluminum thickness Standards,0,in (Alum),0.65,in (Alum),,,,,100,0.0,,µin
-"Length, 1D",,Up to 10 in,,(27 + 1.2L) µin,Supermicrometer,0,in,10,in,,,,,27.0,1.2,L,µin
-"Length, 1D",,Up to 56 in,,(590 + 2.1L) µin,CMM,0,in,56,in,,,,,590.0,2.1,L,µin
-"Length, 1D",,Up to 8.5 in,,(410 + 96L) µin,Optical comparator,0,in,8.5,in,,,,,410.0,96.0,L,µin
-"Length, 1D",,Up to 60 ft,,(83 + 1.6L) µin,Laser,0,ft,60,ft,,,,,83.0,1.6,L,µin
-"Length, 2D",,Up to 8′′ X 3′′,,(370 + 120L) µin,Optical comparator,0,′′ X 3′′,8,′′ X 3′′,,,,,370.0,120.0,L,µin
+"Length, 1D",,Up to 10 in,,(27 + 1.2L) µin,Supermicrometer,0,in,10,in,,,,,27.0,1.2,in,µin
+"Length, 1D",,Up to 56 in,,(590 + 2.1L) µin,CMM,0,in,56,in,,,,,590.0,2.1,in,µin
+"Length, 1D",,Up to 8.5 in,,(410 + 96L) µin,Optical comparator,0,in,8.5,in,,,,,410.0,96.0,in,µin
+"Length, 1D",,Up to 60 ft,,(83 + 1.6L) µin,Laser,0,ft,60,ft,,,,,83.0,1.6,ft,µin
+"Length, 2D",,Up to 8′′ X 3′′,,(370 + 120L) µin,Optical comparator,0,′′ X 3′′,8,′′ X 3′′,,,,,370.0,120.0,′′ X 3′′,µin
 "Length, 3D",,Up to 47′′ X 32′′ X 24′′,,700 µin,CMM,0,′′ X 32′′ X 24′′,47,′′ X 32′′ X 24′′,,,,,700,0.0,,µin
 DC Voltage,Measure,Up to 100 mV,,4.4 µV/V + 0.62 µV,HP 3458A,0,mV,100,mV,,,,,4.4,0.62,µV/V,µV
 DC Voltage,Measure,(0.1 to 1) V,,4.7 µV/V + 0.5 µV,HP 3458A,0.1,V,1,V,,,,,4.7,0.5,µV/V,µV
@@ -431,11 +431,11 @@ Torque Transducers,,(8.3 to 50) lbf∙ft,,0.11 % rdg,Torque wheel/arms and weigh
 Torque Transducers,,(50 to150) lbf∙ft,,0.10 % rdg,Torque wheel/arms and weights,50,lbf∙ft,150,lbf∙ft,,,,,0.1,0.0,,% rdg
 Torque Transducers,,(150 to 1200) lbf∙ft,,0.11 % rdg,Torque wheel/arms and weights,150,lbf∙ft,1200,lbf∙ft,,,,,0.11,0.0,,% rdg
 Scales and Balances,,(0.5 to 380) g,,(0.037 + 0.000 23W) mg,"Ultra Class weights, Class 1 weights",0.5,g,380,g,,,,,0.037,0.0,23W,mg
-Scales and Balances,,(380 to 1800) g,,(0.12 + 0.0001W) mg,"Ultra Class weights, Class 1 weights",380,g,1800,g,,,,,0.12,0.0001,W,mg
-Scales and Balances,,(0 to 200) g,,(0.69 + 0.0094W) mg,Class F and 6 weights,0,g,200,g,,,,,0.69,0.0094,W,mg
-Scales and Balances,,(200 to 1000) g,,(0.51 + 0.012W) mg,Class F and 6 weights,200,g,1000,g,,,,,0.51,0.012,W,mg
-Scales and Balances,,(1 to 16.2) kg,,(26 + 0.0048W) mg,Class F and 6 weights,1,kg,16.2,kg,,,,,26.0,0.0048,W,mg
-Scales and Balances,,"(0.1 to 700) lb,",,(260 + 3.5W) mg,"(This instance, “W” = weight in lbs)",0.1,"lb,",700,"lb,",,,,,260.0,3.5,W,mg
+Scales and Balances,,(380 to 1800) g,,(0.12 + 0.0001W) mg,"Ultra Class weights, Class 1 weights",380,g,1800,g,,,,,0.12,0.0001,g,mg
+Scales and Balances,,(0 to 200) g,,(0.69 + 0.0094W) mg,Class F and 6 weights,0,g,200,g,,,,,0.69,0.0094,g,mg
+Scales and Balances,,(200 to 1000) g,,(0.51 + 0.012W) mg,Class F and 6 weights,200,g,1000,g,,,,,0.51,0.012,g,mg
+Scales and Balances,,(1 to 16.2) kg,,(26 + 0.0048W) mg,Class F and 6 weights,1,kg,16.2,kg,,,,,26.0,0.0048,kg,mg
+Scales and Balances,,"(0.1 to 700) lb,",,(260 + 3.5W) mg,"(This instance, “W” = weight in lbs)",0.1,"lb,",700,"lb,",,,,,260.0,3.5,"lb,",mg
 Indirect Verification of Rockwell Hardness Testers,HRA,Low,,0.31 HRA,Indirect verification per ASTM E18,Low,,Low,,,,,,0.31,0.0,,HRA
 Indirect Verification of Rockwell Hardness Testers,HRA,Medium,,0.32 HRA,Indirect verification per ASTM E18,Medium,,Medium,,,,,,0.32,0.0,,HRA
 Indirect Verification of Rockwell Hardness Testers,HRA,High,,0.20 HRA,Indirect verification per ASTM E18,High,,High,,,,,,0.2,0.0,,HRA

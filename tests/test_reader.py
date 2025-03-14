@@ -90,6 +90,10 @@ def test_whole_files(pdf_file):
     # Load input JSON
     table = pdf_table_processor(f"tests/test_data/{pdf_file}")
 
+    # Check for unexpected cmc_mult_unit values
+    for removed in ['D', 'L', 'W']:
+        assert not any(table['cmc_mult_unit'] == removed), f"Unexpected cmc_mult_unit '{removed}' found in the data."
+
     # Make sure the table is not empty
     assert not table.empty, "Table is empty"
 
