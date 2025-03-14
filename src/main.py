@@ -54,6 +54,8 @@ def pdf_table_processor(pdf_path: str, save_intermediate=False) -> pd.DataFrame:
                 parsed_table_rows = custom_parse_table(table)
                 table_rows.extend(parsed_table_rows)
                 if save_intermediate:
+                    with open(f"export/tables/json/page{page.page_number}_table{i}.csv", "w", encoding="utf-8-sig") as f:
+                        f.write(json.dumps(table, indent=2))
                     with open(f"export/tables/csv/page{page.page_number}_table{i}.csv", "w", encoding="utf-8-sig") as f:
                         pd.DataFrame(parsed_table_rows).to_csv(f, index=False)
     columns = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]

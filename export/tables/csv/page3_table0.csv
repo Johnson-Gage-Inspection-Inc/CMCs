@@ -1,15 +1,15 @@
-﻿0,1,2,3,4,5
-Gage Blocks,,Up to 0.1 in,,4 µin,Master gage blocks & amplifier
-Gage Blocks,,(0.1 to 4) in,,(2 + 1.4L) µin,Master gage blocks & amplifier
-Gage Blocks,,(4 to 20) in,,(4.3 + 1.4L) µin,Master gage blocks & amplifier
-Micrometers,Linearity,Up to 42 in,,(38 + 2.7L) µin,Gage blocks
-Micrometers,Parallelism,Up to 42 in,,(31 + 0.25L) µin,Gage blocks
-Micrometer Standards & Length Artifacts,,Up to 41 in,,(12 + 2.4L) µin,Universal LMS
-Depth Micrometers & Gages,,Up to 12 in,,(30 + 2.5L) µin,Gage blocks
-Thread Micrometers,,Up to 6 in,,(92 + 7.4L) µin,Thread plugs
-Thread Wires,,(4.5 to 96) TPI,,15 µin,"Supermicrometer,"
-Calipers,Digital,Up to 72 in,,(300 + 1.7L) µin,Gage blocks and ring gages
-Calipers,Dial & Vernier,Up to 72 in,,(600 + 1.9L) µin,Gage blocks and ring gages
-"Indicators, Dial & Digital (For Dial, Res. = 0.2 Least Grad.)",,Up to 1 in,,6.5 µin + 0.6R,Gage blocks
-"Indicators, Dial & Digital (For Dial, Res. = 0.2 Least Grad.)",,(1 to 4) in,,(3.3 + 3L) µin + 0.6R,Gage blocks
-Height Gages,,Up to 40 in,,(7.1 + 1.1L) µin,Gage blocks
+﻿0,1,2,3,4,5
+Gage Blocks,,Up to 0.1 in,,4 µin,Master gage blocks & amplifier
+Gage Blocks,,(0.1 to 4) in,,(2 + 1.4L) µin,Master gage blocks & amplifier
+Gage Blocks,,(4 to 20) in,,(4.3 + 1.4L) µin,Master gage blocks & amplifier
+Micrometers,Linearity,Up to 42 in,,(38 + 2.7L) µin,Gage blocks
+Micrometers,Parallelism,Up to 42 in,,(31 + 0.25L) µin,Gage blocks
+Micrometer Standards & Length Artifacts,,Up to 41 in,,(12 + 2.4L) µin,Universal LMS
+Depth Micrometers & Gages,,Up to 12 in,,(30 + 2.5L) µin,Gage blocks
+Thread Micrometers,,Up to 6 in,,(92 + 7.4L) µin,Thread plugs
+Thread Wires,,(4.5 to 96) TPI,,15 µin,"Supermicrometer,"
+Calipers,Digital,Up to 72 in,,(300 + 1.7L) µin,Gage blocks and ring gages
+Calipers,Dial & Vernier,Up to 72 in,,(600 + 1.9L) µin,Gage blocks and ring gages
+"Indicators, Dial & Digital (For Dial, Res. = 0.2 Least Grad.)",,Up to 1 in,,6.5 µin + 0.6R,Gage blocks
+"Indicators, Dial & Digital (For Dial, Res. = 0.2 Least Grad.)",,(1 to 4) in,,(3.3 + 3L) µin + 0.6R,Gage blocks
+Height Gages,,Up to 40 in,,(7.1 + 1.1L) µin,Gage blocks

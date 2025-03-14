@@ -1,0 +1,214 @@
+﻿[
+  [
+    [
+      {
+        "text": "Parameter/Equipment",
+        "top": 87.74928
+      }
+    ],
+    [
+      {
+        "text": "Range",
+        "top": 87.74928
+      }
+    ],
+    [
+      {
+        "text": "CMC (\u00b1)",
+        "top": 86.6167200000001
+      }
+    ],
+    [
+      {
+        "text": "Comments",
+        "top": 87.74928
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Plug / Pin Gages & Outside Cylindrical Diameter",
+        "top": 126.26927999999998
+      }
+    ],
+    [
+      {
+        "text": "Up to 1 in",
+        "top": 126.26927999999998
+      },
+      {
+        "text": "(1 to 10) in",
+        "top": 149.29872
+      }
+    ],
+    [
+      {
+        "text": "(6.7 + 1.8L) \u00b5in",
+        "top": 126.26927999999998
+      },
+      {
+        "text": "(13 + 1.1L) \u00b5in",
+        "top": 149.29872
+      }
+    ],
+    [
+      {
+        "text": "Laser scan micrometer",
+        "top": 126.26927999999998
+      },
+      {
+        "text": "P&W Supermicrometer, gage blocks",
+        "top": 149.29872
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Plain Rings & Inside Cylindrical Diameter",
+        "top": 207.62928
+      }
+    ],
+    [
+      {
+        "text": "(0.04 to 11) in",
+        "top": 207.62928
+      }
+    ],
+    [
+      {
+        "text": "(4.6 + 0.91D) \u00b5in",
+        "top": 207.62928
+      }
+    ],
+    [
+      {
+        "text": "Internal Supermicrometer, master gage blocks",
+        "top": 207.62928
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Straight Threaded Plug Gages \u2013",
+        "top": 265.82928000000004
+      },
+      {
+        "text": "\tPitch Diameter (TPI 4.5 to 96)",
+        "top": 300.26304000000005
+      },
+      {
+        "text": "\tMajor Diameter",
+        "top": 334.8072000000001
+      }
+    ],
+    [
+      {
+        "text": "Up to 6 in",
+        "top": 300.26304000000005
+      },
+      {
+        "text": "Up to 5 in",
+        "top": 334.8072000000001
+      }
+    ],
+    [
+      {
+        "text": "(76 + 6.0D) \u00b5in",
+        "top": 300.26304000000005
+      },
+      {
+        "text": "(24 + 1D) \u00b5in",
+        "top": 334.8072000000001
+      }
+    ],
+    [
+      {
+        "text": "3-wire method",
+        "top": 300.26304000000005
+      },
+      {
+        "text": "P&W Supermicrometer, gage blocks",
+        "top": 334.8072000000001
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Tapered Threaded Plug Gages \u2013",
+        "top": 393.02928
+      },
+      {
+        "text": "\tPitch Diameter",
+        "top": 427.57344000000006
+      },
+      {
+        "text": "\t(8 to 27) TPI",
+        "top": 439.0881600000001
+      },
+      {
+        "text": "\tMajor Diameter",
+        "top": 462.00720000000007
+      }
+    ],
+    [
+      {
+        "text": "Up to 4 in",
+        "top": 427.57344000000006
+      },
+      {
+        "text": "Up to 4.5 in",
+        "top": 462.00720000000007
+      }
+    ],
+    [
+      {
+        "text": "92 \u00b5in",
+        "top": 427.57344000000006
+      },
+      {
+        "text": "22 \u00b5in",
+        "top": 462.00720000000007
+      }
+    ],
+    [
+      {
+        "text": "3-wire method, tapered sine block",
+        "top": 427.57344000000006
+      },
+      {
+        "text": "P&W Supermicrometer, gage blocks",
+        "top": 462.00720000000007
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Adjustable Threaded Ring Gages",
+        "top": 520.70928
+      }
+    ],
+    [
+      {
+        "text": "(0.05 to 2) in diameter",
+        "top": 520.70928
+      }
+    ],
+    [
+      {
+        "text": "(84 + 10D) \u00b5in",
+        "top": 520.70928
+      }
+    ],
+    [
+      {
+        "text": "Setting plugs",
+        "top": 520.70928
+      }
+    ]
+  ]
+]

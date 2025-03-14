@@ -1,0 +1,270 @@
+﻿[
+  [
+    [
+      {
+        "text": "Parameter/Equipment",
+        "top": 88.22928000000002
+      }
+    ],
+    [
+      {
+        "text": "Range",
+        "top": 88.22928000000002
+      }
+    ],
+    [
+      {
+        "text": "CMC (\u00b1)",
+        "top": 87.09672
+      }
+    ],
+    [
+      {
+        "text": "Comments",
+        "top": 88.22928000000002
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Indirect Verification of Rockwell Hardness Testers (cont)",
+        "top": 124.10928000000001
+      }
+    ],
+    [
+      {
+        "text": "HR30TW",
+        "top": 124.10928000000001
+      },
+      {
+        "text": "\tLow",
+        "top": 135.74544000000003
+      },
+      {
+        "text": "\tMedium",
+        "top": 147.38160000000005
+      },
+      {
+        "text": "\tHigh",
+        "top": 159.01776000000007
+      },
+      {
+        "text": "HR45TW",
+        "top": 182.0472000000001
+      },
+      {
+        "text": "\tLow",
+        "top": 193.6833600000001
+      },
+      {
+        "text": "\tMedium",
+        "top": 205.31952000000013
+      },
+      {
+        "text": "\tHigh",
+        "top": 216.95568000000014
+      }
+    ],
+    [
+      {
+        "text": "0.58 HR30TW",
+        "top": 135.62400000000002
+      },
+      {
+        "text": "0.64 HR30TW",
+        "top": 147.02832
+      },
+      {
+        "text": "0.22 HR30TW",
+        "top": 158.54304000000002
+      },
+      {
+        "text": "0.70 HR45TW",
+        "top": 193.08720000000005
+      },
+      {
+        "text": "0.40 HR45TW",
+        "top": 204.60192000000006
+      },
+      {
+        "text": "0.39 HR45TW",
+        "top": 216.00624000000005
+      }
+    ],
+    [
+      {
+        "text": "Indirect verification per ASTM E18",
+        "top": 135.62400000000002
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Direct Verification of Rockwell Hardness Testers \u2013",
+        "top": 253.10928
+      },
+      {
+        "text": "\tVerification of Test",
+        "top": 301.11024
+      },
+      {
+        "text": "\tForce",
+        "top": 313.11071999999996
+      },
+      {
+        "text": "\tVerification of Depth-Measuring",
+        "top": 337.1116799999999
+      },
+      {
+        "text": "\tDevice",
+        "top": 361.1126399999999
+      },
+      {
+        "text": "\tVerification of",
+        "top": 385.11359999999985
+      },
+      {
+        "text": "\tHysteresis",
+        "top": 397.11407999999983
+      }
+    ],
+    [
+      {
+        "text": "(3 to 15) kgf",
+        "top": 301.1112
+      },
+      {
+        "text": "(30 to 150) kgf",
+        "top": 313.11168
+      },
+      {
+        "text": "(0 to 260) \u00b5m",
+        "top": 337.11263999999994
+      },
+      {
+        "text": "---",
+        "top": 385.11455999999987
+      }
+    ],
+    [
+      {
+        "text": "0.005 kgf + 0.03 % rdg",
+        "top": 301.1112
+      },
+      {
+        "text": "0.049 kgf + 0.02 % rdg",
+        "top": 313.11168
+      },
+      {
+        "text": "0.31 \u00b5m",
+        "top": 337.11263999999994
+      },
+      {
+        "text": "0.25 Rockwell Points",
+        "top": 385.11455999999987
+      }
+    ],
+    [
+      {
+        "text": "ASTM E18",
+        "top": 253.10928
+      },
+      {
+        "text": "Verification of test force by load cell",
+        "top": 301.1112
+      },
+      {
+        "text": "Per direct verification method of ASTM E18",
+        "top": 337.11263999999994
+      },
+      {
+        "text": "Per direct verification method of ASTM E18",
+        "top": 385.11455999999987
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Indirect Verification of Brinell Hardness Testers at Test Condition(s) \u2013",
+        "top": 433.82928000000004
+      },
+      {
+        "text": "\t10/3000/15",
+        "top": 481.83024
+      },
+      {
+        "text": "\t10/500/15",
+        "top": 565.8335999999999
+      }
+    ],
+    [
+      {
+        "text": "Repeatability:",
+        "top": 481.83119999999997
+      },
+      {
+        "text": "\u2264 225 HBW",
+        "top": 493.83167999999995
+      },
+      {
+        "text": "(> 225 to 650) HBW",
+        "top": 505.83215999999993
+      },
+      {
+        "text": "Error:",
+        "top": 529.8331199999999
+      },
+      {
+        "text": "Repeatability:",
+        "top": 565.8345599999999
+      },
+      {
+        "text": "(40 to 126) HBW",
+        "top": 577.8350399999999
+      },
+      {
+        "text": "Error:",
+        "top": 601.836
+      }
+    ],
+    [
+      {
+        "text": "0.024D",
+        "top": 493.83167999999995
+      },
+      {
+        "text": "0.013D",
+        "top": 505.83215999999993
+      },
+      {
+        "text": "1.5 %",
+        "top": 529.8331199999999
+      },
+      {
+        "text": "0.024D",
+        "top": 577.8350399999999
+      },
+      {
+        "text": "1.9 %",
+        "top": 601.836
+      }
+    ],
+    [
+      {
+        "text": "ATSM E10",
+        "top": 433.82928000000004
+      },
+      {
+        "text": "D is the mean of the n mean test diameters in millimeters",
+        "top": 457.83024
+      },
+      {
+        "text": "Error uncertainty is stated as a percentage of the standardized test block value",
+        "top": 505.83215999999993
+      }
+    ]
+  ]
+]

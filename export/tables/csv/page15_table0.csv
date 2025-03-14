@@ -1,36 +1,36 @@
-﻿0,1,2,3,4,5
-Fluke 5502A,AC Current – Generate,(29 to 330) µA,(10 to 20) Hz,0.23 % + 0.13 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(29 to 330) µA,(20 to 45) Hz,0.17 % + 0.13 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(29 to 330) µA,45 Hz to 1 kHz,0.14 % + 0.14 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(29 to 330) µA,(1 to 5) kHz,0.35 % + 0.18 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(29 to 330) µA,(5 to 10) kHz,0.92 % + 0.25 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(29 to 330) µA,(10 to 30) kHz,1.8 % + 0.62 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,330 µA to 3.3 mA,(10 to 20) Hz,0.23 % + 0.23 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,330 µA to 3.3 mA,(20 to 45) Hz,0.14 % + 0.32 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,330 µA to 3.3 mA,45 Hz to 1 kHz,0.12 % + 0.18 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,330 µA to 3.3 mA,(1 to 5) kHz,0.23 % + 0.27 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,330 µA to 3.3 mA,(5 to 10) kHz,0.58 % + 0.35 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,330 µA to 3.3 mA,(10 to 30) kHz,1.2 % + 0.7 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(3.3 to 33) mA,(10 to 20) Hz,0.21 % + 2.4 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(3.3 to 33) mA,(20 to 45) Hz,0.1 % + 3.8 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(3.3 to 33) mA,45 Hz to 1 kHz,0.047 % + 2.4 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(3.3 to 33) mA,(1 to 5) kHz,0.093 % + 2.4 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(3.3 to 33) mA,(5 to 10) kHz,0.23 % + 3.8 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(3.3 to 33) mA,(10 to 30) kHz,0.46 % + 5.3 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(33 to 330) mA,(10 to 20) Hz,0.21 % + 23 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(33 to 330) mA,(20 to 45) Hz,0.1 % + 38 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(33 to 330) mA,45 Hz to 1 kHz,0.047 % + 24 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(33 to 330) mA,(1 to 5) kHz,0.12 % + 58 µA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(33 to 330) mA,(5 to 10) kHz,0.23 % + 0.12 mA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(33 to 330) mA,(10 to 30) kHz,0.46 % + 0.24 mA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,330 mA to 1.1 A,(10 to 45) Hz,0.21 % + 0.12 mA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,330 mA to 1.1 A,45 Hz to 1 kHz,0.058 % + 0.12 mA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,330 mA to 1.1 A,(1 to 5) kHz,0.69 % + 1.2 mA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,330 mA to 1.1 A,(5 to 10) kHz,2.9 % + 5.8 mA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(1.1 to 3) A,(10 to 45) Hz,0.21 % + 0.12 mA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(1.1 to 3) A,45 Hz to 1 kHz,0.069 % + 0.13 mA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(1.1 to 3) A,(1 to 5) kHz,0.69 % + 1.3 mA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(1.1 to 3) A,(5 to 10) kHz,2.9 % + 5.8 mA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(3 to 11) A,(45 to 100) Hz,0.069 % + 2.4 mA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(3 to 11) A,100 Hz to 1 kHz,0.12 % + 2.4 mA,Fluke 5502A
-Fluke 5502A,AC Current – Generate,(3 to 11) A,(1 to 5) kHz,3.5 % + 2.4 mA,Fluke 5502A
+﻿0,1,2,3,4,5
+Fluke 5502A,AC Current – Generate,(29 to 330) µA,(10 to 20) Hz,0.23 % + 0.13 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(29 to 330) µA,(20 to 45) Hz,0.17 % + 0.13 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(29 to 330) µA,45 Hz to 1 kHz,0.14 % + 0.14 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(29 to 330) µA,(1 to 5) kHz,0.35 % + 0.18 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(29 to 330) µA,(5 to 10) kHz,0.92 % + 0.25 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(29 to 330) µA,(10 to 30) kHz,1.8 % + 0.62 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 µA to 3.3 mA,(10 to 20) Hz,0.23 % + 0.23 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 µA to 3.3 mA,(20 to 45) Hz,0.14 % + 0.32 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 µA to 3.3 mA,45 Hz to 1 kHz,0.12 % + 0.18 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 µA to 3.3 mA,(1 to 5) kHz,0.23 % + 0.27 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 µA to 3.3 mA,(5 to 10) kHz,0.58 % + 0.35 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 µA to 3.3 mA,(10 to 30) kHz,1.2 % + 0.7 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(3.3 to 33) mA,(10 to 20) Hz,0.21 % + 2.4 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(3.3 to 33) mA,(20 to 45) Hz,0.1 % + 3.8 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(3.3 to 33) mA,45 Hz to 1 kHz,0.047 % + 2.4 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(3.3 to 33) mA,(1 to 5) kHz,0.093 % + 2.4 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(3.3 to 33) mA,(5 to 10) kHz,0.23 % + 3.8 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(3.3 to 33) mA,(10 to 30) kHz,0.46 % + 5.3 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(33 to 330) mA,(10 to 20) Hz,0.21 % + 23 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(33 to 330) mA,(20 to 45) Hz,0.1 % + 38 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(33 to 330) mA,45 Hz to 1 kHz,0.047 % + 24 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(33 to 330) mA,(1 to 5) kHz,0.12 % + 58 µA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(33 to 330) mA,(5 to 10) kHz,0.23 % + 0.12 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(33 to 330) mA,(10 to 30) kHz,0.46 % + 0.24 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 mA to 1.1 A,(10 to 45) Hz,0.21 % + 0.12 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 mA to 1.1 A,45 Hz to 1 kHz,0.058 % + 0.12 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 mA to 1.1 A,(1 to 5) kHz,0.69 % + 1.2 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,330 mA to 1.1 A,(5 to 10) kHz,2.9 % + 5.8 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(1.1 to 3) A,(10 to 45) Hz,0.21 % + 0.12 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(1.1 to 3) A,45 Hz to 1 kHz,0.069 % + 0.13 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(1.1 to 3) A,(1 to 5) kHz,0.69 % + 1.3 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(1.1 to 3) A,(5 to 10) kHz,2.9 % + 5.8 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(3 to 11) A,(45 to 100) Hz,0.069 % + 2.4 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(3 to 11) A,100 Hz to 1 kHz,0.12 % + 2.4 mA,Fluke 5502A
+Fluke 5502A,AC Current – Generate,(3 to 11) A,(1 to 5) kHz,3.5 % + 2.4 mA,Fluke 5502A

@@ -1,14 +1,14 @@
-﻿0,1,2,3,4,5
-Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),Vickers:,< 240 HV,,4.3 HV,ASTM E384 and E92
-Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),Vickers:,(240 to 600) HV,,10 HV,ASTM E384 and E92
-Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),Vickers:,> 600 HV,,13 HV,ASTM E384 and E92
-Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),Knoop:,< 250 HK,,5.2 HK,ASTM E384 and E92
-Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),Knoop:,(250 to 650) HK,,12 HK,ASTM E384 and E92
-Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),Knoop:,> 650 HK,,15 HK,ASTM E384 and E92
-Pressure,Absolute & Barometric Pressure,(0 to 35) in·Hg,,0.0034 in·Hg,Mensor CPG system
-Pressure,Differential & Gage Pressure,(0 to 30) in·H₂O,,0.0029 in·H₂O,Mensor CPG system
-Pressure,Differential & Gage Pressure,(0 to 5) psi,,0.000 47 psi,Mensor CPG system
-Pressure,Differential & Gage Pressure,(5 to 15) psi,,0.0015 psi,Mensor CPG system
-Pressure,Differential & Gage Pressure,(10 to 500) psi,,0.002 psi + 0.018 % rdg,Deadweight tester
-Pressure,Differential & Gage Pressure,(200 to 10 000) psi,,0.034 psi + 0.018 % rdg,Deadweight tester
-Vacuum,Measure and Measuring Equipment,(0 to 28.5) in·Hg,,0.0033 in·Hg,Mensor CPG system
+﻿0,1,2,3,4,5
+Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),Vickers:,< 240 HV,,4.3 HV,ASTM E384 and E92
+Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),Vickers:,(240 to 600) HV,,10 HV,ASTM E384 and E92
+Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),Vickers:,> 600 HV,,13 HV,ASTM E384 and E92
+Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),Knoop:,< 250 HK,,5.2 HK,ASTM E384 and E92
+Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),Knoop:,(250 to 650) HK,,12 HK,ASTM E384 and E92
+Indirect Verification of Microindentation Hardness Testers (Knoop and Vickers),Knoop:,> 650 HK,,15 HK,ASTM E384 and E92
+Pressure,Absolute & Barometric Pressure,(0 to 35) in·Hg,,0.0034 in·Hg,Mensor CPG system
+Pressure,Differential & Gage Pressure,(0 to 30) in·H₂O,,0.0029 in·H₂O,Mensor CPG system
+Pressure,Differential & Gage Pressure,(0 to 5) psi,,0.000 47 psi,Mensor CPG system
+Pressure,Differential & Gage Pressure,(5 to 15) psi,,0.0015 psi,Mensor CPG system
+Pressure,Differential & Gage Pressure,(10 to 500) psi,,0.002 psi + 0.018 % rdg,Deadweight tester
+Pressure,Differential & Gage Pressure,(200 to 10 000) psi,,0.034 psi + 0.018 % rdg,Deadweight tester
+Vacuum,Measure and Measuring Equipment,(0 to 28.5) in·Hg,,0.0033 in·Hg,Mensor CPG system

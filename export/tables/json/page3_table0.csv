@@ -1,0 +1,318 @@
+﻿[
+  [
+    [
+      {
+        "text": "Parameter/Equipment",
+        "top": 87.26927999999998
+      }
+    ],
+    [
+      {
+        "text": "Range",
+        "top": 87.26927999999998
+      }
+    ],
+    [
+      {
+        "text": "CMC (\u00b1)",
+        "top": 86.13672000000008
+      }
+    ],
+    [
+      {
+        "text": "Comments",
+        "top": 87.26927999999998
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Gage Blocks",
+        "top": 122.90927999999997
+      }
+    ],
+    [
+      {
+        "text": "Up to 0.1 in",
+        "top": 122.90927999999997
+      },
+      {
+        "text": "(0.1 to 4) in",
+        "top": 134.66688
+      },
+      {
+        "text": "(4 to 20) in",
+        "top": 146.42448000000002
+      }
+    ],
+    [
+      {
+        "text": "4 \u00b5in",
+        "top": 122.90927999999997
+      },
+      {
+        "text": "(2 + 1.4L) \u00b5in",
+        "top": 134.66688
+      },
+      {
+        "text": "(4.3 + 1.4L) \u00b5in",
+        "top": 146.42448000000002
+      }
+    ],
+    [
+      {
+        "text": "Master gage blocks & amplifier",
+        "top": 122.90927999999997
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Micrometers \u2013",
+        "top": 181.29672000000005
+      },
+      {
+        "text": "\tLinearity",
+        "top": 205.9444800000001
+      },
+      {
+        "text": "\tParallelism",
+        "top": 229.45968000000016
+      }
+    ],
+    [
+      {
+        "text": "Up to 42 in",
+        "top": 205.9444800000001
+      },
+      {
+        "text": "Up to 42 in",
+        "top": 229.45968000000016
+      }
+    ],
+    [
+      {
+        "text": "(38 + 2.7L) \u00b5in",
+        "top": 205.9444800000001
+      },
+      {
+        "text": "(31 + 0.25L) \u00b5in",
+        "top": 229.45968000000016
+      }
+    ],
+    [
+      {
+        "text": "Gage blocks",
+        "top": 205.9444800000001
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Micrometer Standards & Length Artifacts",
+        "top": 265.46928
+      }
+    ],
+    [
+      {
+        "text": "Up to 41 in",
+        "top": 265.46928
+      }
+    ],
+    [
+      {
+        "text": "(12 + 2.4L) \u00b5in",
+        "top": 265.46928
+      }
+    ],
+    [
+      {
+        "text": "Universal LMS",
+        "top": 265.46928
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Depth Micrometers & Gages",
+        "top": 313.22928
+      }
+    ],
+    [
+      {
+        "text": "Up to 12 in",
+        "top": 313.22928
+      }
+    ],
+    [
+      {
+        "text": "(30 + 2.5L) \u00b5in",
+        "top": 313.22928
+      }
+    ],
+    [
+      {
+        "text": "Gage blocks",
+        "top": 313.22928
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Thread Micrometers",
+        "top": 360.98928
+      }
+    ],
+    [
+      {
+        "text": "Up to 6 in",
+        "top": 360.98928
+      }
+    ],
+    [
+      {
+        "text": "(92 + 7.4L) \u00b5in",
+        "top": 360.98928
+      }
+    ],
+    [
+      {
+        "text": "Thread plugs",
+        "top": 360.98928
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Thread Wires",
+        "top": 396.98928
+      }
+    ],
+    [
+      {
+        "text": "(4.5 to 96) TPI",
+        "top": 396.98928
+      }
+    ],
+    [
+      {
+        "text": "15 \u00b5in",
+        "top": 396.98928
+      }
+    ],
+    [
+      {
+        "text": "Supermicrometer,",
+        "top": 395.85672
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Calipers \u2013",
+        "top": 431.85672
+      },
+      {
+        "text": "\tDigital",
+        "top": 456.50448000000006
+      },
+      {
+        "text": "\tDial & Vernier",
+        "top": 479.8982400000001
+      }
+    ],
+    [
+      {
+        "text": "Up to 72 in",
+        "top": 456.50448000000006
+      },
+      {
+        "text": "Up to 72 in",
+        "top": 479.8982400000001
+      }
+    ],
+    [
+      {
+        "text": "(300 + 1.7L) \u00b5in",
+        "top": 456.50448000000006
+      },
+      {
+        "text": "(600 + 1.9L) \u00b5in",
+        "top": 479.8982400000001
+      }
+    ],
+    [
+      {
+        "text": "Gage blocks and ring gages",
+        "top": 456.50448000000006
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Indicators, Dial & Digital (For Dial, Res. = 0.2 Least Grad.)",
+        "top": 514.7767200000001
+      }
+    ],
+    [
+      {
+        "text": "Up to 1 in",
+        "top": 515.9092800000001
+      },
+      {
+        "text": "(1 to 4) in",
+        "top": 539.42448
+      }
+    ],
+    [
+      {
+        "text": "6.5 \u00b5in + 0.6R",
+        "top": 515.9092800000001
+      },
+      {
+        "text": "(3.3 + 3L) \u00b5in + 0.6R",
+        "top": 539.42448
+      }
+    ],
+    [
+      {
+        "text": "Gage blocks",
+        "top": 515.9092800000001
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Height Gages",
+        "top": 574.29672
+      }
+    ],
+    [
+      {
+        "text": "Up to 40 in",
+        "top": 575.4292800000001
+      }
+    ],
+    [
+      {
+        "text": "(7.1 + 1.1L) \u00b5in",
+        "top": 575.4292800000001
+      }
+    ],
+    [
+      {
+        "text": "Gage blocks",
+        "top": 575.4292800000001
+      }
+    ]
+  ]
+]

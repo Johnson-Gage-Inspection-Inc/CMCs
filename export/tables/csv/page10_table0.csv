@@ -1,31 +1,31 @@
-﻿0,1,2,3,4,5
-Electrical Calibration of Thermocouple Indicators & Simulators,Type N,(-400 to -300) °F,,1.7 °F,Fluke 5502A or HP
-Electrical Calibration of Thermocouple Indicators & Simulators,Type N,(-300 to -150) °F,,0.54 °F,"3245A, monitored by HP 3458A"
-Electrical Calibration of Thermocouple Indicators & Simulators,Type N,(-150 to -50) °F,,0.35 °F,"3245A, monitored by HP 3458A"
-Electrical Calibration of Thermocouple Indicators & Simulators,Type N,(-50 to 700) °F,,0.29 °F,"3245A, monitored by HP 3458A"
-Electrical Calibration of Thermocouple Indicators & Simulators,Type N,(700 to 1500) °F,,0.21 °F,"3245A, monitored by HP 3458A"
-Electrical Calibration of Thermocouple Indicators & Simulators,Type N,(1500 to 2372) °F,,0.22 °F,"3245A, monitored by HP 3458A"
-Electrical Calibration of Thermocouple Indicators & Simulators,Type R,(-58 to 32) °F,,0.65 °F,"3245A, monitored by HP 3458A"
-Electrical Calibration of Thermocouple Indicators & Simulators,Type R,(32 to 400) °F,,0.38 °F,"3245A, monitored by HP 3458A"
-Electrical Calibration of Thermocouple Indicators & Simulators,Type R,(400 to 1100) °F,,0.27 °F,"3245A, monitored by HP 3458A"
-Electrical Calibration of Thermocouple Indicators & Simulators,Type R,(1100 to 2200) °F,,0.24 °F,"3245A, monitored by HP 3458A"
-Electrical Calibration of Thermocouple Indicators & Simulators,Type S,(2200 to 3214) °F,,0.24 °F,"3245A, monitored by HP 3458A"
-Electrical Calibration of Thermocouple Indicators & Simulators,Type S,(-58 to 32) °F,,0.51 °F,"3245A, monitored by HP 3458A"
-Electrical Calibration of Thermocouple Indicators & Simulators,Type S,(32 to 400) °F,,0.33 °F,"3245A, monitored by HP 3458A"
-Electrical Calibration of Thermocouple Indicators & Simulators,Type S,(400 to 1100) °F,,0.27 °F,"3245A, monitored by HP 3458A"
-Electrical Calibration of Thermocouple Indicators & Simulators,Type T,(1100 to 2200) °F,,0.24 °F,"3245A, monitored by HP 3458A"
-Electrical Calibration of Thermocouple Indicators & Simulators,Type T,(2200 to 3214) °F,,0.24 °F,"3245A, monitored by HP 3458A"
-Electrical Calibration of Thermocouple Indicators & Simulators,Type T,(-400 to -300) °F,,0.69 °F,"3245A, monitored by HP 3458A"
-Electrical Calibration of Thermocouple Indicators & Simulators,Type T,(-300 to 120) °F,,0.34 °F,"3245A, monitored by HP 3458A"
-Electrical Calibration of Thermocouple Indicators & Simulators,Type T,(-120 to 200) °F,,0.23 °F,"3245A, monitored by HP 3458A"
-Electrical Calibration of Thermocouple Indicators & Simulators,Type T,(200 to 752) °F,,0.16 °F,"3245A, monitored by HP 3458A"
-Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 100 Ω",(-320 to 32) °F,,0.013 °F,HP 3458A
-Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 100 Ω",(32 to 400) °F,,0.016 °F,HP 3458A
-Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 100 Ω",(400 to 800) °F,,0.02 °F,HP 3458A
-Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 100 Ω",(800 to 1200) °F,,0.027 °F,HP 3458A
-Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 100 Ω",(1200 to 1562) °F,,0.035 °F,HP 3458A
-Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 1000 Ω",(-320 to 32) °F,,0.009 °F,HP 3458A
-Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 1000 Ω",(32 to 400) °F,,0.016 °F,HP 3458A
-Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 1000 Ω",(400 to 800) °F,,0.020 °F,HP 3458A
-Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 1000 Ω",(800 to 1200) °F,,0.027 °F,HP 3458A
-Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 1000 Ω",(1200 to 1562) °F,,0.033 °F,HP 3458A
+﻿0,1,2,3,4,5
+Electrical Calibration of Thermocouple Indicators & Simulators,Type N,(-400 to -300) °F,,1.7 °F,Fluke 5502A or HP
+Electrical Calibration of Thermocouple Indicators & Simulators,Type N,(-300 to -150) °F,,0.54 °F,"3245A, monitored by HP 3458A"
+Electrical Calibration of Thermocouple Indicators & Simulators,Type N,(-150 to -50) °F,,0.35 °F,"3245A, monitored by HP 3458A"
+Electrical Calibration of Thermocouple Indicators & Simulators,Type N,(-50 to 700) °F,,0.29 °F,"3245A, monitored by HP 3458A"
+Electrical Calibration of Thermocouple Indicators & Simulators,Type N,(700 to 1500) °F,,0.21 °F,"3245A, monitored by HP 3458A"
+Electrical Calibration of Thermocouple Indicators & Simulators,Type N,(1500 to 2372) °F,,0.22 °F,"3245A, monitored by HP 3458A"
+Electrical Calibration of Thermocouple Indicators & Simulators,Type R,(-58 to 32) °F,,0.65 °F,"3245A, monitored by HP 3458A"
+Electrical Calibration of Thermocouple Indicators & Simulators,Type R,(32 to 400) °F,,0.38 °F,"3245A, monitored by HP 3458A"
+Electrical Calibration of Thermocouple Indicators & Simulators,Type R,(400 to 1100) °F,,0.27 °F,"3245A, monitored by HP 3458A"
+Electrical Calibration of Thermocouple Indicators & Simulators,Type R,(1100 to 2200) °F,,0.24 °F,"3245A, monitored by HP 3458A"
+Electrical Calibration of Thermocouple Indicators & Simulators,Type S,(2200 to 3214) °F,,0.24 °F,"3245A, monitored by HP 3458A"
+Electrical Calibration of Thermocouple Indicators & Simulators,Type S,(-58 to 32) °F,,0.51 °F,"3245A, monitored by HP 3458A"
+Electrical Calibration of Thermocouple Indicators & Simulators,Type S,(32 to 400) °F,,0.33 °F,"3245A, monitored by HP 3458A"
+Electrical Calibration of Thermocouple Indicators & Simulators,Type S,(400 to 1100) °F,,0.27 °F,"3245A, monitored by HP 3458A"
+Electrical Calibration of Thermocouple Indicators & Simulators,Type T,(1100 to 2200) °F,,0.24 °F,"3245A, monitored by HP 3458A"
+Electrical Calibration of Thermocouple Indicators & Simulators,Type T,(2200 to 3214) °F,,0.24 °F,"3245A, monitored by HP 3458A"
+Electrical Calibration of Thermocouple Indicators & Simulators,Type T,(-400 to -300) °F,,0.69 °F,"3245A, monitored by HP 3458A"
+Electrical Calibration of Thermocouple Indicators & Simulators,Type T,(-300 to 120) °F,,0.34 °F,"3245A, monitored by HP 3458A"
+Electrical Calibration of Thermocouple Indicators & Simulators,Type T,(-120 to 200) °F,,0.23 °F,"3245A, monitored by HP 3458A"
+Electrical Calibration of Thermocouple Indicators & Simulators,Type T,(200 to 752) °F,,0.16 °F,"3245A, monitored by HP 3458A"
+Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 100 Ω",(-320 to 32) °F,,0.013 °F,HP 3458A
+Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 100 Ω",(32 to 400) °F,,0.016 °F,HP 3458A
+Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 100 Ω",(400 to 800) °F,,0.02 °F,HP 3458A
+Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 100 Ω",(800 to 1200) °F,,0.027 °F,HP 3458A
+Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 100 Ω",(1200 to 1562) °F,,0.035 °F,HP 3458A
+Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 1000 Ω",(-320 to 32) °F,,0.009 °F,HP 3458A
+Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 1000 Ω",(32 to 400) °F,,0.016 °F,HP 3458A
+Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 1000 Ω",(400 to 800) °F,,0.020 °F,HP 3458A
+Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 1000 Ω",(800 to 1200) °F,,0.027 °F,HP 3458A
+Electrical Calibration of RTD Indicators & Simulators,"Pt 385, 1000 Ω",(1200 to 1562) °F,,0.033 °F,HP 3458A

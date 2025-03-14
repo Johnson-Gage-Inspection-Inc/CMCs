@@ -1,11 +1,11 @@
-﻿0,1,2,3,4,5
-Spherical CMM (Laser Tracker),,Up to 600 in,,600 µin,Reference length bar
-Laser Interferometer Length Dependent Error,,Up to 40 in,,0.43 parts in 10,ASME B89.1.8 Sec 4 XD1 reference laser
-Articulated Arm CMM,Effective Dia Perf Test,---,,55 µin,Sphere
-Articulated Arm CMM,Single Point Articulation Test,---,,90 µin,Trihedral socket
-Articulated Arm CMM,Volumetric Perf Test,Up to 144 in radius,,(170 + 0.2L) µin,Gage block ref. length
-"CNC, Machine Tools",Repeatability @ 2,---,,18 µin,Laser per ASME B5.54 Sec. 7.3
-"CNC, Machine Tools",Linear Displacement Accuracy,Up to 260 ft,,(83 + 1.7L) µin,Laser per ASME B5.54 Sec. 7.3
-"CNC, Machine Tools",Bi-Directional System Deviation,Up to 260 ft,,85 µin,Laser per ASME B5.54 Sec. 7.7
-"CNC, Machine Tools",Reversal Deviation,Up to 260 ft,,90 µin,Laser per ASME B5.54 Sec. 7.7
-"CNC, Machine Tools",Bi-Directional Repeatability,Up to 260 ft,,80 µin,Laser per ASME B5.54 Sec. 7.3
+﻿0,1,2,3,4,5
+Spherical CMM (Laser Tracker),,Up to 600 in,,600 µin,Reference length bar
+Laser Interferometer Length Dependent Error,,Up to 40 in,,0.43 parts in 10,ASME B89.1.8 Sec 4 XD1 reference laser
+Articulated Arm CMM,Effective Dia Perf Test,---,,55 µin,Sphere
+Articulated Arm CMM,Single Point Articulation Test,---,,90 µin,Trihedral socket
+Articulated Arm CMM,Volumetric Perf Test,Up to 144 in radius,,(170 + 0.2L) µin,Gage block ref. length
+"CNC, Machine Tools",Repeatability @ 2,---,,18 µin,Laser per ASME B5.54 Sec. 7.3
+"CNC, Machine Tools",Linear Displacement Accuracy,Up to 260 ft,,(83 + 1.7L) µin,Laser per ASME B5.54 Sec. 7.3
+"CNC, Machine Tools",Bi-Directional System Deviation,Up to 260 ft,,85 µin,Laser per ASME B5.54 Sec. 7.7
+"CNC, Machine Tools",Reversal Deviation,Up to 260 ft,,90 µin,Laser per ASME B5.54 Sec. 7.7
+"CNC, Machine Tools",Bi-Directional Repeatability,Up to 260 ft,,80 µin,Laser per ASME B5.54 Sec. 7.3

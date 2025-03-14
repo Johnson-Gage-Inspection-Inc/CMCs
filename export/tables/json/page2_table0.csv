@@ -1,0 +1,244 @@
+﻿[
+  [
+    [
+      {
+        "text": "Parameter/Equipment",
+        "top": 87.26927999999998
+      }
+    ],
+    [
+      {
+        "text": "Range",
+        "top": 87.26927999999998
+      }
+    ],
+    [
+      {
+        "text": "CMC (\u00b1)",
+        "top": 86.13672000000008
+      }
+    ],
+    [
+      {
+        "text": "Comments",
+        "top": 87.26927999999998
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Spherical CMM (Laser Tracker)",
+        "top": 122.90927999999997
+      }
+    ],
+    [
+      {
+        "text": "Up to 600 in",
+        "top": 122.54928000000007
+      }
+    ],
+    [
+      {
+        "text": "600 \u00b5in",
+        "top": 122.54928000000007
+      }
+    ],
+    [
+      {
+        "text": "Reference length bar",
+        "top": 122.54928000000007
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Laser Interferometer Length Dependent Error",
+        "top": 170.66928000000007
+      }
+    ],
+    [
+      {
+        "text": "Up to 40 in",
+        "top": 170.30928000000006
+      }
+    ],
+    [
+      {
+        "text": "0.43 parts in 10",
+        "top": 169.17672000000005
+      }
+    ],
+    [
+      {
+        "text": "ASME B89.1.8 Sec 4 XD1 reference laser",
+        "top": 170.30928000000006
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Articulated Arm CMM \u2013",
+        "top": 217.29672000000005
+      },
+      {
+        "text": "\tEffective Dia Perf Test",
+        "top": 241.9444800000001
+      },
+      {
+        "text": "\tSingle Point Articulation Test",
+        "top": 265.45968000000016
+      },
+      {
+        "text": "\tVolumetric Perf Test",
+        "top": 300.73248000000024
+      }
+    ],
+    [
+      {
+        "text": "---",
+        "top": 241.09872000000007
+      },
+      {
+        "text": "---",
+        "top": 264.01776000000007
+      },
+      {
+        "text": "Up to 144 in radius",
+        "top": 298.5619200000001
+      }
+    ],
+    [
+      {
+        "text": "55 \u00b5in",
+        "top": 241.09872000000007
+      },
+      {
+        "text": "90 \u00b5in",
+        "top": 264.01776000000007
+      },
+      {
+        "text": "(170 + 0.2L) \u00b5in",
+        "top": 298.5619200000001
+      }
+    ],
+    [
+      {
+        "text": "Sphere",
+        "top": 241.09872000000007
+      },
+      {
+        "text": "Trihedral socket",
+        "top": 264.01776000000007
+      },
+      {
+        "text": "Gage block ref. length",
+        "top": 298.5619200000001
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "CNC, Machine Tools \u2013",
+        "top": 335.61672
+      },
+      {
+        "text": "\tRepeatability @ 2",
+        "top": 360.14304000000004
+      },
+      {
+        "text": "\tSigma",
+        "top": 371.90064000000007
+      },
+      {
+        "text": "\tLinear Displacement Accuracy",
+        "top": 395.4158400000001
+      },
+      {
+        "text": "\tVolumetric Performance (By Body Diagonals)",
+        "top": 430.6886400000002
+      },
+      {
+        "text": "\tBi-Directional System Deviation",
+        "top": 465.96144000000027
+      },
+      {
+        "text": "\tReversal Deviation",
+        "top": 501.11280000000033
+      },
+      {
+        "text": "\tBi-Directional Repeatability",
+        "top": 536.3856000000003
+      }
+    ],
+    [
+      {
+        "text": "---",
+        "top": 360.14304000000004
+      },
+      {
+        "text": "Up to 260 ft",
+        "top": 395.4158400000001
+      },
+      {
+        "text": "Up to 260 ft",
+        "top": 465.96144000000027
+      },
+      {
+        "text": "Up to 260 ft",
+        "top": 500.5166400000003
+      },
+      {
+        "text": "Up to 260 ft",
+        "top": 535.0608000000003
+      }
+    ],
+    [
+      {
+        "text": "18 \u00b5in",
+        "top": 359.42016000000007
+      },
+      {
+        "text": "(83 + 1.7L) \u00b5in",
+        "top": 394.69296000000014
+      },
+      {
+        "text": "85 \u00b5in",
+        "top": 463.7923200000002
+      },
+      {
+        "text": "90 \u00b5in",
+        "top": 498.2260800000002
+      },
+      {
+        "text": "80 \u00b5in",
+        "top": 532.7702400000003
+      }
+    ],
+    [
+      {
+        "text": "Laser per ASME B5.54 Sec. 7.3",
+        "top": 359.42016000000007
+      },
+      {
+        "text": "Laser per ASME B5.54 Sec. 7.3",
+        "top": 394.69296000000014
+      },
+      {
+        "text": "Laser per ASME B5.54 Sec. 7.7",
+        "top": 465.1171200000003
+      },
+      {
+        "text": "Laser per ASME B5.54 Sec. 7.7",
+        "top": 500.14704000000035
+      },
+      {
+        "text": "Laser per ASME B5.54 Sec. 7.3",
+        "top": 535.1769600000003
+      }
+    ]
+  ]
+]

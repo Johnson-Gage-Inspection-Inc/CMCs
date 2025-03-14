@@ -1,39 +1,39 @@
-﻿0,1,2,3,4,5
-DC Power,Generate,Up to 109 µW,,0.36 % rdg,Fluke 5502A
-DC Power,Generate,(0.109 to 1.09) mW,,0.035 % rdg,Fluke 5502A
-DC Power,Generate,(1.09 to 10.9) mW,,0.024 % rdg,Fluke 5502A
-DC Power,Generate,(10.9 to 109) mW,,0.019 % rdg,Fluke 5502A
-DC Power,Generate,(0.109 to 1.09) W,,0.023 % rdg,Fluke 5502A
-DC Power,Generate,(1.09 to 10.9) W,,0.023 % rdg,Fluke 5502A
-DC Power,Generate,(10.9 to 109) W,,0.023 % rdg,Fluke 5502A
-DC Power,Generate,(109 to 330) W,,0.015 % rdg,Fluke 5502A
-DC Power,Generate,(0.33 to 3) kW,,0.06 % rdg,Fluke 5502A
-DC Power,Generate,(3 to 11) kW,,0.092 % rdg,Fluke 5502A
-DC Power,Generate,(11 to 20.5) kW,,0.14 % rdg,Fluke 5502A
-DC Power,Generate,(3.3 to 30) kW,,0.21 % rdg,Fluke 5502A with 10 turn coil
-DC Power,Generate,(30 to 110) kW,,0.22 % rdg,Fluke 5502A with 10 turn coil
-DC Power,Generate,(110 to 205) kW,,0.24 % rdg,Fluke 5502A with 10 turn coil
-DC Power,Generate,(60 to 220) kW,,0.22 % rdg,Fluke 5502A with 20 turn coil
-DC Power,Generate,(220 to 410) kW,,0.24 % rdg,Fluke 5502A with 20 turn coil
-DC Power,Generate,(150 to 550) kW,,0.22 % rdg,Fluke 5502A with
-DC Power,Generate,(550 to 1025) kW,,0.24 % rdg,50turn coil
-AC Power,Generate,Up to 10.9 µW,,2.5 % rdg,Fluke 5502A
-"(45 to 65 Hz, PF=1)",,(10.9 to 109) µW,,0.26 % rdg,Fluke 5502A
-"(45 to 65 Hz, PF=1)",,(0.109 to 1.09) mW,,0.17 % rdg,Fluke 5502A
-"(45 to 65 Hz, PF=1)",,(1.09 to 10.9) mW,,0.13 % rdg,Fluke 5502A
-"(45 to 65 Hz, PF=1)",,(10.9 to 109) mW,,0.078 % rdg,Fluke 5502A
-"(45 to 65 Hz, PF=1)",,(0.109 to 1.09) W,,0.078 % rdg,Fluke 5502A
-"(45 to 65 Hz, PF=1)",,(1.09 to 10.9) W,,0.13 % rdg,Fluke 5502A
-"(45 to 65 Hz, PF=1)",,(10.9 to 109) W,,0.088 % rdg,Fluke 5502A
-"(45 to 65 Hz, PF=1)",,(109 to 363) W,,0.12 % rdg,Fluke 5502A
-"(45 to 65 Hz, PF=1)",,(363 to 990) W,,0.10 % rdg,Fluke 5502A
-"(45 to 65 Hz, PF=1)",,(0.99 to 3.63) kW,,0.21 % rdg,Fluke 5502A
-"(45 to 65 Hz, PF=1)",,(3.63 to 11.2) kW,,0.16 % rdg,Fluke 5502A
-"(45 to 65 Hz, PF=1)",,(11.2 to 20.9) kW,,0.21% rdg,Fluke 5502A
-"(45 to 65 Hz, PF=1)",,(9.9 to 36.3) kW,,0.26% rdg,Fluke 5502A with 10 turn coil
-"(45 to 65 Hz, PF=1)",,(30 to 110) kW,,0.26% rdg,Fluke 5502A with 10 turn coil
-"(45 to 65 Hz, PF=1)",,(110 to 205) kW,,0.29% rdg,Fluke 5502A with 10 turn coil
-"(45 to 65 Hz, PF=1)",,(60 to 220.) kW,,0.26% rdg,Fluke 5502A with 20 turn coil
-"(45 to 65 Hz, PF=1)",,(220 to 410) kW,,0.29% rdg,Fluke 5502A with 20 turn coil
-"(45 to 65 Hz, PF=1)",,(150 to 550) kW,,0.25% rdg,Fluke 5502A with
-"(45 to 65 Hz, PF=1)",,(550 to 1025) kW,,0.29% rdg,50turn coil
+﻿0,1,2,3,4,5
+DC Power,Generate,Up to 109 µW,,0.36 % rdg,Fluke 5502A
+DC Power,Generate,(0.109 to 1.09) mW,,0.035 % rdg,Fluke 5502A
+DC Power,Generate,(1.09 to 10.9) mW,,0.024 % rdg,Fluke 5502A
+DC Power,Generate,(10.9 to 109) mW,,0.019 % rdg,Fluke 5502A
+DC Power,Generate,(0.109 to 1.09) W,,0.023 % rdg,Fluke 5502A
+DC Power,Generate,(1.09 to 10.9) W,,0.023 % rdg,Fluke 5502A
+DC Power,Generate,(10.9 to 109) W,,0.023 % rdg,Fluke 5502A
+DC Power,Generate,(109 to 330) W,,0.015 % rdg,Fluke 5502A
+DC Power,Generate,(0.33 to 3) kW,,0.06 % rdg,Fluke 5502A
+DC Power,Generate,(3 to 11) kW,,0.092 % rdg,Fluke 5502A
+DC Power,Generate,(11 to 20.5) kW,,0.14 % rdg,Fluke 5502A
+DC Power,Generate,(3.3 to 30) kW,,0.21 % rdg,Fluke 5502A with 10 turn coil
+DC Power,Generate,(30 to 110) kW,,0.22 % rdg,Fluke 5502A with 10 turn coil
+DC Power,Generate,(110 to 205) kW,,0.24 % rdg,Fluke 5502A with 10 turn coil
+DC Power,Generate,(60 to 220) kW,,0.22 % rdg,Fluke 5502A with 20 turn coil
+DC Power,Generate,(220 to 410) kW,,0.24 % rdg,Fluke 5502A with 20 turn coil
+DC Power,Generate,(150 to 550) kW,,0.22 % rdg,Fluke 5502A with
+DC Power,Generate,(550 to 1025) kW,,0.24 % rdg,50turn coil
+AC Power,Generate,Up to 10.9 µW,,2.5 % rdg,Fluke 5502A
+"(45 to 65 Hz, PF=1)",,(10.9 to 109) µW,,0.26 % rdg,Fluke 5502A
+"(45 to 65 Hz, PF=1)",,(0.109 to 1.09) mW,,0.17 % rdg,Fluke 5502A
+"(45 to 65 Hz, PF=1)",,(1.09 to 10.9) mW,,0.13 % rdg,Fluke 5502A
+"(45 to 65 Hz, PF=1)",,(10.9 to 109) mW,,0.078 % rdg,Fluke 5502A
+"(45 to 65 Hz, PF=1)",,(0.109 to 1.09) W,,0.078 % rdg,Fluke 5502A
+"(45 to 65 Hz, PF=1)",,(1.09 to 10.9) W,,0.13 % rdg,Fluke 5502A
+"(45 to 65 Hz, PF=1)",,(10.9 to 109) W,,0.088 % rdg,Fluke 5502A
+"(45 to 65 Hz, PF=1)",,(109 to 363) W,,0.12 % rdg,Fluke 5502A
+"(45 to 65 Hz, PF=1)",,(363 to 990) W,,0.10 % rdg,Fluke 5502A
+"(45 to 65 Hz, PF=1)",,(0.99 to 3.63) kW,,0.21 % rdg,Fluke 5502A
+"(45 to 65 Hz, PF=1)",,(3.63 to 11.2) kW,,0.16 % rdg,Fluke 5502A
+"(45 to 65 Hz, PF=1)",,(11.2 to 20.9) kW,,0.21% rdg,Fluke 5502A
+"(45 to 65 Hz, PF=1)",,(9.9 to 36.3) kW,,0.26% rdg,Fluke 5502A with 10 turn coil
+"(45 to 65 Hz, PF=1)",,(30 to 110) kW,,0.26% rdg,Fluke 5502A with 10 turn coil
+"(45 to 65 Hz, PF=1)",,(110 to 205) kW,,0.29% rdg,Fluke 5502A with 10 turn coil
+"(45 to 65 Hz, PF=1)",,(60 to 220.) kW,,0.26% rdg,Fluke 5502A with 20 turn coil
+"(45 to 65 Hz, PF=1)",,(220 to 410) kW,,0.29% rdg,Fluke 5502A with 20 turn coil
+"(45 to 65 Hz, PF=1)",,(150 to 550) kW,,0.25% rdg,Fluke 5502A with
+"(45 to 65 Hz, PF=1)",,(550 to 1025) kW,,0.29% rdg,50turn coil

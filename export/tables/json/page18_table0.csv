@@ -1,0 +1,220 @@
+﻿[
+  [
+    [
+      {
+        "text": "Parameter/Equipment",
+        "top": 86.42928000000006
+      }
+    ],
+    [
+      {
+        "text": "Range",
+        "top": 86.42928000000006
+      }
+    ],
+    [
+      {
+        "text": "CMC (\u00b1)",
+        "top": 85.29672000000005
+      }
+    ],
+    [
+      {
+        "text": "Comments",
+        "top": 86.42928000000006
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Electrical Calibration of Phase Indicators \u2013 Source Only",
+        "top": 120.14927999999998
+      }
+    ],
+    [
+      {
+        "text": "(10 to 65) Hz",
+        "top": 120.14927999999998
+      },
+      {
+        "text": "(65 to 500) Hz",
+        "top": 131.18927999999994
+      },
+      {
+        "text": "500 Hz to 1 kHz",
+        "top": 142.2292799999999
+      },
+      {
+        "text": "(1 to 5) kHz",
+        "top": 153.14783999999986
+      },
+      {
+        "text": "(5 to 10) kHz",
+        "top": 164.18783999999982
+      },
+      {
+        "text": "(10 to 30) kHz",
+        "top": 175.2278399999998
+      }
+    ],
+    [
+      {
+        "text": "0.19\u00b0 phase",
+        "top": 120.14927999999998
+      },
+      {
+        "text": "1.1\u00b0 phase",
+        "top": 131.18927999999994
+      },
+      {
+        "text": "2.4\u00b0 phase",
+        "top": 142.2292799999999
+      },
+      {
+        "text": "7.0\u00b0 phase",
+        "top": 153.14783999999986
+      },
+      {
+        "text": "12\u00b0 phase",
+        "top": 164.18783999999982
+      },
+      {
+        "text": "18\u00b0 phase",
+        "top": 175.2278399999998
+      }
+    ],
+    [
+      {
+        "text": "Fluke 5502A",
+        "top": 120.14927999999998
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Electrical Conductivity \u2013 Secondary Standards",
+        "top": 208.94928000000004
+      }
+    ],
+    [
+      {
+        "text": "Up to 13 % IACS",
+        "top": 208.94928000000004
+      },
+      {
+        "text": "(13 to 62) % IACS",
+        "top": 219.98928
+      },
+      {
+        "text": "> 62 % IACS",
+        "top": 230.90783999999996
+      }
+    ],
+    [
+      {
+        "text": "0.07 % IACS",
+        "top": 208.94928000000004
+      },
+      {
+        "text": "0.35 % rdg + 0.05 % IACS",
+        "top": 219.98928
+      },
+      {
+        "text": "0.3 % rdg + 0.05 % IACS",
+        "top": 230.90783999999996
+      }
+    ],
+    [
+      {
+        "text": "ASTM E1004 electrical conductivity by eddy current",
+        "top": 208.94928000000004
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Electrical Conductivity \u2013 Working Standards",
+        "top": 264.74928
+      }
+    ],
+    [
+      {
+        "text": "Up to 13 % IACS",
+        "top": 264.74928
+      },
+      {
+        "text": "(13 to 62) % IACS",
+        "top": 275.66783999999996
+      },
+      {
+        "text": "> 62 % IACS",
+        "top": 286.70784000000003
+      }
+    ],
+    [
+      {
+        "text": "0.12 % IACS",
+        "top": 264.74928
+      },
+      {
+        "text": "0.4 % rdg + 0.07 % IACS",
+        "top": 275.66783999999996
+      },
+      {
+        "text": "0.35 % rdg + 0.11 % IACS",
+        "top": 286.70784000000003
+      }
+    ],
+    [
+      {
+        "text": "ASTM E1004 electrical conductivity by eddy current",
+        "top": 264.74928
+      }
+    ]
+  ],
+  [
+    [
+      {
+        "text": "Electrical Conductivity \u2013 Measuring Equipment",
+        "top": 320.42928
+      }
+    ],
+    [
+      {
+        "text": "Up to 16 % IACS",
+        "top": 320.42928
+      },
+      {
+        "text": "(16 to 62) % IACS",
+        "top": 331.46928
+      },
+      {
+        "text": "> 62 % IACS",
+        "top": 342.38784000000004
+      }
+    ],
+    [
+      {
+        "text": "0.13 % IACS",
+        "top": 320.42928
+      },
+      {
+        "text": "0.4 % rdg + 0.07 % IACS",
+        "top": 331.46928
+      },
+      {
+        "text": "0.42 % rdg + 0.05 % IACS",
+        "top": 342.38784000000004
+      }
+    ],
+    [
+      {
+        "text": "ASTM E1004 electrical conductivity by eddy current",
+        "top": 320.42928
+      }
+    ]
+  ]
+]

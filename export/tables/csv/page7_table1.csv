@@ -1,11 +1,11 @@
-﻿0,1,2,3,4,5
-DC Voltage,Measure,Up to 100 mV,,4.4 µV/V + 0.62 µV,HP 3458A
-DC Voltage,Measure,(0.1 to 1) V,,4.7 µV/V + 0.5 µV,HP 3458A
-DC Voltage,Measure,(1 to 10) V,,4.6 µV/V + 1.1 µV,HP 3458A
-DC Voltage,Measure,(10 to 100) V,,6.9 µV/V + 39 µV,HP 3458A
-DC Voltage,Measure,(100 to 1000) V,,7.2 µV/V + 120 µV,HP 3458A
-DC Voltage,Generate,Up to 100 mV,,4.4 µV/V + 0.62 µV,Fluke 5502A monitored by HP3458A
-DC Voltage,Generate,(0.1 to 1) V,,4.7 µV/V + 0.5 µV,Fluke 5502A monitored by HP3458A
-DC Voltage,Generate,(1 to 10) V,,4.6 µV/V + 1.1 µV,Fluke 5502A monitored by HP3458A
-DC Voltage,Generate,(10 to 100) V,,6.9 µV/V + 39 µV,Fluke 5502A monitored by HP3458A
-DC Voltage,Generate,(100 to 1000) V,,7.2 µV/V + 120 µV,Fluke 5502A monitored by HP3458A
+﻿0,1,2,3,4,5
+DC Voltage,Measure,Up to 100 mV,,4.4 µV/V + 0.62 µV,HP 3458A
+DC Voltage,Measure,(0.1 to 1) V,,4.7 µV/V + 0.5 µV,HP 3458A
+DC Voltage,Measure,(1 to 10) V,,4.6 µV/V + 1.1 µV,HP 3458A
+DC Voltage,Measure,(10 to 100) V,,6.9 µV/V + 39 µV,HP 3458A
+DC Voltage,Measure,(100 to 1000) V,,7.2 µV/V + 120 µV,HP 3458A
+DC Voltage,Generate,Up to 100 mV,,4.4 µV/V + 0.62 µV,Fluke 5502A monitored by HP3458A
+DC Voltage,Generate,(0.1 to 1) V,,4.7 µV/V + 0.5 µV,Fluke 5502A monitored by HP3458A
+DC Voltage,Generate,(1 to 10) V,,4.6 µV/V + 1.1 µV,Fluke 5502A monitored by HP3458A
+DC Voltage,Generate,(10 to 100) V,,6.9 µV/V + 39 µV,Fluke 5502A monitored by HP3458A
+DC Voltage,Generate,(100 to 1000) V,,7.2 µV/V + 120 µV,Fluke 5502A monitored by HP3458A

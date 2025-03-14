@@ -1,43 +1,43 @@
-﻿0,1,2,3,4,5
-HP 3458A,AC Voltage – Measure,(1 to 10) mV,(1 to 40) Hz,0.034 % + 3.6 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,(1 to 10) mV,40 Hz to 1 kHz,0.023 % + 1.4 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,(1 to 10) mV,(1 to 20) kHz,0.034 % + 1.4 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,(1 to 10) mV,(20 to 50) kHz,0.011 % + 1.9 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,(1 to 10) mV,(50 to 100) kHz,0.58 % + 1.4 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,(1 to 10) mV,(100 to 300) kHz,4.6 % + 4.2 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,(1 to 10) mV,(0.3 to 1) MHz,4.6 % + 7.7 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,(1 to 10) mV,(1 to 4) MHz,8.1 % + 8.8 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,(1 to 10) mV,(4 to 8) MHz,23 % + 19 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,(10 to 100) mV,(1 to 40) Hz,83 µV/V + 4.7 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,(10 to 100) mV,40 Hz to 1 kHz,83 µV/V + 2.4 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,(10 to 100) mV,(1 to 20) kHz,0.016 % + 2.7 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,(10 to 100) mV,(20 to 50) kHz,0.035 % + 2.4 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,(10 to 100) mV,(50 to 100) kHz,0.092 % + 2.8 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,(10 to 100) mV,(100 to 300) kHz,0.35 % + 12 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,(10 to 100) mV,300 kHz to 1 MHz,1.2 % + 12 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,(10 to 100) mV,(1 to 2) MHz,1.7 % + 45 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,(10 to 100) mV,(2 to 4) MHz,4.6 % + 100 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,(10 to 100) mV,(4 to 8) MHz,4.6 % + 120 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,(10 to 100) mV,(8 to 10) MHz,17 % + 440 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,100 mV to 1 V,(1 to 40) Hz,82 µV/V + 47 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,100 mV to 1 V,40 Hz to 1 kHz,82 µV/V + 24 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,100 mV to 1 V,(1 to 20) kHz,0.016 % + 26 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,100 mV to 1 V,(20 to 50) kHz,0.035 % + 24 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,100 mV to 1 V,(50 to 100) kHz,0.092 % + 28 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,100 mV to 1 V,(100 to 300) kHz,0.35 % + 120 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,100 mV to 1 V,300 kHz to 1 MHz,1.2 % + 120 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,100 mV to 1 V,(1 to 2) MHz,1.7 % + 450 µV,HP 3458A
-HP 3458A,AC Voltage – Measure,100 mV to 1 V,(2 to 4) MHz,4.6 % + 1.1 mV,HP 3458A
-HP 3458A,AC Voltage – Measure,100 mV to 1 V,(4 to 8) MHz,4.6 % + 1.2 mV,HP 3458A
-HP 3458A,AC Voltage – Measure,100 mV to 1 V,(8 to 10) MHz,17 % + 4.4 mV,HP 3458A
-HP 3458A,AC Voltage – Measure,(1 to 10) V,(1 to 40) Hz,83 µV/V + 0.47 mV,HP 3458A
-HP 3458A,AC Voltage – Measure,(1 to 10) V,40 Hz to 1 kHz,82 µV/V + 0.24 mV,HP 3458A
-HP 3458A,AC Voltage – Measure,(1 to 10) V,(1 to 20) kHz,0.016 % + 0.26 mV,HP 3458A
-HP 3458A,AC Voltage – Measure,(1 to 10) V,(20 to 50) kHz,0.035 % + 0.24 mV,HP 3458A
-HP 3458A,AC Voltage – Measure,(1 to 10) V,(50 to 100) kHz,0.092 % + 0.28 mV,HP 3458A
-HP 3458A,AC Voltage – Measure,(1 to 10) V,(100 to 300) kHz,0.35 % + 1.2 mV,HP 3458A
-HP 3458A,AC Voltage – Measure,(1 to 10) V,300 kHz to 1 MHz,1.2 % + 1.2 mV,HP 3458A
-HP 3458A,AC Voltage – Measure,(1 to 10) V,(1 to 2) MHz,1.7 % + 4.6 mV,HP 3458A
-HP 3458A,AC Voltage – Measure,(1 to 10) V,(2 to 4) MHz,4.6 % + 11 mV,HP 3458A
-HP 3458A,AC Voltage – Measure,(1 to 10) V,(4 to 8) MHz,4.6 % + 12 mV,HP 3458A
-HP 3458A,AC Voltage – Measure,(1 to 10) V,(8 to 10) MHz,17 % + 44 mV,HP 3458A
+﻿0,1,2,3,4,5
+HP 3458A,AC Voltage – Measure,(1 to 10) mV,(1 to 40) Hz,0.034 % + 3.6 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) mV,40 Hz to 1 kHz,0.023 % + 1.4 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) mV,(1 to 20) kHz,0.034 % + 1.4 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) mV,(20 to 50) kHz,0.011 % + 1.9 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) mV,(50 to 100) kHz,0.58 % + 1.4 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) mV,(100 to 300) kHz,4.6 % + 4.2 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) mV,(0.3 to 1) MHz,4.6 % + 7.7 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) mV,(1 to 4) MHz,8.1 % + 8.8 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) mV,(4 to 8) MHz,23 % + 19 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,(1 to 40) Hz,83 µV/V + 4.7 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,40 Hz to 1 kHz,83 µV/V + 2.4 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,(1 to 20) kHz,0.016 % + 2.7 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,(20 to 50) kHz,0.035 % + 2.4 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,(50 to 100) kHz,0.092 % + 2.8 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,(100 to 300) kHz,0.35 % + 12 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,300 kHz to 1 MHz,1.2 % + 12 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,(1 to 2) MHz,1.7 % + 45 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,(2 to 4) MHz,4.6 % + 100 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,(4 to 8) MHz,4.6 % + 120 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,(10 to 100) mV,(8 to 10) MHz,17 % + 440 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,(1 to 40) Hz,82 µV/V + 47 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,40 Hz to 1 kHz,82 µV/V + 24 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,(1 to 20) kHz,0.016 % + 26 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,(20 to 50) kHz,0.035 % + 24 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,(50 to 100) kHz,0.092 % + 28 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,(100 to 300) kHz,0.35 % + 120 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,300 kHz to 1 MHz,1.2 % + 120 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,(1 to 2) MHz,1.7 % + 450 µV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,(2 to 4) MHz,4.6 % + 1.1 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,(4 to 8) MHz,4.6 % + 1.2 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,100 mV to 1 V,(8 to 10) MHz,17 % + 4.4 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,(1 to 40) Hz,83 µV/V + 0.47 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,40 Hz to 1 kHz,82 µV/V + 0.24 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,(1 to 20) kHz,0.016 % + 0.26 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,(20 to 50) kHz,0.035 % + 0.24 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,(50 to 100) kHz,0.092 % + 0.28 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,(100 to 300) kHz,0.35 % + 1.2 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,300 kHz to 1 MHz,1.2 % + 1.2 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,(1 to 2) MHz,1.7 % + 4.6 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,(2 to 4) MHz,4.6 % + 11 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,(4 to 8) MHz,4.6 % + 12 mV,HP 3458A
+HP 3458A,AC Voltage – Measure,(1 to 10) V,(8 to 10) MHz,17 % + 44 mV,HP 3458A
