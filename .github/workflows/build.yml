@@ -12,7 +12,7 @@ permissions:
 
 jobs:
   test:
-    runs-on: windows-latest  # ✅ Run tests on Windows
+    runs-on: windows-latest
 
     steps:
       - name: Checkout repository
@@ -33,8 +33,8 @@ jobs:
           pytest tests/ --maxfail=1 --disable-warnings -q
 
   build:
-    needs: test  # ✅ Only build if tests pass
-    runs-on: windows-latest  # ✅ Build on Windows
+    needs: test
+    runs-on: windows-latest
 
     steps:
       - name: Checkout repository
