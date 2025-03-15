@@ -53,7 +53,7 @@ jobs:
 
       - name: Build Windows Executable
         run: |
-          pyinstaller --onefile --paths src src/main.py --name CMCs_PdfToCsv.exe --add-data "src/subscript_mapping.json;src"
+          pyinstaller --onefile --paths src src/main.py --name CMCs_PdfToCsv.exe
 
       - name: Upload artifact (Windows EXE)
         uses: actions/upload-artifact@v4
