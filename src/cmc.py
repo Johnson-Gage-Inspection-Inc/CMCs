@@ -1,4 +1,4 @@
-import re
+from re import match as re_match, search
 
 
 class budget(dict):
@@ -52,7 +52,7 @@ def parse_num_unit(s: str, force_float: bool = False):
     else leave it as a string.
     """
     s = s.strip()
-    match = re.match(r"^([+-]?\d+(?:\.\d+)?)(.*)$", s)
+    match = re_match(r"^([+-]?\d+(?:\.\d+)?)(.*)$", s)
     if not match:
         return s, ""
     num_str, unit_str = match.group(1), match.group(2).strip()
@@ -122,7 +122,7 @@ def parse_budget(input_text: str) -> budget:
     else:
         if text.__contains__("%"):
             pattern = r"([+-]?\d+(?:\.\d+)?)(?=\s*% rdg)"
-            if match := re.search(pattern, text):
+            if match := search(pattern, text):
                 mult_val = float(match.group(1))
                 return budget(0, mult_val, "% rdg", None)
             else:

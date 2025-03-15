@@ -1,7 +1,7 @@
-import re
-import os
+from re import fullmatch, compile, sub
+from os import path
 import sys
-import json
+from json import load
 
 
 def remove_small_chars(clust):
@@ -30,8 +30,8 @@ def custom_extract_tables(
     """
     Custom table extraction from a pdfplumber Page.
     """
-    BEGIN_LINE_PATTERN_DEFAULT = re.compile(r"^(?:\d|\(\d|\-\d|\(-\d|[<>]\s*\d)")
-    BEGIN_LINE_PATTERN_SECOND = re.compile(r"^(?:\d|\(\d|\-\d|\(-\d|[<>]\s*\d|[\(≤<>])")
+    BEGIN_LINE_PATTERN_DEFAULT = compile(r"^(?:\d|\(\d|\-\d|\(-\d|[<>]\s*\d)")
+    BEGIN_LINE_PATTERN_SECOND = compile(r"^(?:\d|\(\d|\-\d|\(-\d|[<>]\s*\d|[\(≤<>])")
 
     def get_first_word_width(ln):
         if "chars" not in ln or not ln["chars"]:
@@ -99,12 +99,12 @@ def custom_extract_tables(
 
                     def get_resource_path(relative_path):
                         """ Get absolute path to resource, works for dev and for PyInstaller """
-                        base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
-                        return os.path.join(base_path, relative_path)
+                        base_path = getattr(sys, '_MEIPASS', path.dirname(path.abspath(__file__)))
+                        return path.join(base_path, relative_path)
 
                     def convert_to_subscript(s):
                         with open(get_resource_path('subscript_mapping.json'), 'r', encoding='utf-8') as f:
-                            mapping = json.load(f)
+                            mapping = load(f)
                         return "".join(mapping.get(char, char) for char in s)
 
                     cluster_info = []
@@ -143,7 +143,7 @@ def custom_extract_tables(
                             else:
                                 # Check if this new cluster is a short alphanumeric candidate (subscript)
                                 trimmed = c["text"].strip()
-                                if len(trimmed) <= 2 and re.fullmatch(
+                                if len(trimmed) <= 2 and fullmatch(
                                     r"[A-Za-z0-9]+", trimmed
                                 ):
                                     # Merge it with the current group even though the vertical gap is larger.
@@ -180,7 +180,7 @@ def custom_extract_tables(
                         for c in filtered_group[1:]:
                             trimmed_text = c["text"].strip()
                             # If the candidate is a short alphanumeric string (one or two characters)
-                            if len(trimmed_text) <= 2 and re.fullmatch(
+                            if len(trimmed_text) <= 2 and fullmatch(
                                 r"[A-Za-z0-9]+", trimmed_text
                             ):
                                 candidate = convert_to_subscript(trimmed_text)
@@ -200,7 +200,7 @@ def custom_extract_tables(
                                     merged_text = merged_text + " " + c["text"]
                             current_max = max(current_max, c["max_x1"])
 
-                        merged_text = re.sub(
+                        merged_text = sub(
                             r"([A-Za-z])\s+([A-Za-z])((?:[₀₁₂₃₄₅₆₇₈₉])\b)",
                             r"\1\3\2",
                             merged_text,

@@ -1,4 +1,4 @@
-import re
+from re import match, sub
 from typing import Optional, Tuple
 
 
@@ -18,9 +18,9 @@ def parse_range(
         """
         s = s.strip()
         # Remove any leading comparator symbols and whitespace.
-        s = re.sub(r"^[><≤≥]+\s*", "", s)
+        s = sub(r"^[><≤≥]+\s*", "", s)
         # Match a number (with optional decimals, spaces, or commas) followed by any unit.
-        m = re.match(r"([+-]?\d+(?:[\d\s,\.]*\d)?)(.*)", s)
+        m = match(r"([+-]?\d+(?:[\d\s,\.]*\d)?)(.*)", s)
         if m:
             num = normalize(m.group(1))
             unit = m.group(2).strip()
@@ -33,7 +33,7 @@ def parse_range(
 
     # Plus/minus notation.
     if text.startswith("±"):
-        m = re.match(r"±\s*([+-]?\d+(?:[\d\s,\.]*\d)?)(.*)", text)
+        m = match(r"±\s*([+-]?\d+(?:[\d\s,\.]*\d)?)(.*)", text)
         if m:
             num = normalize(m.group(1))
             unit = m.group(2).strip()
@@ -53,13 +53,13 @@ def parse_range(
 
     # Less than (or less than or equal to): e.g. "< 250 HK" or "≤ 225 HBW"
     if text.startswith("<") or text.startswith("≤"):
-        remainder = re.sub(r"^[<≤]+\s*", "", text)
+        remainder = sub(r"^[<≤]+\s*", "", text)
         num, unit = extract_value(remainder)
         return (None, None, num, unit)
 
     # Parentheses branch – this also covers cases where one side contains a comparator.
     if text.startswith("(") and ")" in text:
-        m = re.match(r"^\((.*)\)\s*(.*)$", text)
+        m = match(r"^\((.*)\)\s*(.*)$", text)
         if m:
             inner_text = m.group(1).strip()  # e.g. "> 225 to 650"
             outer_unit = m.group(2).strip()  # e.g. "HBW"

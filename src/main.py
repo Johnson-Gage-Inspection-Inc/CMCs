@@ -1,39 +1,38 @@
-import tkinter as tk
-from tkinter import filedialog
-import pdfplumber
-import re
-import logging
-import json
-import pandas as pd
+from tkinter import filedialog, Tk
+from pdfplumber import open as pdfopen
+from re import compile
+from logging import basicConfig, INFO, DEBUG, info, warning
+from json import dumps
+from pandas import DataFrame, Series
 from src.range import parse_range
 from src.extract import custom_extract_tables
 from src.cmc import parse_budget
 
 
 # Logging configuration
-logging.basicConfig(level=logging.INFO)
+basicConfig(level=INFO)
 logfile = "main.log"
-logging.basicConfig(filename=logfile, level=logging.DEBUG, filemode="w")
+basicConfig(filename=logfile, level=DEBUG, filemode="w")
 
-DASH_PATTERN = re.compile(r"\s*–\s*")
+DASH_PATTERN = compile(r"\s*–\s*")
 
 
 def main(pdf_path):
     df = pdf_table_processor(pdf_path)
 
-    logging.info("Exporting parsed range data to CSV...")
+    info("Exporting parsed range data to CSV...")
     if parsed_csv_file_path := filedialog.asksaveasfilename(
         title="Save CSV file",
         defaultextension=".csv",
         filetypes=[("CSV files", "*.csv")],
     ):
         df.to_csv(parsed_csv_file_path, index=False, encoding="utf-8-sig")
-        logging.info(f"Exported parsed range data to '{parsed_csv_file_path}'")
+        info(f"Exported parsed range data to '{parsed_csv_file_path}'")
     else:
-        logging.warning("Save operation was cancelled. No file was saved.")
+        warning("Save operation was cancelled. No file was saved.")
 
 
-def pdf_table_processor(pdf_path: str, save_intermediate=False) -> pd.DataFrame:
+def pdf_table_processor(pdf_path: str, save_intermediate=False) -> DataFrame:
     """Process the PDF file and extract the table data into a DataFrame.
 
     Args:
@@ -41,48 +40,48 @@ def pdf_table_processor(pdf_path: str, save_intermediate=False) -> pd.DataFrame:
         save_intermediate (bool, optional): Save intermediate JSON files. Defaults to False.
 
     Returns:
-        pd.DataFrame:
+        DataFrame:
     """
     table_rows = []
-    with pdfplumber.open(pdf_path) as pdf:
+    with pdfopen(pdf_path) as pdf:
         for page in pdf.pages:
             tables = custom_extract_tables(page)
             # Save intermediate results if requested
             if save_intermediate:
                 with open(f"export/pages/json/page{page.page_number}.json", "w") as f:
-                    f.write(json.dumps(tables, indent=2))
+                    f.write(dumps(tables, indent=2))
             for i, table in enumerate(tables):
                 parsed_table_rows = custom_parse_table(table)
                 table_rows.extend(parsed_table_rows)
                 if save_intermediate:
                     with open(f"export/tables/json/page{page.page_number}_table{i}.csv", "w", encoding="utf-8-sig") as f:
-                        f.write(json.dumps(table, indent=2))
+                        f.write(dumps(table, indent=2))
                     with open(f"export/tables/csv/page{page.page_number}_table{i}.csv", "w", encoding="utf-8-sig") as f:
-                        pd.DataFrame(parsed_table_rows).to_csv(f, index=False)
+                        DataFrame(parsed_table_rows).to_csv(f, index=False)
     columns = ["Equipment", "Parameter", "Range", "Frequency", "CMC (±)", "Comments"]
-    df = pd.DataFrame(table_rows, columns=columns)
+    df = DataFrame(table_rows, columns=columns)
 
     if save_intermediate:
         df.to_csv("export/parsed.csv", index=False, encoding="utf-8-sig")
-        logging.info("Exported parsed data to 'export/parsed.csv'")
+        info("Exported parsed data to 'export/parsed.csv'")
 
-    logging.info("Parsing ranges...")
+    info("Parsing ranges...")
     df[["range_min", "range_min_unit", "range_max", "range_max_unit"]] = df[
         "Range"
-    ].apply(lambda x: pd.Series(parse_range(x)))
+    ].apply(lambda x: Series(parse_range(x)))
     if save_intermediate:
         df.to_csv("export/range_parsed.csv", index=False, encoding="utf-8-sig")
-        logging.info("Exported parsed range data to 'export/range_parsed.csv'")
+        info("Exported parsed range data to 'export/range_parsed.csv'")
 
-    logging.info("Parsing frequencies...")
+    info("Parsing frequencies...")
     df[["frequency_range_min", "frequency_range_min_unit", "frequency_range_max", "frequency_range_max_unit"]] = df[
         "Frequency"
-    ].apply(lambda x: pd.Series(parse_range(x)))
+    ].apply(lambda x: Series(parse_range(x)))
     if save_intermediate:
         df.to_csv("export/frequency_parsed.csv", index=False, encoding="utf-8-sig")
-        logging.info("Exported parsed frequency data to 'export/frequency_parsed.csv'")
+        info("Exported parsed frequency data to 'export/frequency_parsed.csv'")
 
-    logging.info("Parsing CMC budgets...")
+    info("Parsing CMC budgets...")
     df[["cmc_base", "cmc_multiplier", "cmc_mult_unit", "cmc_uncertainty_unit"]] = df[
         "CMC (±)"
     ].apply(lambda x: parse_budget(x).__series__())
@@ -90,10 +89,10 @@ def pdf_table_processor(pdf_path: str, save_intermediate=False) -> pd.DataFrame:
     def update_cmc_mult_unit(row):
         if row['cmc_mult_unit'] in {'D', 'L', 'W'}:
             if row['range_min_unit'] != row['range_max_unit']:
-                logging.warning(f"Unexpected cmc_mult_unit '{row['cmc_mult_unit']}' found in the data.")
+                warning(f"Unexpected cmc_mult_unit '{row['cmc_mult_unit']}' found in the data.")
             row['cmc_mult_unit'] = row['range_min_unit']
         return row
-    logging.info("Cleaning up the data...")
+    info("Cleaning up the data...")
     df = df.apply(update_cmc_mult_unit, axis=1)
     return df
 
@@ -316,7 +315,7 @@ def custom_parse_table(input_data):
 
 if __name__ == "__main__":
     # Initialize file dialog for PDF selection.
-    root = tk.Tk()
+    root = Tk()
     root.withdraw()
     pdf_path = filedialog.askopenfilename(
         title="Select PDF file", filetypes=[("PDF files", "*.pdf")]
