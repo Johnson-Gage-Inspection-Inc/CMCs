@@ -103,7 +103,7 @@ def custom_extract_tables(
                         return os.path.join(base_path, relative_path)
 
                     def convert_to_subscript(s):
-                        with open(get_resource_path('subscript_mapping.json'), 'r') as f:
+                        with open(get_resource_path('subscript_mapping.json'), 'r', encoding='utf-8') as f:
                             mapping = json.load(f)
                         return "".join(mapping.get(char, char) for char in s)
 
