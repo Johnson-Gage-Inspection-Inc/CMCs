@@ -5,7 +5,7 @@ a = Analysis(
     ['src\\main.py'],
     pathex=['src'],
     binaries=[],
-    datas=[('src/subscript_mapping.json', 'src')],
+    datas=[('src/subscript_mapping.json', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},

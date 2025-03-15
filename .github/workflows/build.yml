@@ -53,7 +53,7 @@ jobs:
 
       - name: Build Windows Executable
         run: |
-          pyinstaller --onefile --paths src src/main.py --name CMCs_PdfToCsv.exe
+          pyinstaller CMCs_PdfToCsv.exe.spec
 
       - name: Upload artifact (Windows EXE)
         uses: actions/upload-artifact@v4
