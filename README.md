@@ -16,81 +16,56 @@ This tool extracts and processes tabular data from calibration scope PDFs, speci
 - Parse complex range values into min/max with units
 - Process CMC (Calibration and Measurement Capability) data
 - Handle hierarchical comments and nested data structures
-- Export data at multiple stages of processing for verification
-
-## Installation
-
-### Requirements
-
-- Python 3.8 or higher
-- Required packages:
-
-```sh
-pip install -r requirements.txt
-```
-
-### Dependencies
-
-- pdfplumber - For PDF extraction
-- pandas - For data processing
-- tkinter - For file dialogs
-- Additional modules in the src/ directory
+- Export data in CSV format for analysis
 
 ## Usage
 
-1. Run the main script:
+1. Download the latest release of `CMCs_PdfToCsv.exe` from the [releases page](https://github.com/Johnson-Gage-Inspection-Inc/CMCs/releases/latest)
+2. Run the executable
+3. In the file dialog, select your PDF file containing calibration scope data
+4. When prompted, specify where to save the processed CSV file
+5. The application will process and export the data in CSV format
 
-```sh
-python -m src.main
-```
+## Output Data
 
-2. In the file dialog, select your PDF file containing calibration scope data.
+The final CSV file contains the following columns:
 
-3. The script will process the file and generate several CSV files in the export directory:
-   - `parsed.csv` - Initial extracted and formatted data
-   - `range_parsed.csv` - Data with parsed range values
-   - `cmc_parsed.csv` - Data with fully parsed CMC values
+- Equipment
+- Parameter
+- Range
+- Frequency
+- CMC (±)
+- Comments
+- range_min
+- range_min_unit
+- range_max
+- range_max_unit
+- frequency_range_min
+- frequency_range_min_unit
+- frequency_range_max
+- frequency_range_max_unit
+- cmc_base
+- cmc_multiplier
+- cmc_mult_unit
+- cmc_uncertainty_unit
 
-## Output Files
+## Integration with Excel
 
-Each CSV file contains progressively refined data:
+The repository includes [`CMC_Calculator.xlsm`](CMC_Calculator.xlsm) for further analysis of the extracted data. After generating the CSV file, you can:
 
-- **Initial parsed data** includes columns:
-  - Equipment
-  - Parameter
-  - Range
-  - Frequency
-  - CMC (±)
-  - Comments
+1. Open the Excel workbook
+2. Use the built-in macros to import and process the CSV data
+3. Perform additional calculations and reporting
 
-- **Range parsed data** adds:
-  - range_min
-  - range_min_unit
-  - range_max
-  - range_max_unit
+## Project Structure
 
-- **CMC parsed data** adds:
-  - cmc_base
-  - cmc_multiplier
-  - cmc_mult_unit
-  - cmc_uncertainty_unit
-
-## Advanced Usage
-
-To save intermediate extraction results for debugging:
-
-```python
-from src.main import main
-main("path/to/your/pdf", save_intermediate=True)
-```
-
-This will save JSON files with raw extraction data in json.
-
-## Development
-
-- Source code is in the src directory
-- Tests are in tests directory
-- Run tests with pytest: `pytest`
+- [`src`](src) - Source code directory
+  - `main.py` - Entry point for the application
+  - `extract.py` - PDF extraction functionality
+  - `cmc.py` - CMC data processing
+  - `range.py` - Range parsing functionality
+- [`tests`](tests) - Test files for the application
+- [`CMC_Calculator.xlsm`](CMC_Calculator.xlsm) - Excel workbook for calculating CMCs from the data
 
 ## License
 
