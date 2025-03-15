@@ -1,4 +1,6 @@
 import re
+import os
+import sys
 import json
 
 
@@ -95,10 +97,14 @@ def custom_extract_tables(
                             current_cluster.append(ln)
                     clusters.append(current_cluster)
 
+                    def get_resource_path(relative_path):
+                        """ Get absolute path to resource, works for dev and for PyInstaller """
+                        base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+                        return os.path.join(base_path, relative_path)
+
                     def convert_to_subscript(s):
-                        mapping = json.load(
-                            open("src/subscript_mapping.json", encoding="utf-8")
-                        )
+                        with open(get_resource_path('subscript_mapping.json'), 'r') as f:
+                            mapping = json.load(f)
                         return "".join(mapping.get(char, char) for char in s)
 
                     cluster_info = []
